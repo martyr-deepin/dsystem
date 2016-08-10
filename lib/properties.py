@@ -18,7 +18,7 @@ class dockClass(object):
 
         self.hidemode_keepshowing = 0    # 一直显示
         self.hidemode_keephidden  = 1    # 一直隐藏
-        self.hidemode_smarthide   = 2    # 只能隐藏
+        self.hidemode_smarthide   = 3    # 智能隐藏
 
         self.position_top    = 0    # 顶部
         self.position_right  = 1    # 右侧
