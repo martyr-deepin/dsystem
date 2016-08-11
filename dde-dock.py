@@ -18,6 +18,9 @@ import ddedock.testOtherDirectionDockSize
 import ddedock.testDockKeepShown
 import ddedock.testDockKeepHidden
 import ddedock.testDockSmartHide
+import ddedock.testDockKeepShownOtherDirection
+import ddedock.testDockKeepHiddenOtherDirection
+import ddedock.testDockSmartHideOtherDirection
 
 def main():
     suite00 = ddedock.testFashionDefaultIcons.suite()
@@ -34,11 +37,15 @@ def main():
     suite8 = ddedock.testDockKeepShown.suite()
     suite9 = ddedock.testDockKeepHidden.suite()
     suite10 = ddedock.testDockSmartHide.suite()
+    suite11 = ddedock.testDockKeepShownOtherDirection.suite()
+    suite12 = ddedock.testDockKeepHiddenOtherDirection.suite()
+    suite13 = ddedock.testDockSmartHideOtherDirection.suite()
 
     alltests = unittest.TestSuite((suite00, suite01, suite02, suite03,
                                    suite1, suite2, suite3, suite4,
                                    suite5, suite6, suite7, suite8,
-                                   suite9, suite10))
+                                   suite9, suite10, suite11, suite12,
+                                   suite13))
 
     runner = unittest.TextTestRunner()
     runner.run(alltests)

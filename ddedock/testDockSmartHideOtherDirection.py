@@ -20,11 +20,11 @@ class MyTestResult(runner.MyTextTestResult):
         global result
         result = result and False
 
-class DockKeepHidden(unittest.TestCase):
+class DockSmartHideOtherDirection(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
-        cls.caseid = '33414'
-        cls.casename = "all-437:一直隐藏"
+        cls.caseid = '68525'
+        cls.casename = "all-2501:四个位置的智能隐藏测试"
         cls.ddedockobject = utils.getDdeDockObject()
         cls.defaultdisplaymode = utils.getDdeDockDisplayMode()
         cls.defaultposition = utils.getDdeDockPosition()
@@ -53,7 +53,6 @@ class DockKeepHidden(unittest.TestCase):
         if utils.getDdeDockHideMode() != utils.dock.hidemode_keepshowing:
             utils.setDdeDockHideMode(utils.dock.hidemode_keepshowing)
 
-        filemanager = cls.ddedockobject.child(cls.filemanager)
         win = utils.findWindow(cls.filemanager_windowname)
         if None != win:
             win.unmaximize()
@@ -62,29 +61,28 @@ class DockKeepHidden(unittest.TestCase):
     def testOpenFileManager(self):
         launcher = self.ddedockobject.child("Launcher")
         launcher.point()
-        filemanager = self.ddedockobject.child(self.filemanager)
-        filemanager.click()
-        if utils.dock.hidemode_keephidden != self.defaulthidemode:
-            utils.setDdeDockHideMode(utils.dock.hidemode_keephidden)
-
+        managerobj = self.ddedockobject.child(self.filemanager)
+        managerobj.click()
         rawinput.absoluteMotion(int(utils.resolution.width/2), int(utils.resolution.height/2))
-        time.sleep(3)
+
+        if utils.dock.hidemode_smarthide != self.defaulthidemode:
+            utils.setDdeDockHideMode(utils.dock.hidemode_smarthide)
 
         hidemode = utils.getDdeDockHideMode()
         hidestate = utils.getDdeDockHideState()
-        self.assertTrue(hidemode == utils.dock.hidemode_keephidden)
-        self.assertTrue(hidestate == utils.dock.hidestate_hide)
+        self.assertTrue(hidemode == utils.dock.hidemode_smarthide)
         win = utils.findWindow(self.filemanager_windowname)
         self.assertTrue(win != None)
 
     def testMaximizeFileManager(self):
-        filemanager = self.ddedockobject.child(self.filemanager)
         win = utils.findWindow(self.filemanager_windowname)
         win.maximize()
+        win.activate(time.time())
+        time.sleep(2)
+        rawinput.click(int(utils.resolution.width/2), int(utils.resolution.height/2))
         self.assertTrue(win != None)
 
     def testMinimizeFileManager(self):
-        filemanager = self.ddedockobject.child(self.filemanager)
         win = utils.findWindow(self.filemanager_windowname)
         win.minimize()
         time.sleep(1)   
@@ -93,16 +91,31 @@ class DockKeepHidden(unittest.TestCase):
         self.assertTrue(win_test.is_minimized())
 
     def testActivateFileManager(self):
-        filemanager = self.ddedockobject.child(self.filemanager)
+        managerobj = self.ddedockobject.child(self.filemanager)
+        managerobj.click()
+        rawinput.absoluteMotion(int(utils.resolution.width/2), int(utils.resolution.height/2))
+        time.sleep(3)
         win = utils.findWindow(self.filemanager_windowname)
-        win.activate(time.time())
         self.assertTrue(win != None)
         self.assertTrue(win.is_maximized())
         
     def testCheckDockSize(self):
         main_window = self.ddedockobject.child(self.dock_mainwindow)
         (width, height) = main_window.size
-        self.assertTrue(height == 1, " the size is : %s" % str(main_window.size))
+        position = utils.getDdeDockPosition()
+        if position == utils.dock.position_top:
+            self.assertTrue(height > 1, " the size is : %s" % str(main_window.size))
+        elif position == utils.dock.position_right or position == utils.dock.position_left:
+            self.assertTrue(width > 1, " the size is : %s" % str(main_window.size))
+
+    def testCheckDockSizeHideState(self):
+        main_window = self.ddedockobject.child(self.dock_mainwindow)
+        (width, height) = main_window.size
+        position = utils.getDdeDockPosition()
+        if position == utils.dock.position_top:
+            self.assertTrue(height == 1, " the size is : %s" % str(main_window.size))
+        elif position == utils.dock.position_right or position == utils.dock.position_left:
+            self.assertTrue(width == 1, " the size is : %s" % str(main_window.size))
 
     def testExChangeDisplayMode(self):
         if utils.getDdeDockDisplayMode() == utils.dock.displaymode_fashion:
@@ -111,25 +124,42 @@ class DockKeepHidden(unittest.TestCase):
             utils.setDdeDockDisplayMode(utils.dock.displaymode_fashion)
 
     def testMoveMouseToDock(self):
-        rawinput.absoluteMotion(int(utils.resolution.width/2), utils.resolution.height)
-        time.sleep(3)
+        position = utils.getDdeDockPosition()
+        if utils.dock.position_top == position:
+            rawinput.absoluteMotion(int(utils.resolution.width/2), 0)
+        elif utils.dock.position_right == position:
+            rawinput.absoluteMotion(utils.resolution.width, int(utils.resolution.height/2))
+        elif utils.dock.position_left == position:
+            rawinput.absoluteMotion(0, int(utils.resolution.height/2))
+
         main_window = self.ddedockobject.child(self.dock_mainwindow)
         (width, height) = main_window.size
         self.assertTrue(height > 1, " the size is : %s" % str(main_window.size))
+        self.assertTrue(width > 1, " the size is : %s" % str(main_window.size))
+
+    def testChangePosition(self):
+        if utils.getDdeDockPosition() == utils.dock.position_bottom:
+            utils.setDdeDockPosition(utils.dock.position_top)
+        elif utils.getDdeDockPosition() == utils.dock.position_top:
+            utils.setDdeDockPosition(utils.dock.position_right)
+        elif utils.getDdeDockPosition() == utils.dock.position_right:
+            utils.setDdeDockPosition(utils.dock.position_left)
 
 def suite():
     suite = unittest.TestSuite()
-    suite.addTest(DockKeepHidden('testOpenFileManager'))
-    suite.addTest(DockKeepHidden('testMaximizeFileManager'))
-    suite.addTest(DockKeepHidden('testCheckDockSize'))
-    suite.addTest(DockKeepHidden('testMinimizeFileManager'))
-    suite.addTest(DockKeepHidden('testCheckDockSize'))
-    suite.addTest(DockKeepHidden('testExChangeDisplayMode'))
-    suite.addTest(DockKeepHidden('testActivateFileManager'))
-    suite.addTest(DockKeepHidden('testCheckDockSize'))
-    suite.addTest(DockKeepHidden('testMinimizeFileManager'))
-    suite.addTest(DockKeepHidden('testCheckDockSize'))
-    suite.addTest(DockKeepHidden('testMoveMouseToDock'))
+    suite.addTest(DockSmartHideOtherDirection('testChangePosition'))
+    suite.addTest(DockSmartHideOtherDirection('testOpenFileManager'))
+    suite.addTest(DockSmartHideOtherDirection('testCheckDockSize'))
+    suite.addTest(DockSmartHideOtherDirection('testMaximizeFileManager'))
+    suite.addTest(DockSmartHideOtherDirection('testCheckDockSizeHideState'))
+    suite.addTest(DockSmartHideOtherDirection('testMinimizeFileManager'))
+    suite.addTest(DockSmartHideOtherDirection('testCheckDockSize'))
+    suite.addTest(DockSmartHideOtherDirection('testExChangeDisplayMode'))
+    suite.addTest(DockSmartHideOtherDirection('testActivateFileManager'))
+    suite.addTest(DockSmartHideOtherDirection('testCheckDockSizeHideState'))
+    suite.addTest(DockSmartHideOtherDirection('testMinimizeFileManager'))
+    suite.addTest(DockSmartHideOtherDirection('testCheckDockSize'))
+    suite.addTest(DockSmartHideOtherDirection('testMoveMouseToDock'))
     return suite
 
 if __name__ == "__main__":

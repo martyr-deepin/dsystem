@@ -5,6 +5,7 @@ import unittest
 import time
 from lib import utils
 from lib import runner
+from dogtail import rawinput
 
 result = True
 
@@ -19,11 +20,11 @@ class MyTestResult(runner.MyTextTestResult):
         global result
         result = result and False
 
-class DockKeepShown(unittest.TestCase):
+class DockKeepShownOtherDirection(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
-        cls.caseid = '33410'
-        cls.casename = "all-436:一直显示"
+        cls.caseid = '68517'
+        cls.casename = "all-2499:四个位置的一直显示测试"
         cls.ddedockobject = utils.getDdeDockObject()
         cls.defaultdisplaymode = utils.getDdeDockDisplayMode()
         cls.defaultposition = utils.getDdeDockPosition()
@@ -55,26 +56,28 @@ class DockKeepShown(unittest.TestCase):
         if utils.getDdeDockHideMode() != utils.dock.hidemode_keepshowing:
             utils.setDdeDockHideMode(utils.dock.hidemode_keepshowing)
 
-        filemanager = cls.ddedockobject.child(cls.filemanager)
         win = utils.findWindow(cls.filemanager_windowname)
         if win != None:
             win.unmaximize()
             win.close(time.time())
 
     def testOpenFileManager(self):
+        launcher = self.ddedockobject.child("Launcher")
+        launcher.point()
         filemanager = self.ddedockobject.child(self.filemanager)
         filemanager.click()
+        rawinput.click(int(utils.resolution.width/2), int(utils.resolution.height/2))
+        time.sleep(2)
         win = utils.findWindow(self.filemanager_windowname)
         self.assertTrue(win != None)
 
     def testMaximizeFileManager(self):
-        filemanager = self.ddedockobject.child(self.filemanager)
         win = utils.findWindow(self.filemanager_windowname)
         win.maximize()
+        time.sleep(2)
         self.assertTrue(win != None)
 
     def testMinimizeFileManager(self):
-        filemanager = self.ddedockobject.child(self.filemanager)
         win = utils.findWindow(self.filemanager_windowname)
         win.minimize()
         time.sleep(1)   
@@ -83,7 +86,6 @@ class DockKeepShown(unittest.TestCase):
         self.assertTrue(win_test.is_minimized())
 
     def testActivateFileManager(self):
-        filemanager = self.ddedockobject.child(self.filemanager)
         win = utils.findWindow(self.filemanager_windowname)
         win.activate(time.time())
         self.assertTrue(win != None)
@@ -93,6 +95,7 @@ class DockKeepShown(unittest.TestCase):
         main_window = self.ddedockobject.child(self.dock_mainwindow)
         (width, height) = main_window.size
         self.assertTrue(height > 1)
+        self.assertTrue(width > 1)
 
     def testExChangeDisplayMode(self):
         if utils.getDdeDockDisplayMode() == utils.dock.displaymode_fashion:
@@ -100,18 +103,54 @@ class DockKeepShown(unittest.TestCase):
         elif utils.getDdeDockDisplayMode() == utils.dock.displaymode_efficient:
             utils.setDdeDockDisplayMode(utils.dock.displaymode_fashion)
 
+    def testChangePosition(self):
+        if utils.getDdeDockPosition() == utils.dock.position_bottom:
+            utils.setDdeDockPosition(utils.dock.position_top)
+        elif utils.getDdeDockPosition() == utils.dock.position_top:
+            utils.setDdeDockPosition(utils.dock.position_right)
+        elif utils.getDdeDockPosition() == utils.dock.position_right:
+            utils.setDdeDockPosition(utils.dock.position_left)
+
 def suite():
     suite = unittest.TestSuite()
-    suite.addTest(DockKeepShown('testOpenFileManager'))
-    suite.addTest(DockKeepShown('testMaximizeFileManager'))
-    suite.addTest(DockKeepShown('testCheckDockSize'))
-    suite.addTest(DockKeepShown('testMinimizeFileManager'))
-    suite.addTest(DockKeepShown('testCheckDockSize'))
-    suite.addTest(DockKeepShown('testExChangeDisplayMode'))
-    suite.addTest(DockKeepShown('testActivateFileManager'))
-    suite.addTest(DockKeepShown('testCheckDockSize'))
-    suite.addTest(DockKeepShown('testMinimizeFileManager'))
-    suite.addTest(DockKeepShown('testCheckDockSize'))
+    suite.addTest(DockKeepShownOtherDirection('testOpenFileManager'))
+
+    # top
+    suite.addTest(DockKeepShownOtherDirection('testChangePosition'))
+    suite.addTest(DockKeepShownOtherDirection('testMaximizeFileManager'))
+    suite.addTest(DockKeepShownOtherDirection('testCheckDockSize'))
+    suite.addTest(DockKeepShownOtherDirection('testMinimizeFileManager'))
+    suite.addTest(DockKeepShownOtherDirection('testCheckDockSize'))
+    suite.addTest(DockKeepShownOtherDirection('testExChangeDisplayMode'))
+    suite.addTest(DockKeepShownOtherDirection('testActivateFileManager'))
+    suite.addTest(DockKeepShownOtherDirection('testCheckDockSize'))
+    suite.addTest(DockKeepShownOtherDirection('testMinimizeFileManager'))
+    suite.addTest(DockKeepShownOtherDirection('testCheckDockSize'))
+
+    # right
+    suite.addTest(DockKeepShownOtherDirection('testChangePosition'))
+    suite.addTest(DockKeepShownOtherDirection('testMaximizeFileManager'))
+    suite.addTest(DockKeepShownOtherDirection('testCheckDockSize'))
+    suite.addTest(DockKeepShownOtherDirection('testMinimizeFileManager'))
+    suite.addTest(DockKeepShownOtherDirection('testCheckDockSize'))
+    suite.addTest(DockKeepShownOtherDirection('testExChangeDisplayMode'))
+    suite.addTest(DockKeepShownOtherDirection('testActivateFileManager'))
+    suite.addTest(DockKeepShownOtherDirection('testCheckDockSize'))
+    suite.addTest(DockKeepShownOtherDirection('testMinimizeFileManager'))
+    suite.addTest(DockKeepShownOtherDirection('testCheckDockSize'))
+
+    # left
+    suite.addTest(DockKeepShownOtherDirection('testChangePosition'))
+    suite.addTest(DockKeepShownOtherDirection('testMaximizeFileManager'))
+    suite.addTest(DockKeepShownOtherDirection('testCheckDockSize'))
+    suite.addTest(DockKeepShownOtherDirection('testMinimizeFileManager'))
+    suite.addTest(DockKeepShownOtherDirection('testCheckDockSize'))
+    suite.addTest(DockKeepShownOtherDirection('testExChangeDisplayMode'))
+    suite.addTest(DockKeepShownOtherDirection('testActivateFileManager'))
+    suite.addTest(DockKeepShownOtherDirection('testCheckDockSize'))
+    suite.addTest(DockKeepShownOtherDirection('testMinimizeFileManager'))
+    suite.addTest(DockKeepShownOtherDirection('testCheckDockSize'))
+
     return suite
 
 if __name__ == "__main__":

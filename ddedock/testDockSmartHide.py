@@ -44,14 +44,14 @@ class DockSmartHide(unittest.TestCase):
         global result
         utils.commitresult(cls.caseid, result)
 
-        if utils.getDdeDockDisplayMode() != cls.defaultdisplaymode:
-            utils.setDdeDockDisplayMode(cls.defaultdisplaymode)
+        if utils.getDdeDockDisplayMode() != utils.dock.displaymode_fashion:
+            utils.setDdeDockDisplayMode(utils.dock.displaymode_fashion)
 
-        if utils.getDdeDockPosition() != cls.defaultposition:
-            utils.setDdeDockPosition(cls.defaultposition)
+        if utils.getDdeDockPosition() != utils.dock.position_bottom:
+            utils.setDdeDockPosition(utils.dock.position_bottom)
 
-        if utils.getDdeDockHideMode() != cls.defaulthidemode:
-            utils.setDdeDockHideMode(cls.defaulthidemode)
+        if utils.getDdeDockHideMode() != utils.dock.hidemode_keepshowing:
+            utils.setDdeDockHideMode(utils.dock.hidemode_keepshowing)
 
         win = utils.findWindow(cls.filemanager_windowname)
         if None != win:
@@ -59,16 +59,20 @@ class DockSmartHide(unittest.TestCase):
             win.close(time.time())
 
     def testOpenFileManager(self):
+        launcher = self.ddedockobject.child("Launcher")
+        launcher.point()
         managerobj = self.ddedockobject.child(self.filemanager)
         managerobj.click()
-        rawinput.click(int(utils.resolution.width/2), int(utils.resolution.height/2))
-
         if utils.dock.hidemode_smarthide != self.defaulthidemode:
             utils.setDdeDockHideMode(utils.dock.hidemode_smarthide)
+
+        rawinput.absoluteMotion(int(utils.resolution.width/2), int(utils.resolution.height/2))
+        time.sleep(3)
 
         hidemode = utils.getDdeDockHideMode()
         hidestate = utils.getDdeDockHideState()
         self.assertTrue(hidemode == utils.dock.hidemode_smarthide)
+        time.sleep(2)
         win = utils.findWindow(self.filemanager_windowname)
         self.assertTrue(win != None)
 
