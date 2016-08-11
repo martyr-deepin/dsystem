@@ -78,14 +78,14 @@ class DockSmartHideOtherDirection(unittest.TestCase):
         win = utils.findWindow(self.filemanager_windowname)
         win.maximize()
         win.activate(time.time())
+        rawinput.absoluteMotion(int(utils.resolution.width/2), int(utils.resolution.height/2))
         time.sleep(2)
-        rawinput.click(int(utils.resolution.width/2), int(utils.resolution.height/2))
         self.assertTrue(win != None)
 
     def testMinimizeFileManager(self):
         win = utils.findWindow(self.filemanager_windowname)
         win.minimize()
-        time.sleep(1)   
+        time.sleep(2)
         self.assertTrue(win != None)
         win_test = utils.findWindow(self.filemanager_windowname)  
         self.assertTrue(win_test.is_minimized())
@@ -132,6 +132,8 @@ class DockSmartHideOtherDirection(unittest.TestCase):
         elif utils.dock.position_left == position:
             rawinput.absoluteMotion(0, int(utils.resolution.height/2))
 
+        time.sleep(1)
+
         main_window = self.ddedockobject.child(self.dock_mainwindow)
         (width, height) = main_window.size
         self.assertTrue(height > 1, " the size is : %s" % str(main_window.size))
@@ -147,9 +149,40 @@ class DockSmartHideOtherDirection(unittest.TestCase):
 
 def suite():
     suite = unittest.TestSuite()
+    # top
     suite.addTest(DockSmartHideOtherDirection('testChangePosition'))
     suite.addTest(DockSmartHideOtherDirection('testOpenFileManager'))
     suite.addTest(DockSmartHideOtherDirection('testCheckDockSize'))
+    suite.addTest(DockSmartHideOtherDirection('testMaximizeFileManager'))
+    suite.addTest(DockSmartHideOtherDirection('testCheckDockSizeHideState'))
+    suite.addTest(DockSmartHideOtherDirection('testMinimizeFileManager'))
+    suite.addTest(DockSmartHideOtherDirection('testCheckDockSize'))
+    suite.addTest(DockSmartHideOtherDirection('testExChangeDisplayMode'))
+    suite.addTest(DockSmartHideOtherDirection('testActivateFileManager'))
+    suite.addTest(DockSmartHideOtherDirection('testCheckDockSizeHideState'))
+    suite.addTest(DockSmartHideOtherDirection('testMinimizeFileManager'))
+    suite.addTest(DockSmartHideOtherDirection('testCheckDockSize'))
+    suite.addTest(DockSmartHideOtherDirection('testMoveMouseToDock'))
+
+    # right
+    suite.addTest(DockSmartHideOtherDirection('testChangePosition'))
+    suite.addTest(DockSmartHideOtherDirection('testOpenFileManager'))
+    suite.addTest(DockSmartHideOtherDirection('testCheckDockSizeHideState'))
+    suite.addTest(DockSmartHideOtherDirection('testMaximizeFileManager'))
+    suite.addTest(DockSmartHideOtherDirection('testCheckDockSizeHideState'))
+    suite.addTest(DockSmartHideOtherDirection('testMinimizeFileManager'))
+    suite.addTest(DockSmartHideOtherDirection('testCheckDockSize'))
+    suite.addTest(DockSmartHideOtherDirection('testExChangeDisplayMode'))
+    suite.addTest(DockSmartHideOtherDirection('testActivateFileManager'))
+    suite.addTest(DockSmartHideOtherDirection('testCheckDockSizeHideState'))
+    suite.addTest(DockSmartHideOtherDirection('testMinimizeFileManager'))
+    suite.addTest(DockSmartHideOtherDirection('testCheckDockSize'))
+    suite.addTest(DockSmartHideOtherDirection('testMoveMouseToDock'))
+
+    # left
+    suite.addTest(DockSmartHideOtherDirection('testChangePosition'))
+    suite.addTest(DockSmartHideOtherDirection('testOpenFileManager'))
+    suite.addTest(DockSmartHideOtherDirection('testCheckDockSizeHideState'))
     suite.addTest(DockSmartHideOtherDirection('testMaximizeFileManager'))
     suite.addTest(DockSmartHideOtherDirection('testCheckDockSizeHideState'))
     suite.addTest(DockSmartHideOtherDirection('testMinimizeFileManager'))
