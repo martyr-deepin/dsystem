@@ -33,7 +33,7 @@ class FashionIconsPopup(unittest.TestCase):
     def tearDownClass(cls):
         utils.setDdeDockDisplayMode(cls.defaultdisplaymode)
         utils.setDdeDockPosition(cls.defaultposition)
-    
+
     def testBottomPopupExists(self):
         for name in self.defaultfashioniconlist:
             icon = self.ddedockobject.child(name)
@@ -50,7 +50,7 @@ class FashionIconsPopup(unittest.TestCase):
             elif name == "datetime-":
                 icon_popup = self.ddedockobject.child(name + 'popup')
             elif name == "Launcher":
-                icon_popup = self.ddedockobject.child("launcher-popup") 
+                icon_popup = self.ddedockobject.child("launcher-popup")
 
             self.assertTrue(icon_popup, "Position Bottom: Can't find the [ %s ] icon-popup in the dock region with Fashion Mode" % name)
             print("find the popup window with icon: %s" % name)
@@ -72,7 +72,7 @@ class FashionIconsPopup(unittest.TestCase):
             elif name == "datetime-":
                 icon_popup = self.ddedockobject.child(name + 'popup')
             elif name == "Launcher":
-                icon_popup = self.ddedockobject.child("launcher-popup") 
+                icon_popup = self.ddedockobject.child("launcher-popup")
 
             self.assertTrue(icon_popup, "Position Top: Can't find the [ %s ] icon-popup in the dock region with Fashion Mode" % name)
             print("find the popup window with icon: %s" % name)
@@ -94,7 +94,7 @@ class FashionIconsPopup(unittest.TestCase):
             elif name == "datetime-":
                 icon_popup = self.ddedockobject.child(name + 'popup')
             elif name == "Launcher":
-                icon_popup = self.ddedockobject.child("launcher-popup") 
+                icon_popup = self.ddedockobject.child("launcher-popup")
 
             self.assertTrue(icon_popup, "Position Right: Can't find the [ %s ] icon-popup in the dock region with Fashion Mode" % name)
             print("find the popup window with icon: %s" % name)
@@ -116,7 +116,7 @@ class FashionIconsPopup(unittest.TestCase):
             elif name == "datetime-":
                 icon_popup = self.ddedockobject.child(name + 'popup')
             elif name == "Launcher":
-                icon_popup = self.ddedockobject.child("launcher-popup") 
+                icon_popup = self.ddedockobject.child("launcher-popup")
 
             self.assertTrue(icon_popup, "Position Left: Can't find the [ %s ] icon-popup in the dock region with Fashion Mode" % name)
             print("find the popup window with icon: %s" % name)

@@ -34,7 +34,7 @@ class FashionDefaultIcons(unittest.TestCase):
     def tearDownClass(cls):
         utils.setDdeDockDisplayMode(cls.defaultdisplaymode)
         utils.setDdeDockPosition(cls.defaultposition)
-    
+
     def testExists(self):
         for name in self.defaultfashioniconlist:
             icon = self.ddedockobject.child(name)

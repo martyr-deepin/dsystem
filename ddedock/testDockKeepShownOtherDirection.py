@@ -80,9 +80,9 @@ class DockKeepShownOtherDirection(unittest.TestCase):
     def testMinimizeFileManager(self):
         win = utils.findWindow(self.filemanager_windowname)
         win.minimize()
-        time.sleep(1)   
+        time.sleep(1)
         self.assertTrue(win != None)
-        win_test = utils.findWindow(self.filemanager_windowname)  
+        win_test = utils.findWindow(self.filemanager_windowname)
         self.assertTrue(win_test.is_minimized())
 
     def testActivateFileManager(self):
@@ -90,7 +90,7 @@ class DockKeepShownOtherDirection(unittest.TestCase):
         win.activate(time.time())
         self.assertTrue(win != None)
         self.assertTrue(win.is_maximized())
-        
+
     def testCheckDockSize(self):
         main_window = self.ddedockobject.child(self.dock_mainwindow)
         (width, height) = main_window.size

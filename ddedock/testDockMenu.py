@@ -77,6 +77,14 @@ class DockMenu(unittest.TestCase):
             utils.setDdeDockPosition(utils.dock.position_right)
         elif utils.getDdeDockPosition() == utils.dock.position_right:
             utils.setDdeDockPosition(utils.dock.position_left)
+        elif utils.getDdeDockPosition() == utils.dock.position_left:
+            utils.setDdeDockPosition(utils.dock.position_bottom)
+
+    def testExChangeDisplayMode(self):
+        if utils.getDdeDockDisplayMode() == utils.dock.displaymode_fashion:
+            utils.setDdeDockDisplayMode(utils.dock.displaymode_efficient)
+        elif utils.getDdeDockDisplayMode() == utils.dock.displaymode_efficient:
+            utils.setDdeDockDisplayMode(utils.dock.displaymode_fashion)
 
     def testProcess(self):
         try:
@@ -95,13 +103,15 @@ class DockMenu(unittest.TestCase):
                   (int(xp + width/2), yp + height - 1),
                   (xp + width -1, yp + height - 1)]
 
-        for xy in xylist:                  
+        for xy in xylist:
             self.testRightClickOnDock(xy[0], xy[1])
             self.testDockMenuExist()
             self.testClickScreenCenter()
 
 def suite():
     suite = unittest.TestSuite()
+
+    # fashtion
     suite.addTest(DockMenu('testProcess'))
     suite.addTest(DockMenu('testChangePosition'))
     suite.addTest(DockMenu('testProcess'))
@@ -109,6 +119,21 @@ def suite():
     suite.addTest(DockMenu('testProcess'))
     suite.addTest(DockMenu('testChangePosition'))
     suite.addTest(DockMenu('testProcess'))
+
+    # change mode and direction
+    suite.addTest(DockMenu('testExChangeDisplayMode'))
+    suite.addTest(DockMenu('testChangePosition'))
+
+    # efficient
+    suite.addTest(DockMenu('testProcess'))
+    suite.addTest(DockMenu('testChangePosition'))
+    suite.addTest(DockMenu('testProcess'))
+    suite.addTest(DockMenu('testChangePosition'))
+    suite.addTest(DockMenu('testProcess'))
+    suite.addTest(DockMenu('testChangePosition'))
+    suite.addTest(DockMenu('testProcess'))
+
+
     return suite
 
 if __name__ == "__main__":

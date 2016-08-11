@@ -21,6 +21,7 @@ import ddedock.testDockSmartHide
 import ddedock.testDockKeepShownOtherDirection
 import ddedock.testDockKeepHiddenOtherDirection
 import ddedock.testDockSmartHideOtherDirection
+import ddedock.testDockMenu
 
 def main():
     suite00 = ddedock.testFashionDefaultIcons.suite()
@@ -40,12 +41,13 @@ def main():
     suite11 = ddedock.testDockKeepShownOtherDirection.suite()
     suite12 = ddedock.testDockKeepHiddenOtherDirection.suite()
     suite13 = ddedock.testDockSmartHideOtherDirection.suite()
+    suite14 = ddedock.testDockMenu.suite()
 
     alltests = unittest.TestSuite((suite00, suite01, suite02, suite03,
                                    suite1, suite2, suite3, suite4,
                                    suite5, suite6, suite7, suite8,
                                    suite9, suite10, suite11, suite12,
-                                   suite13))
+                                   suite13, suite14))
 
     runner = unittest.TextTestRunner()
     runner.run(alltests)
