@@ -3,3 +3,5 @@ __pycache__
 */*.pyc
 result.txt
 */result.txt
+*.swp
+*/*.swp

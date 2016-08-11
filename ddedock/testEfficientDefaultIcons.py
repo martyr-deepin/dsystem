@@ -69,7 +69,7 @@ class EfficientDefaultIcons(unittest.TestCase):
         mode = utils.getDdeDockDisplayMode()
         self.assertTrue(mode == utils.dock.displaymode_efficient)
 
-    
+
     def testTopExistsChangedMode(self):
         for name in self.defaultefficienticonlist:
             icon = self.ddedockobject.child(name)
