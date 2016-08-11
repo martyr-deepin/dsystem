@@ -3,6 +3,8 @@
 
 class dockClass(object):
     def __init__(self):
+        self.mainwindowname = "dock-mainwindow"
+
         self.dbus_dest      = "com.deepin.dde.daemon.Dock"
         self.dbus_objpath   = "/com/deepin/dde/daemon/Dock"
         self.dbus_interface = "com.deepin.dde.daemon.Dock"
