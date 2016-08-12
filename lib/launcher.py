@@ -7,7 +7,7 @@ from window import *
 from dde_dock import *
 import pyautogui
 pyautogui.FAILSAFE = False
-
+pyautogui.PAUSE = 1
 
 class Launcher:
     def __init__(self):
@@ -23,10 +23,10 @@ class Launcher:
         coor.append(position[1]+size[1]/2)
         return coor
 
-    def getIconCoorCategory(self,icon):
+    def getIconCoorCategory(self,lst):
         coor = []
-        position = self.launcherObj.child('chat',roleName='list').children[0].position
-        size = self.launcherObj.child('chat',roleName='list').children[0].size
+        position = self.launcherObj.child(lst,roleName='list').children[0].position
+        size = self.launcherObj.child(lst,roleName='list').children[0].size
         coor.append(position[0]+size[0]/2)
         coor.append(position[1]+size[1]/2)
         return coor
@@ -61,7 +61,7 @@ class Launcher:
         if launcher != None:
             QQName = self.launcherObj.child(listName,roleName='list').children[0].name
             print QQName
-            icon_coor = self.getIconCoorCategory(QQName)
+            icon_coor = self.getIconCoorCategory('chat')
             pyautogui.mouseDown(icon_coor[0], icon_coor[1])
             pyautogui.dragTo(app_coor[0], app_coor[1], duration=2)
             self.exitLauncher()
@@ -105,70 +105,77 @@ class Launcher:
                 self.launcherObj.child('mode-toggle-button').click()
                 self.exitLauncher()
 
-    def dragToCenterLeftKey(self):
+    def dragSrcToDest(self, s, d, btn='left'):
         pyautogui.press('winleft')
         launcher = findWindow('dde-launcher')
         if launcher != None:
             apps = self.getLauncherAllApps()
-            first = apps[0]
-            center = apps[17]
-            first_size = self.getAppSize(first)
-            center_size = self.getAppSize(center)
-            first_position = self.launcherObj.child(first).position
-            center_position = self.launcherObj.child(center).position
-            first_position_x = first_position[0]+first_size[0]/2
-            first_position_y = first_position[1]+first_size[1]/2
-            center_position_x = center_position[0]+center_size[0]/2
-            center_position_y = center_position[1]+center_size[1]/2
+            src = apps[s]
+            dest = apps[d]
+            src_size = self.getAppSize(src)
+            dest_size = self.getAppSize(dest)
+            src_position = self.launcherObj.child(src).position
+            dest_position = self.launcherObj.child(dest).position
+            src_x = src_position[0]+src_size[0]/2
+            src_y = src_position[1]+src_size[1]/2
+            dest_x = dest_position[0]+dest_size[0]/2
+            dest_y = dest_position[1]+dest_size[1]/2
+            print src_x,src_y
+            if src_y<0:
+                pyautogui.scroll(30)
+            pyautogui.mouseDown(src_x, src_y, button=btn)
+            if d>27:
+                pyautogui.scroll(-30)
+                pyautogui.dragTo(dest_x, dest_y, duration=6, button=btn)
+            pyautogui.dragTo(dest_x, dest_y, duration=2, button=btn)
 
-
-            pyautogui.mouseDown(first_position_x, first_position_y)
-            pyautogui.dragTo(center_position_x, center_position_y, duration=2)
-            self.exitLauncher()
+    def dragToCenterLeftKey(self):
+        self.dragSrcToDest(0, 17)
+        self.exitLauncher()
 
     def dragToFirstLeftKey(self):
-        pyautogui.press('winleft')
-        launcher = findWindow('dde-launcher')
-        if launcher != None:
-            apps = self.getLauncherAllApps()
-            first = apps[0]
-            center = apps[17]
-            first_size = self.getAppSize(first)
-            center_size = self.getAppSize(center)
-            first_position = self.launcherObj.child(first).position
-            center_position = self.launcherObj.child(center).position
-            first_position_x = first_position[0]+first_size[0]/2
-            first_position_y = first_position[1]+first_size[1]/2
-            center_position_x = center_position[0]+center_size[0]/2
-            center_position_y = center_position[1]+center_size[1]/2
-
-
-            pyautogui.mouseDown(center_position_x, center_position_y)
-            pyautogui.dragTo(first_position_x, first_position_y, duration=2)
-            self.exitLauncher()
+        self.dragSrcToDest(17, 0)
+        self.exitLauncher()
 
     def dragToCenterRightKey(self):
-        pyautogui.press('winleft')
-        launcher = findWindow('dde-launcher')
-        if launcher != None:
-            apps = self.getLauncherAllApps()
-            first = apps[0]
-            center = apps[17]
-            first_size = self.getAppSize(first)
-            center_size = self.getAppSize(center)
-            first_position = self.launcherObj.child(first).position
-            center_position = self.launcherObj.child(center).position
-            first_position_x = first_position[0]+first_size[0]/2
-            first_position_y = first_position[1]+first_size[1]/2
-            center_position_x = center_position[0]+center_size[0]/2
-            center_position_y = center_position[1]+center_size[1]/2
+        self.dragSrcToDest(0, 17, 'right')
 
-            pyautogui.mouseDown(first_position_x, first_position_y, 3)
-            pyautogui.dragTo(center_position_x, center_position_y, duration=2, button='right')
-            #self.exitLauncher()
+    def dragToSecond(self):
+        self.dragSrcToDest(0, 1)
+        self.exitLauncher()
 
+    def dragToFirstRowEnd(self):
+        self.dragSrcToDest(0, 6)
+        self.exitLauncher()
 
+    def dragToFirstColumnEnd(self):
+        columnEndIndex = self.getColumnEndIndex()
+        self.dragSrcToDest(0, columnEndIndex)
+        self.exitLauncher()
 
+    def dragToEnd(self):
+        endIndex = len(self.launcherObj.child('all',roleName='list').children)
+        self.dragSrcToDest(0, endIndex-1)
+        self.exitLauncher()
 
+    def getColumnEndIndex(self):
+        nums = len(self.launcherObj.child('all',roleName='list').children)
+        left = nums%7
+        clumns = nums/7
+        if left !=0:
+            return clumns*7
+        else:
+            return (clumns-1)*7
+
+    def disableDrag(self):
+        self.categoryMode()
+        win = findWindow('dde-launcher')
+        if win == None:
+            pyautogui.press('winleft')
+            googleCoor = self.getIconCoorCategory('internet')
+            musicCoor = self.getIconCoorCategory('music')
+            pyautogui.mouseDown(googleCoor)
+            pyautogui.dragTo(musicCoor, duration=2)
+            self.exitLauncher()
 
 launcher = Launcher()
