@@ -1,10 +1,10 @@
-#!/usr/bin/env python
-#encoding:utf-8
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
 
 import subprocess
 from dogtail.tree import *
-from window import *
-from dde_dock import *
+from lib.window import *
+from lib.dde_dock import *
 import pyautogui
 pyautogui.FAILSAFE = False
 pyautogui.PAUSE = 1
@@ -38,7 +38,7 @@ class Launcher:
         return apps
 
     def getAppSize(self,app):
-		return self.launcherObj.child(app).size
+        return self.launcherObj.child(app).size
 
     def dragAppToDockFree(self):
         self.freeMode()
@@ -55,12 +55,11 @@ class Launcher:
     def dragAppToDockCategory(self,listName):
         self.categoryMode()
         app = Dock().getLastItemName()
-    	app_coor = Dock().getAppCoor(app)
-    	pyautogui.press('winleft')
-    	launcher = findWindow('dde-launcher')
+        app_coor = Dock().getAppCoor(app)
+        pyautogui.press('winleft')
+        launcher = findWindow('dde-launcher')
         if launcher != None:
             QQName = self.launcherObj.child(listName,roleName='list').children[0].name
-            print QQName
             icon_coor = self.getIconCoorCategory('chat')
             pyautogui.mouseDown(icon_coor[0], icon_coor[1])
             pyautogui.dragTo(app_coor[0], app_coor[1], duration=2)
@@ -85,7 +84,6 @@ class Launcher:
 
     def freeMode(self):
         mode = self.getLauncherMode()
-        print mode
         win = findWindow('dde-launcher')
         if mode == '\'category\'' and win == None:
             pyautogui.press('winleft')
@@ -96,7 +94,6 @@ class Launcher:
 
     def categoryMode(self):
         mode = self.getLauncherMode()
-        print mode
         win = findWindow('dde-launcher')
         if mode == '\'free\'' and win == None:
             pyautogui.press('winleft')
@@ -120,7 +117,6 @@ class Launcher:
             src_y = src_position[1]+src_size[1]/2
             dest_x = dest_position[0]+dest_size[0]/2
             dest_y = dest_position[1]+dest_size[1]/2
-            print src_x,src_y
             if src_y<0:
                 pyautogui.scroll(30)
             pyautogui.mouseDown(src_x, src_y, button=btn)
