@@ -1,12 +1,9 @@
-#!/usr/bin/env python
-#encoding:utf-8
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
 
-import pyautogui
 import unittest
 from lib import runner,utils
-from dogtail import rawinput
 from lib.launcher import *
-from lib.dde_dock import *
 
 result = True
 
