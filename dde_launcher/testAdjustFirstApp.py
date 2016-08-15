@@ -33,37 +33,37 @@ class LauncherAdjustFirstApp(unittest.TestCase):
 
     def testDragToSecond(self):
         apps = launcher.getLauncherAllApps()
-    	first = apps[0]
+        first = apps[0]
         launcher.dragToSecond()
         apps = launcher.getLauncherAllApps()
-    	second = apps[1]
+        second = apps[1]
         self.assertEqual(first, second)
 
     def testDragToFirstRowEnd(self):
         apps = launcher.getLauncherAllApps()
-    	first = apps[0]
+        first = apps[0]
         launcher.dragToFirstRowEnd()
         apps = launcher.getLauncherAllApps()
-    	rowEnd = apps[6]
+        rowEnd = apps[6]
         self.assertEqual(first, rowEnd)
 
 
     def testDragToFirstColumnEnd(self):
         apps = launcher.getLauncherAllApps()
-    	first = apps[0]
+        first = apps[0]
         launcher.dragToFirstColumnEnd()
         apps = launcher.getLauncherAllApps()
         columnEndIndex = launcher.getColumnEndIndex()
-    	columnEnd = apps[columnEndIndex]
+        columnEnd = apps[columnEndIndex]
         self.assertNotEqual(first, columnEnd)
 
     def testDragToEnd(self):
         apps = launcher.getLauncherAllApps()
-    	first = apps[0]
+        first = apps[0]
         launcher.dragToEnd()
         apps = launcher.getLauncherAllApps()
         endIndex = len(launcher.launcherObj.child('all',roleName='list').children)
-    	end = apps[endIndex-1]
+        end = apps[endIndex-1]
         self.assertEqual(first, end)
 
 

@@ -33,18 +33,18 @@ class LauncherDragToCenter(unittest.TestCase):
 
     def testDragToCenterLeftKey(self):
         apps = launcher.getLauncherAllApps()
-    	first = apps[0]
+        first = apps[0]
         launcher.dragToCenterLeftKey()
         apps = launcher.getLauncherAllApps()
-    	new_center = apps[17]
+        new_center = apps[17]
         self.assertEqual(first, new_center)
 
     def testDragToCenterRightKey(self):
         apps = launcher.getLauncherAllApps()
-    	first = apps[0]
+        first = apps[0]
         launcher.dragToCenterRightKey()
         apps = launcher.getLauncherAllApps()
-    	new_center = apps[17]
+        new_center = apps[17]
         self.assertNotEqual(first, new_center)
         self.testLauncherMenuOpened()
         launcher.exitLauncher()
