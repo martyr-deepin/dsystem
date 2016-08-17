@@ -5,3 +5,5 @@ result.txt
 */result.txt
 *.swp
 */*.swp
+tools/id.txt
+id.txt

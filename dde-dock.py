@@ -23,6 +23,7 @@ import ddedock.testDockKeepHiddenOtherDirection
 import ddedock.testDockSmartHideOtherDirection
 import ddedock.testDockMenu
 import ddedock.testDockFashionMode
+import ddedock.testDockEfficientMode
 
 def main():
     suite00 = ddedock.testFashionDefaultIcons.suite()
