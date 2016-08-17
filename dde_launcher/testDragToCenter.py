@@ -6,6 +6,8 @@ from lib import runner,utils
 from lib.launcher import *
 
 result = True
+caseid = '33827'
+casename = "all-515:左键拖动调整位置"
 
 class MyTestResult(runner.MyTextTestResult):
     def addError(self, test, err):
@@ -21,8 +23,6 @@ class MyTestResult(runner.MyTextTestResult):
 class LauncherDragToCenter(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
-        cls.caseid = '33827'
-        cls.casename = "all-515:左键拖动调整位置"
         cls.menuObj = root.application(appName='deepin-menu', description='/usr/lib/deepin-menu')
 
     @classmethod

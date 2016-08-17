@@ -1,13 +1,15 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 
+
 import unittest
 from lib import runner,utils
 from lib.launcher import *
+from lib.dde_dock import *
 
 result = True
-caseid = '52149'
-casename = "all-2234:分类模式禁用拖动排序"
+caseid = '33846'
+casename = 'all-520:发送到桌面'
 
 class MyTestResult(runner.MyTextTestResult):
     def addError(self, test, err):
@@ -20,27 +22,28 @@ class MyTestResult(runner.MyTextTestResult):
         global result
         result = result and False
 
-class LauncherDisable(unittest.TestCase):
+class LauncherSendToDesktop(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
-        pass
-
+        cls.menuObj = root.application(appName='deepin-menu', description='/usr/lib/deepin-menu')
+        cls.QQName = 'QQ'
 
     @classmethod
     def tearDownClass(cls):
         global result
-        utils.commitresult(cls.caseid, result)
-        launcher.freeMode()
+        utils.commitresult(caseid, result)
+        launcher.exitLauncher()
 
-    def testDisableDrag(self):
-        launcher.disableDrag()
-        internet = launcher.launcherObj.child('internet', roleName='list').children[0].name
-        new_music = launcher.launcherObj.child('music', roleName='list').children[0].name
-        self.assertNotEqual(internet,new_music)
+    def testMenuSendToDesktop(self):
+        launcher.menuDesktop(self.QQName)
+        desktopFiles = getDesktopFiles()
+        QQdesktopFile = 'apps.com.qq.im.desktop'
+        self.assertIn(QQdesktopFile,desktopFiles)
+
 
 def suite():
     suite = unittest.TestSuite()
-    suite.addTest(LauncherDisable('testDisableDrag'))
+    suite.addTest(LauncherSendToDesktop('testMenuSendToDesktop'))
     return suite
 
 if __name__ == "__main__":

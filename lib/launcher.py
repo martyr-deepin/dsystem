@@ -2,17 +2,28 @@
 # -*- coding: utf-8 -*-
 
 import subprocess
+import os
+import unittest
 from dogtail.tree import *
 from lib.window import *
 from lib.dde_dock import *
 import pyautogui
+import gi
+gi.require_version('Wnck', '3.0')
+from gi.repository import Wnck
+
+
+
 pyautogui.FAILSAFE = False
 pyautogui.PAUSE = 1
+
+homePath = os.path.expanduser('~')
 
 class Launcher:
     def __init__(self):
     	self.launcherObj = root.application(appName='dde-launcher', description='/usr/bin/dde-launcher')
     	#self.launcherApps = self.launcherObj.child('all',roleName='list').children
+        
 
 
     def getIconCoorFree(self,icon):
@@ -174,4 +185,126 @@ class Launcher:
             pyautogui.dragTo(musicCoor, duration=2)
             self.exitLauncher()
 
+    def menuDesktop(self,app):
+        win = findWindow('dde-launcher')
+        if win == None:
+            pyautogui.press('winleft')
+            self.launcherObj.child(app).click(3)
+        menuObj = root.application(appName='deepin-menu', description='/usr/lib/deepin-menu')  
+        if menuObj.children[0].name == 'DesktopMenu':
+            pyautogui.press('down')
+            pyautogui.press('down')
+            pyautogui.press('enter')
+        else:
+            raise Exception('Launcher Menu did not opened!')
+
+    def menuDock(self,app):
+        dockApps = Dock().getAllDockApps()
+        if app in dockApps:
+            appCoor = Dock().getAppCoor(app)
+            screen = pyautogui.size()
+            screen_center = (screen[0]/2,screen[1]/2)
+            pyautogui.mouseDown(appCoor)
+            pyautogui.dragTo(screen_center, duration=2)
+        win = findWindow('dde-launcher')
+        if win == None:
+            pyautogui.press('winleft')
+            self.launcherObj.child(app).click(3)
+        menuObj = root.application(appName='deepin-menu', description='/usr/lib/deepin-menu')
+        if menuObj.children[0].name == 'DesktopMenu':
+            pyautogui.press('down')
+            pyautogui.press('down')
+            pyautogui.press('down')
+            pyautogui.press('enter')
+        else:
+            raise Exception('Launcher Menu did not opened!')
+
+    def menuUnDock(self,app):
+        win = findWindow('dde-launcher')
+        if win == None:
+            pyautogui.press('winleft')
+            self.launcherObj.child(app).click(3)
+        menuObj = root.application(appName='deepin-menu', description='/usr/lib/deepin-menu')
+        if menuObj.children[0].name == 'DesktopMenu':
+            pyautogui.press('down')
+            pyautogui.press('down')
+            pyautogui.press('down')
+            pyautogui.press('enter')
+        else:
+            raise Exception('Launcher Menu did not opened!')
+
+    def menuBoot(self,arg,*args):
+        win = findWindow('dde-launcher')
+        if win == None:
+            pyautogui.press('winleft')
+            self.launcherObj.child(arg).click(3)
+            try:
+
+                menuObj = root.application(appName='deepin-menu', description='/usr/lib/deepin-menu')
+            except:
+                assertEqual(len(menuObj.children),0,'Launcher Menu did not opened!')
+            else:
+                pyautogui.press('down')
+                pyautogui.press('down')
+                pyautogui.press('down')
+                pyautogui.press('down')
+                pyautogui.press('enter')
+            if args:
+                for app in args: 
+                    self.launcherObj.child(app).click(3)
+                    try:
+
+                        menuObj = root.application(appName='deepin-menu', description='/usr/lib/deepin-menu')
+                    except:
+                        assertEqual(len(menuObj.children),0,'Launcher Menu did not opened!')
+                    else:
+                        pyautogui.press('down')
+                        pyautogui.press('down')
+                        pyautogui.press('down')
+                        pyautogui.press('down')
+                        pyautogui.press('enter')
+
+
+
+    
+
 launcher = Launcher()
+
+
+def getAllWindows():
+    try:
+        wins = []
+        screen = Wnck.Screen.get_default()
+        screen.force_update()
+        for win in screen.get_windows():
+            wins.append(win)
+        return wins
+    finally:
+        win = None
+        screen = None
+        Wnck.shutdown()
+
+def getWindowName():
+    try:
+        screen = Wnck.Screen.get_default()
+        screen.force_update()
+        window = screen.get_active_window()
+        return window.get_name()
+    finally:
+        window = None
+        screen = None
+        Wnck.shutdown()
+
+def getDesktopFiles():
+    desktopPath = homePath + '/桌面'
+    desktopFile = subprocess.check_output(["ls " + desktopPath],shell=True).decode().split("\n")
+    files = [ n for n in desktopFile if len(n.strip()) > 0]
+    return files
+
+def getBootFeild(fileName):
+    filePath = homePath + '/.config/autostart/' + fileName
+    bootFeild = subprocess.check_output(["cat " + filePath + " |grep Hidden"],shell=True).decode().split("\n")
+    feild = [ n for n in bootFeild if len(n.strip()) > 0]
+    feild = ''.join(feild)
+    return feild
+

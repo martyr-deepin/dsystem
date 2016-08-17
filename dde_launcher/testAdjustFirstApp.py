@@ -6,6 +6,8 @@ from lib import runner,utils
 from lib.launcher import *
 
 result = True
+caseid = '45878'
+casename = "all-2149:调整首个程序位置"
 
 class MyTestResult(runner.MyTextTestResult):
     def addError(self, test, err):
@@ -20,15 +22,15 @@ class MyTestResult(runner.MyTextTestResult):
 
 class LauncherAdjustFirstApp(unittest.TestCase):
     @classmethod
-    def setUpClass(cls):
-        cls.caseid = '45878'
-        cls.casename = "all-2149:调整首个程序位置"
+    def setUpClass(cls)
+        launcher.freeMode()
 
 
     @classmethod
     def tearDownClass(cls):
         global result
         utils.commitresult(cls.caseid, result)
+        launcher.freeMode()
 
 
     def testDragToSecond(self):

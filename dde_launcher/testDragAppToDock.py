@@ -8,6 +8,8 @@ from lib.launcher import *
 from lib.dde_dock import *
 
 result = True
+caseid = '33823'
+casename = "all-514:拖动到任务栏驻留"
 
 class MyTestResult(runner.MyTextTestResult):
     def addError(self, test, err):
@@ -23,8 +25,7 @@ class MyTestResult(runner.MyTextTestResult):
 class LauncherDragAppToDock(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
-        cls.caseid = '33823'
-        cls.casename = "all-514:拖动到任务栏驻留"
+        pass
 
     @classmethod
     def tearDownClass(cls):
