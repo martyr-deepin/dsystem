@@ -5,6 +5,8 @@ import unittest
 from lib import utils
 from lib import runner
 
+caseid = '68136'
+casename = "all-2471:时尚模式功能测试"
 result = True
 
 class MyTestResult(runner.MyTextTestResult):
@@ -21,8 +23,6 @@ class MyTestResult(runner.MyTextTestResult):
 class FashionFunction(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
-        cls.caseid = '68136'
-        cls.casename = "all-2471:时尚模式功能测试"
         cls.ddedockobject = utils.getDdeDockObject()
         cls.defaultdisplaymode = utils.getDdeDockDisplayMode()
         cls.defaultposition = utils.getDdeDockPosition()
@@ -31,7 +31,7 @@ class FashionFunction(unittest.TestCase):
     @classmethod
     def tearDownClass(cls):
         global result
-        utils.commitresult(cls.caseid, result)
+        utils.commitresult(caseid, result)
 
         if utils.getDdeDockDisplayMode() != cls.defaultdisplaymode:
             utils.setDdeDockDisplayMode(cls.defaultdisplaymode)
