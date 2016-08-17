@@ -33,7 +33,7 @@ class LauncherStartupApp(unittest.TestCase):
     @classmethod
     def tearDownClass(cls):
         global result
-        utils.commitresult(cls.caseid, result)
+        utils.commitresult(caseid, result)
         
         cls.newWindows = getAllWindows()
         if len(cls.newWindows) - len(cls.oldWindows) == 3: 

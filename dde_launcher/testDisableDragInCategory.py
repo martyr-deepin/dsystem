@@ -29,7 +29,7 @@ class LauncherDisable(unittest.TestCase):
     @classmethod
     def tearDownClass(cls):
         global result
-        utils.commitresult(cls.caseid, result)
+        utils.commitresult(caseid, result)
         launcher.freeMode()
 
     def testDisableDrag(self):
