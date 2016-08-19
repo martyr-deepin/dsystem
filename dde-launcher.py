@@ -13,6 +13,14 @@ import dde_launcher.testRemoveFromDock
 import dde_launcher.testSendToDesktop
 import dde_launcher.testRemoveFromDock
 import dde_launcher.testBoot
+import dde_launcher.testChineseSearch
+import dde_launcher.testEnglishSearch
+import dde_launcher.testPinyinSearch
+import dde_launcher.testMutiSearch
+import dde_launcher.testPkgNameSearch
+import dde_launcher.testPunctuationSearch
+import dde_launcher.testSpaceSearch
+import dde_launcher.testSortApp
 
 def main():
     suite1 = dde_launcher.testAdjustFirstApp.suite()
@@ -25,8 +33,17 @@ def main():
     suite8 = dde_launcher.testSendToDesktop.suite()
     suite9 = dde_launcher.testRemoveFromDock.suite()
     suite10 = dde_launcher.testBoot.suite()
+    suite11 = dde_launcher.testChineseSearch.suite()
+    suite12 = dde_launcher.testEnglishSearch.suite()
+    suite13 = dde_launcher.testPinyinSearch.suite()
+    suite14 = dde_launcher.testMutiSearch.suite()
+    suite15 = dde_launcher.testPkgNameSearch.suite()
+    suite16 = dde_launcher.testPunctuationSearch.suite()
+    suite17 = dde_launcher.testSpaceSearch.suite()
+    suite18 = dde_launcher.testSortApp.suite()
 
-    alltests = unittest.TestSuite((suite1, suite2, suite3, suite4, suite5, suite6, suite7, suite8, suite9, suite10))
+    alltests = unittest.TestSuite((suite1, suite2, suite3, suite4, suite5, suite6, suite7, suite8, suite9, suite10,
+                                    suite11, suite12, suite13, suite14, suite15, suite16, suite17, suite18))
 
     runner = unittest.TextTestRunner()
     runner.run(alltests)
