@@ -8,7 +8,7 @@ download from https://github.com/wangyingtaodeepin/dogtail
 
 ## install packages
 > sudo apt-get install python3-pyatspi python3-pip libwnck-3-dev  python3-tk
-> sudo pip3 install PyUserInput pyautogui
+> sudo pip3 install PyUserInput pyautogui pexpect
 
 ## run the test
 > python3 dde-dock.py

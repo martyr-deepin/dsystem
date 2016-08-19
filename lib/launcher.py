@@ -4,10 +4,12 @@
 import subprocess
 import os
 import unittest
+from time import sleep
 from dogtail.tree import *
 from lib.window import *
 from lib.dde_dock import *
 import pyautogui
+import pexpect
 import gi
 gi.require_version('Wnck', '3.0')
 from gi.repository import Wnck
@@ -24,7 +26,14 @@ class Launcher:
     	self.launcherObj = root.application(appName='dde-launcher', description='/usr/bin/dde-launcher')
     	#self.launcherApps = self.launcherObj.child('all',roleName='list').children
         
+    def getDefaultDeepinApps(self):
+        deepinApps = ['深度用户反馈', '深度终端', '深度启动盘制作工具', '深度商店', '深度云打印', 
+                        '深度截图', '深度音乐', '远程协助', '多任务视图', '显示桌面', '控制中心']
+        return deepinApps
 
+    def getShenduApps(self):
+        shenduApps = ['深度用户反馈', '深度终端', '深度启动盘制作工具', '深度商店', '深度云打印', '深度截图', '深度音乐']
+        return shenduApps
 
     def getIconCoorFree(self,icon):
         coor = []
@@ -41,6 +50,13 @@ class Launcher:
         coor.append(position[0]+size[0]/2)
         coor.append(position[1]+size[1]/2)
         return coor
+
+    def getKidsCategory(self,lst):
+        kids = []
+        apps = self.launcherObj.child(lst,roleName='list').children
+        for i in range(len(apps)):
+            kids.append(apps[i].name)
+        return kids
 
     def getLauncherAllApps(self):
         apps = []
@@ -264,12 +280,73 @@ class Launcher:
                         pyautogui.press('down')
                         pyautogui.press('enter')
 
+    def installApp(self,app):
+        #pyautogui.press('winleft')
+        #self.launcherObj.child('深度终端').click()
+        #sleep(5)
+        #winName = getWindowName()
+        #if winName == '深度终端':
+
+        passwd = 'a'
+        try:
+
+            c = pexpect.spawnu('sudo apt-get -y install ' + app)
+            c.expect('sudo', timeout=10)
+            c.sendline(passwd+'\n')
+            c.expect('$', timeout=300)
+            c.interact()
+        except Exception as e:
+            print (str(c))
+            print (e)
+
+    def removeApp(self,app):
+        #pyautogui.press('winleft')
+        #self.launcherObj.child('深度终端').click()
+        #sleep(5)
+        #winName = getWindowName()
+        #if winName == '深度终端':
+
+        passwd = 'a'
+        try:
+
+            c = pexpect.spawnu('sudo apt-get -y remove ' + app)
+            c.expect('sudo', timeout=10)
+            c.sendline(passwd+'\n')
+            c.expect('$', timeout=300)
+            c.interact()
+        except Exception as e:
+            print (str(c))
+            print (e)
+
+    def checkLableKids(self,label):
+        pyautogui.press('winleft')
+        self.launcherObj.child('mode-toggle-button').click()
+        self.launcherObj.child(label).click()
+
+    def searchApp(self,char):
+        pyautogui.press('winleft')
+        self.launcherObj.child('search-edit').text = char
+
+    def pasteMsgInLauncher(self,msg):
+        pyautogui.press('winleft')
+        if findWindow('dde-launcher') != None:
+            pasteMsgWithKey()
+        else:
+            raise Exception('Launcher did not opened!')
 
 
     
 
 launcher = Launcher()
 
+def copyMsg(msg):
+    pyperclip.copy(msg)
+
+def pasteMsg(msg):
+    pyperclip.paste(msg)
+
+def pasteMsgWithKey():
+    pyautogui.hotkey('ctrl','v')
 
 def getAllWindows():
     try:
