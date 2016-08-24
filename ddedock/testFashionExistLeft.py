@@ -7,17 +7,6 @@ from lib import runner
 
 result = True
 
-class MyTestResult(runner.MyTextTestResult):
-    def addError(self, test, err):
-        super(MyTestResult, self).addError(test, err)
-        global result
-        result = result and False
-
-    def addFailure(self, test, err):
-        super(MyTestResult, self).addFailure(test, err)
-        global result
-        result = result and False
-
 class FashionExistLeft(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
@@ -79,11 +68,22 @@ class FashionExistLeft(unittest.TestCase):
         (x, y) = main_window.position
         self.assertTrue(0 == x)
 
-def suite():
-    suite = unittest.TestSuite()
-    suite.addTest(FashionExistLeft('testBasicFunction'))
-    suite.addTest(FashionExistLeft('testChangePositionToLeft'))
-    return suite
+    def suite():
+        suite = unittest.TestSuite()
+        suite.addTest(FashionExistLeft('testBasicFunction'))
+        suite.addTest(FashionExistLeft('testChangePositionToLeft'))
+        return suite
+
+    class MyTestResult(runner.MyTextTestResult):
+        def addError(self, test, err):
+            super(FashionExistLeft.MyTestResult, self).addError(test, err)
+            global result
+            result = result and False
+
+        def addFailure(self, test, err):
+            super(FashionExistLeft.MyTestResult, self).addFailure(test, err)
+            global result
+            result = result and False
 
 if __name__ == "__main__":
-    unittest.TextTestRunner(resultclass=MyTestResult).run(suite())
+    unittest.TextTestRunner(resultclass=FashionExistLeft.MyTestResult).run(FashionExistLeft.suite())

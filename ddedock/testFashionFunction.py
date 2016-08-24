@@ -9,17 +9,6 @@ caseid = '68136'
 casename = "all-2471:时尚模式功能测试"
 result = True
 
-class MyTestResult(runner.MyTextTestResult):
-    def addError(self, test, err):
-        super(MyTestResult, self).addError(test, err)
-        global result
-        result = result and False
-
-    def addFailure(self, test, err):
-        super(MyTestResult, self).addFailure(test, err)
-        global result
-        result = result and False
-
 class FashionFunction(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
@@ -106,13 +95,24 @@ class FashionFunction(unittest.TestCase):
         self.assertTrue(width > 0)
         self.assertTrue(height > 0)
 
-def suite():
-    suite = unittest.TestSuite()
-    suite.addTest(FashionFunction('testBasicFunction'))
-    suite.addTest(FashionFunction('testKeepDisplayMode'))
-    suite.addTest(FashionFunction('testChangeDisplayMode'))
-    suite.addTest(FashionFunction('testChangeBackDisplayMode'))
-    return suite
+    def suite():
+        suite = unittest.TestSuite()
+        suite.addTest(FashionFunction('testBasicFunction'))
+        suite.addTest(FashionFunction('testKeepDisplayMode'))
+        suite.addTest(FashionFunction('testChangeDisplayMode'))
+        suite.addTest(FashionFunction('testChangeBackDisplayMode'))
+        return suite
+
+    class MyTestResult(runner.MyTextTestResult):
+        def addError(self, test, err):
+            super(FashionFunction.MyTestResult, self).addError(test, err)
+            global result
+            result = result and False
+
+        def addFailure(self, test, err):
+            super(FashionFunction.MyTestResult, self).addFailure(test, err)
+            global result
+            result = result and False
 
 if __name__ == "__main__":
-    unittest.TextTestRunner(resultclass=MyTestResult).run(suite())
+    unittest.TextTestRunner(resultclass=FashionFunction.MyTestResult).run(FashionFunction.suite())

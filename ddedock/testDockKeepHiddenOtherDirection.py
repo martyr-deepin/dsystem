@@ -9,17 +9,6 @@ from dogtail import rawinput
 
 result = True
 
-class MyTestResult(runner.MyTextTestResult):
-    def addError(self, test, err):
-        super(MyTestResult, self).addError(test, err)
-        global result
-        result = result and False
-
-    def addFailure(self, test, err):
-        super(MyTestResult, self).addFailure(test, err)
-        global result
-        result = result and False
-
 class DockKeepHiddenOtherDirection(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
@@ -135,50 +124,61 @@ class DockKeepHiddenOtherDirection(unittest.TestCase):
         elif utils.getDdeDockPosition() == utils.dock.position_right:
             utils.setDdeDockPosition(utils.dock.position_left)
 
-def suite():
-    suite = unittest.TestSuite()
-    suite.addTest(DockKeepHiddenOtherDirection('testChangePosition'))
+    def suite():
+        suite = unittest.TestSuite()
+        suite.addTest(DockKeepHiddenOtherDirection('testChangePosition'))
 
-    # top
-    suite.addTest(DockKeepHiddenOtherDirection('testOpenFileManager'))
-    suite.addTest(DockKeepHiddenOtherDirection('testMaximizeFileManager'))
-    suite.addTest(DockKeepHiddenOtherDirection('testCheckDockSize'))
-    suite.addTest(DockKeepHiddenOtherDirection('testMinimizeFileManager'))
-    suite.addTest(DockKeepHiddenOtherDirection('testCheckDockSize'))
-    suite.addTest(DockKeepHiddenOtherDirection('testExChangeDisplayMode'))
-    suite.addTest(DockKeepHiddenOtherDirection('testActivateFileManager'))
-    suite.addTest(DockKeepHiddenOtherDirection('testCheckDockSize'))
-    suite.addTest(DockKeepHiddenOtherDirection('testMinimizeFileManager'))
-    suite.addTest(DockKeepHiddenOtherDirection('testCheckDockSize'))
-    suite.addTest(DockKeepHiddenOtherDirection('testMoveMouseToDock'))
+        # top
+        suite.addTest(DockKeepHiddenOtherDirection('testOpenFileManager'))
+        suite.addTest(DockKeepHiddenOtherDirection('testMaximizeFileManager'))
+        suite.addTest(DockKeepHiddenOtherDirection('testCheckDockSize'))
+        suite.addTest(DockKeepHiddenOtherDirection('testMinimizeFileManager'))
+        suite.addTest(DockKeepHiddenOtherDirection('testCheckDockSize'))
+        suite.addTest(DockKeepHiddenOtherDirection('testExChangeDisplayMode'))
+        suite.addTest(DockKeepHiddenOtherDirection('testActivateFileManager'))
+        suite.addTest(DockKeepHiddenOtherDirection('testCheckDockSize'))
+        suite.addTest(DockKeepHiddenOtherDirection('testMinimizeFileManager'))
+        suite.addTest(DockKeepHiddenOtherDirection('testCheckDockSize'))
+        suite.addTest(DockKeepHiddenOtherDirection('testMoveMouseToDock'))
 
-    # right
-    suite.addTest(DockKeepHiddenOtherDirection('testChangePosition'))
-    suite.addTest(DockKeepHiddenOtherDirection('testMaximizeFileManager'))
-    suite.addTest(DockKeepHiddenOtherDirection('testCheckDockSize'))
-    suite.addTest(DockKeepHiddenOtherDirection('testMinimizeFileManager'))
-    suite.addTest(DockKeepHiddenOtherDirection('testCheckDockSize'))
-    suite.addTest(DockKeepHiddenOtherDirection('testExChangeDisplayMode'))
-    suite.addTest(DockKeepHiddenOtherDirection('testActivateFileManager'))
-    suite.addTest(DockKeepHiddenOtherDirection('testCheckDockSize'))
-    suite.addTest(DockKeepHiddenOtherDirection('testMinimizeFileManager'))
-    suite.addTest(DockKeepHiddenOtherDirection('testCheckDockSize'))
-    suite.addTest(DockKeepHiddenOtherDirection('testMoveMouseToDock'))
+        # right
+        suite.addTest(DockKeepHiddenOtherDirection('testChangePosition'))
+        suite.addTest(DockKeepHiddenOtherDirection('testMaximizeFileManager'))
+        suite.addTest(DockKeepHiddenOtherDirection('testCheckDockSize'))
+        suite.addTest(DockKeepHiddenOtherDirection('testMinimizeFileManager'))
+        suite.addTest(DockKeepHiddenOtherDirection('testCheckDockSize'))
+        suite.addTest(DockKeepHiddenOtherDirection('testExChangeDisplayMode'))
+        suite.addTest(DockKeepHiddenOtherDirection('testActivateFileManager'))
+        suite.addTest(DockKeepHiddenOtherDirection('testCheckDockSize'))
+        suite.addTest(DockKeepHiddenOtherDirection('testMinimizeFileManager'))
+        suite.addTest(DockKeepHiddenOtherDirection('testCheckDockSize'))
+        suite.addTest(DockKeepHiddenOtherDirection('testMoveMouseToDock'))
 
-    # left
-    suite.addTest(DockKeepHiddenOtherDirection('testChangePosition'))
-    suite.addTest(DockKeepHiddenOtherDirection('testMaximizeFileManager'))
-    suite.addTest(DockKeepHiddenOtherDirection('testCheckDockSize'))
-    suite.addTest(DockKeepHiddenOtherDirection('testMinimizeFileManager'))
-    suite.addTest(DockKeepHiddenOtherDirection('testCheckDockSize'))
-    suite.addTest(DockKeepHiddenOtherDirection('testExChangeDisplayMode'))
-    suite.addTest(DockKeepHiddenOtherDirection('testActivateFileManager'))
-    suite.addTest(DockKeepHiddenOtherDirection('testCheckDockSize'))
-    suite.addTest(DockKeepHiddenOtherDirection('testMinimizeFileManager'))
-    suite.addTest(DockKeepHiddenOtherDirection('testCheckDockSize'))
-    suite.addTest(DockKeepHiddenOtherDirection('testMoveMouseToDock'))
+        # left
+        suite.addTest(DockKeepHiddenOtherDirection('testChangePosition'))
+        suite.addTest(DockKeepHiddenOtherDirection('testMaximizeFileManager'))
+        suite.addTest(DockKeepHiddenOtherDirection('testCheckDockSize'))
+        suite.addTest(DockKeepHiddenOtherDirection('testMinimizeFileManager'))
+        suite.addTest(DockKeepHiddenOtherDirection('testCheckDockSize'))
+        suite.addTest(DockKeepHiddenOtherDirection('testExChangeDisplayMode'))
+        suite.addTest(DockKeepHiddenOtherDirection('testActivateFileManager'))
+        suite.addTest(DockKeepHiddenOtherDirection('testCheckDockSize'))
+        suite.addTest(DockKeepHiddenOtherDirection('testMinimizeFileManager'))
+        suite.addTest(DockKeepHiddenOtherDirection('testCheckDockSize'))
+        suite.addTest(DockKeepHiddenOtherDirection('testMoveMouseToDock'))
 
-    return suite
+        return suite
+
+    class MyTestResult(runner.MyTextTestResult):
+        def addError(self, test, err):
+            super(DockKeepHiddenOtherDirection.MyTestResult, self).addError(test, err)
+            global result
+            result = result and False
+
+        def addFailure(self, test, err):
+            super(DockKeepHiddenOtherDirection.MyTestResult, self).addFailure(test, err)
+            global result
+            result = result and False
 
 if __name__ == "__main__":
-    unittest.TextTestRunner(resultclass=MyTestResult).run(suite())
+    unittest.TextTestRunner(resultclass=DockKeepHiddenOtherDirection.MyTestResult).run(DockKeepHiddenOtherDirection.suite())

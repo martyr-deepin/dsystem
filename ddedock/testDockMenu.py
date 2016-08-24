@@ -10,17 +10,6 @@ from dogtail.tree import *
 
 result = True
 
-class MyTestResult(runner.MyTextTestResult):
-    def addError(self, test, err):
-        super(MyTestResult, self).addError(test, err)
-        global result
-        result = result and False
-
-    def addFailure(self, test, err):
-        super(MyTestResult, self).addFailure(test, err)
-        global result
-        result = result and False
-
 class DockMenu(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
@@ -108,33 +97,43 @@ class DockMenu(unittest.TestCase):
             self.testDockMenuExist()
             self.testClickScreenCenter()
 
-def suite():
-    suite = unittest.TestSuite()
+    def suite():
+        suite = unittest.TestSuite()
 
-    # fashtion
-    suite.addTest(DockMenu('testProcess'))
-    suite.addTest(DockMenu('testChangePosition'))
-    suite.addTest(DockMenu('testProcess'))
-    suite.addTest(DockMenu('testChangePosition'))
-    suite.addTest(DockMenu('testProcess'))
-    suite.addTest(DockMenu('testChangePosition'))
-    suite.addTest(DockMenu('testProcess'))
+        # fashtion
+        suite.addTest(DockMenu('testProcess'))
+        suite.addTest(DockMenu('testChangePosition'))
+        suite.addTest(DockMenu('testProcess'))
+        suite.addTest(DockMenu('testChangePosition'))
+        suite.addTest(DockMenu('testProcess'))
+        suite.addTest(DockMenu('testChangePosition'))
+        suite.addTest(DockMenu('testProcess'))
 
-    # change mode and direction
-    suite.addTest(DockMenu('testExChangeDisplayMode'))
-    suite.addTest(DockMenu('testChangePosition'))
+        # change mode and direction
+        suite.addTest(DockMenu('testExChangeDisplayMode'))
+        suite.addTest(DockMenu('testChangePosition'))
 
-    # efficient
-    suite.addTest(DockMenu('testProcess'))
-    suite.addTest(DockMenu('testChangePosition'))
-    suite.addTest(DockMenu('testProcess'))
-    suite.addTest(DockMenu('testChangePosition'))
-    suite.addTest(DockMenu('testProcess'))
-    suite.addTest(DockMenu('testChangePosition'))
-    suite.addTest(DockMenu('testProcess'))
+        # efficient
+        suite.addTest(DockMenu('testProcess'))
+        suite.addTest(DockMenu('testChangePosition'))
+        suite.addTest(DockMenu('testProcess'))
+        suite.addTest(DockMenu('testChangePosition'))
+        suite.addTest(DockMenu('testProcess'))
+        suite.addTest(DockMenu('testChangePosition'))
+        suite.addTest(DockMenu('testProcess'))
 
+        return suite
 
-    return suite
+    class MyTestResult(runner.MyTextTestResult):
+        def addError(self, test, err):
+            super(DockMenu.MyTestResult, self).addError(test, err)
+            global result
+            result = result and False
+
+        def addFailure(self, test, err):
+            super(DockMenu.MyTestResult, self).addFailure(test, err)
+            global result
+            result = result and False
 
 if __name__ == "__main__":
-    unittest.TextTestRunner(resultclass=MyTestResult).run(suite())
+    unittest.TextTestRunner(resultclass=DockMenu.MyTestResult).run(DockMenu.suite())

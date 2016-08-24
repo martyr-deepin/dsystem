@@ -7,17 +7,6 @@ from lib import runner
 
 result = True
 
-class MyTestResult(runner.MyTextTestResult):
-    def addError(self, test, err):
-        super(MyTestResult, self).addError(test, err)
-        global result
-        result = result and False
-
-    def addFailure(self, test, err):
-        super(MyTestResult, self).addFailure(test, err)
-        global result
-        result = result and False
-
 class EfficientFunction(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
@@ -124,14 +113,25 @@ class EfficientFunction(unittest.TestCase):
         self.assertTrue(width > 0)
         self.assertTrue(height > 0)
 
-def suite():
-    suite = unittest.TestSuite()
-    suite.addTest(EfficientFunction('testChangeDisplayMode'))
-    suite.addTest(EfficientFunction('testBasicFunction'))
-    suite.addTest(EfficientFunction('testKeepDisplayMode'))
-    suite.addTest(EfficientFunction('testChangeDisplayModeToFashion'))
-    suite.addTest(EfficientFunction('testChangeBackDisplayMode'))
-    return suite
+    def suite():
+        suite = unittest.TestSuite()
+        suite.addTest(EfficientFunction('testChangeDisplayMode'))
+        suite.addTest(EfficientFunction('testBasicFunction'))
+        suite.addTest(EfficientFunction('testKeepDisplayMode'))
+        suite.addTest(EfficientFunction('testChangeDisplayModeToFashion'))
+        suite.addTest(EfficientFunction('testChangeBackDisplayMode'))
+        return suite
+
+    class MyTestResult(runner.MyTextTestResult):
+        def addError(self, test, err):
+            super(EfficientFunction.MyTestResult, self).addError(test, err)
+            global result
+            result = result and False
+
+        def addFailure(self, test, err):
+            super(EfficientFunction.MyTestResult, self).addFailure(test, err)
+            global result
+            result = result and False
 
 if __name__ == "__main__":
-    unittest.TextTestRunner(resultclass=MyTestResult).run(suite())
+    unittest.TextTestRunner(resultclass=EfficientFunction.MyTestResult).run(EfficientFunction.suite())

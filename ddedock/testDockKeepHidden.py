@@ -9,17 +9,6 @@ from dogtail import rawinput
 
 result = True
 
-class MyTestResult(runner.MyTextTestResult):
-    def addError(self, test, err):
-        super(MyTestResult, self).addError(test, err)
-        global result
-        result = result and False
-
-    def addFailure(self, test, err):
-        super(MyTestResult, self).addFailure(test, err)
-        global result
-        result = result and False
-
 class DockKeepHidden(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
@@ -117,20 +106,31 @@ class DockKeepHidden(unittest.TestCase):
         (width, height) = main_window.size
         self.assertTrue(height > 1, " the size is : %s" % str(main_window.size))
 
-def suite():
-    suite = unittest.TestSuite()
-    suite.addTest(DockKeepHidden('testOpenFileManager'))
-    suite.addTest(DockKeepHidden('testMaximizeFileManager'))
-    suite.addTest(DockKeepHidden('testCheckDockSize'))
-    suite.addTest(DockKeepHidden('testMinimizeFileManager'))
-    suite.addTest(DockKeepHidden('testCheckDockSize'))
-    suite.addTest(DockKeepHidden('testExChangeDisplayMode'))
-    suite.addTest(DockKeepHidden('testActivateFileManager'))
-    suite.addTest(DockKeepHidden('testCheckDockSize'))
-    suite.addTest(DockKeepHidden('testMinimizeFileManager'))
-    suite.addTest(DockKeepHidden('testCheckDockSize'))
-    suite.addTest(DockKeepHidden('testMoveMouseToDock'))
-    return suite
+    def suite():
+        suite = unittest.TestSuite()
+        suite.addTest(DockKeepHidden('testOpenFileManager'))
+        suite.addTest(DockKeepHidden('testMaximizeFileManager'))
+        suite.addTest(DockKeepHidden('testCheckDockSize'))
+        suite.addTest(DockKeepHidden('testMinimizeFileManager'))
+        suite.addTest(DockKeepHidden('testCheckDockSize'))
+        suite.addTest(DockKeepHidden('testExChangeDisplayMode'))
+        suite.addTest(DockKeepHidden('testActivateFileManager'))
+        suite.addTest(DockKeepHidden('testCheckDockSize'))
+        suite.addTest(DockKeepHidden('testMinimizeFileManager'))
+        suite.addTest(DockKeepHidden('testCheckDockSize'))
+        suite.addTest(DockKeepHidden('testMoveMouseToDock'))
+        return suite
+
+    class MyTestResult(runner.MyTextTestResult):
+        def addError(self, test, err):
+            super(DockKeepHidden.MyTestResult, self).addError(test, err)
+            global result
+            result = result and False
+
+        def addFailure(self, test, err):
+            super(DockKeepHidden.MyTestResult, self).addFailure(test, err)
+            global result
+            result = result and False
 
 if __name__ == "__main__":
-    unittest.TextTestRunner(resultclass=MyTestResult).run(suite())
+    unittest.TextTestRunner(resultclass=DockKeepHidden.MyTestResult).run(DockKeepHidden.suite())

@@ -7,17 +7,6 @@ from lib import runner
 
 result = True
 
-class MyTestResult(runner.MyTextTestResult):
-    def addError(self, test, err):
-        super(MyTestResult, self).addError(test, err)
-        global result
-        result = result and False
-
-    def addFailure(self, test, err):
-        super(MyTestResult, self).addFailure(test, err)
-        global result
-        result = result and False
-
 class OtherDirectionDockSize(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
@@ -149,23 +138,34 @@ class OtherDirectionDockSize(unittest.TestCase):
         self.assertTrue(dbus_iconsize == utils.dock.iconsize_small)
         self.assertTrue(main_window.position[0] == 0)
 
-def suite():
-    suite = unittest.TestSuite()
-    suite.addTest(OtherDirectionDockSize('testIconSize'))
-    suite.addTest(OtherDirectionDockSize('testChangeIconSizeToLarge'))
-    suite.addTest(OtherDirectionDockSize('testChangePosition'))
-    suite.addTest(OtherDirectionDockSize('testCheckDockSizeTop'))
-    suite.addTest(OtherDirectionDockSize('testExChangeDisplayMode'))
-    suite.addTest(OtherDirectionDockSize('testCheckDockSizeTop'))
-    suite.addTest(OtherDirectionDockSize('testChangePosition'))
-    suite.addTest(OtherDirectionDockSize('testCheckDockSizeRight'))
-    suite.addTest(OtherDirectionDockSize('testExChangeDisplayMode'))
-    suite.addTest(OtherDirectionDockSize('testCheckDockSizeRight'))
-    suite.addTest(OtherDirectionDockSize('testChangePosition'))
-    suite.addTest(OtherDirectionDockSize('testCheckDockSizeLeft'))
-    suite.addTest(OtherDirectionDockSize('testExChangeDisplayMode'))
-    suite.addTest(OtherDirectionDockSize('testCheckDockSizeLeft'))
-    return suite
+    def suite():
+        suite = unittest.TestSuite()
+        suite.addTest(OtherDirectionDockSize('testIconSize'))
+        suite.addTest(OtherDirectionDockSize('testChangeIconSizeToLarge'))
+        suite.addTest(OtherDirectionDockSize('testChangePosition'))
+        suite.addTest(OtherDirectionDockSize('testCheckDockSizeTop'))
+        suite.addTest(OtherDirectionDockSize('testExChangeDisplayMode'))
+        suite.addTest(OtherDirectionDockSize('testCheckDockSizeTop'))
+        suite.addTest(OtherDirectionDockSize('testChangePosition'))
+        suite.addTest(OtherDirectionDockSize('testCheckDockSizeRight'))
+        suite.addTest(OtherDirectionDockSize('testExChangeDisplayMode'))
+        suite.addTest(OtherDirectionDockSize('testCheckDockSizeRight'))
+        suite.addTest(OtherDirectionDockSize('testChangePosition'))
+        suite.addTest(OtherDirectionDockSize('testCheckDockSizeLeft'))
+        suite.addTest(OtherDirectionDockSize('testExChangeDisplayMode'))
+        suite.addTest(OtherDirectionDockSize('testCheckDockSizeLeft'))
+        return suite
+
+    class MyTestResult(runner.MyTextTestResult):
+        def addError(self, test, err):
+            super(OtherDirectionDockSize.MyTestResult, self).addError(test, err)
+            global result
+            result = result and False
+
+        def addFailure(self, test, err):
+            super(OtherDirectionDockSize.MyTestResult, self).addFailure(test, err)
+            global result
+            result = result and False
 
 if __name__ == "__main__":
-    unittest.TextTestRunner(resultclass=MyTestResult).run(suite())
+    unittest.TextTestRunner(resultclass=OtherDirectionDockSize.MyTestResult).run(OtherDirectionDockSize.suite())

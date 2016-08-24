@@ -10,17 +10,6 @@ from dogtail.tree import *
 
 result = True
 
-class MyTestResult(runner.MyTextTestResult):
-    def addError(self, test, err):
-        super(MyTestResult, self).addError(test, err)
-        global result
-        result = result and False
-
-    def addFailure(self, test, err):
-        super(MyTestResult, self).addFailure(test, err)
-        global result
-        result = result and False
-
 class DockEfficientMode(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
@@ -219,16 +208,27 @@ class DockEfficientMode(unittest.TestCase):
         elif utils.getDdeDockPosition() == utils.dock.position_left:
             self.testChangePositionBottom()
 
-def suite():
-    suite = unittest.TestSuite()
+    def suite():
+        suite = unittest.TestSuite()
 
-    # Efficient
-    suite.addTest(DockEfficientMode('testChangePositionTop'))
-    suite.addTest(DockEfficientMode('testChangePositionRight'))
-    suite.addTest(DockEfficientMode('testChangePositionLeft'))
-    suite.addTest(DockEfficientMode('testChangePositionBottom'))
+        # Efficient
+        suite.addTest(DockEfficientMode('testChangePositionTop'))
+        suite.addTest(DockEfficientMode('testChangePositionRight'))
+        suite.addTest(DockEfficientMode('testChangePositionLeft'))
+        suite.addTest(DockEfficientMode('testChangePositionBottom'))
 
-    return suite
+        return suite
+
+    class MyTestResult(runner.MyTextTestResult):
+        def addError(self, test, err):
+            super(DockEfficientMode.MyTestResult, self).addError(test, err)
+            global result
+            result = result and False
+
+        def addFailure(self, test, err):
+            super(DockEfficientMode.MyTestResult, self).addFailure(test, err)
+            global result
+            result = result and False
 
 if __name__ == "__main__":
-    unittest.TextTestRunner(resultclass=MyTestResult).run(suite())
+    unittest.TextTestRunner(resultclass=DockEfficientMode.MyTestResult).run(DockEfficientMode.suite())

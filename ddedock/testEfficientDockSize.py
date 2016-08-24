@@ -7,17 +7,6 @@ from lib import runner
 
 result = True
 
-class MyTestResult(runner.MyTextTestResult):
-    def addError(self, test, err):
-        super(MyTestResult, self).addError(test, err)
-        global result
-        result = result and False
-
-    def addFailure(self, test, err):
-        super(MyTestResult, self).addFailure(test, err)
-        global result
-        result = result and False
-
 class EfficientDockSize(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
@@ -105,18 +94,29 @@ class EfficientDockSize(unittest.TestCase):
         dbus_iconsize = utils.getDdeDockIconSize()
         self.assertTrue(dbus_iconsize == utils.dock.iconsize_small)
 
-def suite():
-    suite = unittest.TestSuite()
-    suite.addTest(EfficientDockSize('testIconSize'))
-    suite.addTest(EfficientDockSize('testChangeIconSizeToLarge'))
-    suite.addTest(EfficientDockSize('testIconSize'))
-    suite.addTest(EfficientDockSize('testChangeIconSizeToMedium'))
-    suite.addTest(EfficientDockSize('testIconSize'))
-    suite.addTest(EfficientDockSize('testChangeIconSizeToSmall'))
-    suite.addTest(EfficientDockSize('testIconSize'))
-    suite.addTest(EfficientDockSize('testChangeIconSizeToMedium'))
-    suite.addTest(EfficientDockSize('testIconSize'))
-    return suite
+    def suite():
+        suite = unittest.TestSuite()
+        suite.addTest(EfficientDockSize('testIconSize'))
+        suite.addTest(EfficientDockSize('testChangeIconSizeToLarge'))
+        suite.addTest(EfficientDockSize('testIconSize'))
+        suite.addTest(EfficientDockSize('testChangeIconSizeToMedium'))
+        suite.addTest(EfficientDockSize('testIconSize'))
+        suite.addTest(EfficientDockSize('testChangeIconSizeToSmall'))
+        suite.addTest(EfficientDockSize('testIconSize'))
+        suite.addTest(EfficientDockSize('testChangeIconSizeToMedium'))
+        suite.addTest(EfficientDockSize('testIconSize'))
+        return suite
+
+    class MyTestResult(runner.MyTextTestResult):
+        def addError(self, test, err):
+            super(EfficientDockSize.MyTestResult, self).addError(test, err)
+            global result
+            result = result and False
+
+        def addFailure(self, test, err):
+            super(EfficientDockSize.MyTestResult, self).addFailure(test, err)
+            global result
+            result = result and False
 
 if __name__ == "__main__":
-    unittest.TextTestRunner(resultclass=MyTestResult).run(suite())
+    unittest.TextTestRunner(resultclass=EfficientDockSize.MyTestResult).run(EfficientDockSize.suite())

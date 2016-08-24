@@ -8,17 +8,6 @@ from lib import runner
 
 result = True
 
-class MyTestResult(runner.MyTextTestResult):
-    def addError(self, test, err):
-        super(MyTestResult, self).addError(test, err)
-        global result
-        result = result and False
-
-    def addFailure(self, test, err):
-        super(MyTestResult, self).addFailure(test, err)
-        global result
-        result = result and False
-
 class DockKeepShown(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
@@ -100,19 +89,30 @@ class DockKeepShown(unittest.TestCase):
         elif utils.getDdeDockDisplayMode() == utils.dock.displaymode_efficient:
             utils.setDdeDockDisplayMode(utils.dock.displaymode_fashion)
 
-def suite():
-    suite = unittest.TestSuite()
-    suite.addTest(DockKeepShown('testOpenFileManager'))
-    suite.addTest(DockKeepShown('testMaximizeFileManager'))
-    suite.addTest(DockKeepShown('testCheckDockSize'))
-    suite.addTest(DockKeepShown('testMinimizeFileManager'))
-    suite.addTest(DockKeepShown('testCheckDockSize'))
-    suite.addTest(DockKeepShown('testExChangeDisplayMode'))
-    suite.addTest(DockKeepShown('testActivateFileManager'))
-    suite.addTest(DockKeepShown('testCheckDockSize'))
-    suite.addTest(DockKeepShown('testMinimizeFileManager'))
-    suite.addTest(DockKeepShown('testCheckDockSize'))
-    return suite
+    def suite():
+        suite = unittest.TestSuite()
+        suite.addTest(DockKeepShown('testOpenFileManager'))
+        suite.addTest(DockKeepShown('testMaximizeFileManager'))
+        suite.addTest(DockKeepShown('testCheckDockSize'))
+        suite.addTest(DockKeepShown('testMinimizeFileManager'))
+        suite.addTest(DockKeepShown('testCheckDockSize'))
+        suite.addTest(DockKeepShown('testExChangeDisplayMode'))
+        suite.addTest(DockKeepShown('testActivateFileManager'))
+        suite.addTest(DockKeepShown('testCheckDockSize'))
+        suite.addTest(DockKeepShown('testMinimizeFileManager'))
+        suite.addTest(DockKeepShown('testCheckDockSize'))
+        return suite
+
+    class MyTestResult(runner.MyTextTestResult):
+        def addError(self, test, err):
+            super(DockKeepShown.MyTestResult, self).addError(test, err)
+            global result
+            result = result and False
+
+        def addFailure(self, test, err):
+            super(DockKeepShown.MyTestResult, self).addFailure(test, err)
+            global result
+            result = result and False
 
 if __name__ == "__main__":
-    unittest.TextTestRunner(resultclass=MyTestResult).run(suite())
+    unittest.TextTestRunner(resultclass=DockKeepShown.MyTestResult).run(DockKeepShown.suite())

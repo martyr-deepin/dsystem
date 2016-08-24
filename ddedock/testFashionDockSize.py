@@ -7,17 +7,6 @@ from lib import runner
 
 result = True
 
-class MyTestResult(runner.MyTextTestResult):
-    def addError(self, test, err):
-        super(MyTestResult, self).addError(test, err)
-        global result
-        result = result and False
-
-    def addFailure(self, test, err):
-        super(MyTestResult, self).addFailure(test, err)
-        global result
-        result = result and False
-
 class FashionDockSize(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
@@ -102,18 +91,29 @@ class FashionDockSize(unittest.TestCase):
         dbus_iconsize = utils.getDdeDockIconSize()
         self.assertTrue(dbus_iconsize == utils.dock.iconsize_small)
 
-def suite():
-    suite = unittest.TestSuite()
-    suite.addTest(FashionDockSize('testIconSize'))
-    suite.addTest(FashionDockSize('testChangeIconSizeToLarge'))
-    suite.addTest(FashionDockSize('testIconSize'))
-    suite.addTest(FashionDockSize('testChangeIconSizeToMedium'))
-    suite.addTest(FashionDockSize('testIconSize'))
-    suite.addTest(FashionDockSize('testChangeIconSizeToSmall'))
-    suite.addTest(FashionDockSize('testIconSize'))
-    suite.addTest(FashionDockSize('testChangeIconSizeToMedium'))
-    suite.addTest(FashionDockSize('testIconSize'))
-    return suite
+    def suite():
+        suite = unittest.TestSuite()
+        suite.addTest(FashionDockSize('testIconSize'))
+        suite.addTest(FashionDockSize('testChangeIconSizeToLarge'))
+        suite.addTest(FashionDockSize('testIconSize'))
+        suite.addTest(FashionDockSize('testChangeIconSizeToMedium'))
+        suite.addTest(FashionDockSize('testIconSize'))
+        suite.addTest(FashionDockSize('testChangeIconSizeToSmall'))
+        suite.addTest(FashionDockSize('testIconSize'))
+        suite.addTest(FashionDockSize('testChangeIconSizeToMedium'))
+        suite.addTest(FashionDockSize('testIconSize'))
+        return suite
+
+    class MyTestResult(runner.MyTextTestResult):
+        def addError(self, test, err):
+            super(FashionDockSize.MyTestResult, self).addError(test, err)
+            global result
+            result = result and False
+
+        def addFailure(self, test, err):
+            super(FashionDockSize.MyTestResult, self).addFailure(test, err)
+            global result
+            result = result and False
 
 if __name__ == "__main__":
-    unittest.TextTestRunner(resultclass=MyTestResult).run(suite())
+    unittest.TextTestRunner(resultclass=FashionDockSize.MyTestResult).run(FashionDockSize.suite())

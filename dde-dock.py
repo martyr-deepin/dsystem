@@ -4,57 +4,54 @@
 import unittest
 import os
 
-import ddedock.testFashionDefaultIcons
-import ddedock.testEfficientDefaultIcons
-import ddedock.testFashionIconsPopup
-import ddedock.testEfficientIconsPopup
-import ddedock.testFashionFunction
-import ddedock.testEfficientFunction
-import ddedock.testFashionExistLeft
-import ddedock.testFashionExistRight
-import ddedock.testFashionDockSize
-import ddedock.testEfficientDockSize
-import ddedock.testOtherDirectionDockSize
-import ddedock.testDockKeepShown
-import ddedock.testDockKeepHidden
-import ddedock.testDockSmartHide
-import ddedock.testDockKeepShownOtherDirection
-import ddedock.testDockKeepHiddenOtherDirection
-import ddedock.testDockSmartHideOtherDirection
-import ddedock.testDockMenu
-import ddedock.testDockFashionMode
-import ddedock.testDockEfficientMode
+# import ddedock.testFashionDefaultIcons
+# import ddedock.testEfficientDefaultIcons
+# import ddedock.testFashionIconsPopup
+# import ddedock.testEfficientIconsPopup
+from ddedock.testFashionFunction import FashionFunction
+from ddedock.testEfficientFunction import EfficientFunction
+from ddedock.testFashionExistLeft import FashionExistLeft
+from ddedock.testFashionExistRight import FashionExistRight
+from ddedock.testFashionDockSize import FashionDockSize
+from ddedock.testEfficientDockSize import EfficientDockSize
+from ddedock.testOtherDirectionDockSize import OtherDirectionDockSize
+from ddedock.testDockKeepShown import DockKeepShown
+from ddedock.testDockKeepHidden import DockKeepHidden
+from ddedock.testDockSmartHide import DockSmartHide
+from ddedock.testDockKeepShownOtherDirection import DockKeepShownOtherDirection
+from ddedock.testDockKeepHiddenOtherDirection import DockKeepHiddenOtherDirection
+from ddedock.testDockSmartHideOtherDirection import DockSmartHideOtherDirection
+from ddedock.testDockMenu import DockMenu
+from ddedock.testDockFashionMode import DockFashionMode
+from ddedock.testDockEfficientMode import DockEfficientMode
 
 def main():
-    suite00 = ddedock.testFashionDefaultIcons.suite()
-    suite01 = ddedock.testEfficientDefaultIcons.suite()
-    suite02 = ddedock.testFashionIconsPopup.suite()
-    suite03 = ddedock.testEfficientIconsPopup.suite()
-    suite1 = ddedock.testFashionFunction.suite()
-    suite2 = ddedock.testEfficientFunction.suite()
-    suite3 = ddedock.testFashionExistLeft.suite()
-    suite4 = ddedock.testFashionExistRight.suite()
-    suite5 = ddedock.testFashionDockSize.suite()
-    suite6 = ddedock.testEfficientDockSize.suite()
-    suite7 = ddedock.testOtherDirectionDockSize.suite()
-    suite8 = ddedock.testDockKeepShown.suite()
-    suite9 = ddedock.testDockKeepHidden.suite()
-    suite10 = ddedock.testDockSmartHide.suite()
-    suite11 = ddedock.testDockKeepShownOtherDirection.suite()
-    suite12 = ddedock.testDockKeepHiddenOtherDirection.suite()
-    suite13 = ddedock.testDockSmartHideOtherDirection.suite()
-    suite14 = ddedock.testDockMenu.suite()
-    suite15 = ddedock.testDockFashionMode.suite()
-    suite16 = ddedock.testDockEfficientMode.suite()
+    # suite00 = ddedock.testFashionDefaultIcons.suite()
+    # suite01 = ddedock.testEfficientDefaultIcons.suite()
+    # suite02 = ddedock.testFashionIconsPopup.suite()
+    # suite03 = ddedock.testEfficientIconsPopup.suite()
 
-    alltests = unittest.TestSuite((suite00, suite01, suite02, suite03,
-                                   suite1, suite2, suite3, suite4,
-                                   suite5, suite6, suite7, suite8,
-                                   suite9, suite10, suite11, suite12,
-                                   suite13, suite14, suite15, suite16))
+    classes = []
+    classes.append(FashionFunction)
+    classes.append(EfficientFunction)
+    classes.append(FashionExistLeft)
+    classes.append(FashionExistRight)
+    classes.append(FashionDockSize)
+    classes.append(EfficientDockSize)
+    classes.append(OtherDirectionDockSize)
+    classes.append(DockKeepShown)
+    classes.append(DockKeepHidden)
+    classes.append(DockSmartHide)
+    classes.append(DockKeepShownOtherDirection)
+    classes.append(DockKeepHiddenOtherDirection)
+    classes.append(DockSmartHideOtherDirection)
+    classes.append(DockMenu)
+    classes.append(DockFashionMode)
+    classes.append(DockEfficientMode)
 
-    runner = unittest.TextTestRunner()
-    runner.run(alltests)
+    for c in classes:
+        suite = c.suite()
+        unittest.TextTestRunner(resultclass=c.MyTestResult).run(suite)
 
 if __name__ == "__main__":
     main()

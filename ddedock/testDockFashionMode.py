@@ -10,18 +10,7 @@ from dogtail.tree import *
 
 result = True
 
-class MyTestResult(runner.MyTextTestResult):
-    def addError(self, test, err):
-        super(MyTestResult, self).addError(test, err)
-        global result
-        result = result and False
-
-    def addFailure(self, test, err):
-        super(MyTestResult, self).addFailure(test, err)
-        global result
-        result = result and False
-
-class DockDisplayMode(unittest.TestCase):
+class DockFashionMode(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
         cls.caseid = '68165'
@@ -225,16 +214,27 @@ class DockDisplayMode(unittest.TestCase):
         elif utils.getDdeDockDisplayMode() == utils.dock.displaymode_efficient:
             utils.setDdeDockDisplayMode(utils.dock.displaymode_fashion)
 
-def suite():
-    suite = unittest.TestSuite()
+    def suite():
+        suite = unittest.TestSuite()
 
-    # fashtion
-    suite.addTest(DockDisplayMode('testChangePositionTop'))
-    suite.addTest(DockDisplayMode('testChangePositionRight'))
-    suite.addTest(DockDisplayMode('testChangePositionLeft'))
-    suite.addTest(DockDisplayMode('testChangePositionBottom'))
+        # fashtion
+        suite.addTest(DockFashionMode('testChangePositionTop'))
+        suite.addTest(DockFashionMode('testChangePositionRight'))
+        suite.addTest(DockFashionMode('testChangePositionLeft'))
+        suite.addTest(DockFashionMode('testChangePositionBottom'))
 
-    return suite
+        return suite
+
+    class MyTestResult(runner.MyTextTestResult):
+        def addError(self, test, err):
+            super(DockFashionMode.MyTestResult, self).addError(test, err)
+            global result
+            result = result and False
+
+        def addFailure(self, test, err):
+            super(DockFashionMode.MyTestResult, self).addFailure(test, err)
+            global result
+            result = result and False
 
 if __name__ == "__main__":
-    unittest.TextTestRunner(resultclass=MyTestResult).run(suite())
+    unittest.TextTestRunner(resultclass=DockFashionMode.MyTestResult).run(DockFashionMode.suite())
