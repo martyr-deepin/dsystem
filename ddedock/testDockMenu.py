@@ -54,6 +54,7 @@ class DockMenu(unittest.TestCase):
             dockmenuapp = root.application('deepin-menu', '/usr/lib/deepin-menu')
             dockmenu = dockmenuapp.child(self.dockmenuname)
         except:
+            self.testClickScreenCenter()
             self.assertTrue(False, "Can not find the dock menu")
 
     def testRightClickOnDock(self, x, y):
@@ -79,6 +80,7 @@ class DockMenu(unittest.TestCase):
         try:
             dock = self.ddedockobject.child(utils.dock.mainwindowname)
         except:
+            self.testClickScreenCenter()
             self.assertTrue(False, "Can't find the dock mainwindowname.")
 
         (xp, yp) = dock.position

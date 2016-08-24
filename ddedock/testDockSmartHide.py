@@ -52,6 +52,8 @@ class DockSmartHide(unittest.TestCase):
         launcher.point()
         managerobj = self.ddedockobject.child(self.filemanager)
         managerobj.click()
+        ddedock = self.ddedockobject.child(self.dock_mainwindow)
+        (width, height) = ddedock.size
         if utils.dock.hidemode_smarthide != self.defaulthidemode:
             utils.setDdeDockHideMode(utils.dock.hidemode_smarthide)
 
@@ -63,6 +65,7 @@ class DockSmartHide(unittest.TestCase):
         self.assertTrue(hidemode == utils.dock.hidemode_smarthide)
         time.sleep(2)
         win = utils.findWindow(self.filemanager_windowname)
+        utils.resizeWindow(win, width + 1, height + 1, utils.resolution.width - 2*height -2, utils.resolution.height - 2*height -2)
         self.assertTrue(win != None)
 
     def testMaximizeFileManager(self):
