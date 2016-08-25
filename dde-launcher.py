@@ -3,50 +3,47 @@
 
 import unittest
 
-import dde_launcher.testAdjustFirstApp
-import dde_launcher.testDisableDragInCategory
-import dde_launcher.testDragAppToDock
-import dde_launcher.testDragToCenter
-import dde_launcher.testStartup
-import dde_launcher.testAddToDock
-import dde_launcher.testRemoveFromDock
-import dde_launcher.testSendToDesktop
-import dde_launcher.testRemoveFromDock
-import dde_launcher.testBoot
-import dde_launcher.testChineseSearch
-import dde_launcher.testEnglishSearch
-import dde_launcher.testPinyinSearch
-import dde_launcher.testMutiSearch
-import dde_launcher.testPkgNameSearch
-import dde_launcher.testPunctuationSearch
-import dde_launcher.testSpaceSearch
-import dde_launcher.testSortApp
+from dde_launcher.testAdjustFirstApp import LauncherAdjustFirstApp
+from dde_launcher.testDisableDragInCategory import LauncherDisable
+from dde_launcher.testDragAppToDock import LauncherDragAppToDock
+from dde_launcher.testDragToCenter import LauncherDragToCenter
+from dde_launcher.testStartup import LauncherStartupApp
+from dde_launcher.testAddToDock import LauncherAddToDock
+from dde_launcher.testRemoveFromDock import LauncherRemoveFromDock
+from dde_launcher.testSendToDesktop import LauncherSendToDesktop
+from dde_launcher.testRemoveFromDesktop import LauncherRemoveFromDesktop
+from dde_launcher.testBoot import LauncherAddToBoot
+from dde_launcher.testChineseSearch import LauncherChineseSearch
+from dde_launcher.testEnglishSearch import LauncherEnglishSearch
+from dde_launcher.testPinyinSearch import LauncherPinyinSearch
+from dde_launcher.testMutiSearch import LauncherMutiSearch
+from dde_launcher.testPkgNameSearch import LauncherPkgNameSearch
+from dde_launcher.testPunctuationSearch import LauncherPunctuationSearch
+from dde_launcher.testSpaceSearch import LauncherSpaceSearch
+from dde_launcher.testSortApp import LauncherSortApp
 
 def main():
-    suite1 = dde_launcher.testAdjustFirstApp.suite()
-    suite2 = dde_launcher.testDisableDragInCategory.suite()
-    suite3 = dde_launcher.testDragAppToDock.suite()
-    suite4 = dde_launcher.testDragToCenter.suite()
-    suite5 = dde_launcher.testStartup.suite()
-    suite6 = dde_launcher.testAddToDock.suite()
-    suite7 = dde_launcher.testRemoveFromDock.suite()
-    suite8 = dde_launcher.testSendToDesktop.suite()
-    suite9 = dde_launcher.testRemoveFromDock.suite()
-    suite10 = dde_launcher.testBoot.suite()
-    suite11 = dde_launcher.testChineseSearch.suite()
-    suite12 = dde_launcher.testEnglishSearch.suite()
-    suite13 = dde_launcher.testPinyinSearch.suite()
-    suite14 = dde_launcher.testMutiSearch.suite()
-    suite15 = dde_launcher.testPkgNameSearch.suite()
-    suite16 = dde_launcher.testPunctuationSearch.suite()
-    suite17 = dde_launcher.testSpaceSearch.suite()
-    suite18 = dde_launcher.testSortApp.suite()
+    classes = []
+    classes.append(LauncherAdjustFirstApp)
+    classes.append(LauncherDisable)
+    classes.append(LauncherDragAppToDock)
+    classes.append(LauncherDragToCenter)
+    classes.append(LauncherStartupApp)
+    classes.append(LauncherAddToDock)
+    classes.append(LauncherRemoveFromDock)
+    classes.append(LauncherSendToDesktop)
+    classes.append(LauncherRemoveFromDesktop)
+    classes.append(LauncherAddToBoot)
+    classes.append(LauncherChineseSearch)
+    classes.append(LauncherEnglishSearch)
+    classes.append(LauncherPinyinSearch)
+    classes.append(LauncherMutiSearch)
+    classes.append(LauncherPkgNameSearch)
+    classes.append(LauncherPunctuationSearch)
+    classes.append(LauncherSpaceSearch)
+    classes.append(LauncherSortApp)
 
-    alltests = unittest.TestSuite((suite1, suite2, suite3, suite4, suite5, suite6, suite7, suite8, suite9, suite10,
-                                    suite11, suite12, suite13, suite14, suite15, suite16, suite17, suite18))
-
-    runner = unittest.TextTestRunner()
-    runner.run(alltests)
-    
+    for c in classes:
+        unittest.TextTestRunner(resultclass=c.MyTestResult).run(c.suite())
 if __name__ == '__main__':
     main()

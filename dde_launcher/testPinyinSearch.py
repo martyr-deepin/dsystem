@@ -7,23 +7,12 @@ from lib.launcher import *
 from time import sleep
 
 result = True
-caseid = '45706'
-casename = "all-2140:拼音字符串搜索"
-
-class MyTestResult(runner.MyTextTestResult):
-    def addError(self, test, err):
-        super(MyTestResult, self).addError(test, err)
-        global result
-        result = result and False
-
-    def addFailure(self, test, err):
-        super(MyTestResult, self).addFailure(test, err)
-        global result
-        result = result and False
 
 class LauncherPinyinSearch(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
+        cls.caseid = '45706'
+        cls.casename = "all-2140:拼音字符串搜索"
         cls.appName = '图像查看器'
         cls.text1 = 'tuxiangchakanqi'
         cls.text2 = 'txckq'
@@ -33,7 +22,7 @@ class LauncherPinyinSearch(unittest.TestCase):
     @classmethod
     def tearDownClass(cls):
         global result
-        utils.commitresult(caseid, result)
+        utils.commitresult(cls.caseid, result)
         
         
     
@@ -73,16 +62,27 @@ class LauncherPinyinSearch(unittest.TestCase):
         apps = ''.join(apps)
         sleep(2)
         launcher.exitLauncher()
-        self.assertEqual('', apps)
+        self.assertNotIn(self.appName, apps)
 
 
-def suite():
-    suite = unittest.TestSuite()
-    suite.addTest(LauncherPinyinSearch('testPinyinSearch1'))
-    suite.addTest(LauncherPinyinSearch('testPinyinSearch2'))
-    suite.addTest(LauncherPinyinSearch('testPinyinSearch3'))
-    suite.addTest(LauncherPinyinSearch('testPinyinSearch4'))
-    return suite
+    def suite():
+        suite = unittest.TestSuite()
+        suite.addTest(LauncherPinyinSearch('testPinyinSearch1'))
+        suite.addTest(LauncherPinyinSearch('testPinyinSearch2'))
+        suite.addTest(LauncherPinyinSearch('testPinyinSearch3'))
+        suite.addTest(LauncherPinyinSearch('testPinyinSearch4'))
+        return suite
+
+    class MyTestResult(runner.MyTextTestResult):
+        def addError(self, test, err):
+            super(LauncherPinyinSearch.MyTestResult, self).addError(test, err)
+            global result
+            result = result and False
+
+        def addFailure(self, test, err):
+            super(LauncherPinyinSearch.MyTestResult, self).addFailure(test, err)
+            global result
+        result = result and False
 
 if __name__ == "__main__":
-    unittest.TextTestRunner(resultclass=MyTestResult).run(suite())
+    unittest.TextTestRunner(resultclass=LauncherPinyinSearch.MyTestResult).run(LauncherPinyinSearch.suite())

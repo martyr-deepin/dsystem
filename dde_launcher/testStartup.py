@@ -6,34 +6,22 @@ from lib import runner,utils
 from lib.launcher import *
 
 result = True
-caseid = '33832'
-casename = "all-516:启动"
-
-class MyTestResult(runner.MyTextTestResult):
-    def addError(self, test, err):
-        super(MyTestResult, self).addError(test, err)
-        global result
-        result = result and False
-
-    def addFailure(self, test, err):
-        super(MyTestResult, self).addFailure(test, err)
-        global result
-        result = result and False
 
 class LauncherStartupApp(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
-
+        cls.caseid = '33832'
+        cls.casename = "all-516:启动"
         cls.menuObj = root.application(appName='deepin-menu', description='/usr/lib/deepin-menu')
         cls.googleName = '打开新的标签页 - Google Chrome'
         cls.terminalName = '深度终端'
-        cls.geditName = '未保存的文档 1 - gedit'
+        cls.geditName = '无标题文档 1 - gedit'
         cls.oldWindows = getAllWindows()
 
     @classmethod
     def tearDownClass(cls):
         global result
-        utils.commitresult(caseid, result)
+        utils.commitresult(cls.caseid, result)
         
         cls.newWindows = getAllWindows()
         if len(cls.newWindows) - len(cls.oldWindows) == 3: 
@@ -71,12 +59,23 @@ class LauncherStartupApp(unittest.TestCase):
         self.assertEqual(self.geditName, win)
 
 
-def suite():
-    suite = unittest.TestSuite()
-    suite.addTest(LauncherStartupApp('testSartupByRightKey'))
-    suite.addTest(LauncherStartupApp('testStartupByShortcuts'))
-    suite.addTest(LauncherStartupApp('testStartupByLeftKey'))
-    return suite
+    def suite():
+        suite = unittest.TestSuite()
+        suite.addTest(LauncherStartupApp('testSartupByRightKey'))
+        suite.addTest(LauncherStartupApp('testStartupByShortcuts'))
+        suite.addTest(LauncherStartupApp('testStartupByLeftKey'))
+        return suite
+
+    class MyTestResult(runner.MyTextTestResult):
+        def addError(self, test, err):
+            super(LauncherStartupApp.MyTestResult, self).addError(test, err)
+            global result
+            result = result and False
+
+        def addFailure(self, test, err):
+            super(LauncherStartupApp.MyTestResult, self).addFailure(test, err)
+            global result
+            result = result and False
 
 if __name__ == "__main__":
-    unittest.TextTestRunner(resultclass=MyTestResult).run(suite())
+    unittest.TextTestRunner(resultclass=LauncherStartupApp.MyTestResult).run(LauncherStartupApp.suite())

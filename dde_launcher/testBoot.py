@@ -8,24 +8,13 @@ from lib.launcher import *
 from lib.dde_dock import *
 
 result = True
-caseid = '33855'
-casename = 'all-522:添加至开机启动项'
-
-class MyTestResult(runner.MyTextTestResult):
-    def addError(self, test, err):
-        super(MyTestResult, self).addError(test, err)
-        global result
-        result = result and False
-
-    def addFailure(self, test, err):
-        super(MyTestResult, self).addFailure(test, err)
-        global result
-        result = result and False
 
 class LauncherAddToBoot(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
         cls.menuObj = root.application(appName='deepin-menu', description='/usr/lib/deepin-menu')
+        cls.caseid = '33855'
+        cls.casename = 'all-522:添加至开机启动项'
         cls.googleName = 'Google Chrome'
         cls.QQname = 'QQ'
         cls.googleFile = 'google-chrome.desktop'
@@ -34,7 +23,7 @@ class LauncherAddToBoot(unittest.TestCase):
     @classmethod
     def tearDownClass(cls):
         global result
-        utils.commitresult(caseid, result)
+        utils.commitresult(cls.caseid, result)
         googleFeild = getBootFeild(cls.googleFile)
         QQFeild = getBootFeild(cls.QQFile)
         if googleFeild == 'Hidden=false':
@@ -60,11 +49,21 @@ class LauncherAddToBoot(unittest.TestCase):
         self.assertEqual('Hidden=true',QQFeild)
 
 
-def suite():
-    suite = unittest.TestSuite()
-    suite.addTest(LauncherAddToBoot('testMenuAddToBoot'))
-    suite.addTest(LauncherAddToBoot('testMenuRemoveFromBoot'))
-    return suite
+    def suite():
+        suite = unittest.TestSuite()
+        suite.addTest(LauncherAddToBoot('testMenuAddToBoot'))
+        suite.addTest(LauncherAddToBoot('testMenuRemoveFromBoot'))
+        return suite
 
+    class MyTestResult(runner.MyTextTestResult):
+        def addError(self, test, err):
+            super(LauncherAddToBoot.MyTestResult, self).addError(test, err)
+            global result
+            result = result and False
+
+        def addFailure(self, test, err):
+            super(LauncherAddToBoot.MyTestResult, self).addFailure(test, err)
+            global result
+            result = result and False
 if __name__ == "__main__":
-    unittest.TextTestRunner(resultclass=MyTestResult).run(suite())
+    unittest.TextTestRunner(resultclass=LauncherAddToBoot.MyTestResult).run(LauncherAddToBoot.suite())

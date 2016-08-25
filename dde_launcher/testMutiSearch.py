@@ -7,23 +7,12 @@ from lib.launcher import *
 from time import sleep
 
 result = True
-caseid = '45676'
-casename = "all-2136:中文和英文搜索"
-
-class MyTestResult(runner.MyTextTestResult):
-    def addError(self, test, err):
-        super(MyTestResult, self).addError(test, err)
-        global result
-        result = result and False
-
-    def addFailure(self, test, err):
-        super(MyTestResult, self).addFailure(test, err)
-        global result
-        result = result and False
 
 class LauncherMutiSearch(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
+        cls.caseid = '45676'
+        cls.casename = "all-2136:中文和英文搜索"
         cls.text = 'wps表格'
         cls.appName = 'WPS 表格'
 
@@ -31,7 +20,7 @@ class LauncherMutiSearch(unittest.TestCase):
     @classmethod
     def tearDownClass(cls):
         global result
-        utils.commitresult(caseid, result)
+        utils.commitresult(cls.caseid, result)
     
         
     
@@ -46,10 +35,21 @@ class LauncherMutiSearch(unittest.TestCase):
 
 
 
-def suite():
-    suite = unittest.TestSuite()
-    suite.addTest(LauncherMutiSearch('testMutiSearch'))
-    return suite
+    def suite():
+        suite = unittest.TestSuite()
+        suite.addTest(LauncherMutiSearch('testMutiSearch'))
+        return suite
+
+    class MyTestResult(runner.MyTextTestResult):
+        def addError(self, test, err):
+            super(LauncherMutiSearch.MyTestResult, self).addError(test, err)
+            global result
+            result = result and False
+
+        def addFailure(self, test, err):
+            super(LauncherMutiSearch.MyTestResult, self).addFailure(test, err)
+            global result
+            result = result and False
 
 if __name__ == "__main__":
-    unittest.TextTestRunner(resultclass=MyTestResult).run(suite())
+    unittest.TextTestRunner(resultclass=LauncherMutiSearch.MyTestResult).run(LauncherMutiSearch.suite())

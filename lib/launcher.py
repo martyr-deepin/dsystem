@@ -76,7 +76,8 @@ class Launcher:
         if launcher != None:
             icon_coor = self.getIconCoorFree('QQ')
             pyautogui.mouseDown(icon_coor[0], icon_coor[1])
-            pyautogui.dragTo(app_coor[0], app_coor[1], duration=2)
+            pyautogui.moveTo(app_coor[0]-1, app_coor[1]-1, duration=2, pause=1)
+            pyautogui.mouseUp(app_coor[0], app_coor[1], duration=1)
             self.exitLauncher()
 
     def dragAppToDockCategory(self,listName):
@@ -88,8 +89,9 @@ class Launcher:
         if launcher != None:
             QQName = self.launcherObj.child(listName,roleName='list').children[0].name
             icon_coor = self.getIconCoorCategory('chat')
-            pyautogui.mouseDown(icon_coor[0], icon_coor[1])
-            pyautogui.dragTo(app_coor[0], app_coor[1], duration=2)
+            pyautogui.mouseDown(icon_coor[0], icon_coor[1], duration=2, pause=1)
+            pyautogui.moveTo(app_coor[0], app_coor[1], duration=2, pause=1)
+            pyautogui.mouseUp(app_coor[0], app_coor[1], duration=0.5)
             self.exitLauncher()
 
     def unDock(self):
@@ -118,6 +120,8 @@ class Launcher:
             if launcher != None:
                 self.launcherObj.child('mode-toggle-button').click()
                 self.exitLauncher()
+        else:
+            self.exitLauncher()
 
     def categoryMode(self):
         mode = self.getLauncherMode()
@@ -320,7 +324,9 @@ class Launcher:
 
     def checkLableKids(self,label):
         pyautogui.press('winleft')
-        self.launcherObj.child('mode-toggle-button').click()
+        mode = self.getLauncherMode()
+        if mode == '\'free\'':
+            self.launcherObj.child('mode-toggle-button').click()
         self.launcherObj.child(label).click()
 
     def searchApp(self,char):
@@ -362,6 +368,7 @@ def getAllWindows():
         Wnck.shutdown()
 
 def getWindowName():
+    sleep(2)
     try:
         screen = Wnck.Screen.get_default()
         screen.force_update()
