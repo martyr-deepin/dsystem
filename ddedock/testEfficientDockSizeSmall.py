@@ -7,15 +7,15 @@ from lib import runner
 
 result = True
 
-class FashionDockSize(unittest.TestCase):
+class EfficientDockSizeSmall(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
-        cls.caseid = '68486'
-        cls.casename = "all-2492:图标大小设置菜单"
+        cls.caseid = '68496'
+        cls.casename = "all-2495:高效模式小图标显示"
         cls.ddedockobject = utils.getDdeDockObject()
 
-        if utils.getDdeDockDisplayMode() != utils.dock.displaymode_fashion:
-            utils.setDdeDockDisplayMode(utils.dock.displaymode_fashion)
+        if utils.getDdeDockDisplayMode() != utils.dock.displaymode_efficient:
+            utils.setDdeDockDisplayMode(utils.dock.displaymode_efficient)
 
         if utils.getDdeDockPosition() != utils.dock.position_bottom:
             utils.setDdeDockPosition(utils.dock.position_bottom)
@@ -60,10 +60,10 @@ class FashionDockSize(unittest.TestCase):
         self.assertEquals((calculate_iconsize_x, calculate_iconsize_y),
                           launcher.size)
 
-    def testIconSizeLarge(self):
+    def testIconSizeSmall(self):
         launcher = self.ddedockobject.child("Launcher")
         dbus_iconsize = utils.getDdeDockIconSize()
-        self.assertTrue(dbus_iconsize == utils.dock.iconsize_large)
+        self.assertTrue(dbus_iconsize == utils.dock.iconsize_small)
         displaymode = utils.getDdeDockDisplayMode()
         calculate_iconsize_y = 0
         calculate_iconsize_x = 0
@@ -118,21 +118,21 @@ class FashionDockSize(unittest.TestCase):
 
     def suite():
         suite = unittest.TestSuite()
-        suite.addTest(FashionDockSize('testIconSizeMedium'))
-        suite.addTest(FashionDockSize('testChangeIconSizeToLarge'))
-        suite.addTest(FashionDockSize('testIconSizeLarge'))
+        suite.addTest(EfficientDockSizeSmall('testIconSizeMedium'))
+        suite.addTest(EfficientDockSizeSmall('testChangeIconSizeToSmall'))
+        suite.addTest(EfficientDockSizeSmall('testIconSizeSmall'))
         return suite
 
     class MyTestResult(runner.MyTextTestResult):
         def addError(self, test, err):
-            super(FashionDockSize.MyTestResult, self).addError(test, err)
+            super(EfficientDockSizeSmall.MyTestResult, self).addError(test, err)
             global result
             result = result and False
 
         def addFailure(self, test, err):
-            super(FashionDockSize.MyTestResult, self).addFailure(test, err)
+            super(EfficientDockSizeSmall.MyTestResult, self).addFailure(test, err)
             global result
             result = result and False
 
 if __name__ == "__main__":
-    unittest.TextTestRunner(resultclass=FashionDockSize.MyTestResult).run(FashionDockSize.suite())
+    unittest.TextTestRunner(resultclass=EfficientDockSizeSmall.MyTestResult).run(EfficientDockSizeSmall.suite())

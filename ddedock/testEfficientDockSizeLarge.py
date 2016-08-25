@@ -7,15 +7,15 @@ from lib import runner
 
 result = True
 
-class FashionDockSize(unittest.TestCase):
+class EfficientDockSizeLarge(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
-        cls.caseid = '68486'
-        cls.casename = "all-2492:图标大小设置菜单"
+        cls.caseid = '68490'
+        cls.casename = "all-2493:高效模式大图标显示"
         cls.ddedockobject = utils.getDdeDockObject()
 
-        if utils.getDdeDockDisplayMode() != utils.dock.displaymode_fashion:
-            utils.setDdeDockDisplayMode(utils.dock.displaymode_fashion)
+        if utils.getDdeDockDisplayMode() != utils.dock.displaymode_efficient:
+            utils.setDdeDockDisplayMode(utils.dock.displaymode_efficient)
 
         if utils.getDdeDockPosition() != utils.dock.position_bottom:
             utils.setDdeDockPosition(utils.dock.position_bottom)
@@ -118,21 +118,21 @@ class FashionDockSize(unittest.TestCase):
 
     def suite():
         suite = unittest.TestSuite()
-        suite.addTest(FashionDockSize('testIconSizeMedium'))
-        suite.addTest(FashionDockSize('testChangeIconSizeToLarge'))
-        suite.addTest(FashionDockSize('testIconSizeLarge'))
+        suite.addTest(EfficientDockSizeLarge('testIconSizeMedium'))
+        suite.addTest(EfficientDockSizeLarge('testChangeIconSizeToLarge'))
+        suite.addTest(EfficientDockSizeLarge('testIconSizeLarge'))
         return suite
 
     class MyTestResult(runner.MyTextTestResult):
         def addError(self, test, err):
-            super(FashionDockSize.MyTestResult, self).addError(test, err)
+            super(EfficientDockSizeLarge.MyTestResult, self).addError(test, err)
             global result
             result = result and False
 
         def addFailure(self, test, err):
-            super(FashionDockSize.MyTestResult, self).addFailure(test, err)
+            super(EfficientDockSizeLarge.MyTestResult, self).addFailure(test, err)
             global result
             result = result and False
 
 if __name__ == "__main__":
-    unittest.TextTestRunner(resultclass=FashionDockSize.MyTestResult).run(FashionDockSize.suite())
+    unittest.TextTestRunner(resultclass=EfficientDockSizeLarge.MyTestResult).run(EfficientDockSizeLarge.suite())

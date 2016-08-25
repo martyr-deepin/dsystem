@@ -45,13 +45,13 @@ def getDdeDockSession():
 
 def getDdeDockPropertiesInterface():
     session_dock = getDdeDockSession()
-    interface = dbus.Interface(session_dock, 
+    interface = dbus.Interface(session_dock,
                                dbus_interface=dbus.PROPERTIES_IFACE)
     return interface
 
 def getDdeDockInterface():
     session_dock = getDdeDockSession()
-    interface = dbus.Interface(session_dock, 
+    interface = dbus.Interface(session_dock,
                                dbus_interface=dock.dbus_interface)
 
     return interface
@@ -59,7 +59,7 @@ def getDdeDockInterface():
 def getDdeDockDisplayMode():
     properties_iface = getDdeDockPropertiesInterface()
     return properties_iface.Get(dock.dbus_interface, dock.dbus_properties_displaymode)
-    
+
 def setDdeDockDisplayMode(displaymode):
     properties_iface = getDdeDockPropertiesInterface()
     properties_iface.Set(dock.dbus_interface, dock.dbus_properties_displaymode, displaymode)
@@ -98,7 +98,8 @@ def getDdeDockIconSize():
 
 def setDdeDockIconSize(iconsize):
     properties_iface = getDdeDockPropertiesInterface()
-    return properties_iface.Set(dock.dbus_interface, dock.dbus_properties_iconsize, iconsize)
+    properties_iface.Set(dock.dbus_interface, dock.dbus_properties_iconsize, dbus.UInt32(iconsize))
+    sleep(2)
 
 def openFashionMode():
     setDdeDockDisplayMode(dock.displaymode_fashion)

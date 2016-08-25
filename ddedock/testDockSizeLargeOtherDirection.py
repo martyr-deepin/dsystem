@@ -7,15 +7,15 @@ from lib import runner
 
 result = True
 
-class FashionDockSize(unittest.TestCase):
+class DockSizeLargeOtherDirection(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
-        cls.caseid = '68486'
-        cls.casename = "all-2492:图标大小设置菜单"
+        cls.caseid = '68501'
+        cls.casename = "all-2496:大图标在四个方向上显示"
         cls.ddedockobject = utils.getDdeDockObject()
 
-        if utils.getDdeDockDisplayMode() != utils.dock.displaymode_fashion:
-            utils.setDdeDockDisplayMode(utils.dock.displaymode_fashion)
+        if utils.getDdeDockDisplayMode() != utils.dock.displaymode_efficient:
+            utils.setDdeDockDisplayMode(utils.dock.displaymode_efficient)
 
         if utils.getDdeDockPosition() != utils.dock.position_bottom:
             utils.setDdeDockPosition(utils.dock.position_bottom)
@@ -74,8 +74,15 @@ class FashionDockSize(unittest.TestCase):
             calculate_iconsize_y = int(dbus_iconsize * 1.2)
             calculate_iconsize_x = int(calculate_iconsize_y * 1.4)
 
-        self.assertEquals((calculate_iconsize_x, calculate_iconsize_y),
+        if utils.getDdeDockPosition() == utils.dock.position_top or \
+           utils.getDdeDockPosition() == utils.dock.position_bottom:
+            self.assertEquals((calculate_iconsize_x, calculate_iconsize_y),
                           launcher.size)
+        elif utils.getDdeDockPosition() == utils.dock.position_right or \
+           utils.getDdeDockPosition() == utils.dock.position_left:
+            self.assertTrue(calculate_iconsize_x == launcher.size[0])
+            self.assertTrue(calculate_iconsize_y > 1 and calculate_iconsize_y >= launcher.size[1])
+
 
     def testChangeIconSizeToLarge(self):
         utils.m.click(int(utils.resolution.width/2), utils.resolution.height, 2)
@@ -116,23 +123,55 @@ class FashionDockSize(unittest.TestCase):
         dbus_iconsize = utils.getDdeDockIconSize()
         self.assertTrue(dbus_iconsize == utils.dock.iconsize_small)
 
+    def testChangePosition(self):
+        if utils.getDdeDockPosition() == utils.dock.position_bottom:
+            utils.setDdeDockPosition(utils.dock.position_top)
+        elif utils.getDdeDockPosition() == utils.dock.position_top:
+            utils.setDdeDockPosition(utils.dock.position_right)
+        elif utils.getDdeDockPosition() == utils.dock.position_right:
+            utils.setDdeDockPosition(utils.dock.position_left)
+
+    def testExChangeDisplayMode(self):
+        if utils.getDdeDockDisplayMode() == utils.dock.displaymode_fashion:
+            utils.setDdeDockDisplayMode(utils.dock.displaymode_efficient)
+        elif utils.getDdeDockDisplayMode() == utils.dock.displaymode_efficient:
+            utils.setDdeDockDisplayMode(utils.dock.displaymode_fashion)
+
     def suite():
         suite = unittest.TestSuite()
-        suite.addTest(FashionDockSize('testIconSizeMedium'))
-        suite.addTest(FashionDockSize('testChangeIconSizeToLarge'))
-        suite.addTest(FashionDockSize('testIconSizeLarge'))
+        suite.addTest(DockSizeLargeOtherDirection('testIconSizeMedium'))
+        suite.addTest(DockSizeLargeOtherDirection('testChangeIconSizeToLarge'))
+        suite.addTest(DockSizeLargeOtherDirection('testIconSizeLarge'))
+
+        # top
+        suite.addTest(DockSizeLargeOtherDirection('testChangePosition'))
+        suite.addTest(DockSizeLargeOtherDirection('testIconSizeLarge'))
+        suite.addTest(DockSizeLargeOtherDirection('testExChangeDisplayMode'))
+        suite.addTest(DockSizeLargeOtherDirection('testIconSizeLarge'))
+
+        # right
+        suite.addTest(DockSizeLargeOtherDirection('testChangePosition'))
+        suite.addTest(DockSizeLargeOtherDirection('testIconSizeLarge'))
+        suite.addTest(DockSizeLargeOtherDirection('testExChangeDisplayMode'))
+        suite.addTest(DockSizeLargeOtherDirection('testIconSizeLarge'))
+
+        # left
+        suite.addTest(DockSizeLargeOtherDirection('testChangePosition'))
+        suite.addTest(DockSizeLargeOtherDirection('testIconSizeLarge'))
+        suite.addTest(DockSizeLargeOtherDirection('testExChangeDisplayMode'))
+        suite.addTest(DockSizeLargeOtherDirection('testIconSizeLarge'))
         return suite
 
     class MyTestResult(runner.MyTextTestResult):
         def addError(self, test, err):
-            super(FashionDockSize.MyTestResult, self).addError(test, err)
+            super(DockSizeLargeOtherDirection.MyTestResult, self).addError(test, err)
             global result
             result = result and False
 
         def addFailure(self, test, err):
-            super(FashionDockSize.MyTestResult, self).addFailure(test, err)
+            super(DockSizeLargeOtherDirection.MyTestResult, self).addFailure(test, err)
             global result
             result = result and False
 
 if __name__ == "__main__":
-    unittest.TextTestRunner(resultclass=FashionDockSize.MyTestResult).run(FashionDockSize.suite())
+    unittest.TextTestRunner(resultclass=DockSizeLargeOtherDirection.MyTestResult).run(DockSizeLargeOtherDirection.suite())
