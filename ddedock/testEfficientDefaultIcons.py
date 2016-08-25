@@ -10,7 +10,7 @@ class EfficientDefaultIcons(unittest.TestCase):
         cls.defaultefficienticonlist = ["Launcher",
                                         "显示桌面",
                                         "多任务视图",
-                                        "文件",
+                                        "文件管理器",
                                         "深度商店",
                                         "深度音乐",
                                         "Google Chrome",
