@@ -35,6 +35,11 @@ class Launcher:
         shenduApps = ['深度用户反馈', '深度终端', '深度启动盘制作工具', '深度商店', '深度云打印', '深度截图', '深度音乐']
         return shenduApps
 
+    def openLauncher(self):
+        win = findWindow('dde-launcher')
+        if win == None:
+            pyautogui.press('winleft')
+
     def getIconCoorFree(self,icon):
         coor = []
         position = self.launcherObj.child(icon).position

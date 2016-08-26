@@ -23,6 +23,8 @@ from dde_launcher.testSpaceSearch import LauncherSpaceSearch
 from dde_launcher.testSortApp import LauncherSortApp
 from dde_launcher.testUninstall import LauncherUninstall
 from dde_launcher.testShotcuts import LauncherShotcuts
+from dde_launcher.testEnterKey import LauncherEnterKey
+from dde_launcher.testEscKey import LauncherEscKey
 
 
 def main():
@@ -47,6 +49,8 @@ def main():
     classes.append(LauncherSortApp)
     classes.append(LauncherUninstall)
     classes.append(LauncherShotcuts)
+    classes.append(LauncherEnterKey)
+    classes.append(LauncherEscKey)
 
     for c in classes:
         unittest.TextTestRunner(resultclass=c.MyTestResult).run(c.suite())
