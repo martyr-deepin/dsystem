@@ -3,6 +3,7 @@
 
 
 from dogtail.tree import *
+import subprocess
 
 class Dock:
 	def __init__(self):
@@ -18,9 +19,15 @@ class Dock:
 		return apps
 
 	def getAllDockApps(self):
+		'''
 		apps = []
 		for i in range(len(self.dockObj.child('dock-mainpanel').children)):
 			apps.append(self.dockObj.child('dock-mainpanel').children[i].name)
+		return apps
+		'''
+		apps = subprocess.check_output(["gsettings get com.deepin.dde.dock docked-apps"],shell=True).decode().split("\n")
+		apps = [ n for n in apps if len(n.strip()) > 0]
+		apps = ''.join(apps)
 		return apps
 
 	def getAppCoor(self,app):

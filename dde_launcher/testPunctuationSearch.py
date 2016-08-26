@@ -7,23 +7,12 @@ from lib.launcher import *
 from time import sleep
 
 result = True
-caseid = '52345'
-casename = "all-2269:输入标点符号测试"
-
-class MyTestResult(runner.MyTextTestResult):
-    def addError(self, test, err):
-        super(MyTestResult, self).addError(test, err)
-        global result
-        result = result and False
-
-    def addFailure(self, test, err):
-        super(MyTestResult, self).addFailure(test, err)
-        global result
-        result = result and False
 
 class LauncherPunctuationSearch(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
+        cls.caseid = '52345'
+        cls.casename = "all-2269:输入标点符号测试"
         cls.text1 = '! '
         cls.text2 = '*'
         cls.text3 = 'deepin*'
@@ -31,7 +20,7 @@ class LauncherPunctuationSearch(unittest.TestCase):
     @classmethod
     def tearDownClass(cls):
         global result
-        utils.commitresult(caseid, result)
+        utils.commitresult(cls.caseid, result)
     
         
     
@@ -63,12 +52,23 @@ class LauncherPunctuationSearch(unittest.TestCase):
         self.assertEqual('', apps)
 
 
-def suite():
-    suite = unittest.TestSuite()
-    suite.addTest(LauncherPunctuationSearch('testPunctuationSearch1'))
-    suite.addTest(LauncherPunctuationSearch('testPunctuationSearch2'))
-    suite.addTest(LauncherPunctuationSearch('testPunctuationSearch3'))
-    return suite
+    def suite():
+        suite = unittest.TestSuite()
+        suite.addTest(LauncherPunctuationSearch('testPunctuationSearch1'))
+        suite.addTest(LauncherPunctuationSearch('testPunctuationSearch2'))
+        suite.addTest(LauncherPunctuationSearch('testPunctuationSearch3'))
+        return suite
+
+    class MyTestResult(runner.MyTextTestResult):
+        def addError(self, test, err):
+            super(LauncherPunctuationSearch.MyTestResult, self).addError(test, err)
+            global result
+            result = result and False
+
+        def addFailure(self, test, err):
+            super(LauncherPunctuationSearch.MyTestResult, self).addFailure(test, err)
+            global result
+            result = result and False
 
 if __name__ == "__main__":
-    unittest.TextTestRunner(resultclass=MyTestResult).run(suite())
+    unittest.TextTestRunner(resultclass=LauncherPunctuationSearch.MyTestResult).run(LauncherPunctuationSearch.suite())

@@ -7,23 +7,13 @@ from lib.launcher import *
 from time import sleep
 
 result = True
-caseid = '52350'
-casename = "all-2270:输入空格符搜索测试"
 
-class MyTestResult(runner.MyTextTestResult):
-    def addError(self, test, err):
-        super(MyTestResult, self).addError(test, err)
-        global result
-        result = result and False
-
-    def addFailure(self, test, err):
-        super(MyTestResult, self).addFailure(test, err)
-        global result
-        result = result and False
 
 class LauncherSpaceSearch(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
+        cls.caseid = '52350'
+        cls.casename = "all-2270:输入空格符搜索测试"
         cls.text1 = ' '
         cls.text2 = 'deepin   '
         cls.text3 = 'deepin music'
@@ -33,7 +23,7 @@ class LauncherSpaceSearch(unittest.TestCase):
     @classmethod
     def tearDownClass(cls):
         global result
-        utils.commitresult(caseid, result)
+        utils.commitresult(cls.caseid, result)
     
         
     
@@ -74,13 +64,24 @@ class LauncherSpaceSearch(unittest.TestCase):
         self.assertEqual('', apps)
 
 
-def suite():
-    suite = unittest.TestSuite()
-    suite.addTest(LauncherSpaceSearch('testSpaceSearch1'))
-    suite.addTest(LauncherSpaceSearch('testSpaceSearch2'))
-    suite.addTest(LauncherSpaceSearch('testSpaceSearch3'))
-    suite.addTest(LauncherSpaceSearch('testSpaceSearch4'))
-    return suite
+    def suite():
+        suite = unittest.TestSuite()
+        suite.addTest(LauncherSpaceSearch('testSpaceSearch1'))
+        suite.addTest(LauncherSpaceSearch('testSpaceSearch2'))
+        suite.addTest(LauncherSpaceSearch('testSpaceSearch3'))
+        suite.addTest(LauncherSpaceSearch('testSpaceSearch4'))
+        return suite
+
+    class MyTestResult(runner.MyTextTestResult):
+        def addError(self, test, err):
+            super(LauncherSpaceSearch.MyTestResult, self).addError(test, err)
+            global result
+            result = result and False
+
+        def addFailure(self, test, err):
+            super(LauncherSpaceSearch.MyTestResult, self).addFailure(test, err)
+            global result
+            result = result and False
 
 if __name__ == "__main__":
-    unittest.TextTestRunner(resultclass=MyTestResult).run(suite())
+    unittest.TextTestRunner(resultclass=LauncherSpaceSearch.MyTestResult).run(LauncherSpaceSearch.suite())

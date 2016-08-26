@@ -8,47 +8,48 @@ from lib.launcher import *
 from lib.dde_dock import *
 
 result = True
-caseid = '33823'
-casename = "all-514:拖动到任务栏驻留"
-
-class MyTestResult(runner.MyTextTestResult):
-    def addError(self, test, err):
-        super(MyTestResult, self).addError(test, err)
-        global result
-        result = result and False
-
-    def addFailure(self, test, err):
-        super(MyTestResult, self).addFailure(test, err)
-        global result
-        result = result and False
 
 class LauncherDragAppToDock(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
-        pass
+        cls.caseid = '33823'
+        cls.casename = "all-514:拖动到任务栏驻留"
+        cls.qqName = 'apps.com.qq.im'
 
     @classmethod
     def tearDownClass(cls):
         global result
-        utils.commitresult(caseid, result)
+        utils.commitresult(cls.caseid, result)
         launcher.freeMode()
         launcher.unDock()
 
 
     def testDragToDockFree(self):
         launcher.dragAppToDockFree()
-        self.assertIn('QQ',Dock().getAllDockApps())
+        self.assertIn(self.qqName,Dock().getAllDockApps())
 
     def testDragToDockCategory(self):
         launcher.unDock()
         launcher.dragAppToDockCategory('chat')
-        self.assertIn('QQ',Dock().getAllDockApps())
+        self.assertIn(self.qqName,Dock().getAllDockApps())
 
-def suite():
-    suite = unittest.TestSuite()
-    suite.addTest(LauncherDragAppToDock('testDragToDockFree'))
-    suite.addTest(LauncherDragAppToDock('testDragToDockCategory'))
-    return suite
+    def suite():
+        suite = unittest.TestSuite()
+        suite.addTest(LauncherDragAppToDock('testDragToDockFree'))
+        suite.addTest(LauncherDragAppToDock('testDragToDockCategory'))
+        return suite
+
+
+    class MyTestResult(runner.MyTextTestResult):
+        def addError(self, test, err):
+            super(LauncherDragAppToDock.MyTestResult, self).addError(test, err)
+            global result
+            result = result and False
+
+        def addFailure(self, test, err):
+            super(LauncherDragAppToDock.MyTestResult, self).addFailure(test, err)
+            global result
+            result = result and False
 
 if __name__ == "__main__":
-    unittest.TextTestRunner(resultclass=MyTestResult).run(suite())
+    unittest.TextTestRunner(resultclass=LauncherDragAppToDock.MyTestResult).run(LauncherDragAppToDock.suite())

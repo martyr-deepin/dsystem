@@ -6,30 +6,19 @@ from lib import runner,utils
 from lib.launcher import *
 
 result = True
-caseid = '45878'
-casename = "all-2149:调整首个程序位置"
-
-class MyTestResult(runner.MyTextTestResult):
-    def addError(self, test, err):
-        super(MyTestResult, self).addError(test, err)
-        global result
-        result = result and False
-
-    def addFailure(self, test, err):
-        super(MyTestResult, self).addFailure(test, err)
-        global result
-        result = result and False
 
 class LauncherAdjustFirstApp(unittest.TestCase):
     @classmethod
-    def setUpClass(cls)
+    def setUpClass(cls):
+        cls.caseid = '45878'
+        cls.casename = 'all-2149:调整首个程序位置'
         launcher.freeMode()
 
 
     @classmethod
     def tearDownClass(cls):
         global result
-        utils.commitresult(caseid, result)
+        utils.commitresult(cls.caseid, result)
         launcher.freeMode()
 
 
@@ -69,13 +58,24 @@ class LauncherAdjustFirstApp(unittest.TestCase):
         self.assertEqual(first, end)
 
 
-def suite():
-    suite = unittest.TestSuite()
-    suite.addTest(LauncherAdjustFirstApp('testDragToSecond'))
-    suite.addTest(LauncherAdjustFirstApp('testDragToFirstRowEnd'))
-    #suite.addTest(LauncherAdjustFirstApp('testDragToFirstColumnEnd'))
-    #suite.addTest(LauncherAdjustFirstApp('testDragToEnd'))
-    return suite
+    def suite():
+        suite = unittest.TestSuite()
+        suite.addTest(LauncherAdjustFirstApp('testDragToSecond'))
+        suite.addTest(LauncherAdjustFirstApp('testDragToFirstRowEnd'))
+        #suite.addTest(LauncherAdjustFirstApp('testDragToFirstColumnEnd'))
+        #suite.addTest(LauncherAdjustFirstApp('testDragToEnd'))
+        return suite
+
+    class MyTestResult(runner.MyTextTestResult):
+        def addError(self, test, err):
+            super(LauncherAdjustFirstApp.MyTestResult, self).addError(test, err)
+            global result
+            result = result and False
+
+        def addFailure(self, test, err):
+            super(LauncherAdjustFirstApp.MyTestResult, self).addFailure(test, err)
+            global result
+            result = result and False
 
 if __name__ == "__main__":
-    unittest.TextTestRunner(resultclass=MyTestResult).run(suite())
+    unittest.TextTestRunner(resultclass=LauncherAdjustFirstApp.MyTestResult).run(LauncherAdjustFirstApp.suite())

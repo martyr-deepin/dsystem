@@ -8,37 +8,27 @@ from lib.launcher import *
 from lib.dde_dock import *
 
 result = True
-caseid = '33902'
-casename = 'all-532:应用安装之后左侧分类更新测试'
-
-class MyTestResult(runner.MyTextTestResult):
-    def addError(self, test, err):
-        super(MyTestResult, self).addError(test, err)
-        global result
-        result = result and False
-
-    def addFailure(self, test, err):
-        super(MyTestResult, self).addFailure(test, err)
-        global result
-        result = result and False
 
 class LauncherSortApp(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
         cls.menuObj = root.application(appName='deepin-menu', description='/usr/lib/deepin-menu')
+        cls.caseid = '33902'
+        cls.casename = 'all-532:应用安装之后左侧分类更新测试'
         cls.installAppName = 'robomongo'
-        cls.oldWindows = getAllWindows()
+
 
     @classmethod
     def tearDownClass(cls):
         global result
-        utils.commitresult(caseid, result)
+        utils.commitresult(cls.caseid, result)
         cls.newWindows = getAllWindows()
         if len(cls.newWindows) - len(cls.oldWindows) == 1: 
             cls.newWindows[-1].close(1)
         kids = launcher.getKidsCategory('development')
         if 'Robomongo' in kids:
             launcher.removeApp(cls.installAppName)
+        launcher.checkLableKids('internet')
         launcher.freeMode()
 
 
@@ -50,10 +40,21 @@ class LauncherSortApp(unittest.TestCase):
         self.assertIn('Robomongo',kids)
 
 
-def suite():
-    suite = unittest.TestSuite()
-    suite.addTest(LauncherSortApp('testSortApp'))
-    return suite
+    def suite():
+        suite = unittest.TestSuite()
+        suite.addTest(LauncherSortApp('testSortApp'))
+        return suite
+
+    class MyTestResult(runner.MyTextTestResult):
+        def addError(self, test, err):
+            super(LauncherSortApp.MyTestResult, self).addError(test, err)
+            global result
+            result = result and False
+
+        def addFailure(self, test, err):
+            super(LauncherSortApp.MyTestResult, self).addFailure(test, err)
+            global result
+            result = result and False
 
 if __name__ == "__main__":
-    unittest.TextTestRunner(resultclass=MyTestResult).run(suite())
+    unittest.TextTestRunner(resultclass=LauncherSortApp.MyTestResult).run(LauncherSortApp.suite())

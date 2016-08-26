@@ -8,30 +8,19 @@ from lib.launcher import *
 from lib.dde_dock import *
 
 result = True
-caseid = '33843'
-casename = 'all-519:从桌面上移除'
-
-class MyTestResult(runner.MyTextTestResult):
-    def addError(self, test, err):
-        super(MyTestResult, self).addError(test, err)
-        global result
-        result = result and False
-
-    def addFailure(self, test, err):
-        super(MyTestResult, self).addFailure(test, err)
-        global result
-        result = result and False
 
 class LauncherRemoveFromDesktop(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
+        cls.caseid = '33843'
+        cls.casename = 'all-519:从桌面上移除'
         cls.menuObj = root.application(appName='deepin-menu', description='/usr/lib/deepin-menu')
         cls.QQName = 'QQ'
 
     @classmethod
     def tearDownClass(cls):
         global result
-        utils.commitresult(caseid, result)
+        utils.commitresult(cls.caseid, result)
         launcher.exitLauncher()
 
     def testMenuRemoveFromDesktop(self):
@@ -41,10 +30,21 @@ class LauncherRemoveFromDesktop(unittest.TestCase):
         self.assertNotIn(QQdesktopFile,desktopFiles)
 
 
-def suite():
-    suite = unittest.TestSuite()
-    suite.addTest(LauncherRemoveFromDesktop('testMenuRemoveFromDesktop'))
-    return suite
+    def suite():
+        suite = unittest.TestSuite()
+        suite.addTest(LauncherRemoveFromDesktop('testMenuRemoveFromDesktop'))
+        return suite
+
+    class MyTestResult(runner.MyTextTestResult):
+        def addError(self, test, err):
+            super(LauncherRemoveFromDesktop.MyTestResult, self).addError(test, err)
+            global result
+            result = result and False
+
+        def addFailure(self, test, err):
+            super(LauncherRemoveFromDesktop.MyTestResult, self).addFailure(test, err)
+            global result
+            result = result and False
 
 if __name__ == "__main__":
-    unittest.TextTestRunner(resultclass=MyTestResult).run(suite())
+    unittest.TextTestRunner(resultclass=LauncherRemoveFromDesktop.MyTestResult).run(LauncherRemoveFromDesktop.suite())
