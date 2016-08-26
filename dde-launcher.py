@@ -21,6 +21,9 @@ from dde_launcher.testPkgNameSearch import LauncherPkgNameSearch
 from dde_launcher.testPunctuationSearch import LauncherPunctuationSearch
 from dde_launcher.testSpaceSearch import LauncherSpaceSearch
 from dde_launcher.testSortApp import LauncherSortApp
+from dde_launcher.testUninstall import LauncherUninstall
+from dde_launcher.testShotcuts import LauncherShotcuts
+
 
 def main():
     classes = []
@@ -42,6 +45,8 @@ def main():
     classes.append(LauncherPunctuationSearch)
     classes.append(LauncherSpaceSearch)
     classes.append(LauncherSortApp)
+    classes.append(LauncherUninstall)
+    classes.append(LauncherShotcuts)
 
     for c in classes:
         unittest.TextTestRunner(resultclass=c.MyTestResult).run(c.suite())
