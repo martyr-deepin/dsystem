@@ -23,8 +23,8 @@ homePath = os.path.expanduser('~')
 
 class Launcher:
     def __init__(self):
-    	self.launcherObj = root.application(appName='dde-launcher', description='/usr/bin/dde-launcher')
-    	#self.launcherApps = self.launcherObj.child('all',roleName='list').children
+        self.launcherObj = root.application(appName='dde-launcher', description='/usr/bin/dde-launcher')
+        #self.launcherApps = self.launcherObj.child('all',roleName='list').children
         
     def getDefaultDeepinApps(self):
         deepinApps = ['深度用户反馈', '深度终端', '深度启动盘制作工具', '深度商店', '深度云打印', 
@@ -67,6 +67,13 @@ class Launcher:
     def getAppSize(self,app):
         return self.launcherObj.child(app).size
 
+    def getAppCenterCoor(self,app):
+        size = self.getAppSize(app)
+        position = self.launcherObj.child(app).position
+        x = position[0]+size[0]/2
+        y = position[1]+size[1]/2
+        return x,y
+
     def dragAppToDockFree(self):
         self.freeMode()
         app = Dock().getLastItemName()
@@ -106,10 +113,10 @@ class Launcher:
             pyautogui.press('esc')
 
     def getLauncherMode(self):
-    	mode = subprocess.check_output(["gsettings get com.deepin.dde.launcher display-mode"],shell=True).decode().split("\n")
-    	mode = [ n for n in mode if len(n.strip()) > 0]
-    	mode = ''.join(mode)
-    	return mode
+        mode = subprocess.check_output(["gsettings get com.deepin.dde.launcher display-mode"],shell=True).decode().split("\n")
+        mode = [ n for n in mode if len(n.strip()) > 0]
+        mode = ''.join(mode)
+        return mode
 
     def freeMode(self):
         mode = self.getLauncherMode()
