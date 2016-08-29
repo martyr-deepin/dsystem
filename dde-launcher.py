@@ -25,6 +25,7 @@ from dde_launcher.testUninstall import LauncherUninstall
 from dde_launcher.testShotcuts import LauncherShotcuts
 from dde_launcher.testEnterKey import LauncherEnterKey
 from dde_launcher.testEscKey import LauncherEscKey
+from dde_launcher.testHideByClickDock import LauncherHideByClickDock
 
 
 def main():
@@ -51,6 +52,7 @@ def main():
     classes.append(LauncherShotcuts)
     classes.append(LauncherEnterKey)
     classes.append(LauncherEscKey)
+    classes.append(LauncherHideByClickDock)
 
     for c in classes:
         unittest.TextTestRunner(resultclass=c.MyTestResult).run(c.suite())

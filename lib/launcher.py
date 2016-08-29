@@ -132,6 +132,8 @@ class Launcher:
             if launcher != None:
                 self.launcherObj.child('mode-toggle-button').click()
                 self.exitLauncher()
+        elif mode == '\'category\'' and win != None:
+            self.launcherObj.child('mode-toggle-button').click()
         else:
             self.exitLauncher()
 
