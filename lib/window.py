@@ -7,7 +7,30 @@ from time import sleep
 gi.require_version('Wnck', '3.0')
 from gi.repository import Wnck
 
-def findWindow(windowname):
+FINDWINDOWDELAY = 5
+CLOSEWINDOWDELAY = 2
+
+def findWindow(windowname, mode="wait"):
+    if "wait" == mode:
+        delay = FINDWINDOWDELAY
+    else:
+        delay = CLOSEWINDOWDELAY
+
+    while True:
+        sleep(1)
+        delay = delay - 1
+        win = _findWindow(windowname)
+
+        if win != None and "wait" == mode:
+            return win
+
+        if None == win and "wait" != mode:
+            return win
+
+        if 0 == delay:
+            return win
+
+def _findWindow(windowname):
     screen = Wnck.Screen.get_default()
     screen.force_update()
 

@@ -20,7 +20,20 @@ resultfile = "./result.txt"
 k = PyKeyboard()
 m = PyMouse()
 
+MINIMUM_DURATION = 0.1
+MINIMUM_SLEEP = 0.05
+
 resolution = Display().screen().root.get_geometry()
+
+def getPointOnLine(x1, y1, x2, y2, n):
+    x = ((x2 - x1) * n) + x1
+    y = ((y2 - y1) * n) + y1
+    return (x, y)
+
+def linear(n):
+    if not 0.0 <= n <= 1.0:
+        raise ValueError('Argument must be between 0.0 and 1.0.')
+    return n
 
 def keySingle(key):
     k.press_key(key)
@@ -33,6 +46,42 @@ def keySingle(key):
 def keyTypeString(str):
     k.type_string(str)
     sleep(2)
+
+def mouseDrag(fromXY, toXY, duration=2, press=True, release=True):
+    steps = []
+
+    num_steps = int(duration / MINIMUM_SLEEP)
+    sleep_amount = duration / num_steps
+
+    steps = [
+        getPointOnLine(fromXY[0], fromXY[1], toXY[0], toXY[1], linear(n / num_steps))
+        for n in range(num_steps)
+    ]
+
+    steps.append((toXY[0], toXY[1]))
+
+    if True == press:
+        m.press(fromXY[0], fromXY[1])
+        sleep(1)
+
+    for lineX, lineY in steps:
+        sleep(sleep_amount)
+
+        lineX = int(round(lineX))
+        lineY = int(round(lineY))
+        m.move(lineX, lineY)
+
+    if True == release:
+        m.release(toXY[0], toXY[1])
+
+def mouseDragIconToDock(fromXY, toXY):
+    mouseDrag(fromXY, toXY, release=False)
+    mouseDrag(toXY, (toXY[0]+50, toXY[1]), press=False)
+
+def getDockIconCenterPoint(dockobj):
+    (x, y) = dockobj.position
+    (width, height) = dockobj.size
+    return (x + int(width/2), y + int(height/2))
 
 def getDdeDockObject(name = appname, description = appdescription):
     return root.application(name, description)
