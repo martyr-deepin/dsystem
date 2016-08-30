@@ -55,6 +55,7 @@ class Gedit(unittest.TestCase):
         toXY = utils.getDockIconCenterPoint(launcher_icon)
 
         utils.mouseDragIconToDock((int(fromXY[0]), int(fromXY[1])), toXY)
+        time.sleep(1)
         self.testGeditExistOnDock()
         time.sleep(1)
 
@@ -115,6 +116,10 @@ class Gedit(unittest.TestCase):
     def testGeditExistOnDock(self):
         try:
             icongedit = self.ddedockobject.child(self.gediticonname)
+            self.assertTrue(icongedit.size[0] > 1)
+            self.assertTrue(icongedit.size[1] > 1)
+            self.assertTrue(icongedit.position[0] > 1)
+            self.assertTrue(icongedit.position[1] > 1)
         except:
             self.assertTrue(False, "Icon Gedit doesn't exist on Dock")
 

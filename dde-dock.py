@@ -36,6 +36,7 @@ from ddedock.testDockSizeMediumOtherDirection import DockSizeMediumOtherDirectio
 from ddedock.testDockSizeSmallOtherDirection import DockSizeSmallOtherDirection
 
 from ddedock.testGedit import Gedit
+from ddedock.testDeepinScreenshot import DeepinScreenshot
 
 def main():
     # suite00 = ddedock.testFashionDefaultIcons.suite()
@@ -74,6 +75,7 @@ def main():
     classes.append(DockSizeSmallOtherDirection)
 
     classes.append(Gedit)
+    classes.append(DeepinScreenshot)
 
     for c in classes:
         suite = c.suite()
