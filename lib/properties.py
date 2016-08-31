@@ -4,6 +4,7 @@
 class dockClass(object):
     def __init__(self):
         self.mainwindowname = "dock-mainwindow"
+        self.dockmenuname = "DockMenu"
 
         self.dbus_dest      = "com.deepin.dde.daemon.Dock"
         self.dbus_objpath   = "/com/deepin/dde/daemon/Dock"
@@ -34,4 +35,9 @@ class dockClass(object):
         self.iconsize_medium = 36
         self.iconsize_large  = 48
 
+class desktopClass(object):
+    def __init__(self):
+        self.desktopmenuname = "DesktopMenu"
+
 dock = dockClass()
+

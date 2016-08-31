@@ -10,7 +10,7 @@ from gi.repository import Wnck
 FINDWINDOWDELAY = 5
 CLOSEWINDOWDELAY = 2
 
-def findWindow(windowname, mode="wait"):
+def findWindow(windowname, mode="wait", comparetype="equal"):
     if "wait" == mode:
         delay = FINDWINDOWDELAY
     else:
@@ -19,7 +19,7 @@ def findWindow(windowname, mode="wait"):
     while True:
         sleep(1)
         delay = delay - 1
-        win = _findWindow(windowname)
+        win = _findWindow(windowname, comparetype)
 
         if win != None and "wait" == mode:
             return win
@@ -30,15 +30,21 @@ def findWindow(windowname, mode="wait"):
         if 0 == delay:
             return win
 
-def _findWindow(windowname):
+def _findWindow(windowname, comparetype):
     screen = Wnck.Screen.get_default()
     screen.force_update()
 
     for win in screen.get_windows():
-        if windowname == win.get_name():
-            screen = None
-            Wnck.shutdown()
-            return win
+        if "equal" == comparetype:
+            if windowname == win.get_name():
+                screen = None
+                Wnck.shutdown()
+                return win
+        else:
+            if windowname in win.get_name():
+                screen = None
+                Wnck.shutdown()
+                return win
 
     screen = None
     win = None
