@@ -2,13 +2,15 @@
 
 
 # prepare the enviroment
-## install dogtail
-download from https://github.com/wangyingtaodeepin/dogtail
-> sudo python3 setup.py install
-
 ## install packages
 > sudo apt-get install python3-pyatspi python3-pip python3-setuptools libwnck-3-dev  python3-tk
 > sudo pip3 install PyUserInput pyautogui pexpect
+
+## install dogtail
+download from https://github.com/wangyingtaodeepin/dogtail
+> git clone https://github.com/wangyingtaodeepin/dogtail
+> cd dogtail
+> sudo python3 setup.py install
 
 ## enable accessibility with sniff or by running:
 > gsettings set org.gnome.desktop.interface toolkit-accessibility true
