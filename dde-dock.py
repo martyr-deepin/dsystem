@@ -37,6 +37,7 @@ from ddedock.testDockSizeSmallOtherDirection import DockSizeSmallOtherDirection
 
 from ddedock.testGedit import Gedit
 from ddedock.testDeepinScreenshot import DeepinScreenshot
+from ddedock.testGoogleChrome import GoogleChrome
 
 def main():
     # suite00 = ddedock.testFashionDefaultIcons.suite()
@@ -76,6 +77,7 @@ def main():
 
     classes.append(Gedit)
     classes.append(DeepinScreenshot)
+    classes.append(GoogleChrome)
 
     for c in classes:
         suite = c.suite()
