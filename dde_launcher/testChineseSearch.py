@@ -37,10 +37,10 @@ class LauncherChineseSearch(unittest.TestCase):
         launcher.searchApp(self.text2)
         sleep(2)
         apps = launcher.getLauncherAllApps()
-        apps = ''.join(apps)
+        #apps = ''.join(apps)
         sleep(2)
         launcher.exitLauncher()
-        self.assertEqual(self.text1, apps)
+        self.assertIn(self.text1, apps)
 
 
     def suite():

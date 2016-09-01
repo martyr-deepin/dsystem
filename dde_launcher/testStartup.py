@@ -17,6 +17,7 @@ class LauncherStartupApp(unittest.TestCase):
         cls.terminalName = '深度终端'
         cls.geditName = '无标题文档 1 - gedit'
         cls.oldWindows = getAllWindows()
+        launcher.freeMode()
 
     @classmethod
     def tearDownClass(cls):

@@ -103,9 +103,9 @@ class Launcher:
 
     def dragAppToDockCategory(self,listName):
         self.categoryMode()
+        self.checkLableKids('chat')
         app = Dock().getLastItemName()
         app_coor = Dock().getAppCoor(app)
-        pyautogui.press('winleft')
         launcher = findWindow('dde-launcher')
         if launcher != None:
             QQName = self.launcherObj.child(listName,roleName='list').children[0].name

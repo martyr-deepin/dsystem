@@ -59,7 +59,7 @@ class LauncherPinyinSearch(unittest.TestCase):
         launcher.searchApp(self.text4)
         sleep(2)
         apps = launcher.getLauncherAllApps()
-        apps = ''.join(apps)
+        #apps = ''.join(apps)
         sleep(2)
         launcher.exitLauncher()
         self.assertNotIn(self.appName, apps)

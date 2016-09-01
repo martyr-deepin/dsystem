@@ -19,6 +19,7 @@ class LauncherAddToDock(unittest.TestCase):
         dockApps = Dock().getAllDockApps()
         if 'google-chrome' in dockApps:
             Dock().unDockApp(cls.googleName)
+        launcher.freeMode()
 
     @classmethod
     def tearDownClass(cls):
