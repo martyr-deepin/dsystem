@@ -14,10 +14,14 @@ class LauncherShotcuts(unittest.TestCase):
         cls.caseid = '33859'
         cls.casename = "all-523:右键菜单快捷键测试"
         cls.menuObj = root.application(appName='deepin-menu', description='/usr/lib/deepin-menu')
+        launcher.categoryMode()
         cls.appObj = launcher.launcherObj.child('internet',roleName='list').children[0]
         cls.googleTitleName = '打开新的标签页 - Google Chrome'
         cls.appDesktopName = 'google-chrome.desktop'
         cls.oldWindows = getAllWindows()
+        dockApps = Dock().getAllDockApps()
+        if 'google-chrome' in dockApps:
+            Dock().unDockApp('Google Chrome')
 
     @classmethod
     def tearDownClass(cls):
@@ -35,7 +39,7 @@ class LauncherShotcuts(unittest.TestCase):
                 raise Exception('Launcher Menu did not opened!')
         #remove from dock
         dockApps = Dock().getAllDockApps()
-        if 'google-chrome' in dockApps:
+        if 'google-chrome' not in dockApps:
             launcher.launcherObj.child('internet',roleName='list').children[0].click(3)
             if cls.menuObj.children[0].name == 'DesktopMenu':
                 pyautogui.press('down')
@@ -51,7 +55,7 @@ class LauncherShotcuts(unittest.TestCase):
         cls.newWindows = getAllWindows()
         if len(cls.newWindows) - len(cls.oldWindows) == 1: 
             cls.newWindows[-1].close(1)
-
+        launcher.freeMode()
     
     def testOpen(self):
         pyautogui.press('winleft')

@@ -22,9 +22,6 @@ class LauncherSortApp(unittest.TestCase):
     def tearDownClass(cls):
         global result
         utils.commitresult(cls.caseid, result)
-        cls.newWindows = getAllWindows()
-        if len(cls.newWindows) - len(cls.oldWindows) == 1: 
-            cls.newWindows[-1].close(1)
         kids = launcher.getKidsCategory('development')
         if 'Robomongo' in kids:
             launcher.removeApp(cls.installAppName)

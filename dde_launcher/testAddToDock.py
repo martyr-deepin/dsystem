@@ -16,6 +16,9 @@ class LauncherAddToDock(unittest.TestCase):
         cls.caseid = '33840'
         cls.casename = 'all-518:添加到任务栏'
         cls.googleName = 'Google Chrome'
+        dockApps = Dock().getAllDockApps()
+        if 'google-chrome' in dockApps:
+            Dock().unDockApp(cls.googleName)
 
     @classmethod
     def tearDownClass(cls):

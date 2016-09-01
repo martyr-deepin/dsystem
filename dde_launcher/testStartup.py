@@ -27,6 +27,7 @@ class LauncherStartupApp(unittest.TestCase):
         if len(cls.newWindows) - len(cls.oldWindows) == 3: 
             for win in cls.newWindows[-3:]:
                 win.close(1)
+        launcher.freeMode()
         
     
     def testSartupByRightKey(self):
@@ -53,8 +54,9 @@ class LauncherStartupApp(unittest.TestCase):
 
 
     def testStartupByLeftKey(self):
-        pyautogui.press('winleft')
-        launcher.launcherObj.child('文本编辑器').click()
+        launcher.checkLableKids('office')
+        geditCoor = launcher.getAppCenterCoorCategory('office',3)
+        pyautogui.click(geditCoor) 
         win = getWindowName()
         self.assertEqual(self.geditName, win)
 

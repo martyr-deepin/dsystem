@@ -13,7 +13,9 @@ class LauncherEscKey(unittest.TestCase):
         cls.caseid = '33931'
         cls.casename = "all-538:ESC隐藏启动器"
         cls.menuObj = root.application(appName='deepin-menu', description='/usr/lib/deepin-menu')
-        cls.googleName = 'Google Chrome'
+        apps = launcher.getLauncherAllApps()
+        cls.appName = apps[17]
+        print ('Ready to click right key in %s' % cls.appName)
 
     @classmethod
     def tearDownClass(cls):
@@ -30,7 +32,7 @@ class LauncherEscKey(unittest.TestCase):
 
     def testQuitLauncherMenu(self):
         launcher.openLauncher()
-        launcher.launcherObj.child(self.googleName).click(3)
+        launcher.launcherObj.child(self.appName).click(3)
         if len(self.menuObj.children) > 0:
             pyautogui.press('esc')
         self.assertEqual(len(self.menuObj.children), 0)

@@ -27,8 +27,8 @@ class Launcher:
         #self.launcherApps = self.launcherObj.child('all',roleName='list').children
         
     def getDefaultDeepinApps(self):
-        deepinApps = ['深度用户反馈', '深度终端', '深度启动盘制作工具', '深度商店', '深度云打印', 
-                        '深度截图', '深度音乐', '远程协助', '多任务视图', '显示桌面', '控制中心']
+        deepinApps = ['深度用户反馈', '深度终端', '深度云打印', '深度启动盘制作工具', '深度商店', '深度影院', 
+                        '深度截图', '深度音乐', '日历', '文件管理器', '远程协助', '多任务视图', '显示桌面', '控制中心']
         return deepinApps
 
     def getShenduApps(self):
@@ -75,6 +75,15 @@ class Launcher:
     def getAppCenterCoor(self,app):
         size = self.getAppSize(app)
         position = self.launcherObj.child(app).position
+        x = position[0]+size[0]/2
+        y = position[1]+size[1]/2
+        return x,y
+
+    def getAppCenterCoorCategory(self,lst,index):
+        kids = self.launcherObj.child(lst,roleName='list').children
+        kid = kids[index]
+        position = kid.position
+        size = kid.size
         x = position[0]+size[0]/2
         y = position[1]+size[1]/2
         return x,y

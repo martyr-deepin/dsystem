@@ -30,10 +30,10 @@ class LauncherPkgNameSearch(unittest.TestCase):
         launcher.searchApp(self.text1)
         sleep(2)
         apps = launcher.getLauncherAllApps()
-        apps = ''.join(apps)
+        #apps = ''.join(apps)
         sleep(2)
         launcher.exitLauncher()
-        self.assertEqual(self.appName1, apps)
+        self.assertIn(self.appName1, apps)
 
     def testPkgNameSearch2(self):
         launcher.searchApp(self.text2)
