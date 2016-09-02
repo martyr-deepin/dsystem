@@ -24,7 +24,7 @@ class LauncherUninstall(unittest.TestCase):
         launcher.exitLauncher()
     
     def testNotUninstall(self):
-        pyautogui.press('winleft')
+        launcher.openLauncher()
         launcher.launcherObj.child(self.appName).click(3)
         if self.menuObj.children[0].name == 'DesktopMenu':
             for i in range(5):

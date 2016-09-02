@@ -27,7 +27,7 @@ class Launcher:
         #self.launcherApps = self.launcherObj.child('all',roleName='list').children
         
     def getDefaultDeepinApps(self):
-        deepinApps = ['深度用户反馈', '深度终端', '深度云打印', '深度启动盘制作工具', '深度商店', '深度影院', 
+        deepinApps = ['深度用户反馈', '深度看图', '深度终端', '深度云打印', '深度启动盘制作工具', '深度商店', '深度影院', 
                         '深度截图', '深度音乐', '日历', '文件管理器', '远程协助', '多任务视图', '显示桌面', '控制中心']
         return deepinApps
 
@@ -111,7 +111,7 @@ class Launcher:
             QQName = self.launcherObj.child(listName,roleName='list').children[0].name
             icon_coor = self.getIconCoorCategory('chat')
             pyautogui.mouseDown(icon_coor[0], icon_coor[1], duration=2, pause=1)
-            pyautogui.moveTo(app_coor[0], app_coor[1], duration=2, pause=1)
+            pyautogui.moveTo(app_coor[0]-1, app_coor[1]-1, duration=2, pause=1)
             pyautogui.mouseUp(app_coor[0], app_coor[1], duration=0.5)
             self.exitLauncher()
 
@@ -403,7 +403,7 @@ def getWindowName():
         Wnck.shutdown()
 
 def getDesktopFiles():
-    desktopPath = homePath + '/桌面'
+    desktopPath = homePath + '/Desktop'
     desktopFile = subprocess.check_output(["ls " + desktopPath],shell=True).decode().split("\n")
     files = [ n for n in desktopFile if len(n.strip()) > 0]
     return files
