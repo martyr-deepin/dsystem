@@ -18,6 +18,7 @@ class LauncherSpaceSearch(unittest.TestCase):
         cls.text2 = 'deepin   '
         cls.text3 = 'deepin music'
         cls.text4 = 'deepin   music'
+        cls.defaultApps = launcher.getLauncherAllApps()
 
 
     @classmethod
@@ -31,10 +32,10 @@ class LauncherSpaceSearch(unittest.TestCase):
         launcher.searchApp(self.text1)
         sleep(2)
         apps = launcher.getLauncherAllApps()
-        apps = ''.join(apps)
+        #apps = ''.join(apps)
         sleep(2)
         launcher.exitLauncher()
-        self.assertEqual('', apps)
+        self.assertListEqual(apps, self.defaultApps)
 
     def testSpaceSearch2(self):
         deepinApps = launcher.getDefaultDeepinApps()

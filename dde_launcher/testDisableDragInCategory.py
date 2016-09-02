@@ -23,7 +23,7 @@ class LauncherDisable(unittest.TestCase):
     def testDisableDrag(self):
         launcher.disableDrag()
         internet = launcher.launcherObj.child('internet', roleName='list').children[0].name
-        new_music = launcher.launcherObj.child('music', roleName='list').children[0].name
+        new_music = launcher.launcherObj.child('video', roleName='list').children[0].name
         self.assertNotEqual(internet,new_music)
 
     def suite():

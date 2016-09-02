@@ -223,7 +223,7 @@ class Launcher:
         if win == None:
             pyautogui.press('winleft')
             googleCoor = self.getIconCoorCategory('internet')
-            musicCoor = self.getIconCoorCategory('music')
+            musicCoor = self.getIconCoorCategory('video')
             pyautogui.mouseDown(googleCoor)
             pyautogui.dragTo(musicCoor, duration=2)
             self.exitLauncher()
