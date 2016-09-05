@@ -39,6 +39,11 @@ from ddedock.testGedit import Gedit
 from ddedock.testDeepinScreenshot import DeepinScreenshot
 from ddedock.testGoogleChrome import GoogleChrome
 
+from ddedock.testDockIconMenuName import DockIconMenuName
+from ddedock.testDockIconMenuMultiClose import DockIconMenuMultiClose
+from ddedock.testDockIconMenu import DockIconMenu
+from ddedock.testDockIconMenuRemove import DockIconMenuRemove
+
 def main():
     # suite00 = ddedock.testFashionDefaultIcons.suite()
     # suite01 = ddedock.testEfficientDefaultIcons.suite()
@@ -78,6 +83,11 @@ def main():
     classes.append(Gedit)
     classes.append(DeepinScreenshot)
     classes.append(GoogleChrome)
+
+    classes.append(DockIconMenuName)
+    classes.append(DockIconMenuMultiClose)
+    classes.append(DockIconMenu)
+    classes.append(DockIconMenuRemove)
 
     for c in classes:
         suite = c.suite()

@@ -89,7 +89,7 @@ class DeepinScreenshot(unittest.TestCase):
 
     def testOpenDeepinScreenshotFullScreen(self):
         home = os.path.expanduser("~")
-        desktoppath = home + "/桌面"
+        desktoppath = home + "/Desktop"
 
         pngscreen = glob.glob(desktoppath + "/深度截图*.png")
 
@@ -126,7 +126,7 @@ class DeepinScreenshot(unittest.TestCase):
         max_delay = 10
 
         home = os.path.expanduser("~")
-        desktoppath = home + "/桌面"
+        desktoppath = home + "/Desktop"
 
         pngscreen = glob.glob(desktoppath + "/深度截图*.png")
 
