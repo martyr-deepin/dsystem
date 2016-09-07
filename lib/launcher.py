@@ -63,6 +63,9 @@ class Launcher:
             kids.append(apps[i].name)
         return kids
 
+    def getAppObj(self,app):
+        return self.launcherObj.child(app)
+
     def getLauncherAllApps(self):
         apps = []
         for i in range(len(self.launcherObj.child('all',roleName='list').children)):
