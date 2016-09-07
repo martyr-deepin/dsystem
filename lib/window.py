@@ -93,11 +93,13 @@ class WindowError(Exception):
         return repr(self.value)
 
 class WindowState(object):
-    def __init__(self, name):
+    def __init__(self, name, mode="wait", comparetype="equal"):
         self.name = name
+        self.mode = mode
+        self.comparetype = comparetype
 
     def getWindow(self):
-        win = findWindow(self.name)
+        win = findWindow(self.name, self.mode, self.comparetype)
 
         if None == win:
             raise WindowError("Can't find the window name: %s" % self.name)
