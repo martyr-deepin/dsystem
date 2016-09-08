@@ -9,7 +9,7 @@ from pymouse import PyMouse
 import dbus
 from time import sleep
 
-from lib.properties import dock
+from lib.properties import dock, desktop
 from lib.window     import *
 from lib.dockmenu import dockmenu
 

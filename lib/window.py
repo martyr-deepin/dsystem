@@ -52,6 +52,28 @@ def _findWindow(windowname, comparetype):
 
     return None
 
+def findWindowList(windowname, comparetype="equal"):
+    screen = Wnck.Screen.get_default()
+    screen.force_update()
+
+    winlist = []
+
+    for win in screen.get_windows():
+        if "equal" == comparetype:
+            if windowname == win.get_name():
+                winlist.append(win)
+        else:
+            if windowname in win.get_name():
+                winlist.append(win)
+
+    screen = None
+    Wnck.shutdown()
+
+    if len(winlist) > 0:
+        return winlist
+
+    return None
+
 def closeWindow(win):
     win.close(time.time())
     sleep(2)
@@ -63,3 +85,59 @@ def resizeWindow(win, x, y, width, height):
     win.set_geometry(Wnck.WindowGravity.CURRENT, Wnck.WindowMoveResizeMask.HEIGHT, 0, 0, 0, height)
     sleep(2)
 
+class WindowError(Exception):
+    def __init__(self, value):
+        self.value = value
+
+    def __str__(self):
+        return repr(self.value)
+
+class WindowState(object):
+    def __init__(self, name, mode="wait", comparetype="equal"):
+        self.name = name
+        self.mode = mode
+        self.comparetype = comparetype
+
+    def getWindow(self):
+        win = findWindow(self.name, self.mode, self.comparetype)
+
+        if None == win:
+            raise WindowError("Can't find the window name: %s" % self.name)
+
+        return win
+
+    def is_maximized(self):
+        win = self.getWindow()
+        return win.is_maximized()
+
+    def is_minimized(self):
+        win = self.getWindow()
+        return win.is_minimized()
+
+    def is_fullscreen(self):
+        win = self.getWindow()
+        return win.is_fullscreen()
+
+    def is_active(self):
+        win = self.getWindow()
+        return win.is_active()
+
+    def maximize(self):
+        win = self.getWindow()
+        return win.maximize()
+
+    def minimize(self):
+        win = self.getWindow()
+        return win.minimize()
+
+    def unminimize(self):
+        win = self.getWindow()
+        return win.unminimize(time.time())
+
+    def activate(self):
+        win = self.getWindow()
+        return win.activate(time.time())
+
+    def close(self):
+        win = self.getWindow()
+        win.close(time.time())

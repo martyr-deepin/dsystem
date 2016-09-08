@@ -40,4 +40,4 @@ class desktopClass(object):
         self.desktopmenuname = "DesktopMenu"
 
 dock = dockClass()
-
+desktop = desktopClass()
