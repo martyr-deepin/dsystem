@@ -27,8 +27,8 @@ class Launcher:
         #self.launcherApps = self.launcherObj.child('all',roleName='list').children
         
     def getDefaultDeepinApps(self):
-        deepinApps = ['深度用户反馈', '深度看图', '深度终端', '深度云打印', '深度启动盘制作工具', '深度商店', '深度影院', 
-                        '深度截图', '深度音乐', '日历', '文件管理器', '远程协助', '多任务视图', '显示桌面', '控制中心']
+        deepinApps = ['深度用户反馈', '深度看图', '深度终端', '深度云打印', '深度云扫描', '深度启动盘制作工具', '深度商店', '深度影院', 
+                        '深度截图', '深度音乐', '日历', '深度文件管理器', '远程协助', '多任务视图', '显示桌面', '控制中心']
         return deepinApps
 
     def getShenduApps(self):
@@ -321,8 +321,8 @@ class Launcher:
         try:
 
             c = pexpect.spawnu('sudo apt-get -y install ' + app)
-            c.expect('sudo', timeout=10)
-            c.sendline(passwd+'\n')
+            #c.expect('sudo', timeout=10)
+            #c.sendline(passwd+'\n')
             c.expect('$', timeout=300)
             c.interact()
         except Exception as e:
@@ -340,8 +340,8 @@ class Launcher:
         try:
 
             c = pexpect.spawnu('sudo apt-get -y remove ' + app)
-            c.expect('sudo', timeout=10)
-            c.sendline(passwd+'\n')
+            #c.expect('sudo', timeout=10)
+            #c.sendline(passwd+'\n')
             c.expect('$', timeout=300)
             c.interact()
         except Exception as e:
