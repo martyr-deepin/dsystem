@@ -32,7 +32,8 @@ class LauncherStartupApp(unittest.TestCase):
         
     
     def testSartupByRightKey(self):
-        pyautogui.press('winleft')
+        launcher.searchApp('Google Chrome')
+        sleep(2)
         launcher.launcherObj.child('Google Chrome').click(3)
         if self.menuObj.children[0].name == 'DesktopMenu':
             pyautogui.press('down')
@@ -44,7 +45,8 @@ class LauncherStartupApp(unittest.TestCase):
 
 
     def testStartupByShortcuts(self):
-        pyautogui.press('winleft')
+        launcher.searchApp('deepin-terminal')
+        sleep(2)
         launcher.launcherObj.child('深度终端').click(3)
         if self.menuObj.children[0].name == 'DesktopMenu':
             pyautogui.press('o')

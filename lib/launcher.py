@@ -349,14 +349,14 @@ class Launcher:
             print (e)
 
     def checkLableKids(self,label):
-        pyautogui.press('winleft')
+        self.openLauncher()
         mode = self.getLauncherMode()
         if mode == '\'free\'':
             self.launcherObj.child('mode-toggle-button').click()
         self.launcherObj.child(label).click()
 
     def searchApp(self,char):
-        pyautogui.press('winleft')
+        self.openLauncher()
         self.launcherObj.child('search-edit').text = char
 
     def pasteMsgInLauncher(self,msg):
