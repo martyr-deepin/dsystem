@@ -13,13 +13,13 @@ class FilesystemNtfs(unittest.TestCase):
     def setUpClass(cls):
         cls.caseid = '42903'
         cls.casename = 'all-1995:读写ntfs格式的文件'
-        mkextx('ntfs','sda4')
+        mkextx('ntfs')
 
     @classmethod
     def tearDownClass(cls):
         global result
         utils.commitresult(cls.caseid, result)
-        chroot('umount /mnt','exit')
+        chroot('sudo rm -rf /mnt/*', 'sudo umount /mnt')
 
     def testTxt(self):
         mntFiles = glob('/mnt/*')

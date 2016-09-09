@@ -13,13 +13,13 @@ class FilesystemXfs(unittest.TestCase):
     def setUpClass(cls):
         cls.caseid = '71136'
         cls.casename = 'all-2694:读写xfs格式的文件'
-        mkextx('xfs','sda4')
+        mkextx('xfs')
 
     @classmethod
     def tearDownClass(cls):
         global result
         utils.commitresult(cls.caseid, result)
-        chroot('rm -rf /mnt/*','umount /mnt','exit')
+        chroot('rm -rf /mnt/*','umount /mnt')
 
     def testTxt(self):
         mntFiles = glob('/mnt/*')

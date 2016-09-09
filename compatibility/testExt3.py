@@ -13,13 +13,13 @@ class FilesystemExt3(unittest.TestCase):
     def setUpClass(cls):
         cls.caseid = '42895'
         cls.casename = 'all-1994:读写ext3格式的文件'
-        mkextx('ext3','sda4')
+        mkextx('ext3')
 
     @classmethod
     def tearDownClass(cls):
         global result
         utils.commitresult(cls.caseid, result)
-        chroot('rm -rf /mnt/*','umount /mnt','exit')
+        chroot('sudo rm -rf /mnt/*','sudo umount /mnt')
 
     def testTxt(self):
         mntFiles = glob('/mnt/*')
