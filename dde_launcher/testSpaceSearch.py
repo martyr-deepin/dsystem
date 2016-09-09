@@ -18,6 +18,8 @@ class LauncherSpaceSearch(unittest.TestCase):
         cls.text2 = 'deepin   '
         cls.text3 = 'deepin music'
         cls.text4 = 'deepin   music'
+        launcher.openLauncher()
+        launcher.exitLauncher()
         cls.defaultApps = launcher.getLauncherAllApps()
 
 
