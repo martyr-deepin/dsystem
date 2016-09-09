@@ -15,8 +15,8 @@ class DockIconMenuMultiClose(unittest.TestCase):
     def setUpClass(cls):
         cls.caseid = '33451'
         cls.casename = "all-443:关闭所有"
-        cls.filemanagericonname = "文件管理器"
-        cls.filemanagerwindowname = "文件管理器"
+        cls.filemanagericonname = "深度文件管理器"
+        cls.filemanagerwindowname = "深度文件管理器"
         cls.ddedockobject = utils.getDdeDockObject()
 
         if utils.dock.displaymode_fashion != utils.getDdeDockDisplayMode():

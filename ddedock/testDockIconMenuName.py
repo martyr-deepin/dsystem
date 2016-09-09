@@ -15,8 +15,8 @@ class DockIconMenuName(unittest.TestCase):
     def setUpClass(cls):
         cls.caseid = '33447'
         cls.casename = "all-442:第一项菜单"
-        cls.filemanagericonname = "文件管理器"
-        cls.filemanagerwindowname = "文件管理器"
+        cls.filemanagericonname = "深度文件管理器"
+        cls.filemanagerwindowname = "深度文件管理器"
         cls.ddedockobject = utils.getDdeDockObject()
 
         if utils.dock.displaymode_fashion != utils.getDdeDockDisplayMode():

@@ -16,8 +16,8 @@ class DockMenuRU(unittest.TestCase):
     def setUpClass(cls):
         cls.caseid = '33485'
         cls.casename = "all-450:右键菜单快捷键测试"
-        cls.filemanagericonname = "文件管理器"
-        cls.filemanagerwindowname = "文件管理器"
+        cls.filemanagericonname = "深度文件管理器"
+        cls.filemanagerwindowname = "深度文件管理器"
         cls.filemanagerlauncher = "dde-file-manager"
         cls.ddedockobject = utils.getDdeDockObject()
 
