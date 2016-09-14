@@ -48,3 +48,14 @@ class Dock:
 		center_coor = pyautogui.size()
 		pyautogui.mouseDown(app_coor, duration=2, pause=1)
 		pyautogui.dragTo(center_coor[0]/2, center_coor[1]/2, duration=2)
+
+	def dragInDock(self,src,dest):
+		srcCoor = self.getAppCoor(src)
+		destCoor = self.getAppCoor(dest)
+		mouseDrag(srcCoor,destCoor)
+
+
+def mouseDrag(s,d):
+	pyautogui.mouseDown(s,pause=1)
+	pyautogui.moveTo(d,duration=1)
+	pyautogui.mouseUp(d)

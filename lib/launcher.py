@@ -91,24 +91,26 @@ class Launcher:
         y = position[1]+size[1]/2
         return x,y
 
-    def dragAppToDockFree(self):
-        self.freeMode()
+    def dragAppToDockFree(self,lapp,quit=True):
+        #self.freeMode()
         app = Dock().getLastItemName()
         app_coor = Dock().getAppCoor(app)
-        pyautogui.press('winleft')
+        self.openLauncher()
         launcher = findWindow('dde-launcher')
         if launcher != None:
-            icon_coor = self.getIconCoorFree('QQ')
+            icon_coor = self.getIconCoorFree(lapp)
             pyautogui.mouseDown(icon_coor[0], icon_coor[1])
-            pyautogui.moveTo(app_coor[0]-1, app_coor[1]-1, duration=2, pause=1)
+            pyautogui.moveTo(app_coor[0]-2, app_coor[1]-2, duration=2, pause=1)
             pyautogui.mouseUp(app_coor[0], app_coor[1], duration=1)
-            self.exitLauncher()
+            if quit == True:
+                self.exitLauncher()
 
     def dragAppToDockCategory(self,listName):
-        self.categoryMode()
+        #self.categoryMode()
         self.checkLableKids('chat')
         app = Dock().getLastItemName()
         app_coor = Dock().getAppCoor(app)
+        self.openLauncher()
         launcher = findWindow('dde-launcher')
         if launcher != None:
             QQName = self.launcherObj.child(listName,roleName='list').children[0].name
@@ -160,7 +162,8 @@ class Launcher:
                 self.exitLauncher()
 
     def dragSrcToDest(self, s, d, btn='left'):
-        pyautogui.press('winleft')
+        #pyautogui.press('winleft')
+        self.openLauncher()
         launcher = findWindow('dde-launcher')
         if launcher != None:
             apps = self.getLauncherAllApps()

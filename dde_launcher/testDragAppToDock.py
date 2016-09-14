@@ -25,11 +25,13 @@ class LauncherDragAppToDock(unittest.TestCase):
 
 
     def testDragToDockFree(self):
-        launcher.dragAppToDockFree()
+        launcher.freeMode()
+        launcher.dragAppToDockFree('QQ',quit=True)
         self.assertIn(self.qqName,Dock().getAllDockApps())
 
     def testDragToDockCategory(self):
         launcher.unDock()
+        launcher.categoryMode()
         launcher.dragAppToDockCategory('chat')
         self.assertIn(self.qqName,Dock().getAllDockApps())
 
