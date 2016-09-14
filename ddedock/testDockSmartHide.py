@@ -65,7 +65,7 @@ class DockSmartHide(unittest.TestCase):
         self.assertTrue(hidemode == utils.dock.hidemode_smarthide)
         time.sleep(2)
         win = utils.findWindow(self.filemanager_windowname)
-        utils.resizeWindow(win, width + 1, height + 1, utils.resolution.width - 2*height -2, utils.resolution.height - 2*height -2)
+        utils.resizeWindow(win, height + 1, height + 1, utils.resolution.width - 2*height -20, utils.resolution.height - 2*height -20)
         self.assertTrue(win != None)
 
     def testMaximizeFileManager(self):

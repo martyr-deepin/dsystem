@@ -57,8 +57,8 @@ class EfficientDockSizeLarge(unittest.TestCase):
             calculate_iconsize_y = int(dbus_iconsize * 1.2)
             calculate_iconsize_x = int(calculate_iconsize_y * 1.4)
 
-        self.assertEquals((calculate_iconsize_x, calculate_iconsize_y),
-                          launcher.size)
+        self.assertTrue(abs(calculate_iconsize_x - launcher.size[0]) <= 3)
+        self.assertTrue(abs(calculate_iconsize_y - launcher.size[1]) <= 3)
 
     def testIconSizeLarge(self):
         launcher = self.ddedockobject.child("Launcher")

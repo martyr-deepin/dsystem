@@ -15,7 +15,7 @@ class DockIconMenu(unittest.TestCase):
         cls.caseid = '33454'
         cls.casename = "all-444:驻留"
         cls.terminaliconname = "深度终端"
-        cls.terminalwindowname = "deepin-terminal"
+        cls.terminalwindowname = "deepin - 深度终端"
         cls.ddedockobject = utils.getDdeDockObject()
 
         if utils.dock.displaymode_fashion != utils.getDdeDockDisplayMode():
