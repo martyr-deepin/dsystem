@@ -19,8 +19,8 @@ class DockKeepHiddenOtherDirection(unittest.TestCase):
         cls.defaultposition = utils.getDdeDockPosition()
         cls.defaulthidemode = utils.getDdeDockHideMode()
         cls.dock_mainwindow = "dock-mainwindow"
-        cls.filemanager = "文件管理器"
-        cls.filemanager_windowname = "文件管理器"
+        cls.filemanager = "深度文件管理器"
+        cls.filemanager_windowname = "深度文件管理器"
 
         if utils.dock.displaymode_fashion != cls.defaultdisplaymode:
             utils.setDdeDockDisplayMode(utils.dock.displaymode_fashion)

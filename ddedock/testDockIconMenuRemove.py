@@ -16,8 +16,8 @@ class DockIconMenuRemove(unittest.TestCase):
     def setUpClass(cls):
         cls.caseid = '33458'
         cls.casename = "all-445:移除驻留"
-        cls.filemanagericonname = "文件管理器"
-        cls.filemanagerwindowname = "文件管理器"
+        cls.filemanagericonname = "深度文件管理器"
+        cls.filemanagerwindowname = "深度文件管理器"
         cls.filemanagerlauncher = "dde-file-manager"
         cls.ddedockobject = utils.getDdeDockObject()
 
