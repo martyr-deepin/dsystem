@@ -13,13 +13,13 @@ class FilesystemBtrfs(unittest.TestCase):
     def setUpClass(cls):
         cls.caseid = '71122'
         cls.casename = 'all-2692:读写btrfs格式的文件'
-        mkextx('bfs','sda4')
+        mkextx('bfs')
 
     @classmethod
     def tearDownClass(cls):
         global result
         utils.commitresult(cls.caseid, result)
-        chroot('umount /mnt','exit')
+        chroot('sudo rm -rf /mnt/*', 'sudo umount /mnt')
 
     def testTxt(self):
         mntFiles = glob('/mnt/*')

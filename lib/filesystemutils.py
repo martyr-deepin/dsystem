@@ -1,50 +1,46 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 
-import pexpect
+import subprocess
+import configparser
 
-mypasswd = 'a'
-cmdlist = ['touch /mnt/a.txt','mkdir /mnt/中文','mkdir /mnt/test','mkdir /mnt/中文test', 
+
+cmdlist = ['touch /mnt/a.txt','mkdir /mnt/中文','sudo mkdir /mnt/test','mkdir /mnt/中文test', 
             'touch /mnt/中文/中文.txt','touch /mnt/中文/test.txt','touch /mnt/中文/中文test.txt', 
             'touch /mnt/test/中文.txt','touch /mnt/test/test.txt','touch /mnt/test/中文test.txt', 
             'touch /mnt/中文test/中文.txt','touch /mnt/中文test/test.txt','touch /mnt/中文test/中文test.txt']
 
-def mkextx(ext,sda,*rootcmds):
-    if ext == 'xfs':
-        cmd1 = 'mkfs.' + ext + ' /dev/' + sda + ' -f'
-    else:
-        cmd1 = 'mkfs.' + ext + ' /dev/' + sda
-    cmd2 = 'mount /dev/' + sda + ' /mnt'
-    c = pexpect.spawnu('sudo su - root')
-    c.expect('sudo')
-    c.sendline(mypasswd)
-    c.expect('root')
-    c.sendline(cmd1)
-    c.expect('#')
-    c.sendline('y')
-    c.expect('root', timeout=60)
-    c.sendline(cmd2)
-    print(c.before)
-    c.expect('root', timeout=60)
-    print(c.before)
-    rootcmds = cmdlist
-    for rootcmd in rootcmds:
-        c.sendline(rootcmd)
-        c.expect('root', timeout=60)
-        print(c.before)
-    c.sendline('ls -R /mnt')
-    c.expect('root')
-    c.sendline('exit')
-    c.interact()
+def getDevInfo(section,part):
+    config = configparser.ConfigParser()
+    config.read('dev.info')
+    info = config[section][part]
+    return info
 
+def mkextx(ext,*rootcmds):
+    sda = getDevInfo('partition','name')
+    print('need format: %s' % sda)
+    if ext == 'xfs' or ext == 'reiserfs':
+        cmd1 = 'sudo mkfs.' + ext + ' ' + sda + ' -f'
+    elif ext == 'vfat':
+        cmd1 = 'sudo mkfs.' + ext + ' ' + sda
+    else:
+        cmd1 = 'sudo mkfs.' + ext + ' -F ' + sda
+    cmd2 = 'sudo mount ' + sda + ' /mnt'
+    print('cmd1 = %s' % cmd1)
+    print('cmd2 = %s' % cmd2)
+    subprocess.check_call(cmd1,shell=True)
+    subprocess.check_call(cmd2,shell=True)
+    rootcmds = cmdlist
+    output = subprocess.getoutput("df -hl /dev/sda4 |awk 'END{print $NF}'")
+    print(output)
+    if output == '/mnt':
+        for rootcmd in rootcmds:
+           subprocess.check_call('sudo ' + rootcmd,shell=True)
+        subprocess.check_call('sudo ls -R /mnt',shell=True)
+    else:
+        raise Exception('mount did not successed!')
+    
+    
 def chroot(*cmds):
-    c = pexpect.spawnu('sudo su - root')
-    c.expect('sudo')
-    c.sendline(mypasswd)
-    c.expect('root')
     for cmd in cmds:
-        c.sendline(cmd)
-        c.expect('#',timeout=60)
-        print(c.before)
-    c.sendline('exit')
-    c.interact()
+        subprocess.check_call('sudo '+ cmd,shell=True)

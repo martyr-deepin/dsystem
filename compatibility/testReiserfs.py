@@ -13,13 +13,13 @@ class FilesystemReiserfs(unittest.TestCase):
     def setUpClass(cls):
         cls.caseid = '71129'
         cls.casename = 'all-2693:读写reiserfs格式的文件'
-        mkextx('reiserfs','sda4')
+        mkextx('reiserfs')
 
     @classmethod
     def tearDownClass(cls):
         global result
         utils.commitresult(cls.caseid, result)
-        chroot('rm -rf /mnt/*','umount /mnt','exit')
+        chroot('rm -rf /mnt/*','umount /mnt')
 
     def testTxt(self):
         mntFiles = glob('/mnt/*')

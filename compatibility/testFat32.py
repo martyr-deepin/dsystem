@@ -13,13 +13,13 @@ class FilesystemFat32(unittest.TestCase):
     def setUpClass(cls):
         cls.caseid = '42911'
         cls.casename = 'all-1996:读写fat32格式的文件'
-        mkextx('vfat','sda4')
+        mkextx('vfat')
 
     @classmethod
     def tearDownClass(cls):
         global result
         utils.commitresult(cls.caseid, result)
-        chroot('rm -rf /mnt/*','umount /mnt','exit')
+        chroot('sudo rm -rf /mnt/*','sudo umount /mnt')
 
     def testTxt(self):
         mntFiles = glob('/mnt/*')
