@@ -27,6 +27,7 @@ class LauncherSortApp(unittest.TestCase):
             launcher.removeApp(cls.installAppName)
         launcher.checkLableKids('internet')
         launcher.freeMode()
+        launcher.exitLauncher()
 
 
     def testSortApp(self):

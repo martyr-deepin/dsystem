@@ -14,8 +14,8 @@ class LauncherHideByClickDock(unittest.TestCase):
         cls.casename = "all-542:点击任务栏程序隐藏启动器"
         cls.menuObj = root.application(appName='deepin-menu', description='/usr/lib/deepin-menu')
         cls.oldWindows = getAllWindows()
-        apps = Dock().getDockedApps()
-        cls.app = apps[1]
+        #apps = Dock().getDockedApps()
+        cls.app = '深度商店'
 
 
     @classmethod
@@ -48,7 +48,7 @@ class LauncherHideByClickDock(unittest.TestCase):
     def suite():
         suite = unittest.TestSuite()
         suite.addTest(LauncherHideByClickDock('testClickApp'))
-        #suite.addTest(LauncherHideByClickDock('testClickBlank'))
+        suite.addTest(LauncherHideByClickDock('testClickBlank'))
         return suite
 
     class MyTestResult(runner.MyTextTestResult):
