@@ -47,6 +47,9 @@ from ddedock.testDockIconMenuRemove import DockIconMenuRemove
 from ddedock.testHideDisplayApp import HideDisplayApp
 from ddedock.testDockMenuRU import DockMenuRU
 
+from ddedock.testDockMenuRun import DockMenuRun
+from ddedock.testDockMenuUnDock import DockMenuUnDock
+
 def main():
     # suite00 = ddedock.testFashionDefaultIcons.suite()
     # suite01 = ddedock.testEfficientDefaultIcons.suite()
@@ -94,6 +97,9 @@ def main():
 
     classes.append(HideDisplayApp)
     classes.append(DockMenuRU)
+
+    classes.append(DockMenuRun)
+    classes.append(DockMenuUnDock)
 
     for c in classes:
         suite = c.suite()
