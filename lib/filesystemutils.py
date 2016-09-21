@@ -1,18 +1,20 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 
+import os
 import subprocess
 import configparser
 
 
-cmdlist = ['touch /mnt/a.txt','mkdir /mnt/中文','sudo mkdir /mnt/test','mkdir /mnt/中文test', 
-            'touch /mnt/中文/中文.txt','touch /mnt/中文/test.txt','touch /mnt/中文/中文test.txt', 
-            'touch /mnt/test/中文.txt','touch /mnt/test/test.txt','touch /mnt/test/中文test.txt', 
+cmdlist = ['touch /mnt/a.txt','mkdir /mnt/中文','sudo mkdir /mnt/test','mkdir /mnt/中文test',
+            'touch /mnt/中文/中文.txt','touch /mnt/中文/test.txt','touch /mnt/中文/中文test.txt',
+            'touch /mnt/test/中文.txt','touch /mnt/test/test.txt','touch /mnt/test/中文test.txt',
             'touch /mnt/中文test/中文.txt','touch /mnt/中文test/test.txt','touch /mnt/中文test/中文test.txt']
 
 def getDevInfo(section,part):
     config = configparser.ConfigParser()
-    config.read('dev.info')
+    currentdir = os.getcwd()
+    config.read(currentdir + '/lib/dev.info')
     info = config[section][part]
     return info
 
@@ -39,8 +41,8 @@ def mkextx(ext,*rootcmds):
         subprocess.check_call('sudo ls -R /mnt',shell=True)
     else:
         raise Exception('mount did not successed!')
-    
-    
+
+
 def chroot(*cmds):
     for cmd in cmds:
         subprocess.check_call('sudo '+ cmd,shell=True)
