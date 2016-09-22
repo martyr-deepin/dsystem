@@ -397,7 +397,7 @@ def getAllWindows():
         Wnck.shutdown()
 
 def getWindowName():
-    sleep(2)
+    sleep(5)
     try:
         screen = Wnck.Screen.get_default()
         screen.force_update()

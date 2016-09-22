@@ -1,2 +1,5 @@
 [partition]
 name = /dev/sda4
+
+[codename]
+code = unstable
