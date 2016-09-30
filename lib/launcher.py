@@ -13,6 +13,7 @@ import pexpect
 import gi
 gi.require_version('Wnck', '3.0')
 from gi.repository import Wnck
+import dbus
 
 
 
@@ -25,6 +26,16 @@ class Launcher:
     def __init__(self):
         self.launcherObj = root.application(appName='dde-launcher', description='/usr/bin/dde-launcher')
         #self.launcherApps = self.launcherObj.child('all',roleName='list').children
+        self.dbusDir = 'com.deepin.dde.daemon.Launcher'
+        self.dbusObj = '/com/deepin/dde/daemon/Launcher'
+        self.ifc = 'com.deepin.dde.daemon.Launcher'
+        self.session_bus = dbus.SessionBus()
+        self.session_obj = self.session_bus.get_object(self.dbusDir, self.dbusObj)
+        self.session_if = dbus.Interface(self.session_obj,dbus_interface=self.ifc)
+
+    def getNewInstalledApps(self):
+        newInstalledApps = self.session_if.GetAllNewInstalledApps()
+        return newInstalledApps
         
     def getDefaultDeepinApps(self):
         deepinApps = ['深度用户反馈', '深度看图', '深度终端', '深度云打印', '深度云扫描', '深度启动盘制作工具', '深度商店', '深度影院', 
@@ -235,11 +246,11 @@ class Launcher:
             self.exitLauncher()
 
     def menuDesktop(self,app):
-        win = findWindow('dde-launcher')
-        if win == None:
-            pyautogui.press('winleft')
-            self.launcherObj.child(app).click(3)
-        menuObj = root.application(appName='deepin-menu', description='/usr/lib/deepin-menu')  
+        self.openLauncher()
+        self.searchApp(app)
+        sleep(2)
+        self.launcherObj.child(app).click(3)
+        menuObj = root.application(appName='deepin-menu', description='/usr/lib/deepin-menu')
         if menuObj.children[0].name == 'DesktopMenu':
             pyautogui.press('down')
             pyautogui.press('down')
@@ -255,10 +266,9 @@ class Launcher:
             screen_center = (screen[0]/2,screen[1]/2)
             pyautogui.mouseDown(appCoor)
             pyautogui.dragTo(screen_center, duration=2)
-        win = findWindow('dde-launcher')
-        if win == None:
-            pyautogui.press('winleft')
-            self.launcherObj.child(app).click(3)
+        self.openLauncher()
+        self.searchApp(app)
+        self.launcherObj.child(app).click(3)
         menuObj = root.application(appName='deepin-menu', description='/usr/lib/deepin-menu')
         if menuObj.children[0].name == 'DesktopMenu':
             pyautogui.press('down')

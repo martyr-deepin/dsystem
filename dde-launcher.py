@@ -26,6 +26,10 @@ from dde_launcher.testShotcuts import LauncherShotcuts
 from dde_launcher.testEnterKey import LauncherEnterKey
 from dde_launcher.testEscKey import LauncherEscKey
 from dde_launcher.testHideByClickDock import LauncherHideByClickDock
+from dde_launcher.testClickBlank import ClickBlank
+from dde_launcher.testBluePoint import BluePoint
+from dde_launcher.testAppDelete1 import AppDelete1
+from dde_launcher.testAppDelete2 import AppDelete2
 
 
 def main():
@@ -53,6 +57,10 @@ def main():
     classes.append(LauncherEnterKey)
     classes.append(LauncherEscKey)
     classes.append(LauncherHideByClickDock)
+    classes.append(ClickBlank)
+    classes.append(BluePoint)
+    classes.append(AppDelete1)
+    classes.append(AppDelete2)
 
     for c in classes:
         unittest.TextTestRunner(resultclass=c.MyTestResult).run(c.suite())
