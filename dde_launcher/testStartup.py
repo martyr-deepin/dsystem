@@ -14,7 +14,7 @@ class LauncherStartupApp(unittest.TestCase):
         cls.casename = "all-516:启动"
         cls.menuObj = root.application(appName='deepin-menu', description='/usr/lib/deepin-menu')
         cls.googleName = '打开新的标签页 - Google Chrome'
-        cls.terminalName = 'deepin-terminal'
+        cls.terminalName = 'deepin - 深度终端'
         cls.geditName = '无标题文档 1 - gedit'
         cls.oldWindows = getAllWindows()
         launcher.freeMode()

@@ -190,7 +190,7 @@ class Launcher:
             dest_y = dest_position[1]+dest_size[1]/2
             if src_y<0:
                 pyautogui.scroll(30)
-            pyautogui.mouseDown(src_x, src_y, button=btn)
+            pyautogui.mouseDown(src_x, src_y, button=btn, pause=1)
             if d>27:
                 pyautogui.scroll(-30)
                 pyautogui.dragTo(dest_x, dest_y, duration=6, button=btn)
@@ -279,10 +279,10 @@ class Launcher:
             raise Exception('Launcher Menu did not opened!')
 
     def menuUnDock(self,app):
-        win = findWindow('dde-launcher')
-        if win == None:
-            pyautogui.press('winleft')
-            self.launcherObj.child(app).click(3)
+        self.openLauncher()
+        self.searchApp(app)
+        self.launcherObj.child(app).click(3)
+        sleep(2)
         menuObj = root.application(appName='deepin-menu', description='/usr/lib/deepin-menu')
         if menuObj.children[0].name == 'DesktopMenu':
             pyautogui.press('down')
