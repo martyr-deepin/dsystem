@@ -50,6 +50,9 @@ from ddedock.testDockMenuRU import DockMenuRU
 from ddedock.testDockMenuRun import DockMenuRun
 from ddedock.testDockMenuUnDock import DockMenuUnDock
 
+from ddedock.testFashionIconsPopup import FashionIconsPopup
+from ddedock.testEfficientIconsPopup import EfficientIconsPopup
+
 def main():
     # suite00 = ddedock.testFashionDefaultIcons.suite()
     # suite01 = ddedock.testEfficientDefaultIcons.suite()
@@ -100,6 +103,9 @@ def main():
 
     classes.append(DockMenuRun)
     classes.append(DockMenuUnDock)
+
+    classes.append(FashionIconsPopup)
+    classes.append(EfficientIconsPopup)
 
     for c in classes:
         suite = c.suite()

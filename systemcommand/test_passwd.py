@@ -14,8 +14,8 @@ result = True
 class Passwd(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
-        cls.caseid = '38924'
-        cls.casename = 'all-1436:用户管理命令--验证对useradd命令的支持'
+        cls.caseid = '38933'
+        cls.casename = 'all-1438:用户管理命令--验证对passwd命令的支持'
 
         if os.path.exists('/home/test'):
             (status, output) = rt('sudo deluser --remove-home test')

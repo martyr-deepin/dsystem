@@ -7,9 +7,10 @@ from Xlib.display import Display
 from pykeyboard import PyKeyboard
 from pymouse import PyMouse
 import dbus
+import json
 from time import sleep
 
-from lib.properties import dock, desktop
+from lib.properties import dock, desktop, network, traymanager
 from lib.window     import *
 from lib.dockmenu import dockmenu
 
@@ -155,6 +156,81 @@ def openFashionMode():
 
 def openEfficientMode():
     setDdeDockDisplayMode(dock.displaymode_efficient)
+
+def getNetworkSession():
+    session_bus = dbus.SessionBus()
+    session_obj = session_bus.get_object(network.dbus_dest,
+                                         network.dbus_objpath)
+    return session_obj
+
+def getNetworkPropertiesInterface():
+    session_network = getNetworkSession()
+    interface = dbus.Interface(session_network,
+                               dbus_interface=dbus.PROPERTIES_IFACE)
+    return interface
+
+def getNetworkInterface():
+    session_network = getNetworkSession()
+    interface = dbus.Interface(session_network,
+                               dbus_interface=network.dbus_interface)
+
+    return interface
+
+def getNetworkActiveConnections():
+    properties_iface = getNetworkPropertiesInterface()
+    return properties_iface.Get(network.dbus_interface, network.dbus_properties_activeconnections)
+
+def getAllUuid():
+    activeconnections_string = getNetworkActiveConnections()
+    dict_string = json.loads(activeconnections_string)
+
+    uuid_list = []
+
+    for (k, v) in dict_string.items():
+        for (name, value) in v.items():
+            if 'uuid' == name.lower():
+                uuid_list.append(value)
+
+    if len(uuid_list) == 0:
+        return None
+
+    return uuid_list
+
+def getTrayManagerSession():
+    session_bus = dbus.SessionBus()
+    session_obj = session_bus.get_object(traymanager.dbus_dest,
+                                         traymanager.dbus_objpath)
+    return session_obj
+
+def getTrayManagerPropertiesInterface():
+    session_traymanager = getTrayManagerSession()
+    interface = dbus.Interface(session_traymanager,
+                               dbus_interface=dbus.PROPERTIES_IFACE)
+    return interface
+
+def getTrayManagerInterface():
+    session_traymanager = getTrayManagerSession()
+    interface = dbus.Interface(session_traymanager,
+                               dbus_interface=traymanager.dbus_interface)
+
+    return interface
+
+def getTrayManagerTrayIcons():
+    properties_iface = getTrayManagerPropertiesInterface()
+    return properties_iface.Get(traymanager.dbus_interface, traymanager.dbus_properties_trayicons)
+
+def getTrayManagerWinId():
+    icons = getTrayManagerTrayIcons()
+
+    winid_list = []
+
+    for i in icons:
+        winid_list.append(int(i))
+
+    if 0 == len(icons):
+        return None
+
+    return winid_list
 
 def commitresult(id, result):
     if os.path.exists(resultfile):
