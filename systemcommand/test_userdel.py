@@ -12,8 +12,8 @@ result = True
 class Userdel(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
-        cls.caseid = '38924'
-        cls.casename = 'all-1436:用户管理命令--验证对useradd命令的支持'
+        cls.caseid = '38929'
+        cls.casename = 'all-1437:用户管理命令--验证对userdel命令的支持'
 
         if os.path.exists('/home/test'):
             (status, output) = rt('sudo deluser --remove-home test')
