@@ -18,6 +18,9 @@ from systemcommand.test_rm import Rm
 from systemcommand.test_file import File
 from systemcommand.test_find import Find
 from systemcommand.test_grep import Grep
+from systemcommand.test_chown import Chown
+from systemcommand.test_sort import Sort
+from systemcommand.test_wc import Wc
 
 def main():
     classes = []
@@ -40,6 +43,9 @@ def main():
     classes.append(File)
     classes.append(Find)
     classes.append(Grep)
+    classes.append(Chown)
+    classes.append(Sort)
+    classes.append(Wc)
 
     for c in classes:
         suite = c.suite()
