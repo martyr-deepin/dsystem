@@ -22,6 +22,9 @@ from systemcommand.test_chown import Chown
 from systemcommand.test_sort import Sort
 from systemcommand.test_wc import Wc
 
+from systemcommand.test_apt_get import Apt_get
+from systemcommand.test_apt_cache import Apt_cache
+
 def main():
     classes = []
 
@@ -46,6 +49,10 @@ def main():
     classes.append(Chown)
     classes.append(Sort)
     classes.append(Wc)
+
+    # 软件包管理命令
+    classes.append(Apt_get)
+    classes.append(Apt_cache)
 
     for c in classes:
         suite = c.suite()
