@@ -5,6 +5,7 @@
 from dogtail.tree import *
 import subprocess
 import pyautogui
+from time import sleep
 
 class Dock:
 	def __init__(self):
@@ -16,6 +17,13 @@ class Dock:
 		for i in range(len(self.dockObj.child('dock-mainpanel').children)):
 			if self.dockObj.child('dock-mainpanel').children[i].name == '':
 				break
+			apps.append(self.dockObj.child('dock-mainpanel').children[i].name)
+		return apps
+
+	def getAllApps(self):
+		sleep(5)
+		apps = []
+		for i in range(len(self.dockObj.child('dock-mainpanel').children)):
 			apps.append(self.dockObj.child('dock-mainpanel').children[i].name)
 		return apps
 

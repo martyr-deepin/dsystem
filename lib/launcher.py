@@ -406,6 +406,20 @@ def getAllWindows():
         screen = None
         Wnck.shutdown()
 
+def getAllWindowNames():
+    sleep(5)
+    try:
+        winNames = []
+        screen = Wnck.Screen.get_default()
+        screen.force_update()
+        for win in screen.get_windows():
+            winNames.append(win.get_name())
+        return winNames
+    finally:
+        win = None
+        screen = None
+        Wnck.shutdown()
+
 def getWindowName():
     sleep(5)
     try:
