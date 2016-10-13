@@ -26,6 +26,13 @@ from systemcommand.test_apt_get import Apt_get
 from systemcommand.test_apt_cache import Apt_cache
 
 from systemcommand.test_man import Man
+from systemcommand.test_who import Who
+from systemcommand.test_whoami import Whoami
+from systemcommand.test_cal import Cal
+from systemcommand.test_date import Date
+from systemcommand.test_more import More
+from systemcommand.test_redirect import Redirect
+from systemcommand.test_pipe import Pipe
 
 def main():
     classes = []
@@ -54,6 +61,13 @@ def main():
 
     # 其他命令
     classes.append(Man)
+    classes.append(Who)
+    classes.append(Whoami)
+    classes.append(Cal)
+    classes.append(Date)
+    classes.append(More)
+    classes.append(Redirect)
+    classes.append(Pipe)
 
     # 软件包管理命令
     classes.append(Apt_get)
