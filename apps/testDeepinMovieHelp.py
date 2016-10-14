@@ -39,12 +39,6 @@ class DeepinMovieHelp(unittest.TestCase):
             newWindow = newWindows[-1]
             newWindow.close(1)
 
-    def tearDown(self):
-        newWindows = getAllWindows()
-        if len(newWindows) > len(self.oldWindows):
-            newWindow = newWindows[-1]
-            newWindow.close(1)
-
     def testDeepinMovieHelp1(self):
         subprocess.check_call(self.appName + ' &', shell=True)
         winNames = getAllWindowNames()
