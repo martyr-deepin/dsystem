@@ -15,7 +15,7 @@ class DeepinTerminal(unittest.TestCase):
         cls.caseid = '83378'
         cls.casename = 'all-3358:运行深度终端'
         cls.appName = 'deepin-terminal'
-        _, cls.username = subprocess.getstatusoutput("who |awk '{print $1}'")
+        _, cls.username = subprocess.getstatusoutput("whoami")
         cls.winName = cls.username + ' - 深度终端'
         cls.oldWindows = getAllWindows()
 
