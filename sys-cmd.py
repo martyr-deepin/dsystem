@@ -22,6 +22,8 @@ from systemcommand.test_chown import Chown
 from systemcommand.test_sort import Sort
 from systemcommand.test_wc import Wc
 
+from systemcommand.test_vi import Vi
+
 from systemcommand.test_apt_get import Apt_get
 from systemcommand.test_apt_cache import Apt_cache
 
@@ -58,6 +60,9 @@ def main():
     classes.append(Chown)
     classes.append(Sort)
     classes.append(Wc)
+
+    # 文本编辑命令
+    classes.append(Vi)
 
     # 其他命令
     classes.append(Man)
