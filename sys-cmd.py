@@ -25,6 +25,8 @@ from systemcommand.test_wc import Wc
 from systemcommand.test_apt_get import Apt_get
 from systemcommand.test_apt_cache import Apt_cache
 
+from systemcommand.test_kill import Kill
+
 def main():
     classes = []
 
@@ -49,6 +51,7 @@ def main():
     classes.append(Chown)
     classes.append(Sort)
     classes.append(Wc)
+    classes.append(Kill)
 
     # 软件包管理命令
     classes.append(Apt_get)
