@@ -22,12 +22,13 @@ from systemcommand.test_chown import Chown
 from systemcommand.test_sort import Sort
 from systemcommand.test_wc import Wc
 
+from systemcommand.test_kill import Kill
+from systemcommand.test_ps import Ps
+
 from systemcommand.test_vi import Vi
 
 from systemcommand.test_apt_get import Apt_get
 from systemcommand.test_apt_cache import Apt_cache
-
-from systemcommand.test_kill import Kill
 
 from systemcommand.test_man import Man
 from systemcommand.test_who import Who
@@ -62,7 +63,10 @@ def main():
     classes.append(Chown)
     classes.append(Sort)
     classes.append(Wc)
+
+    # 进程管理
     classes.append(Kill)
+    classes.append(Ps)
 
     # 文本编辑命令
     classes.append(Vi)
