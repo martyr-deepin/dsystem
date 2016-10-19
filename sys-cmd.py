@@ -26,6 +26,7 @@ from systemcommand.test_apt_get import Apt_get
 from systemcommand.test_apt_cache import Apt_cache
 
 from systemcommand.test_kill import Kill
+from systemcommand.test_ps import Ps
 
 from systemcommand.test_man import Man
 from systemcommand.test_who import Who
@@ -61,8 +62,7 @@ def main():
     classes.append(Chown)
     classes.append(Sort)
     classes.append(Wc)
-    classes.append(Kill)
-
+   
     # 其他命令
     classes.append(Man)
     classes.append(Who)
@@ -72,7 +72,8 @@ def main():
     classes.append(More)
     classes.append(Redirect)
     classes.append(Pipe)
-
+    classes.append(Kill)
+    classes.append(Ps)
     # 软件包管理命令
     classes.append(Apt_get)
     classes.append(Apt_cache)
