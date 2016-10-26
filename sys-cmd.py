@@ -22,6 +22,10 @@ from systemcommand.test_chown import Chown
 from systemcommand.test_sort import Sort
 from systemcommand.test_wc import Wc
 
+from systemcommand.test_tar import Tar
+from systemcommand.test_gzip import Gzip
+from systemcommand.test_gunzip import Gunzip
+
 from systemcommand.test_kill import Kill
 from systemcommand.test_ps import Ps
 
@@ -63,6 +67,11 @@ def main():
     classes.append(Chown)
     classes.append(Sort)
     classes.append(Wc)
+
+    # 备份、压缩和解压缩操作命令
+    classes.append(Tar)
+    classes.append(Gzip)
+    classes.append(Gunzip)
 
     # 进程管理
     classes.append(Kill)
