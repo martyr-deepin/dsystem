@@ -3,6 +3,7 @@
 
 import unittest
 import json
+import os
 
 idfile = "id.txt"
 resultfile = "result.txt"
@@ -10,6 +11,12 @@ resultfile = "result.txt"
 from ddedock import testFashionExistLeft
 
 def getIdFile():
+    idstr = os.getenv("CASE_ID")
+    if None != idstr:
+        idlist = idstr.split()
+        print(idlist)
+        return idlist
+
     try:
         f = open(idfile, "r")
         content = f.read()
