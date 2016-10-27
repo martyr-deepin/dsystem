@@ -11,11 +11,12 @@ resultfile = "result.txt"
 from ddedock import testFashionExistLeft
 
 def getIdFile():
-    idstr = os.getenv("CASE_ID")
-    if None != idstr:
-        idlist = idstr.split()
-        print(idlist)
-        return idlist
+    if os.path.exists("/tmp/%s" % idfile):
+        with open("/tmp/%s" % idfile, 'r') as f:
+            idstr = f.read()
+            print(idstr)
+            idlist = idstr.strip('\n').split(',')
+            return idlist
 
     try:
         f = open(idfile, "r")

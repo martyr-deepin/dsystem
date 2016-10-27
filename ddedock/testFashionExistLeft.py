@@ -6,7 +6,7 @@ from lib import utils
 from lib import runner
 
 result = True
-caseid = 68458
+caseid = '68458'
 casename = "all-2483:时尚模式左方显示测试"
 
 class FashionExistLeft(unittest.TestCase):
