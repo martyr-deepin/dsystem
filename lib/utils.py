@@ -10,7 +10,7 @@ import dbus
 import json
 from time import sleep
 
-from lib.properties import dock, desktop, network, traymanager
+from lib.properties import dock, desktop, network, traymanager, OSDkeyboard
 from lib.window     import *
 from lib.dockmenu import dockmenu
 
@@ -243,3 +243,19 @@ def commitresult(id, result):
             idstr = " ".join((id, str(result)))
             f.write(idstr + os.linesep)
             f.close()
+
+def addKeyboard(layout):
+    session_bus = dbus.SessionBus().get_object(OSDkeyboard.dbus_dest,OSDkeyboard.dbus_objpath)
+    interface = dbus.Interface(session_bus,dbus_interface=OSDkeyboard.dbus_interface)
+    interface.AddUserLayout(layout)
+
+def getCurrentLayout():
+    session_bus = dbus.SessionBus().get_object(OSDkeyboard.dbus_dest,OSDkeyboard.dbus_objpath)
+    itf_property = dbus.Interface(session_bus,dbus_interface=dbus.PROPERTIES_IFACE)
+    current_layout = itf_property.Get(OSDkeyboard.dbus_interface,OSDkeyboard.dbus_properties_currentlayout)
+    return current_layout
+
+def delKeyboard(layout):
+    session_bus = dbus.SessionBus().get_object(OSDkeyboard.dbus_dest,OSDkeyboard.dbus_objpath)
+    interface = dbus.Interface(session_bus,dbus_interface=OSDkeyboard.dbus_interface)
+    interface.DeleteUserLayout(layout)

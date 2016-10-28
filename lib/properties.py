@@ -55,7 +55,16 @@ class TrayManager(object):
 
         self.dbus_properties_trayicons = "TrayIcons"
 
+class OSDKeyboard(object):
+    def __init__(self):
+        self.dbus_dest      = "com.deepin.daemon.InputDevices"
+        self.dbus_objpath   = "/com/deepin/daemon/InputDevice/Keyboard"
+        self.dbus_interface = "com.deepin.daemon.InputDevice.Keyboard"
+
+        self.dbus_properties_userlayoutlist = "UserLayoutList"
+        self.dbus_properties_currentlayout  = "CurrentLayout"
 dock = dockClass()
 desktop = desktopClass()
 network = networkClass()
 traymanager = TrayManager()
+OSDkeyboard = OSDKeyboard()
