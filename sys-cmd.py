@@ -22,11 +22,17 @@ from systemcommand.test_chown import Chown
 from systemcommand.test_sort import Sort
 from systemcommand.test_wc import Wc
 
-from systemcommand.test_apt_get import Apt_get
-from systemcommand.test_apt_cache import Apt_cache
+from systemcommand.test_tar import Tar
+from systemcommand.test_gzip import Gzip
+from systemcommand.test_gunzip import Gunzip
 
 from systemcommand.test_kill import Kill
 from systemcommand.test_ps import Ps
+
+from systemcommand.test_vi import Vi
+
+from systemcommand.test_apt_get import Apt_get
+from systemcommand.test_apt_cache import Apt_cache
 
 from systemcommand.test_man import Man
 from systemcommand.test_who import Who
@@ -36,7 +42,6 @@ from systemcommand.test_date import Date
 from systemcommand.test_more import More
 from systemcommand.test_redirect import Redirect
 from systemcommand.test_pipe import Pipe
->>>>>>> b4e1cfa6b8c93c7036cf46ff681ca1a70e96fa9d
 
 def main():
     classes = []
@@ -63,6 +68,20 @@ def main():
     classes.append(Sort)
     classes.append(Wc)
    
+=======
+
+    # 备份、压缩和解压缩操作命令
+    classes.append(Tar)
+    classes.append(Gzip)
+    classes.append(Gunzip)
+
+    # 进程管理
+    classes.append(Kill)
+    classes.append(Ps)
+
+    # 文本编辑命令
+    classes.append(Vi)
+
     # 其他命令
     classes.append(Man)
     classes.append(Who)

@@ -53,6 +53,8 @@ from ddedock.testDockMenuUnDock import DockMenuUnDock
 from ddedock.testFashionIconsPopup import FashionIconsPopup
 from ddedock.testEfficientIconsPopup import EfficientIconsPopup
 
+from ddedock.testDockSoundPluginClick import DockSoundPluginClick
+
 def main():
     # suite00 = ddedock.testFashionDefaultIcons.suite()
     # suite01 = ddedock.testEfficientDefaultIcons.suite()
@@ -106,6 +108,9 @@ def main():
 
     classes.append(FashionIconsPopup)
     classes.append(EfficientIconsPopup)
+
+    # 插件 -> 声音
+    classes.append(DockSoundPluginClick)
 
     for c in classes:
         suite = c.suite()
