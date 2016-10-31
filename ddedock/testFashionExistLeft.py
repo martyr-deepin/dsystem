@@ -12,8 +12,6 @@ casename = "all-2483:时尚模式左方显示测试"
 class FashionExistLeft(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
-        cls.caseid = '68458'
-        cls.casename = "all-2483:时尚模式左方显示测试"
         cls.ddedockobject = utils.getDdeDockObject()
         cls.defaultdisplaymode = utils.getDdeDockDisplayMode()
         cls.defaultposition = utils.getDdeDockPosition()
@@ -22,7 +20,7 @@ class FashionExistLeft(unittest.TestCase):
     @classmethod
     def tearDownClass(cls):
         global result
-        utils.commitresult(cls.caseid, result)
+        utils.commitresult(caseid, result)
 
         if utils.getDdeDockDisplayMode() != cls.defaultdisplaymode:
             utils.setDdeDockDisplayMode(cls.defaultdisplaymode)

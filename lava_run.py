@@ -8,6 +8,9 @@ import os
 idfile = "id.txt"
 resultfile = "result.txt"
 
+from ddedock import testFashionFunction
+from ddedock import testEfficientFunction
+
 from ddedock import testFashionExistLeft
 
 def getIdFile():
@@ -40,6 +43,12 @@ def main():
     allclasses = []
 
     # add ddedock classes
+    if testFashionFunction.caseid in idlist:
+        allclasses.append(testFashionFunction.FashionFunction)
+
+    if testEfficientFunction.caseid in idlist:
+        allclasses.append(testEfficientFunction.EfficientFunction)
+
     if testFashionExistLeft.caseid in idlist:
         allclasses.append(testFashionExistLeft.FashionExistLeft)
 

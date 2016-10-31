@@ -235,11 +235,11 @@ def getTrayManagerWinId():
 def commitresult(id, result):
     if os.path.exists(resultfile):
         with open(resultfile, 'a') as f:
-            idstr = " ".join((id, str(result)))
+            idstr = " ".join((str(id), str(result)))
             f.write(idstr + os.linesep)
             f.close()
     else:
         with open(resultfile, 'w') as f:
-            idstr = " ".join((id, str(result)))
+            idstr = " ".join((str(id), str(result)))
             f.write(idstr + os.linesep)
             f.close()

@@ -6,12 +6,12 @@ from lib import utils
 from lib import runner
 
 result = True
+caseid = '68153'
+casename = "all-2472:高效模式功能测试"
 
 class EfficientFunction(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
-        cls.caseid = '68153'
-        cls.casename = "all-2472:高效模式功能测试"
         cls.ddedockobject = utils.getDdeDockObject()
         cls.defaultdisplaymode = utils.getDdeDockDisplayMode()
         cls.defaultposition = utils.getDdeDockPosition()
@@ -20,7 +20,7 @@ class EfficientFunction(unittest.TestCase):
     @classmethod
     def tearDownClass(cls):
         global result
-        utils.commitresult(cls.caseid, result)
+        utils.commitresult(caseid, result)
 
         if utils.getDdeDockDisplayMode() != cls.defaultdisplaymode:
             utils.setDdeDockDisplayMode(cls.defaultdisplaymode)
