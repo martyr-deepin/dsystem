@@ -67,6 +67,8 @@ def main():
     classes.append(Chown)
     classes.append(Sort)
     classes.append(Wc)
+   
+=======
 
     # 备份、压缩和解压缩操作命令
     classes.append(Tar)
@@ -89,7 +91,8 @@ def main():
     classes.append(More)
     classes.append(Redirect)
     classes.append(Pipe)
-
+    classes.append(Kill)
+    classes.append(Ps)
     # 软件包管理命令
     classes.append(Apt_get)
     classes.append(Apt_cache)
