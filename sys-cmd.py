@@ -43,8 +43,13 @@ from systemcommand.test_more import More
 from systemcommand.test_redirect import Redirect
 from systemcommand.test_pipe import Pipe
 
+from osd.test_keyboardlayout import KbLayout
+
 def main():
     classes = []
+    
+    # 桌面环境
+    classes.append(KbLayout)
 
     # 常用命令测试
 
@@ -67,8 +72,6 @@ def main():
     classes.append(Chown)
     classes.append(Sort)
     classes.append(Wc)
-   
-=======
 
     # 备份、压缩和解压缩操作命令
     classes.append(Tar)
@@ -91,8 +94,7 @@ def main():
     classes.append(More)
     classes.append(Redirect)
     classes.append(Pipe)
-    classes.append(Kill)
-    classes.append(Ps)
+
     # 软件包管理命令
     classes.append(Apt_get)
     classes.append(Apt_cache)

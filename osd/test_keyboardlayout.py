@@ -2,6 +2,7 @@
 # -*- coding: utf-8 -*-
 
 import unittest
+import time
 import pyautogui
 from lib import runner
 from lib import utils
@@ -29,15 +30,22 @@ class  KbLayout(unittest.TestCase):
 
     def test_addlayout(self):
         global newlayout
+        self.assertEqual('us;',utils.getCurrentLayout())
         utils.addKeyboard(newlayout)
 
     def test_changelayout(self):
         global newlayout
         pyautogui.hotkey('winleft',' ')
-        self.assertEqual('us;',utils.getCurrentLayout())
         pyautogui.keyUp(' ')
         pyautogui.hotkey('winleft',' ')
+        pyautogui.keyUp('winleft')
         self.assertEqual(newlayout,utils.getCurrentLayout())
+        time.sleep(2)
+        pyautogui.hotkey('winleft',' ')
+        pyautogui.keyUp(' ')
+        pyautogui.hotkey('winleft',' ')
+        pyautogui.keyUp('winleft')
+        time.sleep(2)
 
     def suite():
         suite = unittest.TestSuite()
