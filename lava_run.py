@@ -55,6 +55,9 @@ from ddedock import testEfficientIconsPopup
 
 from ddedock import testDockSoundPluginClick
 
+from dde_launcher import testAdjustFirstApp
+from dde_launcher import testDisableDragInCategory
+
 def getIdFile():
     if os.path.exists("/tmp/%s" % idfile):
         with open("/tmp/%s" % idfile, 'r') as f:
@@ -201,6 +204,12 @@ def main():
 
     if testDockSoundPluginClick.caseid in idlist:
         allclasses.append(testDockSoundPluginClick.DockSoundPluginClick)
+
+    if testAdjustFirstApp.caseid in idlist:
+        allclasses.append(testAdjustFirstApp.LauncherAdjustFirstApp)
+
+    if testDisableDragInCategory.caseid in idlist:
+        allclasses.append(testDisableDragInCategory.LauncherDisable)
 
     if len(allclasses) == 0:
         print("All classes list is zero.")

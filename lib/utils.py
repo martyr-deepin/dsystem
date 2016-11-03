@@ -232,15 +232,22 @@ def getTrayManagerWinId():
 
     return winid_list
 
-def commitresult(id, result):
+def convertToMinutes(secs):
+
+    left,right = divmod(secs, 60)
+    pointright = right/60
+    munites = '%.2f' % (left+pointright)
+    return munites
+
+def commitresult(id, result, time):
     if os.path.exists(resultfile):
         with open(resultfile, 'a') as f:
-            idstr = " ".join((str(id), str(result)))
+            idstr = " ".join((str(id), str(result), str(time)))
             f.write(idstr + os.linesep)
             f.close()
     else:
         with open(resultfile, 'w') as f:
-            idstr = " ".join((str(id), str(result)))
+            idstr = " ".join((str(id), str(result), str(time)))
             f.write(idstr + os.linesep)
             f.close()
 
