@@ -22,6 +22,11 @@ from systemcommand.test_chown import Chown
 from systemcommand.test_sort import Sort
 from systemcommand.test_wc import Wc
 
+from systemcommand.test_ifconfig import Ifconfig
+from systemcommand.test_ping import Ping
+from systemcommand.test_ping_ip import Ping_ip
+from systemcommand.test_ping_local_ip import Ping_local_ip
+
 from systemcommand.test_tar import Tar
 from systemcommand.test_gzip import Gzip
 from systemcommand.test_gunzip import Gunzip
@@ -42,7 +47,6 @@ from systemcommand.test_date import Date
 from systemcommand.test_more import More
 from systemcommand.test_redirect import Redirect
 from systemcommand.test_pipe import Pipe
-from systemcommand.test_ping import Ping
 
 from osd.test_keyboardlayout import KbLayout
 
@@ -74,6 +78,12 @@ def main():
     classes.append(Sort)
     classes.append(Wc)
 
+    # 网络管理命令
+    classes.append(Ifconfig)
+    classes.append(Ping)
+    classes.append(Ping_ip)
+    classes.append(Ping_local_ip)
+
     # 备份、压缩和解压缩操作命令
     classes.append(Tar)
     classes.append(Gzip)
@@ -95,7 +105,6 @@ def main():
     classes.append(More)
     classes.append(Redirect)
     classes.append(Pipe)
-    classes.append(Ping)
 
     # 软件包管理命令
     classes.append(Apt_get)
