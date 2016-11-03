@@ -9,12 +9,12 @@ from dogtail.tree import root
 from dogtail import rawinput
 
 result = True
+caseid = '33440'
+casename = "all-441:google chrome"
 
 class GoogleChrome(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
-        cls.caseid = '33440'
-        cls.casename = "all-441:google chrome"
         cls.chromeiconname = "Google Chrome"
         cls.ddedockobject = utils.getDdeDockObject()
 
@@ -27,7 +27,7 @@ class GoogleChrome(unittest.TestCase):
     @classmethod
     def tearDownClass(cls):
         global result
-        utils.commitresult(cls.caseid, result)
+        utils.commitresult(caseid, result)
 
         if utils.dock.displaymode_fashion != utils.getDdeDockDisplayMode():
             utils.setDdeDockDisplayMode(utils.dock.displaymode_fashion)

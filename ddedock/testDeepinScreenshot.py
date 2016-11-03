@@ -12,12 +12,12 @@ from dogtail import rawinput
 from subprocess import getstatusoutput as rt
 
 result = True
+caseid = '33434'
+casename = "all-440:深度截图"
 
 class DeepinScreenshot(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
-        cls.caseid = '33434'
-        cls.casename = "all-440:深度截图"
         cls.screenshoticonname = "深度截图"
         cls.ddedockobject = utils.getDdeDockObject()
 
@@ -30,7 +30,7 @@ class DeepinScreenshot(unittest.TestCase):
     @classmethod
     def tearDownClass(cls):
         global result
-        utils.commitresult(cls.caseid, result)
+        utils.commitresult(caseid, result)
 
         if utils.dock.displaymode_fashion != utils.getDdeDockDisplayMode():
             utils.setDdeDockDisplayMode(utils.dock.displaymode_fashion)

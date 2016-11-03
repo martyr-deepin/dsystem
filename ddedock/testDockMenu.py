@@ -9,12 +9,12 @@ from dogtail import rawinput
 from dogtail.tree import *
 
 result = True
+caseid = '68161'
+casename = "all-2473:方向设置菜单"
 
 class DockMenu(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
-        cls.caseid = '68161'
-        cls.casename = "all-2473:方向设置菜单"
         cls.ddedockobject = utils.getDdeDockObject()
         cls.defaultdisplaymode = utils.getDdeDockDisplayMode()
         cls.defaultposition = utils.getDdeDockPosition()
@@ -34,7 +34,7 @@ class DockMenu(unittest.TestCase):
     @classmethod
     def tearDownClass(cls):
         global result
-        utils.commitresult(cls.caseid, result)
+        utils.commitresult(caseid, result)
 
         if utils.getDdeDockDisplayMode() != utils.dock.displaymode_fashion:
             utils.setDdeDockDisplayMode(utils.dock.displaymode_fashion)

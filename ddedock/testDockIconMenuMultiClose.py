@@ -9,12 +9,12 @@ from dogtail.tree import root
 from dogtail import rawinput
 
 result = True
+caseid = '33451'
+casename = "all-443:关闭所有"
 
 class DockIconMenuMultiClose(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
-        cls.caseid = '33451'
-        cls.casename = "all-443:关闭所有"
         cls.filemanagericonname = "深度文件管理器"
         cls.filemanagerwindowname = "深度文件管理器"
         cls.ddedockobject = utils.getDdeDockObject()
@@ -28,7 +28,7 @@ class DockIconMenuMultiClose(unittest.TestCase):
     @classmethod
     def tearDownClass(cls):
         global result
-        utils.commitresult(cls.caseid, result)
+        utils.commitresult(caseid, result)
 
         if utils.dock.displaymode_fashion != utils.getDdeDockDisplayMode():
             utils.setDdeDockDisplayMode(utils.dock.displaymode_fashion)

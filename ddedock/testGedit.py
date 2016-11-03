@@ -9,12 +9,12 @@ from lib.launcher import launcher
 from dogtail import rawinput
 
 result = True
+caseid = '33428'
+casename = "all-439:gedit"
 
 class Gedit(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
-        cls.caseid = '33428'
-        cls.casename = "all-439:gedit"
         cls.gediticonname = "文本编辑器"
         cls.ddedockobject = utils.getDdeDockObject()
 
@@ -27,7 +27,7 @@ class Gedit(unittest.TestCase):
     @classmethod
     def tearDownClass(cls):
         global result
-        utils.commitresult(cls.caseid, result)
+        utils.commitresult(caseid, result)
 
         if utils.dock.displaymode_fashion != utils.getDdeDockDisplayMode():
             utils.setDdeDockDisplayMode(utils.dock.displaymode_fashion)

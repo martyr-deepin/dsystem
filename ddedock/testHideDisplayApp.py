@@ -9,12 +9,12 @@ from dogtail.tree import root
 from dogtail import rawinput
 
 result = True
+caseid = '33479'
+casename = "all-449:程序显示隐藏测试"
 
 class HideDisplayApp(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
-        cls.caseid = '33479'
-        cls.casename = "all-449:程序显示隐藏测试"
         cls.chromeiconname = "Google Chrome"
         cls.chromewindowname = "Google Chrome"
         cls.ddedockobject = utils.getDdeDockObject()
@@ -28,7 +28,7 @@ class HideDisplayApp(unittest.TestCase):
     @classmethod
     def tearDownClass(cls):
         global result
-        utils.commitresult(cls.caseid, result)
+        utils.commitresult(caseid, result)
 
         if utils.dock.displaymode_fashion != utils.getDdeDockDisplayMode():
             utils.setDdeDockDisplayMode(utils.dock.displaymode_fashion)

@@ -9,12 +9,12 @@ from dogtail import rawinput
 from dogtail.tree import *
 
 result = True
+caseid = '68165'
+casename = "all-2474:时尚模式上方显示测试"
 
 class DockFashionMode(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
-        cls.caseid = '68165'
-        cls.casename = "all-2474:时尚模式上方显示测试"
         cls.caseid_2 = '68168'
         cls.casename_2 = "all-2475:时尚模式下方显示测试"
         cls.caseid_3 = '68458'
@@ -40,7 +40,7 @@ class DockFashionMode(unittest.TestCase):
     @classmethod
     def tearDownClass(cls):
         global result
-        utils.commitresult(cls.caseid, result)
+        utils.commitresult(caseid, result)
         utils.commitresult(cls.caseid_2, result)
         utils.commitresult(cls.caseid_3, result)
         utils.commitresult(cls.caseid_4, result)

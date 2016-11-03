@@ -6,12 +6,12 @@ from lib import utils
 from lib import runner
 
 result = True
+caseid = '68486'
+casename = "all-2492:图标大小设置菜单"
 
 class FashionDockSize(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
-        cls.caseid = '68486'
-        cls.casename = "all-2492:图标大小设置菜单"
         cls.ddedockobject = utils.getDdeDockObject()
 
         if utils.getDdeDockDisplayMode() != utils.dock.displaymode_fashion:
@@ -26,7 +26,7 @@ class FashionDockSize(unittest.TestCase):
     @classmethod
     def tearDownClass(cls):
         global result
-        utils.commitresult(cls.caseid, result)
+        utils.commitresult(caseid, result)
 
         if utils.getDdeDockDisplayMode() != utils.dock.displaymode_fashion:
             utils.setDdeDockDisplayMode(utils.dock.displaymode_fashion)

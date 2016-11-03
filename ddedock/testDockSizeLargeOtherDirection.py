@@ -6,12 +6,12 @@ from lib import utils
 from lib import runner
 
 result = True
+caseid = '68501'
+casename = "all-2496:大图标在四个方向上显示"
 
 class DockSizeLargeOtherDirection(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
-        cls.caseid = '68501'
-        cls.casename = "all-2496:大图标在四个方向上显示"
         cls.ddedockobject = utils.getDdeDockObject()
 
         if utils.getDdeDockDisplayMode() != utils.dock.displaymode_efficient:
@@ -26,7 +26,7 @@ class DockSizeLargeOtherDirection(unittest.TestCase):
     @classmethod
     def tearDownClass(cls):
         global result
-        utils.commitresult(cls.caseid, result)
+        utils.commitresult(caseid, result)
 
         if utils.getDdeDockDisplayMode() != utils.dock.displaymode_fashion:
             utils.setDdeDockDisplayMode(utils.dock.displaymode_fashion)

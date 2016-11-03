@@ -7,12 +7,12 @@ from lib import utils
 from lib import runner
 
 result = True
+caseid = '33494'
+casename = 'all-451:文字提示'
 
 class FashionIconsPopup(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
-        cls.caseid = '33494'
-        cls.casename = 'all-451:文字提示'
         cls.defaultfashioniconlist = ["Launcher",
                                "显示桌面",
                                "多任务视图",
@@ -39,7 +39,7 @@ class FashionIconsPopup(unittest.TestCase):
     @classmethod
     def tearDownClass(cls):
         global result
-        utils.commitresult(cls.caseid, result)
+        utils.commitresult(caseid, result)
 
         if utils.dock.displaymode_fashion != utils.getDdeDockDisplayMode():
             utils.setDdeDockDisplayMode(utils.dock.displaymode_fashion)

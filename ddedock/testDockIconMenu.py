@@ -8,12 +8,12 @@ from lib import runner
 from dogtail.tree import root
 
 result = True
+caseid = '33454'
+casename = "all-444:驻留"
 
 class DockIconMenu(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
-        cls.caseid = '33454'
-        cls.casename = "all-444:驻留"
         cls.terminaliconname = "深度终端"
         cls.terminalwindowname = "deepin - 深度终端"
         cls.ddedockobject = utils.getDdeDockObject()
@@ -27,7 +27,7 @@ class DockIconMenu(unittest.TestCase):
     @classmethod
     def tearDownClass(cls):
         global result
-        utils.commitresult(cls.caseid, result)
+        utils.commitresult(caseid, result)
 
         if utils.dock.displaymode_fashion != utils.getDdeDockDisplayMode():
             utils.setDdeDockDisplayMode(utils.dock.displaymode_fashion)

@@ -6,12 +6,12 @@ from lib import utils
 from lib import runner
 
 result = True
+caseid = '68493'
+casename = "all-2494:高效模式中图标显示"
 
 class EfficientDockSizeMedium(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
-        cls.caseid = '68493'
-        cls.casename = "all-2494:高效模式中图标显示"
         cls.ddedockobject = utils.getDdeDockObject()
 
         if utils.getDdeDockDisplayMode() != utils.dock.displaymode_efficient:
@@ -26,7 +26,7 @@ class EfficientDockSizeMedium(unittest.TestCase):
     @classmethod
     def tearDownClass(cls):
         global result
-        utils.commitresult(cls.caseid, result)
+        utils.commitresult(caseid, result)
 
         if utils.getDdeDockDisplayMode() != utils.dock.displaymode_fashion:
             utils.setDdeDockDisplayMode(utils.dock.displaymode_fashion)

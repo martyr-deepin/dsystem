@@ -10,12 +10,12 @@ from dogtail.tree import root
 from dogtail import rawinput
 
 result = True
+caseid = '63333'
+casename = "all-2416:移除驻留"
 
 class DockMenuUnDock(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
-        cls.caseid = '63333'
-        cls.casename = "all-2416:移除驻留"
         cls.filemanagericonname = "深度文件管理器"
         cls.filemanagerwindowname = "深度文件管理器"
         cls.filemanagerlauncher = "dde-file-manager"
@@ -30,7 +30,7 @@ class DockMenuUnDock(unittest.TestCase):
     @classmethod
     def tearDownClass(cls):
         global result
-        utils.commitresult(cls.caseid, result)
+        utils.commitresult(caseid, result)
 
         if utils.dock.displaymode_fashion != utils.getDdeDockDisplayMode():
             utils.setDdeDockDisplayMode(utils.dock.displaymode_fashion)

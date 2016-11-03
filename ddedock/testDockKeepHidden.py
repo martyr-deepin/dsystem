@@ -8,12 +8,12 @@ from lib import runner
 from dogtail import rawinput
 
 result = True
+caseid = '33414'
+casename = "all-437:一直隐藏"
 
 class DockKeepHidden(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
-        cls.caseid = '33414'
-        cls.casename = "all-437:一直隐藏"
         cls.ddedockobject = utils.getDdeDockObject()
         cls.defaultdisplaymode = utils.getDdeDockDisplayMode()
         cls.defaultposition = utils.getDdeDockPosition()
@@ -31,7 +31,7 @@ class DockKeepHidden(unittest.TestCase):
     @classmethod
     def tearDownClass(cls):
         global result
-        utils.commitresult(cls.caseid, result)
+        utils.commitresult(caseid, result)
 
         if utils.getDdeDockDisplayMode() != utils.dock.displaymode_fashion:
             utils.setDdeDockDisplayMode(utils.dock.displaymode_fashion)

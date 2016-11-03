@@ -8,12 +8,12 @@ from lib import runner
 from dogtail import rawinput
 
 result = True
+caseid = '68525'
+casename = "all-2501:四个位置的智能隐藏测试"
 
 class DockSmartHideOtherDirection(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
-        cls.caseid = '68525'
-        cls.casename = "all-2501:四个位置的智能隐藏测试"
         cls.ddedockobject = utils.getDdeDockObject()
         cls.defaultdisplaymode = utils.getDdeDockDisplayMode()
         cls.defaultposition = utils.getDdeDockPosition()
@@ -31,7 +31,7 @@ class DockSmartHideOtherDirection(unittest.TestCase):
     @classmethod
     def tearDownClass(cls):
         global result
-        utils.commitresult(cls.caseid, result)
+        utils.commitresult(caseid, result)
 
         if utils.getDdeDockDisplayMode() != utils.dock.displaymode_fashion:
             utils.setDdeDockDisplayMode(utils.dock.displaymode_fashion)
