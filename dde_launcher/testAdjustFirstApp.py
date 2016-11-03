@@ -6,19 +6,22 @@ from lib import runner,utils
 from lib.launcher import *
 
 result = True
+caseid = '45878'
+casename = 'all-2149:调整首个程序位置'
 
 class LauncherAdjustFirstApp(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
-        cls.caseid = '45878'
-        cls.casename = 'all-2149:调整首个程序位置'
+        cls.startTime = time.time()
         launcher.freeMode()
 
 
     @classmethod
     def tearDownClass(cls):
         global result
-        utils.commitresult(cls.caseid, result)
+        seconds = '%.3f' % (time.time() - cls.startTime)
+        minutes = utils.convertToMinutes(float(seconds))
+        utils.commitresult(caseid, result, minutes)
         launcher.freeMode()
 
 
@@ -26,6 +29,7 @@ class LauncherAdjustFirstApp(unittest.TestCase):
         apps = launcher.getLauncherAllApps()
         first = apps[0]
         launcher.dragToSecond()
+        sleep(2)
         apps = launcher.getLauncherAllApps()
         second = apps[1]
         self.assertEqual(first, second)
