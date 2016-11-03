@@ -42,12 +42,13 @@ from systemcommand.test_date import Date
 from systemcommand.test_more import More
 from systemcommand.test_redirect import Redirect
 from systemcommand.test_pipe import Pipe
+from systemcommand.test_ping import Ping
 
 from osd.test_keyboardlayout import KbLayout
 
 def main():
     classes = []
-    
+
     # 桌面环境
     classes.append(KbLayout)
 
@@ -94,6 +95,7 @@ def main():
     classes.append(More)
     classes.append(Redirect)
     classes.append(Pipe)
+    classes.append(Ping)
 
     # 软件包管理命令
     classes.append(Apt_get)
