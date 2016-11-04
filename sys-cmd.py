@@ -26,6 +26,8 @@ from systemcommand.test_ifconfig import Ifconfig
 from systemcommand.test_ping import Ping
 from systemcommand.test_ping_ip import Ping_ip
 from systemcommand.test_ping_local_ip import Ping_local_ip
+from systemcommand.test_netstat_i import Netstat_i
+from systemcommand.test_netstat_r import Netstat_r
 
 from systemcommand.test_tar import Tar
 from systemcommand.test_gzip import Gzip
@@ -83,6 +85,8 @@ def main():
     classes.append(Ping)
     classes.append(Ping_ip)
     classes.append(Ping_local_ip)
+    classes.append(Netstat_i)
+    classes.append(Netstat_r)
 
     # 备份、压缩和解压缩操作命令
     classes.append(Tar)
