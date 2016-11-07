@@ -7,12 +7,12 @@ from lib.launcher import *
 from lib.dde_dock import *
 
 result = True
+caseid = '80163'
+casename = "all-2837:dock-显示桌面按钮测试"
 
 class ShowDesktopBtn(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
-        cls.caseid = '80163'
-        cls.casename = "all-2837:dock-显示桌面按钮测试"
         cls.btn = '显示桌面'
         cls.app = '深度商店'
         cls.appname = '深度商店 — Deepin Store'
@@ -23,7 +23,7 @@ class ShowDesktopBtn(unittest.TestCase):
     @classmethod
     def tearDownClass(cls):
         global result
-        utils.commitresult(cls.caseid, result)
+        utils.commitresult(caseid, result)
         cls.newWindows = getAllWindows()
         if len(cls.newWindows) - len(cls.oldWindows) == 1:
             cls.newWindows[-1].close(1)

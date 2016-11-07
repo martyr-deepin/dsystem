@@ -8,14 +8,14 @@ from lib.launcher import *
 
 
 result = True
+caseid = '83378'
+casename = 'all-3358:运行深度终端'
 
 class DeepinTerminal(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
-        cls.caseid = '83378'
-        cls.casename = 'all-3358:运行深度终端'
         cls.appName = 'deepin-terminal'
-        _, cls.username = subprocess.getstatusoutput("whoami")
+        cls.username = subprocess.getstatusoutput("whoami")
         cls.winName = cls.username + ' - 深度终端'
         cls.oldWindows = getAllWindows()
 
@@ -23,7 +23,7 @@ class DeepinTerminal(unittest.TestCase):
     @classmethod
     def tearDownClass(cls):
         global result
-        utils.commitresult(cls.caseid, result)
+        utils.commitresult(caseid, result)
         newWindows = getAllWindows()
         if len(newWindows) > len(cls.oldWindows):
             newWindow = newWindows[-1]

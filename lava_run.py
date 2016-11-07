@@ -111,6 +111,22 @@ from systemcommand import test_apt_cache
 # osd
 from osd import test_keyboardlayout
 
+# app
+from apps import testDeepinMovie
+from apps import testDeepinMusic
+from apps import testDeepinScreenShot
+from apps import testDeepinStore
+from apps import testDeepinTerminal
+from apps import testYoudaoDict
+from apps import testDeepinMovieHelp
+
+# bugs
+from collectedBugs import testShowDesktop
+from collectedBugs import testHP
+from collectedBugs import testjournald
+from collectedBugs import testyoudao
+from collectedBugs import testcodename
+
 def getIdFile():
     if os.path.exists("/tmp/%s" % idfile):
         with open("/tmp/%s" % idfile, 'r') as f:
@@ -389,6 +405,44 @@ def main():
     # add osd classes
     if test_keyboardlayout.caseid in idlist:
         allclasses.append(test_keyboardlayout.KbLayout)
+
+    # add app classes
+    if testDeepinMovie.caseid in idlist:
+        allclasses.append(testDeepinMovie.DeepinMovie)
+
+    if testDeepinMusic.caseid in idlist:
+        allclasses.append(testDeepinMusic.DeepinMusic)
+
+    if testDeepinScreenShot.caseid in idlist:
+        allclasses.append(testDeepinScreenShot.DeepinScreenShot)
+
+    if testDeepinStore.caseid in idlist:
+        allclasses.append(testDeepinStore.DeepinStore)
+
+    if testDeepinTerminal.caseid in idlist:
+        allclasses.append(testDeepinTerminal.DeepinTerminal)
+
+    if testYoudaoDict.caseid in idlist:
+        allclasses.append(testYoudaoDict.YoudaoDict)
+
+    if testDeepinMovieHelp.caseid in idlist:
+        allclasses.append(testDeepinMovieHelp.DeepinMovieHelp)
+
+    # add bugs classes
+    if testShowDesktop.caseid in idlist:
+        allclasses.append(testShowDesktop.ShowDesktopBtn)
+
+    if testHP.caseid in idlist:
+        allclasses.append(testHP.HPIntergration)
+
+    if testjournald.caseid in idlist:
+        allclasses.append(testjournald.RestrictLog)
+
+    if testyoudao.caseid in idlist:
+        allclasses.append(testyoudao.Youdao)
+
+    if testcodename.caseid in idlist:
+        allclasses.append(testcodename.CodeName)
 
     if len(allclasses) == 0:
         print("All classes list is zero.")

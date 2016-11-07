@@ -6,12 +6,12 @@ from lib import runner,utils
 from subprocess import getoutput
 
 result = True
+caseid = '80240'
+casename = "all-2967:hplipj集成测试"
 
 class HPIntergration(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
-        cls.caseid = '80240'
-        cls.casename = "all-2967:hplipj集成测试"
         cls.installed = 'ii'
         cls.pkg1 = "dpkg -l |grep hpijs-ppds |awk END'{print $1}'"
         cls.pkg2 = "dpkg -l |grep hplip |awk END'{print $1}'"
@@ -26,7 +26,7 @@ class HPIntergration(unittest.TestCase):
     @classmethod
     def tearDownClass(cls):
         global result
-        utils.commitresult(cls.caseid, result)
+        utils.commitresult(caseid, result)
 
 
     def testhpijs(self):

@@ -8,12 +8,12 @@ from lib.filesystemutils import getDevInfo
 import platform
 
 result = True
+caseid = '80301'
+casename = "all-3149:codename测试"
 
 class CodeName(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
-        cls.caseid = '80301'
-        cls.casename = "all-3149:codename测试"
         cls.codename = getDevInfo('codename','code')
         cls.lsbcode = 'DISTRIB_CODENAME=' + cls.codename
         cls.lsb = "cat /etc/lsb-release |grep DISTRIB_CODENAME"
@@ -23,7 +23,7 @@ class CodeName(unittest.TestCase):
     @classmethod
     def tearDownClass(cls):
         global result
-        utils.commitresult(cls.caseid, result)
+        utils.commitresult(caseid, result)
 
 
     def testlsb(self):

@@ -6,12 +6,12 @@ from lib import runner,utils
 from subprocess import getoutput
 
 result = True
+caseid = '80272'
+casename = "all-2974:systemd-journalctl日志大小限制"
 
 class RestrictLog(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
-        cls.caseid = '80272'
-        cls.casename = "all-2974:systemd-journalctl日志大小限制"
         cls.log = 'SystemMaxUse=500M'
         cls.cmd = "cat /etc/systemd/journald.conf |grep SystemMaxUse"
 
@@ -19,7 +19,7 @@ class RestrictLog(unittest.TestCase):
     @classmethod
     def tearDownClass(cls):
         global result
-        utils.commitresult(cls.caseid, result)
+        utils.commitresult(caseid, result)
 
 
     def testRestrictLog(self):

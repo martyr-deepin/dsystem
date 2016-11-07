@@ -7,12 +7,12 @@ from lib.launcher import *
 from lib.window import findWindow
 
 result = True
+caseid = '80279'
+casename = "all-2977:有道词典测试"
 
 class Youdao(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
-        cls.caseid = '80279'
-        cls.casename = "all-2977:有道词典测试"
         cls.app = 'youdaocidian'
         cls.appName = '有道词典'
         cls.oldWindows = getAllWindows()
@@ -21,7 +21,7 @@ class Youdao(unittest.TestCase):
     @classmethod
     def tearDownClass(cls):
         global result
-        utils.commitresult(cls.caseid, result)
+        utils.commitresult(caseid, result)
         cls.newWindows = getAllWindows()
         if len(cls.newWindows) - len(cls.oldWindows) == 1:
             cls.newWindows[-1].close(1)

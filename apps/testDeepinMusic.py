@@ -8,12 +8,12 @@ from lib.launcher import *
 
 
 result = True
+caseid = '83309'
+casename = 'all-3344:运行深度音乐'
 
 class DeepinMusic(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
-        cls.caseid = '83309'
-        cls.casename = 'all-3344:运行深度音乐'
         cls.appName = 'deepin-music-player'
         cls.winName = '深度音乐'
         cls.oldWindows = getAllWindows()
@@ -22,8 +22,7 @@ class DeepinMusic(unittest.TestCase):
     @classmethod
     def tearDownClass(cls):
         global result
-        utils.commitresult(cls.caseid, result)
-
+        utils.commitresult(caseid, result)
 
     def setUp(self):
         pass

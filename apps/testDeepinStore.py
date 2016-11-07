@@ -8,12 +8,12 @@ from lib.launcher import *
 
 
 result = True
+caseid = '83287'
+casename = 'all-3339:打开深度商店'
 
 class DeepinStore(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
-        cls.caseid = '83287'
-        cls.casename = 'all-3339:打开深度商店'
         cls.appName = 'deepin-appstore'
         cls.winName = '深度商店 — Deepin Store'
         cls.oldWindows = getAllWindows()
@@ -22,7 +22,7 @@ class DeepinStore(unittest.TestCase):
     @classmethod
     def tearDownClass(cls):
         global result
-        utils.commitresult(cls.caseid, result)
+        utils.commitresult(caseid, result)
 
     def setUp(self):
         pass

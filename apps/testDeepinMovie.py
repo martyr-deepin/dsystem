@@ -8,12 +8,12 @@ from lib.launcher import *
 from lib.dde_dock import *
 
 result = True
+caseid = '83329'
+casename = 'all-3348:深度影院启动'
 
 class DeepinMovie(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
-        cls.caseid = '83329'
-        cls.casename = 'all-3348:深度影院启动'
         cls.appName = 'deepin-movie'
         cls.winName = '深度影院'
         cls.oldWindows = getAllWindows()
@@ -22,7 +22,7 @@ class DeepinMovie(unittest.TestCase):
     @classmethod
     def tearDownClass(cls):
         global result
-        utils.commitresult(cls.caseid, result)
+        utils.commitresult(caseid, result)
         cls.newWindows = getAllWindows()
         if len(cls.newWindows) > len(cls.oldWindows):
             newWindow = cls.newWindows[-1]

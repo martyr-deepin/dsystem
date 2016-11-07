@@ -8,12 +8,12 @@ from lib.launcher import *
 from lib.dde_dock import *
 
 result = True
+caseid = '83365'
+casename = 'all-3356:有道词典开启与关闭'
 
 class YoudaoDict(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
-        cls.caseid = '83365'
-        cls.casename = 'all-3356:有道词典开启与关闭'
         cls.appName = 'youdao-dict'
         cls.winName = '有道词典'
         cls.oldWindows = getAllWindows()
@@ -22,8 +22,8 @@ class YoudaoDict(unittest.TestCase):
     @classmethod
     def tearDownClass(cls):
         global result
-        utils.commitresult(cls.caseid, result)
-        
+        utils.commitresult(caseid, result)
+
 
     def setUp(self):
         pass
