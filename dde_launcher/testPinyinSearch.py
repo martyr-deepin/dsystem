@@ -7,12 +7,12 @@ from lib.launcher import *
 from time import sleep
 
 result = True
+caseid = '45706'
+casename = "all-2140:拼音字符串搜索"
 
 class LauncherPinyinSearch(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
-        cls.caseid = '45706'
-        cls.casename = "all-2140:拼音字符串搜索"
         cls.appName = '图像查看器'
         cls.text1 = 'tuxiangchakanqi'
         cls.text2 = 'txckq'
@@ -22,10 +22,8 @@ class LauncherPinyinSearch(unittest.TestCase):
     @classmethod
     def tearDownClass(cls):
         global result
-        utils.commitresult(cls.caseid, result)
-        
-        
-    
+        utils.commitresult(caseid, result)
+
     def testPinyinSearch1(self):
         launcher.searchApp(self.text1)
         sleep(2)

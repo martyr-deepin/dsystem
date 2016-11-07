@@ -7,12 +7,12 @@ from lib.launcher import *
 from lib.dde_dock import *
 
 result = True
+caseid = '80064'
+casename = "all-3297:应用发送至任务栏/桌面后命令行删除测试"
 
 class AppDelete2(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
-        cls.caseid = '80064'
-        cls.casename = "all-3297:应用发送至任务栏/桌面后命令行删除测试"
         cls.app = 'lovewallpaper'
         cls.launchername = '爱壁纸HD'
         cls.desktopfile = 'love-wallpaper.desktop'
@@ -20,13 +20,11 @@ class AppDelete2(unittest.TestCase):
         cls.install = 'sudo apt-get -y install ' + cls.app
         cls.remove = 'sudo apt-get -y remove ' + cls.app
 
-
     @classmethod
     def tearDownClass(cls):
         global result
-        utils.commitresult(cls.caseid, result)
+        utils.commitresult(caseid, result)
 
-    
     def testSendToDesktopAndDock(self):
         subprocess.check_call(self.install, shell=True)
         launcher.menuDesktop(self.launchername)

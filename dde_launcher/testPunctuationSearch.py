@@ -7,12 +7,12 @@ from lib.launcher import *
 from time import sleep
 
 result = True
+caseid = '52345'
+casename = "all-2269:输入标点符号测试"
 
 class LauncherPunctuationSearch(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
-        cls.caseid = '52345'
-        cls.casename = "all-2269:输入标点符号测试"
         cls.text1 = '! '
         cls.text2 = '*'
         cls.text3 = 'deepin*'
@@ -20,10 +20,8 @@ class LauncherPunctuationSearch(unittest.TestCase):
     @classmethod
     def tearDownClass(cls):
         global result
-        utils.commitresult(cls.caseid, result)
-    
-        
-    
+        utils.commitresult(caseid, result)
+
     def testPunctuationSearch1(self):
         launcher.searchApp(self.text1)
         sleep(2)

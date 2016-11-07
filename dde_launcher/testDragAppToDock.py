@@ -8,21 +8,20 @@ from lib.launcher import *
 from lib.dde_dock import *
 
 result = True
+caseid = '33823'
+casename = "all-514:拖动到任务栏驻留"
 
 class LauncherDragAppToDock(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
-        cls.caseid = '33823'
-        cls.casename = "all-514:拖动到任务栏驻留"
         cls.qqName = 'apps.com.qq.im'
 
     @classmethod
     def tearDownClass(cls):
         global result
-        utils.commitresult(cls.caseid, result)
+        utils.commitresult(caseid, result)
         launcher.freeMode()
         launcher.unDock()
-
 
     def testDragToDockFree(self):
         launcher.freeMode()

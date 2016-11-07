@@ -8,13 +8,13 @@ from lib.launcher import *
 from lib.dde_dock import *
 
 result = True
+caseid = '33840'
+casename = 'all-518:添加到任务栏'
 
 class LauncherAddToDock(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
         cls.menuObj = root.application(appName='deepin-menu', description='/usr/lib/deepin-menu')
-        cls.caseid = '33840'
-        cls.casename = 'all-518:添加到任务栏'
         cls.googleName = 'Google Chrome'
         dockApps = Dock().getAllDockApps()
         if 'google-chrome' in dockApps:
@@ -24,7 +24,7 @@ class LauncherAddToDock(unittest.TestCase):
     @classmethod
     def tearDownClass(cls):
         global result
-        utils.commitresult(cls.caseid, result)
+        utils.commitresult(caseid, result)
         launcher.exitLauncher()
 
     def testMenuDock(self):

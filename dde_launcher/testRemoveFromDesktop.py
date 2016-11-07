@@ -8,19 +8,19 @@ from lib.launcher import *
 from lib.dde_dock import *
 
 result = True
+caseid = '33843'
+casename = 'all-519:从桌面上移除'
 
 class LauncherRemoveFromDesktop(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
-        cls.caseid = '33843'
-        cls.casename = 'all-519:从桌面上移除'
         cls.menuObj = root.application(appName='deepin-menu', description='/usr/lib/deepin-menu')
         cls.QQName = 'QQ'
 
     @classmethod
     def tearDownClass(cls):
         global result
-        utils.commitresult(cls.caseid, result)
+        utils.commitresult(caseid, result)
         launcher.exitLauncher()
 
     def testMenuRemoveFromDesktop(self):

@@ -8,19 +8,19 @@ from lib.launcher import *
 from lib.dde_dock import *
 
 result = True
+caseid = '33837'
+casename = 'all-517:从任务栏移除'
 
 class LauncherRemoveFromDock(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
-        cls.caseid = '33837'
-        cls.casename = 'all-517:从任务栏移除'
         cls.menuObj = root.application(appName='deepin-menu', description='/usr/lib/deepin-menu')
         cls.googleName = 'Google Chrome'
 
     @classmethod
     def tearDownClass(cls):
         global result
-        utils.commitresult(cls.caseid, result)
+        utils.commitresult(caseid, result)
         launcher.exitLauncher()
 
     def testMenuUnDock(self):

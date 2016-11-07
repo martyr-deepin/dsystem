@@ -8,13 +8,13 @@ from lib.launcher import *
 from lib.dde_dock import *
 
 result = True
+caseid = '33855'
+casename = 'all-522:添加至开机启动项'
 
 class LauncherAddToBoot(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
         cls.menuObj = root.application(appName='deepin-menu', description='/usr/lib/deepin-menu')
-        cls.caseid = '33855'
-        cls.casename = 'all-522:添加至开机启动项'
         cls.googleName = 'Google Chrome'
         cls.QQname = 'QQ'
         cls.googleFile = 'google-chrome.desktop'
@@ -23,7 +23,7 @@ class LauncherAddToBoot(unittest.TestCase):
     @classmethod
     def tearDownClass(cls):
         global result
-        utils.commitresult(cls.caseid, result)
+        utils.commitresult(caseid, result)
         googleFeild = getBootFeild(cls.googleFile)
         QQFeild = getBootFeild(cls.QQFile)
         if googleFeild == 'Hidden=false':

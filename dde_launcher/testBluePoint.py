@@ -6,20 +6,19 @@ from lib import runner,utils
 from lib.launcher import *
 
 result = True
+caseid = '33866'
+casename = "all-524:预装应用蓝点标志测试"
 
 class BluePoint(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
-        cls.caseid = '33866'
-        cls.casename = "all-524:预装应用蓝点标志测试"
-
+        pass
 
     @classmethod
     def tearDownClass(cls):
         global result
-        utils.commitresult(cls.caseid, result)
+        utils.commitresult(caseid, result)
 
-    
     def testBluePoint(self):
         app = launcher.getNewInstalledApps()
         #print(app)

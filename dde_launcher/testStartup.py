@@ -6,12 +6,12 @@ from lib import runner,utils
 from lib.launcher import *
 
 result = True
+caseid = '33832'
+casename = "all-516:启动"
 
 class LauncherStartupApp(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
-        cls.caseid = '33832'
-        cls.casename = "all-516:启动"
         cls.menuObj = root.application(appName='deepin-menu', description='/usr/lib/deepin-menu')
         cls.googleName = '打开新的标签页 - Google Chrome'
         cls.terminalName = 'deepin - 深度终端'
@@ -22,15 +22,15 @@ class LauncherStartupApp(unittest.TestCase):
     @classmethod
     def tearDownClass(cls):
         global result
-        utils.commitresult(cls.caseid, result)
-        
+        utils.commitresult(caseid, result)
+
         cls.newWindows = getAllWindows()
-        if len(cls.newWindows) - len(cls.oldWindows) == 3: 
+        if len(cls.newWindows) - len(cls.oldWindows) == 3:
             for win in cls.newWindows[-3:]:
                 win.close(1)
         launcher.freeMode()
-        
-    
+
+
     def testSartupByRightKey(self):
         launcher.searchApp('Google Chrome')
         sleep(2)
@@ -59,7 +59,7 @@ class LauncherStartupApp(unittest.TestCase):
     def testStartupByLeftKey(self):
         launcher.checkLableKids('office')
         geditCoor = launcher.getAppCenterCoorCategory('office',3)
-        pyautogui.click(geditCoor) 
+        pyautogui.click(geditCoor)
         win = getWindowName()
         self.assertEqual(self.geditName, win)
 

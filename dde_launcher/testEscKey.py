@@ -6,12 +6,12 @@ from lib import runner,utils
 from lib.launcher import *
 
 result = True
+caseid = '33931'
+casename = "all-538:ESC隐藏启动器"
 
 class LauncherEscKey(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
-        cls.caseid = '33931'
-        cls.casename = "all-538:ESC隐藏启动器"
         cls.menuObj = root.application(appName='deepin-menu', description='/usr/lib/deepin-menu')
         apps = launcher.getLauncherAllApps()
         cls.appName = apps[17]
@@ -20,10 +20,10 @@ class LauncherEscKey(unittest.TestCase):
     @classmethod
     def tearDownClass(cls):
         global result
-        utils.commitresult(cls.caseid, result)
+        utils.commitresult(caseid, result)
         launcher.exitLauncher()
 
-    
+
     def testQuitLauncher(self):
         launcher.openLauncher()
         pyautogui.press('esc')

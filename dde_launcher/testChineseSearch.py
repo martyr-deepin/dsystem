@@ -7,23 +7,20 @@ from lib.launcher import *
 from time import sleep
 
 result = True
+caseid = '33795'
+casename = "all-509:中文字符串搜索"
 
 class LauncherChineseSearch(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
-        cls.caseid = '33795'
-        cls.casename = "all-509:中文字符串搜索"
         cls.text1 = '图像查看器'
         cls.text2 = '图像'
-
 
     @classmethod
     def tearDownClass(cls):
         global result
-        utils.commitresult(cls.caseid, result)
-    
-        
-    
+        utils.commitresult(caseid, result)
+
     def testChineseSearch1(self):
         launcher.searchApp(self.text1)
         sleep(2)

@@ -8,20 +8,20 @@ from lib.launcher import *
 from lib.dde_dock import *
 
 result = True
+caseid = '33902'
+casename = 'all-532:应用安装之后左侧分类更新测试'
 
 class LauncherSortApp(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
         cls.menuObj = root.application(appName='deepin-menu', description='/usr/lib/deepin-menu')
-        cls.caseid = '33902'
-        cls.casename = 'all-532:应用安装之后左侧分类更新测试'
         cls.installAppName = 'robomongo'
 
 
     @classmethod
     def tearDownClass(cls):
         global result
-        utils.commitresult(cls.caseid, result)
+        utils.commitresult(caseid, result)
         kids = launcher.getKidsCategory('development')
         if 'Robomongo' in kids:
             launcher.removeApp(cls.installAppName)

@@ -7,13 +7,12 @@ from lib.launcher import *
 from time import sleep
 
 result = True
-
+caseid = '52350'
+casename = "all-2270:输入空格符搜索测试"
 
 class LauncherSpaceSearch(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
-        cls.caseid = '52350'
-        cls.casename = "all-2270:输入空格符搜索测试"
         cls.text1 = ' '
         cls.text2 = 'deepin   '
         cls.text3 = 'deepin music'
@@ -22,14 +21,11 @@ class LauncherSpaceSearch(unittest.TestCase):
         launcher.exitLauncher()
         cls.defaultApps = launcher.getLauncherAllApps()
 
-
     @classmethod
     def tearDownClass(cls):
         global result
-        utils.commitresult(cls.caseid, result)
-    
-        
-    
+        utils.commitresult(caseid, result)
+
     def testSpaceSearch1(self):
         launcher.searchApp(self.text1)
         sleep(2)

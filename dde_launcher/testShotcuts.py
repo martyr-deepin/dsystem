@@ -7,12 +7,12 @@ from lib.launcher import *
 from lib.dde_dock import *
 
 result = True
+caseid = '33859'
+casename = "all-523:右键菜单快捷键测试"
 
 class LauncherShotcuts(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
-        cls.caseid = '33859'
-        cls.casename = "all-523:右键菜单快捷键测试"
         cls.menuObj = root.application(appName='deepin-menu', description='/usr/lib/deepin-menu')
         launcher.categoryMode()
         cls.appObj = launcher.launcherObj.child('internet',roleName='list').children[0]
@@ -26,7 +26,7 @@ class LauncherShotcuts(unittest.TestCase):
     @classmethod
     def tearDownClass(cls):
         global result
-        utils.commitresult(cls.caseid, result)
+        utils.commitresult(caseid, result)
         #remove from desktop
         desktopFiles = getDesktopFiles()
         if cls.appDesktopName in desktopFiles:
@@ -48,15 +48,15 @@ class LauncherShotcuts(unittest.TestCase):
                 pyautogui.press('enter')
             else:
                 raise Exception('Launcher Menu did not opened!')
-                
+
         launcher.launcherObj.child('mode-toggle-button').click()
         launcher.exitLauncher()
         #close google
         cls.newWindows = getAllWindows()
-        if len(cls.newWindows) - len(cls.oldWindows) == 1: 
+        if len(cls.newWindows) - len(cls.oldWindows) == 1:
             cls.newWindows[-1].close(1)
         launcher.freeMode()
-    
+
     def testOpen(self):
         pyautogui.press('winleft')
         mode = launcher.getLauncherMode()

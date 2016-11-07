@@ -6,34 +6,31 @@ from lib import runner,utils
 from lib.launcher import *
 
 result = True
+caseid = '33952'
+casename = "all-542:点击任务栏程序隐藏启动器"
 
 class LauncherHideByClickDock(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
-        cls.caseid = '33952'
-        cls.casename = "all-542:点击任务栏程序隐藏启动器"
         cls.menuObj = root.application(appName='deepin-menu', description='/usr/lib/deepin-menu')
         cls.oldWindows = getAllWindows()
         #apps = Dock().getDockedApps()
         cls.app = '深度商店'
 
-
     @classmethod
     def tearDownClass(cls):
         global result
-        utils.commitresult(cls.caseid, result)
+        utils.commitresult(caseid, result)
         launcher.exitLauncher()
         cls.newWindows = getAllWindows()
         if len(cls.newWindows) - len(cls.oldWindows) == 1:
             cls.newWindows[-1].close(1)
 
-    
     def testClickApp(self):
         launcher.openLauncher()
         Dock().dockObj.child(self.app).click()
         win = findWindow('dde-launcher')
         self.assertIsNone(win)
-
 
     def testClickBlank(self):
         launcher.openLauncher()
@@ -43,7 +40,6 @@ class LauncherHideByClickDock(unittest.TestCase):
         pyautogui.click(blank)
         win = findWindow('dde-launcher')
         self.assertIsNotNone(win)
-
 
     def suite():
         suite = unittest.TestSuite()

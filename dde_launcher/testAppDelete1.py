@@ -7,12 +7,12 @@ from lib.launcher import *
 from lib.dde_dock import *
 
 result = True
+caseid = '80062'
+casename = "all-3296:应用发送至任务栏/桌面后右键删除测试"
 
 class AppDelete1(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
-        cls.caseid = '80062'
-        cls.casename = "all-3296:应用发送至任务栏/桌面后右键删除测试"
         cls.app = '360safeforcnos'
         cls.launchername = '360安全卫士'
         cls.desktopfile = 'start360.desktop'
@@ -23,10 +23,8 @@ class AppDelete1(unittest.TestCase):
     @classmethod
     def tearDownClass(cls):
         global result
-        utils.commitresult(cls.caseid, result)
+        utils.commitresult(caseid, result)
 
-
-    
     def testSendToDesktopAndDock(self):
         subprocess.check_call(self.install, shell=True)
         launcher.menuDesktop(self.launchername)
@@ -41,7 +39,7 @@ class AppDelete1(unittest.TestCase):
         launcher.searchApp(self.launchername)
         launcher.launcherObj.child(self.launchername).click(3)
         menuObj = root.application(appName='deepin-menu', description='/usr/lib/deepin-menu')
-        print(menuObj.children) 
+        print(menuObj.children)
         if menuObj.children[0].name == 'DesktopMenu':
             for i in range(5):
                 pyautogui.press('down')

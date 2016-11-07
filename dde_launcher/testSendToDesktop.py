@@ -8,19 +8,19 @@ from lib.launcher import *
 from lib.dde_dock import *
 
 result = True
+caseid = '33846'
+casename = 'all-520:发送到桌面'
 
 class LauncherSendToDesktop(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
-        cls.caseid = '33846'
-        cls.casename = 'all-520:发送到桌面'
         cls.menuObj = root.application(appName='deepin-menu', description='/usr/lib/deepin-menu')
         cls.QQName = 'QQ'
 
     @classmethod
     def tearDownClass(cls):
         global result
-        utils.commitresult(cls.caseid, result)
+        utils.commitresult(caseid, result)
         launcher.exitLauncher()
 
     def testMenuSendToDesktop(self):
@@ -28,7 +28,6 @@ class LauncherSendToDesktop(unittest.TestCase):
         desktopFiles = getDesktopFiles()
         QQdesktopFile = 'apps.com.qq.im.desktop'
         self.assertIn(QQdesktopFile,desktopFiles)
-
 
     def suite():
         suite = unittest.TestSuite()

@@ -59,6 +59,35 @@ from ddedock import testDockSoundPluginClick
 from dde_launcher import testAdjustFirstApp
 from dde_launcher import testDisableDragInCategory
 
+# dde launcher
+from dde_launcher import testAdjustFirstApp
+from dde_launcher import testDisableDragInCategory
+from dde_launcher import testDragAppToDock
+from dde_launcher import testDragToCenter
+from dde_launcher import testStartup
+from dde_launcher import testAddToDock
+from dde_launcher import testRemoveFromDock
+from dde_launcher import testSendToDesktop
+from dde_launcher import testRemoveFromDesktop
+from dde_launcher import testBoot
+from dde_launcher import testChineseSearch
+from dde_launcher import testEnglishSearch
+from dde_launcher import testPinyinSearch
+from dde_launcher import testMutiSearch
+from dde_launcher import testPkgNameSearch
+from dde_launcher import testPunctuationSearch
+from dde_launcher import testSpaceSearch
+from dde_launcher import testSortApp
+from dde_launcher import testUninstall
+from dde_launcher import testShotcuts
+from dde_launcher import testEnterKey
+from dde_launcher import testEscKey
+from dde_launcher import testHideByClickDock
+from dde_launcher import testClickBlank
+from dde_launcher import testBluePoint
+from dde_launcher import testAppDelete1
+from dde_launcher import testAppDelete2
+
 # system command
 from systemcommand import test_useradd
 from systemcommand import test_userdel
@@ -275,11 +304,87 @@ def main():
     if testDockSoundPluginClick.caseid in idlist:
         allclasses.append(testDockSoundPluginClick.DockSoundPluginClick)
 
+    # add dde launcher classes
     if testAdjustFirstApp.caseid in idlist:
         allclasses.append(testAdjustFirstApp.LauncherAdjustFirstApp)
 
     if testDisableDragInCategory.caseid in idlist:
         allclasses.append(testDisableDragInCategory.LauncherDisable)
+
+    if testDragAppToDock.caseid in idlist:
+        allclasses.append(testDragAppToDock.LauncherDragAppToDock)
+
+    if testDragToCenter.caseid in idlist:
+        allclasses.append(testDragToCenter.LauncherDragToCenter)
+
+    if testStartup.caseid in idlist:
+        allclasses.append(testStartup.LauncherStartupApp)
+
+    if testAddToDock.caseid in idlist:
+        allclasses.append(testAddToDock.LauncherAddToDock)
+
+    if testRemoveFromDock.caseid in idlist:
+        allclasses.append(testRemoveFromDock.LauncherRemoveFromDock)
+
+    if testSendToDesktop.caseid in idlist:
+        allclasses.append(testSendToDesktop.LauncherSendToDesktop)
+
+    if testRemoveFromDesktop.caseid in idlist:
+        allclasses.append(testRemoveFromDesktop.LauncherRemoveFromDesktop)
+
+    if testBoot.caseid in idlist:
+        allclasses.append(testBoot.LauncherAddToBoot)
+
+    if testChineseSearch.caseid in idlist:
+        allclasses.append(testChineseSearch.LauncherChineseSearch)
+
+    if testEnglishSearch.caseid in idlist:
+        allclasses.append(testEnglishSearch.LauncherEnglishSearch)
+
+    if testPinyinSearch.caseid in idlist:
+        allclasses.append(testPinyinSearch.LauncherPinyinSearch)
+
+    if testMutiSearch.caseid in idlist:
+        allclasses.append(testMutiSearch.LauncherMutiSearch)
+
+    if testPkgNameSearch.caseid in idlist:
+        allclasses.append(testPkgNameSearch.LauncherPkgNameSearch)
+
+    if testPunctuationSearch.caseid in idlist:
+        allclasses.append(testPunctuationSearch.LauncherPunctuationSearch)
+
+    if testSpaceSearch.caseid in idlist:
+        allclasses.append(testSpaceSearch.LauncherSpaceSearch)
+
+    if testSortApp.caseid in idlist:
+        allclasses.append(testSortApp.LauncherSortApp)
+
+    if testUninstall.caseid in idlist:
+        allclasses.append(testUninstall.LauncherUninstall)
+
+    if testShotcuts.caseid in idlist:
+        allclasses.append(testShotcuts.LauncherShotcuts)
+
+    if testEnterKey.caseid in idlist:
+        allclasses.append(testEnterKey.LauncherEnterKey)
+
+    if testEscKey.caseid in idlist:
+        allclasses.append(testEscKey.LauncherEscKey)
+
+    if testHideByClickDock.caseid in idlist:
+        allclasses.append(testHideByClickDock.LauncherHideByClickDock)
+
+    if testClickBlank.caseid in idlist:
+        allclasses.append(testClickBlank.ClickBlank)
+
+    if testBluePoint.caseid in idlist:
+        allclasses.append(testBluePoint.BluePoint)
+
+    if testAppDelete1.caseid in idlist:
+        allclasses.append(testAppDelete1.AppDelete1)
+
+    if testAppDelete2.caseid in idlist:
+        allclasses.append(testAppDelete2.AppDelete2)
 
     # add system command classes
     if test_useradd.caseid in idlist:

@@ -6,12 +6,12 @@ from lib import runner,utils
 from lib.launcher import *
 
 result = True
+caseid = '33941'
+casename = "all-540:单击空白处退出"
 
 class ClickBlank(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
-        cls.caseid = '33941'
-        cls.casename = "all-540:单击空白处退出"
         cls.text1 = 'deepin'
         cls.text2 = 'testtest'
         launcher.freeMode()
@@ -19,11 +19,10 @@ class ClickBlank(unittest.TestCase):
     @classmethod
     def tearDownClass(cls):
         global result
-        utils.commitresult(cls.caseid, result)
+        utils.commitresult(caseid, result)
         launcher.freeMode()
         launcher.exitLauncher()
 
-    
     def testFreeMode(self):
         launcher.openLauncher()
         apps = launcher.getLauncherAllApps()

@@ -6,12 +6,12 @@ from lib import runner,utils
 from lib.launcher import *
 
 result = True
+caseid = '33849'
+casename = "all-521:鼠标右键卸载"
 
 class LauncherUninstall(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
-        cls.caseid = '33849'
-        cls.casename = "all-521:鼠标右键卸载"
         cls.menuObj = root.application(appName='deepin-menu', description='/usr/lib/deepin-menu')
         apps = launcher.getLauncherAllApps()
         cls.appName = apps[17]
@@ -20,9 +20,9 @@ class LauncherUninstall(unittest.TestCase):
     @classmethod
     def tearDownClass(cls):
         global result
-        utils.commitresult(cls.caseid, result)
+        utils.commitresult(caseid, result)
         launcher.exitLauncher()
-    
+
     def testNotUninstall(self):
         launcher.openLauncher()
         launcher.launcherObj.child(self.appName).click(3)

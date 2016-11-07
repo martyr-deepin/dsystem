@@ -7,25 +7,22 @@ from lib.launcher import *
 from time import sleep
 
 result = True
+caseid = '33803'
+casename = "all-510:英文字符串搜索"
 
 class LauncherEnglishSearch(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
-        cls.caseid = '33803'
-        cls.casename = "all-510:英文字符串搜索"
         cls.appName = '图像查看器'
         cls.text1 = 'image viewer'
         cls.text2 = 'iv'
         cls.text3 = 'image'
 
-
     @classmethod
     def tearDownClass(cls):
         global result
-        utils.commitresult(cls.caseid, result)
-        
-        
-    
+        utils.commitresult(caseid, result)
+
     def testEnglishSearch1(self):
         launcher.searchApp(self.text1)
         sleep(2)
@@ -35,7 +32,6 @@ class LauncherEnglishSearch(unittest.TestCase):
         launcher.exitLauncher()
         self.assertEqual(self.appName, apps)
 
-
     def testEnglishSearch2(self):
         launcher.searchApp(self.text2)
         sleep(2)
@@ -43,7 +39,6 @@ class LauncherEnglishSearch(unittest.TestCase):
         sleep(2)
         launcher.exitLauncher()
         self.assertIn(self.appName, apps)
-
 
     def testEnglishSearch3(self):
         launcher.searchApp(self.text3)
@@ -53,8 +48,6 @@ class LauncherEnglishSearch(unittest.TestCase):
         sleep(2)
         launcher.exitLauncher()
         self.assertEqual(self.appName, apps)
-
-
 
     def suite():
         suite = unittest.TestSuite()

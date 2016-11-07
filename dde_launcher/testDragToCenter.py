@@ -6,18 +6,18 @@ from lib import runner,utils
 from lib.launcher import *
 
 result = True
+caseid = '33827'
+casename = "all-515:左键拖动调整位置"
 
 class LauncherDragToCenter(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
         cls.menuObj = root.application(appName='deepin-menu', description='/usr/lib/deepin-menu')
-        cls.caseid = '33827'
-        cls.casename = "all-515:左键拖动调整位置"
 
     @classmethod
     def tearDownClass(cls):
         global result
-        utils.commitresult(cls.caseid, result)
+        utils.commitresult(caseid, result)
         launcher.dragToFirstLeftKey()
 
     def testDragToCenterLeftKey(self):
