@@ -9,17 +9,18 @@ from lib import utils
 from lib import runner
 
 result = True
+caseid = '38944'
+casename = 'all-1440:文件/文件夹操作命令--验证对cd命令的支持'
 
 class Cd(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
-        cls.caseid = '38944'
-        cls.casename = 'all-1440:文件/文件夹操作命令--验证对cd命令的支持'
+        pass
 
     @classmethod
     def tearDownClass(cls):
         global result
-        utils.commitresult(cls.caseid, result)
+        utils.commitresult(caseid, result)
 
     def setUp(self):
         self.loginuser = getoutput("whoami")

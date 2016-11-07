@@ -9,19 +9,18 @@ from lib import runner
 from lib import utils
 
 result = True
+caseid = '39116'
+casename = 'all-1469:其他命令--验证对重定向的支持'
 
 class Redirect(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
-        cls.caseid = '39116'
-        cls.casename = 'all-1469:其他命令--验证对重定向的支持'
-
         os.system('touch /tmp/testfile')
 
     @classmethod
     def tearDownClass(cls):
         global result
-        utils.commitresult(cls.caseid, result)
+        utils.commitresult(caseid, result)
 
         os.system('rm /tmp/testfile')
 

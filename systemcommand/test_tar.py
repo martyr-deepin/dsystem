@@ -9,12 +9,12 @@ from lib import runner
 from lib import utils
 
 result = True
+caseid = '39034'
+casename = 'all-1454:备份、压缩和解压缩操作命令--验证对tar命令的支持'
 
 class Tar(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
-        cls.caseid = '39034'
-        cls.casename = 'all-1454:备份、压缩和解压缩操作命令--验证对tar命令的支持'
         cls.file1    = "testsys1"
         cls.file2    = "testsys2"
         cls.alltar    = "all.tar"
@@ -24,7 +24,7 @@ class Tar(unittest.TestCase):
     @classmethod
     def tearDownClass(cls):
         global result
-        utils.commitresult(cls.caseid, result)
+        utils.commitresult(caseid, result)
 
         if os.path.exists(cls.file1):
             os.remove(cls.file1)

@@ -8,20 +8,19 @@ from lib import utils
 from lib import runner
 
 result = True
+caseid = '38929'
+casename = 'all-1437:用户管理命令--验证对userdel命令的支持'
 
 class Userdel(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
-        cls.caseid = '38929'
-        cls.casename = 'all-1437:用户管理命令--验证对userdel命令的支持'
-
         if os.path.exists('/home/test'):
             (status, output) = rt('sudo deluser --remove-home test')
 
     @classmethod
     def tearDownClass(cls):
         global result
-        utils.commitresult(cls.caseid, result)
+        utils.commitresult(caseid, result)
 
         if os.path.exists('/home/test'):
             (status, output) = rt('sudo deluser --remove-home test')

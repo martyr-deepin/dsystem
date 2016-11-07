@@ -8,18 +8,19 @@ from lib import utils
 from time import sleep
 
 result = True
+caseid = '39066'
+casename = 'all-1458:进程管理工具--验证对kill命令的支持'
 listlastssh = ''
 
 class  Kill(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
-        cls.caseid = '39066'
-        cls.casename = 'all-1458:进程管理工具--验证对kill命令的支持'
+        pass
 
     @classmethod
     def tearDownClass(cls):
         global result
-        utils.commitresult(cls.caseid, result)
+        utils.commitresult(caseid, result)
 
     def setUp(self):
     	pass
@@ -32,7 +33,7 @@ class  Kill(unittest.TestCase):
         self.assertTrue(0 == status)
         global listlastssh
         listlastssh = output.split()
- 
+
     def testKillPid(self):
         global listlastssh
         # self.testCheckSshd()

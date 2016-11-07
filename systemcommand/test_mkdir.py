@@ -9,12 +9,12 @@ from lib import utils
 from lib import runner
 
 result = True
+caseid = '38951'
+casename = 'all-1441:文件/文件夹操作命令--验证对mkdir命令的支持'
 
 class Mkdir(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
-        cls.caseid = '38951'
-        cls.casename = 'all-1441:文件/文件夹操作命令--验证对mkdir命令的支持'
         cls.loginuser = getoutput("whoami")
         cls.homedir = "/home/%s" % cls.loginuser
         cls.curdir = getoutput("pwd")
@@ -26,7 +26,7 @@ class Mkdir(unittest.TestCase):
     @classmethod
     def tearDownClass(cls):
         global result
-        utils.commitresult(cls.caseid, result)
+        utils.commitresult(caseid, result)
 
         os.system("rm -rf %s*" % cls.testdir)
 

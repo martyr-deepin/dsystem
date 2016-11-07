@@ -9,19 +9,19 @@ from lib import utils
 from lib import runner
 
 result = True
+caseid = '38975'
+casename = 'all-1445:文件/文件夹操作命令--验证对rm命令的支持'
 
 class Rm(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
-        cls.caseid = '38975'
-        cls.casename = 'all-1445:文件/文件夹操作命令--验证对rm命令的支持'
         cls.homedir = os.path.expanduser('~')
         cls.filename = "/".join((cls.homedir, 'testfile'))
 
     @classmethod
     def tearDownClass(cls):
         global result
-        utils.commitresult(cls.caseid, result)
+        utils.commitresult(caseid, result)
 
         if os.path.exists(cls.filename):
             os.system('rm %s' % cls.filename)

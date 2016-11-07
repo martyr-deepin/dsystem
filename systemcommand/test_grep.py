@@ -9,18 +9,18 @@ from lib import utils
 from lib import runner
 
 result = True
+caseid = '38987'
+casename = 'all-1448:文件/文件夹操作命令--验证对grep命令的支持'
 
 class Grep(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
-        cls.caseid = '38987'
-        cls.casename = 'all-1448:文件/文件夹操作命令--验证对grep命令的支持'
         cls.homedir = os.path.expanduser('~')
 
     @classmethod
     def tearDownClass(cls):
         global result
-        utils.commitresult(cls.caseid, result)
+        utils.commitresult(caseid, result)
 
     def setUp(self):
         pass

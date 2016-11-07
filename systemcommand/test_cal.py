@@ -10,17 +10,18 @@ from lib import utils
 from lib import runner
 
 result = True
+caseid = '39104'
+casename = 'all-1466:其他命令--验证对cal命令的支持'
 
 class Cal(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
-        cls.caseid = '39104'
-        cls.casename = 'all-1466:其他命令--验证对cal命令的支持'
+        pass
 
     @classmethod
     def tearDownClass(cls):
         global result
-        utils.commitresult(cls.caseid, result)
+        utils.commitresult(caseid, result)
 
     def setUp(self):
         pass

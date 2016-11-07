@@ -9,17 +9,18 @@ from lib import utils
 from lib import runner
 
 result = True
+caseid = '38983'
+casename = 'all-1447:文件/文件夹操作命令--验证对find命令的支持'
 
 class Find(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
-        cls.caseid = '38983'
-        cls.casename = 'all-1447:文件/文件夹操作命令--验证对find命令的支持'
+        pass
 
     @classmethod
     def tearDownClass(cls):
         global result
-        utils.commitresult(cls.caseid, result)
+        utils.commitresult(caseid, result)
 
     def setUp(self):
         pass

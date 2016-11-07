@@ -9,12 +9,12 @@ from lib import utils
 from lib import runner
 
 result = True
+caseid = '38957'
+casename = 'all-1442:文件/文件夹操作命令--验证对rmdir命令的支持'
 
 class Rmdir(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
-        cls.caseid = '38957'
-        cls.casename = 'all-1442:文件/文件夹操作命令--验证对rmdir命令的支持'
         cls.loginuser = getoutput("whoami")
         cls.curdir = getoutput("pwd")
         cls.testdir = "testdir"
@@ -22,7 +22,7 @@ class Rmdir(unittest.TestCase):
     @classmethod
     def tearDownClass(cls):
         global result
-        utils.commitresult(cls.caseid, result)
+        utils.commitresult(caseid, result)
 
     def setUp(self):
         pass

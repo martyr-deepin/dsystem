@@ -9,18 +9,18 @@ from lib import utils
 from lib import runner
 
 result = True
+caseid = '38967'
+casename = 'all-1444:文件/文件夹操作命令--验证对mv命令的支持'
 
 class Mv(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
-        cls.caseid = '38967'
-        cls.casename = 'all-1444:文件/文件夹操作命令--验证对mv命令的支持'
         cls.loginuser = getoutput("whoami")
 
     @classmethod
     def tearDownClass(cls):
         global result
-        utils.commitresult(cls.caseid, result)
+        utils.commitresult(caseid, result)
 
         if os.path.exists('/tmp/test'):
             os.system('rm /tmp/test')

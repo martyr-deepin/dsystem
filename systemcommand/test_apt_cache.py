@@ -9,17 +9,18 @@ from lib import utils
 from lib import runner
 
 result = True
+caseid = '69087'
+casename = 'all-2614:apt-cache命令'
 
 class Apt_cache(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
-        cls.caseid = '69087'
-        cls.casename = 'all-2614:apt-cache命令'
+        pass
 
     @classmethod
     def tearDownClass(cls):
         global result
-        utils.commitresult(cls.caseid, result)
+        utils.commitresult(caseid, result)
 
     def setUp(self):
         pass

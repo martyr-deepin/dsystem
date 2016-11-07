@@ -9,17 +9,18 @@ from lib import utils
 from lib import runner
 
 result = True
+caseid = '38980'
+casename = 'all-1446:文件/文件夹操作命令--验证对file命令的支持'
 
 class File(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
-        cls.caseid = '38980'
-        cls.casename = 'all-1446:文件/文件夹操作命令--验证对file命令的支持'
+        pass
 
     @classmethod
     def tearDownClass(cls):
         global result
-        utils.commitresult(cls.caseid, result)
+        utils.commitresult(caseid, result)
 
     def setUp(self):
         pass

@@ -10,18 +10,18 @@ from lib import utils
 from lib import runner
 
 result = True
+caseid = '39099'
+casename = 'all-1465:其他命令--验证对whoami命令的支持'
 
 class Whoami(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
-        cls.caseid = '39099'
-        cls.casename = 'all-1465:其他命令--验证对whoami命令的支持'
         cls.loginuser = getpass.getuser()
 
     @classmethod
     def tearDownClass(cls):
         global result
-        utils.commitresult(cls.caseid, result)
+        utils.commitresult(caseid, result)
 
     def setUp(self):
         pass

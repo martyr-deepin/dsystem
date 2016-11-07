@@ -9,19 +9,19 @@ from lib import runner
 from lib import utils
 
 result = True
+caseid = '39052'
+casename = 'all-1456:备份、压缩和解压缩操作命令--验证对gunzip命令的支持'
 
 class Gunzip(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
-        cls.caseid = '39052'
-        cls.casename = 'all-1456:备份、压缩和解压缩操作命令--验证对gunzip命令的支持'
         cls.testfile    = "testfile"
         cls.gzipfile    = "testfile.gz"
 
     @classmethod
     def tearDownClass(cls):
         global result
-        utils.commitresult(cls.caseid, result)
+        utils.commitresult(caseid, result)
 
         if os.path.exists(cls.testfile):
             os.remove(cls.testfile)

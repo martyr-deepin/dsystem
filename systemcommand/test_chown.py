@@ -9,12 +9,12 @@ from lib import utils
 from lib import runner
 
 result = True
+caseid = '38998'
+casename = 'all-1449:文件/文件夹操作命令--验证对chown命令的支持'
 
 class Chown(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
-        cls.caseid = '38998'
-        cls.casename = 'all-1449:文件/文件夹操作命令--验证对chown命令的支持'
         cls.loginuser = getpass.getuser()
 
         if not os.path.exists('/home/user'):
@@ -29,7 +29,7 @@ class Chown(unittest.TestCase):
     @classmethod
     def tearDownClass(cls):
         global result
-        utils.commitresult(cls.caseid, result)
+        utils.commitresult(caseid, result)
 
         if os.path.exists('/tmp/testdir'):
             (status, output) = rt('sudo rm -rf /tmp/testdir')

@@ -10,20 +10,19 @@ from lib import runner
 import pexpect
 
 result = True
+caseid = '38933'
+casename = 'all-1438:用户管理命令--验证对passwd命令的支持'
 
 class Passwd(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
-        cls.caseid = '38933'
-        cls.casename = 'all-1438:用户管理命令--验证对passwd命令的支持'
-
         if os.path.exists('/home/test'):
             (status, output) = rt('sudo deluser --remove-home test')
 
     @classmethod
     def tearDownClass(cls):
         global result
-        utils.commitresult(cls.caseid, result)
+        utils.commitresult(caseid, result)
 
         if os.path.exists('/home/test'):
             (status, output) = rt('sudo deluser --remove-home test')

@@ -9,18 +9,18 @@ from lib import utils
 from lib import runner
 
 result = True
+caseid = '39079'
+casename = 'all-1460:其他命令-验证对man命令的支持'
 
 class Man(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
-        cls.caseid = '39079'
-        cls.casename = 'all-1460:其他命令-验证对man命令的支持'
         cls.homedir = os.path.expanduser('~')
 
     @classmethod
     def tearDownClass(cls):
         global result
-        utils.commitresult(cls.caseid, result)
+        utils.commitresult(caseid, result)
 
     def setUp(self):
         pass

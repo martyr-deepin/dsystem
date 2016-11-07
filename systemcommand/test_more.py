@@ -9,19 +9,18 @@ from lib import runner
 from lib import utils
 
 result = True
+caseid = '39112'
+casename = 'all-1468:其他命令--验证对more命令的支持'
 
 class More(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
-        cls.caseid = '39112'
-        cls.casename = 'all-1468:其他命令--验证对more命令的支持'
-
         os.system('touch /tmp/testfile')
 
     @classmethod
     def tearDownClass(cls):
         global result
-        utils.commitresult(cls.caseid, result)
+        utils.commitresult(caseid, result)
 
         os.system('rm /tmp/testfile')
 

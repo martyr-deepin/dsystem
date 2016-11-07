@@ -18,7 +18,7 @@ class Ping_local_ip(unittest.TestCase):
     @classmethod
     def tearDownClass(cls):
         global result
-        utils.commitresult(caseid,result)
+        utils.commitresult(caseid, result)
 
     def setUp(self):
         pass

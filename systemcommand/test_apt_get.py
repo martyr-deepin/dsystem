@@ -9,17 +9,18 @@ from lib import utils
 from lib import runner
 
 result = True
+caseid = '69085'
+casename = 'all-2613:apt-get命令'
 
 class Apt_get(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
-        cls.caseid = '69085'
-        cls.casename = 'all-2613:apt-get命令'
+        pass
 
     @classmethod
     def tearDownClass(cls):
         global result
-        utils.commitresult(cls.caseid, result)
+        utils.commitresult(caseid, result)
 
     def setUp(self):
         pass

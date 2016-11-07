@@ -8,17 +8,18 @@ from lib import runner
 from lib import utils
 
 result = True
+caseid = '39058'
+casename = 'all-1458:进程管理命令--验证对ps命令的支持'
 
 class  Ps(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
-        cls.caseid = '39058'
-        cls.casename = 'all-1458:进程管理命令--验证对ps命令的支持'
+        pass
 
     @classmethod
     def tearDownClass(cls):
         global result
-        utils.commitresult(cls.caseid, result)
+        utils.commitresult(caseid, result)
 
     def setUp(self):
     	pass
@@ -32,7 +33,7 @@ class  Ps(unittest.TestCase):
         psresult = output.split('\n')
         self.assertTrue(psresult[0].strip() =='PID TTY          TIME CMD')
         listps  = []
-        for i in psresult[1:]:            
+        for i in psresult[1:]:
             m = re.match(r'^\d+.+\d{2}:\d{2}:\d{2}.+$',i.strip())
             self.assertTrue(m != None)   #m取值为None（失败）或_sre.SRE_Match类型（成功）
             listps.append((i.split())[-1])
@@ -55,13 +56,13 @@ class  Ps(unittest.TestCase):
         self.assertIn('systemd',listpsa)
         self.assertIn('kthreadd',listpsa)
         self.assertTrue(len(listpsa) > 50)
-      
+
     def testPsThree(self):
         (status,output) = getstatusoutput('ps -au')
         self.assertTrue(0 == status)
         psauresult = output.split('\n')
         self.assertTrue(psauresult[0].strip() == 'USER       PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND')
-        listpsau = []        
+        listpsau = []
         for i in psauresult[1:]:
             listpsau.append((i.split())[-1])
         self.assertIn('linux',listpsau)
@@ -77,7 +78,7 @@ class  Ps(unittest.TestCase):
             listpsx.append((i.split())[-1])
         self.assertIn('--user',listpsx)
         self.assertTrue(len(listpsx) >= 4)
-        
+
     def testPsFive(self):
         (status,output) = getstatusoutput('ps -ef')
         self.assertTrue(0 == status)
@@ -89,16 +90,16 @@ class  Ps(unittest.TestCase):
         self.assertIn(r'[rcu_sched]',listpsef)
         self.assertIn(r'[watchdog/0]',listpsef)
         self.assertTrue(len(listpsef) > 50)
-    
+
     def testPsSix(self):
         (status,output) = getstatusoutput(r'ps -ef|grep bash|grep -v grep')
-        bashpid = output.split()[1]       
+        bashpid = output.split()[1]
         (status,output) = getstatusoutput('ps -p %s' % bashpid)
         self.assertTrue(0 == status)
         pspresult = output.split('\n')
         self.assertTrue(pspresult[0].strip() == 'PID TTY          TIME CMD')
         self.assertTrue((pspresult[1].split())[-1] == 'bash')
-       
+
     def suite():
         suite = unittest.TestSuite()
         suite.addTest(Ps('testPsOne'))

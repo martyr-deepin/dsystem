@@ -9,17 +9,18 @@ from lib import runner
 from lib import utils
 
 result = True
+caseid = '39121'
+casename = 'all-1470:其他命令--验证对管道的支持'
 
 class Pipe(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
-        cls.caseid = '39121'
-        cls.casename = 'all-1470:其他命令--验证对管道的支持'
+        pass
 
     @classmethod
     def tearDownClass(cls):
         global result
-        utils.commitresult(cls.caseid, result)
+        utils.commitresult(caseid, result)
 
     def setUp(self):
         pass

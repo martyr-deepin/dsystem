@@ -10,18 +10,18 @@ from lib import utils
 from lib import runner
 
 result = True
+caseid = '39096'
+casename = 'all-1464:其他命令--验证对who命令的支持'
 
 class Who(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
-        cls.caseid = '39096'
-        cls.casename = 'all-1464:其他命令--验证对who命令的支持'
         cls.loginuser = getpass.getuser()
 
     @classmethod
     def tearDownClass(cls):
         global result
-        utils.commitresult(cls.caseid, result)
+        utils.commitresult(caseid, result)
 
     def setUp(self):
         pass

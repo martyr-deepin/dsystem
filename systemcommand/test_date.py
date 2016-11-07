@@ -10,17 +10,18 @@ from lib import utils
 from lib import runner
 
 result = True
+caseid = '39107'
+casename = 'all-1467:其他命令--验证对date命令的支持'
 
 class Date(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
-        cls.caseid = '39107'
-        cls.casename = 'all-1467:其他命令--验证对date命令的支持'
+        pass
 
     @classmethod
     def tearDownClass(cls):
         global result
-        utils.commitresult(cls.caseid, result)
+        utils.commitresult(caseid, result)
 
     def setUp(self):
         pass

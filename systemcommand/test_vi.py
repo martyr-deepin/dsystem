@@ -8,17 +8,18 @@ from lib import utils
 from lib import runner
 
 result = True
+caseid = '39072'
+casename = 'all-1459:文件编辑命令--验证对vi命令的支持'
 
 class Vi(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
-        cls.caseid = '39072'
-        cls.casename = 'all-1459:文件编辑命令--验证对vi命令的支持'
+        pass
 
     @classmethod
     def tearDownClass(cls):
         global result
-        utils.commitresult(cls.caseid, result)
+        utils.commitresult(caseid, result)
 
     def setUp(self):
         pass

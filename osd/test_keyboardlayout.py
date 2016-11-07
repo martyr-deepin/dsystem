@@ -8,18 +8,19 @@ from lib import runner
 from lib import utils
 
 result = True
+caseid = '34731'
+casename = 'all-725:键盘布局'
 newlayout = 'ara;azerty'
 
 class  KbLayout(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
-        cls.caseid = '34731'
-        cls.casename = 'all-725:键盘布局'
+        pass
 
     @classmethod
     def tearDownClass(cls):
         global result,newlayout
-        utils.commitresult(cls.caseid, result)
+        utils.commitresult(caseid, result)
         utils.delKeyboard(newlayout)
 
     def setUp(self):

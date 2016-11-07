@@ -7,17 +7,18 @@ from lib import runner
 from lib import utils
 
 result = True
+caseid = '39029'
+casename = 'all-1453:使用ping命令对域名的ping操作'
 
 class Ping(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
-        cls.caseid = '39029'
-        cls.casename = 'all-1453:使用ping命令对域名的ping操作'
+        pass
 
     @classmethod
     def tearDownClass(cls):
         global result
-        utils.commitresult(cls.caseid,result)
+        utils.commitresult(caseid, result)
 
     def setUp(self):
         pass
