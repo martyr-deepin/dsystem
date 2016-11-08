@@ -11,14 +11,17 @@ result = True
 class FilesystemXfs(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
+        cls.startTime = time.time()
         cls.caseid = '71136'
         cls.casename = 'all-2694:读写xfs格式的文件'
         mkextx('xfs')
 
     @classmethod
     def tearDownClass(cls):
+        seconds = %.3f % (time.time() - cls.startTime)
+        minutes = utils.convertToMinutes(float(seconds))
         global result
-        utils.commitresult(cls.caseid, result)
+        utils.commitresult(caseid, result, minutes)
         chroot('rm -rf /mnt/*','umount /mnt')
 
     def testTxt(self):

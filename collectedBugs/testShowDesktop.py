@@ -13,6 +13,7 @@ casename = "all-2837:dock-显示桌面按钮测试"
 class ShowDesktopBtn(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
+        cls.startTime = time.time()
         cls.btn = '显示桌面'
         cls.app = '深度商店'
         cls.appname = '深度商店 — Deepin Store'
@@ -22,8 +23,10 @@ class ShowDesktopBtn(unittest.TestCase):
 
     @classmethod
     def tearDownClass(cls):
+        seconds = %.3f % (time.time() - cls.startTime)
+        minutes = utils.convertToMinutes(float(seconds))
         global result
-        utils.commitresult(caseid, result)
+        utils.commitresult(caseid, result, minutes)
         cls.newWindows = getAllWindows()
         if len(cls.newWindows) - len(cls.oldWindows) == 1:
             cls.newWindows[-1].close(1)

@@ -14,13 +14,16 @@ casename = 'all-520:发送到桌面'
 class LauncherSendToDesktop(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
+        cls.startTime = time.time()
         cls.menuObj = root.application(appName='deepin-menu', description='/usr/lib/deepin-menu')
         cls.QQName = 'QQ'
 
     @classmethod
     def tearDownClass(cls):
+        seconds = %.3f % (time.time() - cls.startTime)
+        minutes = utils.convertToMinutes(float(seconds))
         global result
-        utils.commitresult(caseid, result)
+        utils.commitresult(caseid, result, minutes)
         launcher.exitLauncher()
 
     def testMenuSendToDesktop(self):

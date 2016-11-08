@@ -13,14 +13,17 @@ casename = "all-2269:输入标点符号测试"
 class LauncherPunctuationSearch(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
+        cls.startTime = time.time()
         cls.text1 = '! '
         cls.text2 = '*'
         cls.text3 = 'deepin*'
 
     @classmethod
     def tearDownClass(cls):
+        seconds = %.3f % (time.time() - cls.startTime)
+        minutes = utils.convertToMinutes(float(seconds))
         global result
-        utils.commitresult(caseid, result)
+        utils.commitresult(caseid, result, minutes)
 
     def testPunctuationSearch1(self):
         launcher.searchApp(self.text1)

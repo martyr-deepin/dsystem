@@ -11,14 +11,17 @@ result = True
 class FilesystemFat32(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
+        cls.startTime = time.time()
         cls.caseid = '42911'
         cls.casename = 'all-1996:读写fat32格式的文件'
         mkextx('vfat')
 
     @classmethod
     def tearDownClass(cls):
+        seconds = %.3f % (time.time() - cls.startTime)
+        minutes = utils.convertToMinutes(float(seconds))
         global result
-        utils.commitresult(cls.caseid, result)
+        utils.commitresult(caseid, result, minutes)
         chroot('sudo rm -rf /mnt/*','sudo umount /mnt')
 
     def testTxt(self):

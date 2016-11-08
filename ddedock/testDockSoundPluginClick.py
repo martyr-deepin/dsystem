@@ -13,6 +13,7 @@ casename = 'all-3546:声音插件对单击的响应'
 class DockSoundPluginClick(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
+        cls.startTime = time.time()
         cls.icon_sound = "sound-"
         cls.popup_name = "设备"
         cls.ddedockobject = utils.getDdeDockObject()
@@ -25,8 +26,10 @@ class DockSoundPluginClick(unittest.TestCase):
 
     @classmethod
     def tearDownClass(cls):
+        seconds = %.3f % (time.time() - cls.startTime)
+        minutes = utils.convertToMinutes(float(seconds))
         global result
-        utils.commitresult(caseid, result)
+        utils.commitresult(caseid, result, minutes)
 
         if utils.getDdeDockPosition != utils.dock.position_bottom:
             utils.setDdeDockPosition(utils.dock.position_bottom)

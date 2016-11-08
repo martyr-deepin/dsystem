@@ -14,6 +14,7 @@ casename = "all-437:一直隐藏"
 class DockKeepHidden(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
+        cls.startTime = time.time()
         cls.ddedockobject = utils.getDdeDockObject()
         cls.defaultdisplaymode = utils.getDdeDockDisplayMode()
         cls.defaultposition = utils.getDdeDockPosition()
@@ -30,8 +31,10 @@ class DockKeepHidden(unittest.TestCase):
 
     @classmethod
     def tearDownClass(cls):
+        seconds = %.3f % (time.time() - cls.startTime)
+        minutes = utils.convertToMinutes(float(seconds))
         global result
-        utils.commitresult(caseid, result)
+        utils.commitresult(caseid, result, minutes)
 
         if utils.getDdeDockDisplayMode() != utils.dock.displaymode_fashion:
             utils.setDdeDockDisplayMode(utils.dock.displaymode_fashion)

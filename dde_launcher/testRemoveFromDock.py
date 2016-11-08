@@ -14,13 +14,16 @@ casename = 'all-517:从任务栏移除'
 class LauncherRemoveFromDock(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
+        cls.startTime = time.time()
         cls.menuObj = root.application(appName='deepin-menu', description='/usr/lib/deepin-menu')
         cls.googleName = 'Google Chrome'
 
     @classmethod
     def tearDownClass(cls):
+        seconds = %.3f % (time.time() - cls.startTime)
+        minutes = utils.convertToMinutes(float(seconds))
         global result
-        utils.commitresult(caseid, result)
+        utils.commitresult(caseid, result, minutes)
         launcher.exitLauncher()
 
     def testMenuUnDock(self):

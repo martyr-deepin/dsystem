@@ -14,6 +14,7 @@ casename = 'up-371:打开帮助手册'
 class DeepinMovieHelp(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
+        cls.startTime = time.time()
         cls.appName = 'deepin-movie'
         cls.winName = '深度影院'
         cls.helpWinName = '深度影院 - 深度帮助手册'
@@ -23,8 +24,10 @@ class DeepinMovieHelp(unittest.TestCase):
 
     @classmethod
     def tearDownClass(cls):
+        seconds = %.3f % (time.time() - cls.startTime)
+        minutes = utils.convertToMinutes(float(seconds))
         global result
-        utils.commitresult(caseid, result)
+        utils.commitresult(caseid, result, minutes)
         cls.newWindows = getAllWindows()
         if len(cls.newWindows) > len(cls.oldWindows):
             newWindow = cls.newWindows[-1]

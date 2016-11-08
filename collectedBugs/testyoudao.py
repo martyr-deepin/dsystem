@@ -13,6 +13,7 @@ casename = "all-2977:有道词典测试"
 class Youdao(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
+        cls.startTime = time.time()
         cls.app = 'youdaocidian'
         cls.appName = '有道词典'
         cls.oldWindows = getAllWindows()
@@ -20,8 +21,10 @@ class Youdao(unittest.TestCase):
 
     @classmethod
     def tearDownClass(cls):
+        seconds = %.3f % (time.time() - cls.startTime)
+        minutes = utils.convertToMinutes(float(seconds))
         global result
-        utils.commitresult(caseid, result)
+        utils.commitresult(caseid, result, minutes)
         cls.newWindows = getAllWindows()
         if len(cls.newWindows) - len(cls.oldWindows) == 1:
             cls.newWindows[-1].close(1)

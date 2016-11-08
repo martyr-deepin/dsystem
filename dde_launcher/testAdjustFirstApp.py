@@ -18,9 +18,9 @@ class LauncherAdjustFirstApp(unittest.TestCase):
 
     @classmethod
     def tearDownClass(cls):
-        global result
-        seconds = '%.3f' % (time.time() - cls.startTime)
+        seconds = %.3f % (time.time() - cls.startTime)
         minutes = utils.convertToMinutes(float(seconds))
+        global result
         utils.commitresult(caseid, result, minutes)
         launcher.freeMode()
 

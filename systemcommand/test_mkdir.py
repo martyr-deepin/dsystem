@@ -15,6 +15,7 @@ casename = 'all-1441:文件/文件夹操作命令--验证对mkdir命令的支持
 class Mkdir(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
+        cls.startTime = time.time()
         cls.loginuser = getoutput("whoami")
         cls.homedir = "/home/%s" % cls.loginuser
         cls.curdir = getoutput("pwd")
@@ -25,8 +26,10 @@ class Mkdir(unittest.TestCase):
 
     @classmethod
     def tearDownClass(cls):
+        seconds = %.3f % (time.time() - cls.startTime)
+        minutes = utils.convertToMinutes(float(seconds))
         global result
-        utils.commitresult(caseid, result)
+        utils.commitresult(caseid, result, minutes)
 
         os.system("rm -rf %s*" % cls.testdir)
 

@@ -16,6 +16,7 @@ casename = "all-450:右键菜单快捷键测试"
 class DockMenuRU(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
+        cls.startTime = time.time()
         cls.filemanagericonname = "深度文件管理器"
         cls.filemanagerwindowname = "深度文件管理器"
         cls.filemanagerlauncher = "dde-file-manager"
@@ -29,8 +30,10 @@ class DockMenuRU(unittest.TestCase):
 
     @classmethod
     def tearDownClass(cls):
+        seconds = %.3f % (time.time() - cls.startTime)
+        minutes = utils.convertToMinutes(float(seconds))
         global result
-        utils.commitresult(caseid, result)
+        utils.commitresult(caseid, result, minutes)
 
         if utils.dock.displaymode_fashion != utils.getDdeDockDisplayMode():
             utils.setDdeDockDisplayMode(utils.dock.displaymode_fashion)

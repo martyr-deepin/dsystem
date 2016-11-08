@@ -13,6 +13,7 @@ casename = "all-509:中文字符串搜索"
 class LauncherPkgNameSearch(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
+        cls.startTime = time.time()
         cls.text1 = 'eog'
         cls.text2 = 'deepin-screenshot'
         cls.appName1 = '图像查看器'
@@ -20,8 +21,10 @@ class LauncherPkgNameSearch(unittest.TestCase):
 
     @classmethod
     def tearDownClass(cls):
+        seconds = %.3f % (time.time() - cls.startTime)
+        minutes = utils.convertToMinutes(float(seconds))
         global result
-        utils.commitresult(caseid, result)
+        utils.commitresult(caseid, result, minutes)
 
     def testPkgNameSearch1(self):
         launcher.searchApp(self.text1)

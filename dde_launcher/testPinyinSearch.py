@@ -13,6 +13,7 @@ casename = "all-2140:拼音字符串搜索"
 class LauncherPinyinSearch(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
+        cls.startTime = time.time()
         cls.appName = '图像查看器'
         cls.text1 = 'tuxiangchakanqi'
         cls.text2 = 'txckq'
@@ -21,8 +22,10 @@ class LauncherPinyinSearch(unittest.TestCase):
 
     @classmethod
     def tearDownClass(cls):
+        seconds = %.3f % (time.time() - cls.startTime)
+        minutes = utils.convertToMinutes(float(seconds))
         global result
-        utils.commitresult(caseid, result)
+        utils.commitresult(caseid, result, minutes)
 
     def testPinyinSearch1(self):
         launcher.searchApp(self.text1)

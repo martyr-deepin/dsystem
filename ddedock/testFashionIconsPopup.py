@@ -13,6 +13,7 @@ casename = 'all-451:文字提示'
 class FashionIconsPopup(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
+        cls.startTime = time.time()
         cls.defaultfashioniconlist = ["Launcher",
                                "显示桌面",
                                "多任务视图",
@@ -38,8 +39,10 @@ class FashionIconsPopup(unittest.TestCase):
 
     @classmethod
     def tearDownClass(cls):
+        seconds = %.3f % (time.time() - cls.startTime)
+        minutes = utils.convertToMinutes(float(seconds))
         global result
-        utils.commitresult(caseid, result)
+        utils.commitresult(caseid, result, minutes)
 
         if utils.dock.displaymode_fashion != utils.getDdeDockDisplayMode():
             utils.setDdeDockDisplayMode(utils.dock.displaymode_fashion)

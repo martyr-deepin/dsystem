@@ -17,13 +17,16 @@ homePath = os.path.expanduser('~')
 class DeepinScreenShot(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
+        cls.startTime = time.time()
         cls.appName = 'deepin-screenshot'
         cls.cmd = "ps aux |grep /usr/bin/deepin-screenshot |grep -v grep |awk '{print $12}'"
 
     @classmethod
     def tearDownClass(cls):
+        seconds = %.3f % (time.time() - cls.startTime)
+        minutes = utils.convertToMinutes(float(seconds))
         global result
-        utils.commitresult(caseid, result)
+        utils.commitresult(caseid, result, minutes)
         pngfiles = glob(homePath + '/Desktop/深度截图*.png')
         for pngfile in pngfiles:
             os.remove(pngfile)

@@ -21,6 +21,7 @@ class MyTestResult(runner.MyTextTestResult):
 class DockSize(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
+        cls.startTime = time.time()
         cls.caseid = '68486'
         cls.casename = "all-2492:图标大小设置菜单"
         cls.ddedockobject = utils.getDdeDockObject()
@@ -29,8 +30,10 @@ class DockSize(unittest.TestCase):
 
     @classmethod
     def tearDownClass(cls):
+        seconds = %.3f % (time.time() - cls.startTime)
+        minutes = utils.convertToMinutes(float(seconds))
         global result
-        utils.commitresult(cls.caseid, result)
+        utils.commitresult(caseid, result, minutes)
 
         if utils.getDdeDockDisplayMode() != cls.defaultdisplaymode:
             utils.setDdeDockDisplayMode(cls.defaultdisplaymode)

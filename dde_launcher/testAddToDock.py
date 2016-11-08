@@ -14,6 +14,7 @@ casename = 'all-518:添加到任务栏'
 class LauncherAddToDock(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
+        cls.startTime = time.time()
         cls.menuObj = root.application(appName='deepin-menu', description='/usr/lib/deepin-menu')
         cls.googleName = 'Google Chrome'
         dockApps = Dock().getAllDockApps()
@@ -23,8 +24,10 @@ class LauncherAddToDock(unittest.TestCase):
 
     @classmethod
     def tearDownClass(cls):
+        seconds = %.3f % (time.time() - cls.startTime)
+        minutes = utils.convertToMinutes(float(seconds))
         global result
-        utils.commitresult(caseid, result)
+        utils.commitresult(caseid, result, minutes)
         launcher.exitLauncher()
 
     def testMenuDock(self):

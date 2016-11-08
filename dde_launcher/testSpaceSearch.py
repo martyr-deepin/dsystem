@@ -13,6 +13,7 @@ casename = "all-2270:输入空格符搜索测试"
 class LauncherSpaceSearch(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
+        cls.startTime = time.time()
         cls.text1 = ' '
         cls.text2 = 'deepin   '
         cls.text3 = 'deepin music'
@@ -23,8 +24,10 @@ class LauncherSpaceSearch(unittest.TestCase):
 
     @classmethod
     def tearDownClass(cls):
+        seconds = %.3f % (time.time() - cls.startTime)
+        minutes = utils.convertToMinutes(float(seconds))
         global result
-        utils.commitresult(caseid, result)
+        utils.commitresult(caseid, result, minutes)
 
     def testSpaceSearch1(self):
         launcher.searchApp(self.text1)

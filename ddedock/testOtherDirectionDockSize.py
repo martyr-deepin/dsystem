@@ -12,6 +12,7 @@ casename = "all-2496:大图标在四个方向上显示"
 class OtherDirectionDockSize(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
+        cls.startTime = time.time()
         cls.ddedockobject = utils.getDdeDockObject()
         cls.defaultdisplaymode = utils.getDdeDockDisplayMode()
         cls.defaultposition = utils.getDdeDockPosition()
@@ -19,8 +20,10 @@ class OtherDirectionDockSize(unittest.TestCase):
 
     @classmethod
     def tearDownClass(cls):
+        seconds = %.3f % (time.time() - cls.startTime)
+        minutes = utils.convertToMinutes(float(seconds))
         global result
-        utils.commitresult(caseid, result)
+        utils.commitresult(caseid, result, minutes)
 
         if utils.getDdeDockDisplayMode() != cls.defaultdisplaymode:
             utils.setDdeDockDisplayMode(cls.defaultdisplaymode)

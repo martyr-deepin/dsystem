@@ -12,14 +12,17 @@ casename = "all-2974:systemd-journalctl日志大小限制"
 class RestrictLog(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
+        cls.startTime = time.time()
         cls.log = 'SystemMaxUse=500M'
         cls.cmd = "cat /etc/systemd/journald.conf |grep SystemMaxUse"
 
 
     @classmethod
     def tearDownClass(cls):
+        seconds = %.3f % (time.time() - cls.startTime)
+        minutes = utils.convertToMinutes(float(seconds))
         global result
-        utils.commitresult(caseid, result)
+        utils.commitresult(caseid, result, minutes)
 
 
     def testRestrictLog(self):

@@ -16,13 +16,16 @@ casename = 'all-1438:用户管理命令--验证对passwd命令的支持'
 class Passwd(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
+        cls.startTime = time.time()
         if os.path.exists('/home/test'):
             (status, output) = rt('sudo deluser --remove-home test')
 
     @classmethod
     def tearDownClass(cls):
+        seconds = %.3f % (time.time() - cls.startTime)
+        minutes = utils.convertToMinutes(float(seconds))
         global result
-        utils.commitresult(caseid, result)
+        utils.commitresult(caseid, result, minutes)
 
         if os.path.exists('/home/test'):
             (status, output) = rt('sudo deluser --remove-home test')

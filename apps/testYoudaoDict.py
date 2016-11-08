@@ -14,6 +14,7 @@ casename = 'all-3356:有道词典开启与关闭'
 class YoudaoDict(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
+        cls.startTime = time.time()
         cls.appName = 'youdao-dict'
         cls.winName = '有道词典'
         cls.oldWindows = getAllWindows()
@@ -21,8 +22,10 @@ class YoudaoDict(unittest.TestCase):
 
     @classmethod
     def tearDownClass(cls):
+        seconds = %.3f % (time.time() - cls.startTime)
+        minutes = utils.convertToMinutes(float(seconds))
         global result
-        utils.commitresult(caseid, result)
+        utils.commitresult(caseid, result, minutes)
 
 
     def setUp(self):

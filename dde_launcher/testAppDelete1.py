@@ -13,6 +13,7 @@ casename = "all-3296:应用发送至任务栏/桌面后右键删除测试"
 class AppDelete1(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
+        cls.startTime = time.time()
         cls.app = '360safeforcnos'
         cls.launchername = '360安全卫士'
         cls.desktopfile = 'start360.desktop'
@@ -22,8 +23,10 @@ class AppDelete1(unittest.TestCase):
 
     @classmethod
     def tearDownClass(cls):
+        seconds = %.3f % (time.time() - cls.startTime)
+        minutes = utils.convertToMinutes(float(seconds))
         global result
-        utils.commitresult(caseid, result)
+        utils.commitresult(caseid, result, minutes)
 
     def testSendToDesktopAndDock(self):
         subprocess.check_call(self.install, shell=True)

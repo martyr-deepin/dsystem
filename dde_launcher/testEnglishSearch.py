@@ -13,6 +13,7 @@ casename = "all-510:英文字符串搜索"
 class LauncherEnglishSearch(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
+        cls.startTime = time.time()
         cls.appName = '图像查看器'
         cls.text1 = 'image viewer'
         cls.text2 = 'iv'
@@ -20,8 +21,10 @@ class LauncherEnglishSearch(unittest.TestCase):
 
     @classmethod
     def tearDownClass(cls):
+        seconds = %.3f % (time.time() - cls.startTime)
+        minutes = utils.convertToMinutes(float(seconds))
         global result
-        utils.commitresult(caseid, result)
+        utils.commitresult(caseid, result, minutes)
 
     def testEnglishSearch1(self):
         launcher.searchApp(self.text1)

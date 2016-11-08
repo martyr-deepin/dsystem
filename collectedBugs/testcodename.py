@@ -14,6 +14,7 @@ casename = "all-3149:codename测试"
 class CodeName(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
+        cls.startTime = time.time()
         cls.codename = getDevInfo('codename','code')
         cls.lsbcode = 'DISTRIB_CODENAME=' + cls.codename
         cls.lsb = "cat /etc/lsb-release |grep DISTRIB_CODENAME"
@@ -22,8 +23,10 @@ class CodeName(unittest.TestCase):
 
     @classmethod
     def tearDownClass(cls):
+        seconds = %.3f % (time.time() - cls.startTime)
+        minutes = utils.convertToMinutes(float(seconds))
         global result
-        utils.commitresult(caseid, result)
+        utils.commitresult(caseid, result, minutes)
 
 
     def testlsb(self):

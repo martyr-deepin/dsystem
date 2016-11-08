@@ -12,14 +12,17 @@ casename = "all-533:launcher打开时对enter键的响应"
 class LauncherEnterKey(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
+        cls.startTime = time.time()
         cls.appName = 'Google Chrome'
         cls.googleTitleName = '打开新的标签页 - Google Chrome'
         cls.oldWindows = getAllWindows()
 
     @classmethod
     def tearDownClass(cls):
+        seconds = %.3f % (time.time() - cls.startTime)
+        minutes = utils.convertToMinutes(float(seconds))
         global result
-        utils.commitresult(caseid, result)
+        utils.commitresult(caseid, result, minutes)
         cls.newWindows = getAllWindows()
         if len(cls.newWindows) - len(cls.oldWindows) == 1:
             cls.newWindows[-1].close(1)

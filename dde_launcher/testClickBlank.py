@@ -12,14 +12,17 @@ casename = "all-540:单击空白处退出"
 class ClickBlank(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
+        cls.startTime = time.time()
         cls.text1 = 'deepin'
         cls.text2 = 'testtest'
         launcher.freeMode()
 
     @classmethod
     def tearDownClass(cls):
+        seconds = %.3f % (time.time() - cls.startTime)
+        minutes = utils.convertToMinutes(float(seconds))
         global result
-        utils.commitresult(caseid, result)
+        utils.commitresult(caseid, result, minutes)
         launcher.freeMode()
         launcher.exitLauncher()
 

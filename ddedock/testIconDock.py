@@ -8,6 +8,7 @@ from time import sleep
 class IconDock(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
+        cls.startTime = time.time()
         cls.launchername = "deepin-appstore"
         cls.icon_deepinappstore = "深度商店"
         cls.ddedockobject = utils.getDdeDockObject()
@@ -18,6 +19,9 @@ class IconDock(unittest.TestCase):
 
     @classmethod
     def tearDownClass(cls):
+        seconds = %.3f % (time.time() - cls.startTime)
+        minutes = utils.convertToMinutes(float(seconds))
+        utils.commitresult(caseid, result, minutes)
         utils.setDdeDockDisplayMode(cls.defaultdisplaymode)
         utils.setDdeDockPosition(cls.defaultposition)
         utils.keySingle(utils.k.windows_l_key)

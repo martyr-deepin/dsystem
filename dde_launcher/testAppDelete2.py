@@ -13,6 +13,7 @@ casename = "all-3297:应用发送至任务栏/桌面后命令行删除测试"
 class AppDelete2(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
+        cls.startTime = time.time()
         cls.app = 'lovewallpaper'
         cls.launchername = '爱壁纸HD'
         cls.desktopfile = 'love-wallpaper.desktop'
@@ -22,8 +23,10 @@ class AppDelete2(unittest.TestCase):
 
     @classmethod
     def tearDownClass(cls):
+        seconds = %.3f % (time.time() - cls.startTime)
+        minutes = utils.convertToMinutes(float(seconds))
         global result
-        utils.commitresult(caseid, result)
+        utils.commitresult(caseid, result, minutes)
 
     def testSendToDesktopAndDock(self):
         subprocess.check_call(self.install, shell=True)

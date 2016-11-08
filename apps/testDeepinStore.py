@@ -14,6 +14,7 @@ casename = 'all-3339:打开深度商店'
 class DeepinStore(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
+        cls.startTime = time.time()
         cls.appName = 'deepin-appstore'
         cls.winName = '深度商店 — Deepin Store'
         cls.oldWindows = getAllWindows()
@@ -21,8 +22,10 @@ class DeepinStore(unittest.TestCase):
 
     @classmethod
     def tearDownClass(cls):
+        seconds = %.3f % (time.time() - cls.startTime)
+        minutes = utils.convertToMinutes(float(seconds))
         global result
-        utils.commitresult(caseid, result)
+        utils.commitresult(caseid, result, minutes)
 
     def setUp(self):
         pass

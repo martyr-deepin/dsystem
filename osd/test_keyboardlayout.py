@@ -15,12 +15,15 @@ newlayout = 'ara;azerty'
 class  KbLayout(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
+        cls.startTime = time.time()
         pass
 
     @classmethod
     def tearDownClass(cls):
+        seconds = %.3f % (time.time() - cls.startTime)
+        minutes = utils.convertToMinutes(float(seconds))
         global result,newlayout
-        utils.commitresult(caseid, result)
+        utils.commitresult(caseid, result, minutes)
         utils.delKeyboard(newlayout)
 
     def setUp(self):

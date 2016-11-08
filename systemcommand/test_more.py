@@ -15,12 +15,15 @@ casename = 'all-1468:其他命令--验证对more命令的支持'
 class More(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
+        cls.startTime = time.time()
         os.system('touch /tmp/testfile')
 
     @classmethod
     def tearDownClass(cls):
+        seconds = %.3f % (time.time() - cls.startTime)
+        minutes = utils.convertToMinutes(float(seconds))
         global result
-        utils.commitresult(caseid, result)
+        utils.commitresult(caseid, result, minutes)
 
         os.system('rm /tmp/testfile')
 

@@ -13,13 +13,16 @@ casename = "all-2136:中文和英文搜索"
 class LauncherMutiSearch(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
+        cls.startTime = time.time()
         cls.text = 'wps表格'
         cls.appName = 'WPS 表格'
 
     @classmethod
     def tearDownClass(cls):
+        seconds = %.3f % (time.time() - cls.startTime)
+        minutes = utils.convertToMinutes(float(seconds))
         global result
-        utils.commitresult(caseid, result)
+        utils.commitresult(caseid, result, minutes)
 
     def testMutiSearch(self):
         launcher.searchApp(self.text)

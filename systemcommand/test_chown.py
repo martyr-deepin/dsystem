@@ -15,6 +15,7 @@ casename = 'all-1449:文件/文件夹操作命令--验证对chown命令的支持
 class Chown(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
+        cls.startTime = time.time()
         cls.loginuser = getpass.getuser()
 
         if not os.path.exists('/home/user'):
@@ -28,8 +29,10 @@ class Chown(unittest.TestCase):
 
     @classmethod
     def tearDownClass(cls):
+        seconds = %.3f % (time.time() - cls.startTime)
+        minutes = utils.convertToMinutes(float(seconds))
         global result
-        utils.commitresult(caseid, result)
+        utils.commitresult(caseid, result, minutes)
 
         if os.path.exists('/tmp/testdir'):
             (status, output) = rt('sudo rm -rf /tmp/testdir')

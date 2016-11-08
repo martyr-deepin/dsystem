@@ -15,6 +15,7 @@ casename = 'all-1443:文件/文件夹操作命令--验证对cp命令的支持'
 class Cp(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
+        cls.startTime = time.time()
         cls.tmptestdir = "/tmp/testdir"
         cls.copytmptestdir = "/tmp/testdir1"
         cls.filepath   = "/tmp/testdir/testfile"
@@ -24,8 +25,10 @@ class Cp(unittest.TestCase):
 
     @classmethod
     def tearDownClass(cls):
+        seconds = %.3f % (time.time() - cls.startTime)
+        minutes = utils.convertToMinutes(float(seconds))
         global result
-        utils.commitresult(caseid, result)
+        utils.commitresult(caseid, result, minutes)
 
         os.system("rm -rf %s %s %s" % (cls.tmptestdir, cls.copytmptestdir, cls.tmpfile))
 

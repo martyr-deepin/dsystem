@@ -15,12 +15,15 @@ casename = 'all-1460:其他命令-验证对man命令的支持'
 class Man(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
+        cls.startTime = time.time()
         cls.homedir = os.path.expanduser('~')
 
     @classmethod
     def tearDownClass(cls):
+        seconds = %.3f % (time.time() - cls.startTime)
+        minutes = utils.convertToMinutes(float(seconds))
         global result
-        utils.commitresult(caseid, result)
+        utils.commitresult(caseid, result, minutes)
 
     def setUp(self):
         pass

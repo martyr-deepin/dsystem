@@ -15,13 +15,16 @@ casename = 'all-1455:备份、压缩和解压缩操作命令--验证对gzip命�
 class Gzip(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
+        cls.startTime = time.time()
         cls.testfile    = "testfile"
         cls.gzipfile    = "testfile.gz"
 
     @classmethod
     def tearDownClass(cls):
+        seconds = %.3f % (time.time() - cls.startTime)
+        minutes = utils.convertToMinutes(float(seconds))
         global result
-        utils.commitresult(caseid, result)
+        utils.commitresult(caseid, result, minutes)
 
         if os.path.exists(cls.testfile):
             os.remove(cls.testfile)

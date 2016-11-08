@@ -12,6 +12,7 @@ casename = "all-516:启动"
 class LauncherStartupApp(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
+        cls.startTime = time.time()
         cls.menuObj = root.application(appName='deepin-menu', description='/usr/lib/deepin-menu')
         cls.googleName = '打开新的标签页 - Google Chrome'
         cls.terminalName = 'deepin - 深度终端'
@@ -21,8 +22,10 @@ class LauncherStartupApp(unittest.TestCase):
 
     @classmethod
     def tearDownClass(cls):
+        seconds = %.3f % (time.time() - cls.startTime)
+        minutes = utils.convertToMinutes(float(seconds))
         global result
-        utils.commitresult(caseid, result)
+        utils.commitresult(caseid, result, minutes)
 
         cls.newWindows = getAllWindows()
         if len(cls.newWindows) - len(cls.oldWindows) == 3:

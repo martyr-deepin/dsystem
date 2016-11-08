@@ -11,6 +11,7 @@ result = True
 class DockSoundHover(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
+        cls.startTime = time.time()
         cls.caseid = '91228'
         cls.casename = 'all-3547:hover 声音插件'
         cls.icon_sound = "sound-"
@@ -25,8 +26,10 @@ class DockSoundHover(unittest.TestCase):
 
     @classmethod
     def tearDownClass(cls):
+        seconds = %.3f % (time.time() - cls.startTime)
+        minutes = utils.convertToMinutes(float(seconds))
         global result
-        utils.commitresult(cls.caseid, result)
+        utils.commitresult(caseid, result, minutes)
 
         if utils.getDdeDockPosition != utils.dock.position_bottom:
             utils.setDdeDockPosition(utils.dock.position_bottom)

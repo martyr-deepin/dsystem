@@ -14,14 +14,17 @@ casename = 'all-532:应用安装之后左侧分类更新测试'
 class LauncherSortApp(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
+        cls.startTime = time.time()
         cls.menuObj = root.application(appName='deepin-menu', description='/usr/lib/deepin-menu')
         cls.installAppName = 'robomongo'
 
 
     @classmethod
     def tearDownClass(cls):
+        seconds = %.3f % (time.time() - cls.startTime)
+        minutes = utils.convertToMinutes(float(seconds))
         global result
-        utils.commitresult(caseid, result)
+        utils.commitresult(caseid, result, minutes)
         kids = launcher.getKidsCategory('development')
         if 'Robomongo' in kids:
             launcher.removeApp(cls.installAppName)

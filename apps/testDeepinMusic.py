@@ -14,6 +14,7 @@ casename = 'all-3344:运行深度音乐'
 class DeepinMusic(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
+        cls.startTime = time.time()
         cls.appName = 'deepin-music-player'
         cls.winName = '深度音乐'
         cls.oldWindows = getAllWindows()
@@ -21,8 +22,10 @@ class DeepinMusic(unittest.TestCase):
 
     @classmethod
     def tearDownClass(cls):
+        seconds = %.3f % (time.time() - cls.startTime)
+        minutes = utils.convertToMinutes(float(seconds))
         global result
-        utils.commitresult(caseid, result)
+        utils.commitresult(caseid, result, minutes)
 
     def setUp(self):
         pass

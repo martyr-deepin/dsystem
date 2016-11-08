@@ -12,6 +12,7 @@ casename = "all-538:ESC隐藏启动器"
 class LauncherEscKey(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
+        cls.startTime = time.time()
         cls.menuObj = root.application(appName='deepin-menu', description='/usr/lib/deepin-menu')
         apps = launcher.getLauncherAllApps()
         cls.appName = apps[17]
@@ -19,8 +20,10 @@ class LauncherEscKey(unittest.TestCase):
 
     @classmethod
     def tearDownClass(cls):
+        seconds = %.3f % (time.time() - cls.startTime)
+        minutes = utils.convertToMinutes(float(seconds))
         global result
-        utils.commitresult(caseid, result)
+        utils.commitresult(caseid, result, minutes)
         launcher.exitLauncher()
 
 

@@ -18,6 +18,7 @@ casename = "all-440:深度截图"
 class DeepinScreenshot(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
+        cls.startTime = time.time()
         cls.screenshoticonname = "深度截图"
         cls.ddedockobject = utils.getDdeDockObject()
 
@@ -29,8 +30,10 @@ class DeepinScreenshot(unittest.TestCase):
 
     @classmethod
     def tearDownClass(cls):
+        seconds = %.3f % (time.time() - cls.startTime)
+        minutes = utils.convertToMinutes(float(seconds))
         global result
-        utils.commitresult(caseid, result)
+        utils.commitresult(caseid, result, minutes)
 
         if utils.dock.displaymode_fashion != utils.getDdeDockDisplayMode():
             utils.setDdeDockDisplayMode(utils.dock.displaymode_fashion)

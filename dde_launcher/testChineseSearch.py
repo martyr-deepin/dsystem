@@ -13,13 +13,16 @@ casename = "all-509:中文字符串搜索"
 class LauncherChineseSearch(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
+        cls.startTime = time.time()
         cls.text1 = '图像查看器'
         cls.text2 = '图像'
 
     @classmethod
     def tearDownClass(cls):
+        seconds = %.3f % (time.time() - cls.startTime)
+        minutes = utils.convertToMinutes(float(seconds))
         global result
-        utils.commitresult(caseid, result)
+        utils.commitresult(caseid, result, minutes)
 
     def testChineseSearch1(self):
         launcher.searchApp(self.text1)

@@ -12,6 +12,7 @@ casename = "all-2493:高效模式大图标显示"
 class EfficientDockSizeLarge(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
+        cls.startTime = time.time()
         cls.ddedockobject = utils.getDdeDockObject()
 
         if utils.getDdeDockDisplayMode() != utils.dock.displaymode_efficient:
@@ -25,8 +26,10 @@ class EfficientDockSizeLarge(unittest.TestCase):
 
     @classmethod
     def tearDownClass(cls):
+        seconds = %.3f % (time.time() - cls.startTime)
+        minutes = utils.convertToMinutes(float(seconds))
         global result
-        utils.commitresult(caseid, result)
+        utils.commitresult(caseid, result, minutes)
 
         if utils.getDdeDockDisplayMode() != utils.dock.displaymode_fashion:
             utils.setDdeDockDisplayMode(utils.dock.displaymode_fashion)

@@ -14,12 +14,15 @@ casename = "all-514:拖动到任务栏驻留"
 class LauncherDragAppToDock(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
+        cls.startTime = time.time()
         cls.qqName = 'apps.com.qq.im'
 
     @classmethod
     def tearDownClass(cls):
+        seconds = %.3f % (time.time() - cls.startTime)
+        minutes = utils.convertToMinutes(float(seconds))
         global result
-        utils.commitresult(caseid, result)
+        utils.commitresult(caseid, result, minutes)
         launcher.freeMode()
         launcher.unDock()
 

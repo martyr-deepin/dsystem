@@ -14,6 +14,7 @@ casename = 'all-3358:运行深度终端'
 class DeepinTerminal(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
+        cls.startTime = time.time()
         cls.appName = 'deepin-terminal'
         cls.username = subprocess.getstatusoutput("whoami")
         cls.winName = cls.username + ' - 深度终端'
@@ -22,8 +23,10 @@ class DeepinTerminal(unittest.TestCase):
 
     @classmethod
     def tearDownClass(cls):
+        seconds = %.3f % (time.time() - cls.startTime)
+        minutes = utils.convertToMinutes(float(seconds))
         global result
-        utils.commitresult(caseid, result)
+        utils.commitresult(caseid, result, minutes)
         newWindows = getAllWindows()
         if len(newWindows) > len(cls.oldWindows):
             newWindow = newWindows[-1]

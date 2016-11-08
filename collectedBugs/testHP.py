@@ -12,6 +12,7 @@ casename = "all-2967:hplipj集成测试"
 class HPIntergration(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
+        cls.startTime = time.time()
         cls.installed = 'ii'
         cls.pkg1 = "dpkg -l |grep hpijs-ppds |awk END'{print $1}'"
         cls.pkg2 = "dpkg -l |grep hplip |awk END'{print $1}'"
@@ -25,8 +26,10 @@ class HPIntergration(unittest.TestCase):
 
     @classmethod
     def tearDownClass(cls):
+        seconds = %.3f % (time.time() - cls.startTime)
+        minutes = utils.convertToMinutes(float(seconds))
         global result
-        utils.commitresult(caseid, result)
+        utils.commitresult(caseid, result, minutes)
 
 
     def testhpijs(self):

@@ -15,12 +15,15 @@ casename = 'all-1440:文件/文件夹操作命令--验证对cd命令的支持'
 class Cd(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
+        cls.startTime = time.time()
         pass
 
     @classmethod
     def tearDownClass(cls):
+        seconds = %.3f % (time.time() - cls.startTime)
+        minutes = utils.convertToMinutes(float(seconds))
         global result
-        utils.commitresult(caseid, result)
+        utils.commitresult(caseid, result, minutes)
 
     def setUp(self):
         self.loginuser = getoutput("whoami")

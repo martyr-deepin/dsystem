@@ -8,6 +8,7 @@ from lib import utils
 class DeepinAppstore(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
+        cls.startTime = time.time()
         cls.icon_deepinappstore = "深度商店"
         cls.window_name = "深度商店 — Deepin Store"
         cls.ddedockobject = utils.getDdeDockObject()
@@ -18,6 +19,9 @@ class DeepinAppstore(unittest.TestCase):
 
     @classmethod
     def tearDownClass(cls):
+        seconds = %.3f % (time.time() - cls.startTime)
+        minutes = utils.convertToMinutes(float(seconds))
+        utils.commitresult(caseid, result, minutes)
         utils.setDdeDockDisplayMode(cls.defaultdisplaymode)
         utils.setDdeDockPosition(cls.defaultposition)
 

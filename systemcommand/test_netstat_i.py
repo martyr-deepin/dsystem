@@ -13,12 +13,15 @@ casename = 'all-2584:使用netstat命令显示网络分组传送信息'
 class Netstat_i(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
+        cls.startTime = time.time()
         pass
 
     @classmethod
     def tearDownClass(cls):
+        seconds = %.3f % (time.time() - cls.startTime)
+        minutes = utils.convertToMinutes(float(seconds))
         global result
-        utils.commitresult(caseid,result)
+        utils.commitresult(caseid, result, minutes)
 
     def setUp(self):
         pass

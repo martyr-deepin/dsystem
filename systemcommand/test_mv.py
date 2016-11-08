@@ -15,12 +15,15 @@ casename = 'all-1444:文件/文件夹操作命令--验证对mv命令的支持'
 class Mv(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
+        cls.startTime = time.time()
         cls.loginuser = getoutput("whoami")
 
     @classmethod
     def tearDownClass(cls):
+        seconds = %.3f % (time.time() - cls.startTime)
+        minutes = utils.convertToMinutes(float(seconds))
         global result
-        utils.commitresult(caseid, result)
+        utils.commitresult(caseid, result, minutes)
 
         if os.path.exists('/tmp/test'):
             os.system('rm /tmp/test')
