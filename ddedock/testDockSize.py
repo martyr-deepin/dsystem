@@ -30,7 +30,7 @@ class DockSize(unittest.TestCase):
 
     @classmethod
     def tearDownClass(cls):
-        seconds = %.3f % (time.time() - cls.startTime)
+        seconds = "%.3f" % (time.time() - cls.startTime)
         minutes = utils.convertToMinutes(float(seconds))
         global result
         utils.commitresult(caseid, result, minutes)
