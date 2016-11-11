@@ -43,8 +43,10 @@ class Telnet(unittest.TestCase):
             pass
 
     def test_run_telnet(self):
-        (status,output) = getstatusoutput('telnet')
-        self.assertEqual(127,status)
+        (status,output) = getstatusoutput('which telnet')
+        self.assertEqual(0, status)
+        (status,output) = getstatusoutput('telnet error')
+        self.assertNotEqual(0, status)
 
     def suite():
         suite = unittest.TestSuite()
