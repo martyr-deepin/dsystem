@@ -43,7 +43,7 @@ class Traceroute(unittest.TestCase):
             pass
 
     def test_run_traceroute(self):
-        (status,output) = getstatusoutput('traceroute www.baidu.com')
+        (status,output) = getstatusoutput('traceroute www.deepin.org')
         self.assertEqual(0,status)
 
     def suite():
