@@ -4,6 +4,7 @@
 import os
 import getpass
 import unittest
+import time
 from subprocess import getstatusoutput as rt
 from lib import utils
 from lib import runner

@@ -2,6 +2,7 @@
 # _*_ coding: utf-8 _*_
 
 import unittest
+import time
 from subprocess import getstatusoutput,check_call
 from time import sleep
 from lib import runner

@@ -3,6 +3,7 @@
 
 from time import sleep
 import unittest
+import time
 from lib import utils
 
 class DeepinAppstore(unittest.TestCase):

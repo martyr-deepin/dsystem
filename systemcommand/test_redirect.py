@@ -3,6 +3,7 @@
 
 import os
 import unittest
+import time
 from subprocess import getstatusoutput as rt
 from subprocess import getoutput
 from lib import runner

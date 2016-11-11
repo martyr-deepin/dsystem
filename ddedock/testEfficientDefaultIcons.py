@@ -2,6 +2,7 @@
 # -*- coding: utf-8 -*-
 
 import unittest
+import time
 from lib import utils
 
 class EfficientDefaultIcons(unittest.TestCase):
