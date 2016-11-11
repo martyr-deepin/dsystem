@@ -3,7 +3,6 @@
 
 import unittest
 import time
-import time
 from lib import utils
 from lib import runner
 

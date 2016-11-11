@@ -3,7 +3,6 @@
 
 import unittest
 import time
-import time
 import pyautogui
 from lib import runner
 from lib import utils
