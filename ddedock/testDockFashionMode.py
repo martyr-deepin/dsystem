@@ -44,9 +44,9 @@ class DockFashionMode(unittest.TestCase):
         minutes = utils.convertToMinutes(float(seconds))
         global result
         utils.commitresult(caseid, result, minutes)
-        utils.commitresult(cls.caseid_2, result)
-        utils.commitresult(cls.caseid_3, result)
-        utils.commitresult(cls.caseid_4, result)
+        utils.commitresult(cls.caseid_2, result, minutes)
+        utils.commitresult(cls.caseid_3, result, minutes)
+        utils.commitresult(cls.caseid_4, result, minutes)
 
         if utils.getDdeDockDisplayMode() != utils.dock.displaymode_fashion:
             utils.setDdeDockDisplayMode(utils.dock.displaymode_fashion)
