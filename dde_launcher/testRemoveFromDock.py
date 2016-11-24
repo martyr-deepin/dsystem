@@ -18,6 +18,11 @@ class LauncherRemoveFromDock(unittest.TestCase):
         cls.startTime = time.time()
         cls.menuObj = root.application(appName='deepin-menu', description='/usr/lib/deepin-menu')
         cls.googleName = 'Google Chrome'
+        cls.dockname = 'google-chrome'
+        dockApps = Dock().getAllDockApps()
+        if cls.dockname not in dockApps:
+            launcher.menuDock(cls.googleName)
+
 
     @classmethod
     def tearDownClass(cls):
@@ -25,12 +30,15 @@ class LauncherRemoveFromDock(unittest.TestCase):
         minutes = utils.convertToMinutes(float(seconds))
         global result
         utils.commitresult(caseid, result, minutes)
+        dockApps = Dock().getAllDockApps()
+        if cls.dockname not in dockApps:
+            launcher.menuDock(cls.googleName)
         launcher.exitLauncher()
 
     def testMenuUnDock(self):
     	launcher.menuUnDock(self.googleName)
     	dockApps = Dock().getAllDockApps()
-    	self.assertNotIn('google-chrome',dockApps)
+    	self.assertNotIn(self.dockname,dockApps)
 
     def suite():
         suite = unittest.TestSuite()

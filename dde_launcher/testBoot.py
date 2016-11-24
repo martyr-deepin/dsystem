@@ -21,6 +21,7 @@ class LauncherAddToBoot(unittest.TestCase):
         cls.QQname = 'QQ'
         cls.googleFile = 'google-chrome.desktop'
         cls.QQFile = 'apps.com.qq.im.desktop'
+        launcher.freeMode()
 
     @classmethod
     def tearDownClass(cls):
@@ -40,7 +41,7 @@ class LauncherAddToBoot(unittest.TestCase):
 
     def testMenuAddToBoot(self):
         launcher.menuBoot(self.googleName,self.QQname)
-        launcher.exitLauncher()
+        #launcher.exitLauncher()
         googleFeild = getBootFeild(self.googleFile)
         QQFeild = getBootFeild(self.QQFile)
         self.assertEqual('Hidden=false',googleFeild)
@@ -48,7 +49,7 @@ class LauncherAddToBoot(unittest.TestCase):
 
     def testMenuRemoveFromBoot(self):
         launcher.menuBoot(self.QQname)
-        launcher.exitLauncher()
+        #launcher.exitLauncher()
         QQFeild = getBootFeild(self.QQFile)
         self.assertEqual('Hidden=true',QQFeild)
 

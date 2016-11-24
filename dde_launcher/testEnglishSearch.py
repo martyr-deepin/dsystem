@@ -15,10 +15,11 @@ class LauncherEnglishSearch(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
         cls.startTime = time.time()
-        cls.appName = '图像查看器'
-        cls.text1 = 'image viewer'
-        cls.text2 = 'iv'
-        cls.text3 = 'image'
+        cls.appName1 = '深度音乐'
+        cls.appName2 = '网易云音乐'
+        cls.text1 = 'deepin music'
+        cls.text2 = 'music'
+        cls.text3 = 'deepin'
 
     @classmethod
     def tearDownClass(cls):
@@ -32,26 +33,26 @@ class LauncherEnglishSearch(unittest.TestCase):
         sleep(2)
         apps = launcher.getLauncherAllApps()
         apps = ''.join(apps)
-        sleep(2)
+        #sleep(2)
         launcher.exitLauncher()
-        self.assertEqual(self.appName, apps)
+        self.assertEqual(self.appName1, apps)
 
     def testEnglishSearch2(self):
         launcher.searchApp(self.text2)
         sleep(2)
         apps = launcher.getLauncherAllApps()
-        sleep(2)
+        #sleep(2)
         launcher.exitLauncher()
-        self.assertIn(self.appName, apps)
+        self.assertIn(self.appName1, apps)
+        self.assertIn(self.appName2, apps)
 
     def testEnglishSearch3(self):
         launcher.searchApp(self.text3)
         sleep(2)
         apps = launcher.getLauncherAllApps()
-        apps = ''.join(apps)
-        sleep(2)
+        defaultdeepinapps = launcher.getDefaultDeepinApps()
         launcher.exitLauncher()
-        self.assertEqual(self.appName, apps)
+        self.assertListEqual(sorted(defaultdeepinapps), sorted(apps))
 
     def suite():
         suite = unittest.TestSuite()

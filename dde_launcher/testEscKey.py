@@ -15,6 +15,8 @@ class LauncherEscKey(unittest.TestCase):
     def setUpClass(cls):
         cls.startTime = time.time()
         cls.menuObj = root.application(appName='deepin-menu', description='/usr/lib/deepin-menu')
+        launcher.openLauncher()
+        launcher.exitLauncher()
         apps = launcher.getLauncherAllApps()
         cls.appName = apps[17]
         print ('Ready to click right key in %s' % cls.appName)

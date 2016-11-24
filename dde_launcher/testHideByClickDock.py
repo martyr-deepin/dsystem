@@ -27,8 +27,12 @@ class LauncherHideByClickDock(unittest.TestCase):
         utils.commitresult(caseid, result, minutes)
         launcher.exitLauncher()
         cls.newWindows = getAllWindows()
-        if len(cls.newWindows) - len(cls.oldWindows) == 1:
-            cls.newWindows[-1].close(1)
+        if len(cls.newWindows) > len(cls.oldWindows):
+            for win in cls.newWindows[len(cls.oldWindows):]:
+                win.close(1)
+        win = findWindow('dde-launcher')
+        if win is not None:
+            launcher.exitLauncher()
 
     def testClickApp(self):
         launcher.openLauncher()
@@ -40,8 +44,8 @@ class LauncherHideByClickDock(unittest.TestCase):
         launcher.openLauncher()
         position = Dock().dockObj.child('dock-mainwindow').position
         size = Dock().dockObj.child('dock-mainwindow').size
-        blank = (position[0]+5,position[1]+size[1]/2)
-        pyautogui.click(blank)
+        blank_left = (position[0]+2,position[1]+2)
+        pyautogui.click(blank_left)
         win = findWindow('dde-launcher')
         self.assertIsNotNone(win)
 

@@ -15,8 +15,8 @@ class LauncherChineseSearch(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
         cls.startTime = time.time()
-        cls.text1 = '图像查看器'
-        cls.text2 = '图像'
+        cls.text1 = '深度音乐'
+
 
     @classmethod
     def tearDownClass(cls):
@@ -30,7 +30,7 @@ class LauncherChineseSearch(unittest.TestCase):
         sleep(2)
         apps = launcher.getLauncherAllApps()
         apps = ''.join(apps)
-        sleep(2)
+        #sleep(2)
         launcher.exitLauncher()
         self.assertEqual(self.text1, apps)
 
@@ -39,7 +39,7 @@ class LauncherChineseSearch(unittest.TestCase):
         sleep(2)
         apps = launcher.getLauncherAllApps()
         #apps = ''.join(apps)
-        sleep(2)
+        #sleep(2)
         launcher.exitLauncher()
         self.assertIn(self.text1, apps)
 
@@ -47,7 +47,7 @@ class LauncherChineseSearch(unittest.TestCase):
     def suite():
         suite = unittest.TestSuite()
         suite.addTest(LauncherChineseSearch('testChineseSearch1'))
-        suite.addTest(LauncherChineseSearch('testChineseSearch2'))
+        #suite.addTest(LauncherChineseSearch('testChineseSearch2'))
         return suite
 
     class MyTestResult(runner.MyTextTestResult):

@@ -15,12 +15,10 @@ class AppDelete1(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
         cls.startTime = time.time()
-        cls.app = '360safeforcnos'
-        cls.launchername = '360安全卫士'
-        cls.desktopfile = 'start360.desktop'
-        cls.dockname = 'start360'
-        cls.install = 'sudo apt-get -y install ' + cls.app
-        cls.remove = 'sudo apt-get -y remove ' + cls.app
+        cls.app = 'deepin-feedback'
+        cls.desktopfile = 'deepin-feedback.desktop'
+        cls.launchername = '深度用户反馈'
+
 
     @classmethod
     def tearDownClass(cls):
@@ -28,41 +26,35 @@ class AppDelete1(unittest.TestCase):
         minutes = utils.convertToMinutes(float(seconds))
         global result
         utils.commitresult(caseid, result, minutes)
+        if cls.launchername not in launcher.getLauncherAllApps():
+            subprocess.check_call('sudo apt-get install -y deepin-feedback', shell=True)
 
-    def testSendToDesktopAndDock(self):
-        subprocess.check_call(self.install, shell=True)
+    def testSendToDesktop(self):
         launcher.menuDesktop(self.launchername)
-        launcher.menuDock(self.launchername)
         desktopFiles = getDesktopFiles()
         self.assertIn(self.desktopfile,desktopFiles)
-        dockApps = Dock().getAllDockApps()
-        self.assertIn(self.dockname,dockApps)
 
-    def testRemoveResult(self):
-        launcher.openLauncher()
-        launcher.searchApp(self.launchername)
-        launcher.launcherObj.child(self.launchername).click(3)
-        menuObj = root.application(appName='deepin-menu', description='/usr/lib/deepin-menu')
-        print(menuObj.children)
-        if menuObj.children[0].name == 'DesktopMenu':
-            for i in range(5):
-                pyautogui.press('down')
-                sleep(0.1)
-            pyautogui.press('enter')
-            launcher.launcherObj.child('确定').click()
-            launcher.exitLauncher()
-        else:
-            raise Exception("Menu did not opened!")
-        sleep(2)
+    def testSendToDock(self):
+        launcher.menuDock(self.launchername)
+        dockApps = Dock().getAllDockApps()
+        self.assertIn(self.app,dockApps)
+
+    def testDeleteFromDesktop(self):
+        launcher.menuUninstall(self.launchername)
+        sleep(5)
         desktopFiles = getDesktopFiles()
         self.assertNotIn(self.desktopfile,desktopFiles)
+
+    def testDeleteFromDock(self):
         dockApps = Dock().getAllDockApps()
-        self.assertNotIn(self.dockname,dockApps)
+        self.assertNotIn(self.app,dockApps)
 
     def suite():
         suite = unittest.TestSuite()
-        suite.addTest(AppDelete1('testSendToDesktopAndDock'))
-        suite.addTest(AppDelete1('testRemoveResult'))
+        suite.addTest(AppDelete1('testSendToDesktop'))
+        suite.addTest(AppDelete1('testSendToDock'))
+        suite.addTest(AppDelete1('testDeleteFromDesktop'))
+        suite.addTest(AppDelete1('testDeleteFromDock'))
         return suite
 
     class MyTestResult(runner.MyTextTestResult):

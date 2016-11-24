@@ -16,7 +16,8 @@ class LauncherDragAppToDock(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
         cls.startTime = time.time()
-        cls.qqName = 'apps.com.qq.im'
+        cls.qqName = 'QQ'
+        cls.dockname = 'apps.com.qq.im'
 
     @classmethod
     def tearDownClass(cls):
@@ -25,18 +26,28 @@ class LauncherDragAppToDock(unittest.TestCase):
         global result
         utils.commitresult(caseid, result, minutes)
         launcher.freeMode()
-        launcher.unDock()
+        if cls.dockname in Dock().getAllDockApps():
+            launcher.menuUnDock(cls.qqName)
+
+    def setUp(self):
+        pass
+
+    def tearDown(self):
+        if self.dockname in Dock().getAllDockApps():
+            launcher.menuUnDock(self.qqName)
 
     def testDragToDockFree(self):
         launcher.freeMode()
-        launcher.dragAppToDockFree('QQ',quit=True)
-        self.assertIn(self.qqName,Dock().getAllDockApps())
+        launcher.searchApp(self.qqName)
+        launcher.dragAppToDockFree(self.qqName,quit=True)
+        self.assertIn(self.dockname,Dock().getAllDockApps())
 
     def testDragToDockCategory(self):
-        launcher.unDock()
+        if self.qqName in Dock().getDockedApps():
+            launcher.unDock()
         launcher.categoryMode()
         launcher.dragAppToDockCategory('chat')
-        self.assertIn(self.qqName,Dock().getAllDockApps())
+        self.assertIn(self.dockname,Dock().getAllDockApps())
 
     def suite():
         suite = unittest.TestSuite()

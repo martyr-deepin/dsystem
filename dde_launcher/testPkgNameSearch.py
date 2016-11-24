@@ -15,10 +15,9 @@ class LauncherPkgNameSearch(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
         cls.startTime = time.time()
-        cls.text1 = 'eog'
-        cls.text2 = 'deepin-screenshot'
-        cls.appName1 = '图像查看器'
-        cls.appName2 = '深度截图'
+        cls.text = 'deepin-appstore'
+        cls.appName = '深度商店'
+
 
     @classmethod
     def tearDownClass(cls):
@@ -37,13 +36,13 @@ class LauncherPkgNameSearch(unittest.TestCase):
         self.assertIn(self.appName1, apps)
 
     def testPkgNameSearch2(self):
-        launcher.searchApp(self.text2)
+        launcher.searchApp(self.text)
         sleep(2)
         apps = launcher.getLauncherAllApps()
         apps = ''.join(apps)
-        sleep(2)
+        #sleep(2)
         launcher.exitLauncher()
-        self.assertEqual(self.appName2, apps)
+        self.assertEqual(self.appName, apps)
 
     def suite():
         suite = unittest.TestSuite()

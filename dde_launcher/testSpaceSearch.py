@@ -46,7 +46,7 @@ class LauncherSpaceSearch(unittest.TestCase):
         apps = launcher.getLauncherAllApps()
         sleep(2)
         launcher.exitLauncher()
-        self.assertEqual(deepinApps, apps)
+        self.assertEqual(sorted(deepinApps), sorted(apps))
 
     def testSpaceSearch3(self):
         launcher.searchApp(self.text3)

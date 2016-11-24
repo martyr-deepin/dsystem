@@ -15,7 +15,7 @@ class LauncherStartupApp(unittest.TestCase):
     def setUpClass(cls):
         cls.startTime = time.time()
         cls.menuObj = root.application(appName='deepin-menu', description='/usr/lib/deepin-menu')
-        cls.googleName = '打开新的标签页 - Google Chrome'
+        cls.googleName = '新标签页 - Google Chrome'
         cls.terminalName = 'deepin - 深度终端'
         cls.geditName = '无标题文档 1 - gedit'
         cls.oldWindows = getAllWindows()
@@ -29,8 +29,8 @@ class LauncherStartupApp(unittest.TestCase):
         utils.commitresult(caseid, result, minutes)
 
         cls.newWindows = getAllWindows()
-        if len(cls.newWindows) - len(cls.oldWindows) == 3:
-            for win in cls.newWindows[-3:]:
+        if len(cls.newWindows) > len(cls.oldWindows):
+            for win in cls.newWindows[len(cls.oldWindows):]:
                 win.close(1)
         launcher.freeMode()
 
@@ -71,7 +71,7 @@ class LauncherStartupApp(unittest.TestCase):
     def suite():
         suite = unittest.TestSuite()
         suite.addTest(LauncherStartupApp('testSartupByRightKey'))
-        suite.addTest(LauncherStartupApp('testStartupByShortcuts'))
+        #suite.addTest(LauncherStartupApp('testStartupByShortcuts'))
         suite.addTest(LauncherStartupApp('testStartupByLeftKey'))
         return suite
 

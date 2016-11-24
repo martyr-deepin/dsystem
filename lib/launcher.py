@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 
+#import pyperclip
 import subprocess
 import os
 import unittest
@@ -14,7 +15,6 @@ import gi
 gi.require_version('Wnck', '3.0')
 from gi.repository import Wnck
 import dbus
-
 
 
 pyautogui.FAILSAFE = False
@@ -34,16 +34,19 @@ class Launcher:
         self.session_if = dbus.Interface(self.session_obj,dbus_interface=self.ifc)
 
     def getNewInstalledApps(self):
-        newInstalledApps = self.session_if.GetAllNewInstalledApps()
+        dbus_newInstalledApps = self.session_if.GetAllNewInstalledApps()
+        str_newInstalledApps = ','.join(dbus_newInstalledApps)
+        newInstalledApps = str_newInstalledApps.split(',')
         return newInstalledApps
         
     def getDefaultDeepinApps(self):
-        deepinApps = ['深度用户反馈', '深度看图', '深度终端', '深度云打印', '深度云扫描', '深度启动盘制作工具', '深度商店', '深度影院', 
-                        '深度截图', '深度音乐', '日历', '深度文件管理器', '远程协助', '多任务视图', '显示桌面', '控制中心']
+        deepinApps = ['深度云扫描', '深度启动盘制作工具', '深度云打印', '深度用户反馈', '深度影院', '深度商店', '深度音乐', 
+                        '深度看图', '深度截图', '深度终端', '深度日历', '远程协助', '多任务视图', '显示桌面', 
+                        '深度文件管理器', '控制中心', '分区编辑器']
         return deepinApps
 
     def getShenduApps(self):
-        shenduApps = ['深度用户反馈', '深度终端', '深度启动盘制作工具', '深度商店', '深度云打印', '深度截图', '深度音乐']
+        shenduApps = ['深度用户反馈', '深度终端', '深度启动盘制作工具', '深度商店', '深度云打印', '深度截图', '深度音乐', '深度看图', '深度云扫描', '深度文件管理器', '深度日历', '深度影院']
         return shenduApps
 
     def openLauncher(self):
@@ -83,6 +86,12 @@ class Launcher:
             apps.append(self.launcherObj.child('all',roleName='list').children[i].name)
         return apps
 
+    def getLauncherChildren(self):
+        kids = []
+        for i in range(len(self.launcherObj.children)):
+            kids.append(self.launcherObj.children[i].name)
+        return kids
+
     def getAppSize(self,app):
         return self.launcherObj.child(app).size
 
@@ -104,31 +113,31 @@ class Launcher:
 
     def dragAppToDockFree(self,lapp,quit=True):
         #self.freeMode()
-        app = Dock().getLastItemName()
-        app_coor = Dock().getAppCoor(app)
+        app_coor = Dock().getDockDestCoor()
         self.openLauncher()
         launcher = findWindow('dde-launcher')
         if launcher != None:
             icon_coor = self.getIconCoorFree(lapp)
             pyautogui.mouseDown(icon_coor[0], icon_coor[1])
+            pyautogui.moveTo(app_coor[0]+2, app_coor[1]+2, duration=2, pause=1)
             pyautogui.moveTo(app_coor[0]-2, app_coor[1]-2, duration=2, pause=1)
-            pyautogui.mouseUp(app_coor[0], app_coor[1], duration=1)
+            pyautogui.mouseUp(app_coor, duration=1)
             if quit == True:
                 self.exitLauncher()
 
     def dragAppToDockCategory(self,listName):
         #self.categoryMode()
         self.checkLableKids('chat')
-        app = Dock().getLastItemName()
-        app_coor = Dock().getAppCoor(app)
+        app_coor = Dock().getDockDestCoor()
         self.openLauncher()
         launcher = findWindow('dde-launcher')
         if launcher != None:
             QQName = self.launcherObj.child(listName,roleName='list').children[0].name
             icon_coor = self.getIconCoorCategory('chat')
             pyautogui.mouseDown(icon_coor[0], icon_coor[1], duration=2, pause=1)
-            pyautogui.moveTo(app_coor[0]-1, app_coor[1]-1, duration=2, pause=1)
-            pyautogui.mouseUp(app_coor[0], app_coor[1], duration=0.5)
+            pyautogui.moveTo(app_coor[0]+2, app_coor[1]+2, duration=2, pause=1)
+            pyautogui.moveTo(app_coor[0]-2, app_coor[1]-2, duration=2, pause=1)
+            pyautogui.mouseUp(app_coor, duration=1)
             self.exitLauncher()
 
     def unDock(self):
@@ -150,27 +159,18 @@ class Launcher:
 
     def freeMode(self):
         mode = self.getLauncherMode()
-        win = findWindow('dde-launcher')
-        if mode == '\'category\'' and win == None:
-            pyautogui.press('winleft')
-            launcher = findWindow('dde-launcher')
-            if launcher != None:
-                self.launcherObj.child('mode-toggle-button').click()
-                self.exitLauncher()
-        elif mode == '\'category\'' and win != None:
+        self.openLauncher()
+        if mode == '\'category\'':
             self.launcherObj.child('mode-toggle-button').click()
-        else:
             self.exitLauncher()
+
 
     def categoryMode(self):
         mode = self.getLauncherMode()
-        win = findWindow('dde-launcher')
-        if mode == '\'free\'' and win == None:
-            pyautogui.press('winleft')
-            launcher = findWindow('dde-launcher')
-            if launcher != None:
-                self.launcherObj.child('mode-toggle-button').click()
-                self.exitLauncher()
+        self.openLauncher()
+        if mode == '\'free\'':
+            self.launcherObj.child('mode-toggle-button').click()
+            self.exitLauncher()
 
     def dragSrcToDest(self, s, d, btn='left'):
         #pyautogui.press('winleft')
@@ -259,15 +259,8 @@ class Launcher:
             raise Exception('Launcher Menu did not opened!')
 
     def menuDock(self,app):
-        dockApps = Dock().getAllDockApps()
-        if app in dockApps:
-            appCoor = Dock().getAppCoor(app)
-            screen = pyautogui.size()
-            screen_center = (screen[0]/2,screen[1]/2)
-            pyautogui.mouseDown(appCoor)
-            pyautogui.dragTo(screen_center, duration=2)
-        self.openLauncher()
         self.searchApp(app)
+        sleep(2)
         self.launcherObj.child(app).click(3)
         menuObj = root.application(appName='deepin-menu', description='/usr/lib/deepin-menu')
         if menuObj.children[0].name == 'DesktopMenu':
@@ -279,8 +272,8 @@ class Launcher:
             raise Exception('Launcher Menu did not opened!')
 
     def menuUnDock(self,app):
-        self.openLauncher()
         self.searchApp(app)
+        sleep(2)
         self.launcherObj.child(app).click(3)
         sleep(2)
         menuObj = root.application(appName='deepin-menu', description='/usr/lib/deepin-menu')
@@ -292,36 +285,39 @@ class Launcher:
         else:
             raise Exception('Launcher Menu did not opened!')
 
-    def menuBoot(self,arg,*args):
-        win = findWindow('dde-launcher')
-        if win == None:
-            pyautogui.press('winleft')
-            self.launcherObj.child(arg).click(3)
-            try:
-
-                menuObj = root.application(appName='deepin-menu', description='/usr/lib/deepin-menu')
-            except:
-                assertEqual(len(menuObj.children),0,'Launcher Menu did not opened!')
-            else:
+    def menuBoot(self,*args):
+        for app in args: 
+            self.searchApp(app)
+            sleep(2)
+            self.launcherObj.child(app).click(3)
+            menuObj = root.application(appName='deepin-menu', description='/usr/lib/deepin-menu')
+            if menuObj.children[0].name == 'DesktopMenu':
                 pyautogui.press('down')
                 pyautogui.press('down')
                 pyautogui.press('down')
                 pyautogui.press('down')
                 pyautogui.press('enter')
-            if args:
-                for app in args: 
-                    self.launcherObj.child(app).click(3)
-                    try:
+                self.exitLauncher()
+            else:
+                raise Exception('Launcher Menu did not opened!')
 
-                        menuObj = root.application(appName='deepin-menu', description='/usr/lib/deepin-menu')
-                    except:
-                        assertEqual(len(menuObj.children),0,'Launcher Menu did not opened!')
-                    else:
-                        pyautogui.press('down')
-                        pyautogui.press('down')
-                        pyautogui.press('down')
-                        pyautogui.press('down')
-                        pyautogui.press('enter')
+    def menuUninstall(self,*args):
+        for app in args: 
+            self.searchApp(app)
+            sleep(2)
+            self.launcherObj.child(app).click(3)
+            menuObj = root.application(appName='deepin-menu', description='/usr/lib/deepin-menu')
+            if menuObj.children[0].name == 'DesktopMenu':
+                pyautogui.press('down')
+                pyautogui.press('down')
+                pyautogui.press('down')
+                pyautogui.press('down')
+                pyautogui.press('down')
+                pyautogui.press('enter')
+                launcher.launcherObj.child('确定').click()
+                self.exitLauncher()
+            else:
+                raise Exception('Launcher Menu did not opened!')
 
     def installApp(self,app):
         #pyautogui.press('winleft')
@@ -373,16 +369,22 @@ class Launcher:
         self.launcherObj.child('search-edit').text = char
 
     def pasteMsgInLauncher(self,msg):
-        pyautogui.press('winleft')
-        if findWindow('dde-launcher') != None:
-            pasteMsgWithKey()
-        else:
-            raise Exception('Launcher did not opened!')
+        pyperclip.copy(msg)
+        self.openLauncher()
+        self.launcherObj.child('search-edit').click()
+        sleep(1)
+        pyautogui.hotkey('ctrl','v')
+
 
 
     
 
 launcher = Launcher()
+
+def delchar(char):
+    for i in range(len(char)):
+        pyautogui.press('backspace')
+        sleep(0.25)
 
 def copyMsg(msg):
     pyperclip.copy(msg)

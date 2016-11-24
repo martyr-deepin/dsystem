@@ -22,7 +22,7 @@ from dde_launcher.testPunctuationSearch import LauncherPunctuationSearch
 from dde_launcher.testSpaceSearch import LauncherSpaceSearch
 from dde_launcher.testSortApp import LauncherSortApp
 from dde_launcher.testUninstall import LauncherUninstall
-from dde_launcher.testShotcuts import LauncherShotcuts
+#from dde_launcher.testShotcuts import LauncherShotcuts
 from dde_launcher.testEnterKey import LauncherEnterKey
 from dde_launcher.testEscKey import LauncherEscKey
 from dde_launcher.testHideByClickDock import LauncherHideByClickDock
@@ -30,37 +30,47 @@ from dde_launcher.testClickBlank import ClickBlank
 from dde_launcher.testBluePoint import BluePoint
 from dde_launcher.testAppDelete1 import AppDelete1
 from dde_launcher.testAppDelete2 import AppDelete2
+from dde_launcher.testSortWithSearch import LauncherSortWithSearch
+from dde_launcher.test_ctrl_c import LauncherShotcuts_ctrl_c
+from dde_launcher.test_ctrl_x import LauncherShotcuts_ctrl_x
+from dde_launcher.testStartupLauncher import LauncherStartup
+from dde_launcher.testUninstallFailed import LauncherUninstall
+from dde_launcher.testUpdate_uninstall import LauncherUpdateUninstall
+from dde_launcher.testRebootLauncher import LauncherReboot
 
 
 def main():
     classes = []
     classes.append(LauncherAdjustFirstApp)
     classes.append(LauncherDisable)
-    #classes.append(LauncherDragAppToDock)
-    #classes.append(LauncherDragToCenter)
-    #classes.append(LauncherStartupApp)
-    #classes.append(LauncherAddToDock)
-    #classes.append(LauncherRemoveFromDock)
-    #classes.append(LauncherSendToDesktop)
-    #classes.append(LauncherRemoveFromDesktop)
-    #classes.append(LauncherAddToBoot)
-    #classes.append(LauncherChineseSearch)
-    #classes.append(LauncherEnglishSearch)
-    #classes.append(LauncherPinyinSearch)
-    #classes.append(LauncherMutiSearch)
-    #classes.append(LauncherPkgNameSearch)
-    #classes.append(LauncherPunctuationSearch)
-    #classes.append(LauncherSpaceSearch)
-    #classes.append(LauncherSortApp)
-    #classes.append(LauncherUninstall)
+    classes.append(LauncherDragAppToDock)
+    classes.append(LauncherDragToCenter)
+    classes.append(LauncherStartupApp)
+    classes.append(LauncherAddToDock)
+    classes.append(LauncherRemoveFromDock)
+    classes.append(LauncherSendToDesktop)
+    classes.append(LauncherRemoveFromDesktop)
+    classes.append(LauncherAddToBoot)
+    classes.append(LauncherChineseSearch)
+    classes.append(LauncherEnglishSearch)
+    classes.append(LauncherPinyinSearch)
+    classes.append(LauncherMutiSearch)
+    classes.append(LauncherPkgNameSearch)
+    classes.append(LauncherPunctuationSearch)
+    classes.append(LauncherSpaceSearch)
+    classes.append(LauncherSortApp)
+    classes.append(LauncherUninstall)
     #classes.append(LauncherShotcuts)
-    #classes.append(LauncherEnterKey)
-    #classes.append(LauncherEscKey)
-    #classes.append(LauncherHideByClickDock)
-    #classes.append(ClickBlank)
-    #classes.append(BluePoint)
-    #classes.append(AppDelete1)
-    #classes.append(AppDelete2)
+    classes.append(LauncherEnterKey)
+    classes.append(LauncherEscKey)
+    classes.append(LauncherHideByClickDock)
+    classes.append(ClickBlank)
+    classes.append(BluePoint)
+    classes.append(AppDelete1)
+    classes.append(AppDelete2)
+    classes.append(LauncherSortWithSearch)
+    classes.append(LauncherShotcuts_ctrl_c)
+    classes.append(LauncherShotcuts_ctrl_c)
 
     for c in classes:
         unittest.TextTestRunner(resultclass=c.MyTestResult).run(c.suite())

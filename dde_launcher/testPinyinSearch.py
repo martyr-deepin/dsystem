@@ -15,11 +15,11 @@ class LauncherPinyinSearch(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
         cls.startTime = time.time()
-        cls.appName = '图像查看器'
-        cls.text1 = 'tuxiangchakanqi'
-        cls.text2 = 'txckq'
-        cls.text3 = 'TXCkq'
-        cls.text4 = 'ckq'
+        cls.appName = '深度截图'
+        cls.text1 = 'shendujietu'
+        cls.text2 = 'sdjt'
+        cls.text3 = 'SDJt'
+        cls.text4 = 'djt'
 
     @classmethod
     def tearDownClass(cls):
@@ -33,7 +33,7 @@ class LauncherPinyinSearch(unittest.TestCase):
         sleep(2)
         apps = launcher.getLauncherAllApps()
         apps = ''.join(apps)
-        sleep(2)
+        #sleep(2)
         launcher.exitLauncher()
         self.assertEqual(self.appName, apps)
 
@@ -43,7 +43,7 @@ class LauncherPinyinSearch(unittest.TestCase):
         sleep(2)
         apps = launcher.getLauncherAllApps()
         apps = ''.join(apps)
-        sleep(2)
+        #sleep(2)
         launcher.exitLauncher()
         self.assertEqual(self.appName, apps)
 
@@ -53,7 +53,7 @@ class LauncherPinyinSearch(unittest.TestCase):
         sleep(2)
         apps = launcher.getLauncherAllApps()
         apps = ''.join(apps)
-        sleep(2)
+        #sleep(2)
         launcher.exitLauncher()
         self.assertEqual(self.appName, apps)
 
@@ -62,9 +62,9 @@ class LauncherPinyinSearch(unittest.TestCase):
         sleep(2)
         apps = launcher.getLauncherAllApps()
         #apps = ''.join(apps)
-        sleep(2)
+        #sleep(2)
         launcher.exitLauncher()
-        self.assertNotIn(self.appName, apps)
+        self.assertIn(self.appName, apps)
 
 
     def suite():

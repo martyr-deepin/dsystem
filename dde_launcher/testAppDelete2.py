@@ -6,6 +6,7 @@ import time
 from lib import runner,utils
 from lib.launcher import *
 from lib.dde_dock import *
+from glob import glob
 
 result = True
 caseid = '80064'
@@ -21,6 +22,9 @@ class AppDelete2(unittest.TestCase):
         cls.dockname = 'love-wallpaper'
         cls.install = 'sudo apt-get -y install ' + cls.app
         cls.remove = 'sudo apt-get -y remove ' + cls.app
+        lockfile = glob('/var/lib/dpkg/lock')
+        if len(lockfile) > 0:
+            subprocess.check_call('sudo rm /var/lib/dpkg/lock', shell=True)
 
     @classmethod
     def tearDownClass(cls):

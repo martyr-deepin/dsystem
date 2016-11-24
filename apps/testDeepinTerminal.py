@@ -17,7 +17,7 @@ class DeepinTerminal(unittest.TestCase):
     def setUpClass(cls):
         cls.startTime = time.time()
         cls.appName = 'deepin-terminal'
-        cls.username = subprocess.getstatusoutput("whoami")
+        status, cls.username = subprocess.getstatusoutput("whoami")
         cls.winName = cls.username + ' - 深度终端'
         cls.oldWindows = getAllWindows()
 
@@ -30,8 +30,8 @@ class DeepinTerminal(unittest.TestCase):
         utils.commitresult(caseid, result, minutes)
         newWindows = getAllWindows()
         if len(newWindows) > len(cls.oldWindows):
-            newWindow = newWindows[-1]
-            newWindow.close(1)
+            for win in newWindows[len(cls.oldWindows):]:
+                win.close(1)
 
     def testDeepinTerminal(self):
         launcher.searchApp(self.appName)

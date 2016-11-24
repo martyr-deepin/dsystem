@@ -18,9 +18,14 @@ class LauncherAddToDock(unittest.TestCase):
         cls.startTime = time.time()
         cls.menuObj = root.application(appName='deepin-menu', description='/usr/lib/deepin-menu')
         cls.googleName = 'Google Chrome'
+        cls.dockname = 'google-chrome'
         dockApps = Dock().getAllDockApps()
-        if 'google-chrome' in dockApps:
-            Dock().unDockApp(cls.googleName)
+        if cls.dockname in dockApps:
+            appCoor = Dock().getAppCoor(cls.googleName)
+            screen = pyautogui.size()
+            screen_center = (screen[0]/2,screen[1]/2)
+            pyautogui.mouseDown(appCoor)
+            pyautogui.dragTo(screen_center, duration=2)
         launcher.freeMode()
 
     @classmethod
@@ -34,7 +39,7 @@ class LauncherAddToDock(unittest.TestCase):
     def testMenuDock(self):
     	launcher.menuDock(self.googleName)
     	dockApps = Dock().getAllDockApps()
-    	self.assertIn('google-chrome',dockApps)
+    	self.assertIn(self.dockname,dockApps)
 
 
     def suite():

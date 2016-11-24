@@ -15,7 +15,7 @@ class LauncherEnterKey(unittest.TestCase):
     def setUpClass(cls):
         cls.startTime = time.time()
         cls.appName = 'Google Chrome'
-        cls.googleTitleName = '打开新的标签页 - Google Chrome'
+        cls.googleTitleName = '新标签页 - Google Chrome'
         cls.oldWindows = getAllWindows()
 
     @classmethod
@@ -25,11 +25,12 @@ class LauncherEnterKey(unittest.TestCase):
         global result
         utils.commitresult(caseid, result, minutes)
         cls.newWindows = getAllWindows()
-        if len(cls.newWindows) - len(cls.oldWindows) == 1:
-            cls.newWindows[-1].close(1)
+        if len(cls.newWindows) > len(cls.oldWindows):
+            for win in cls.newWindows[len(cls.oldWindows):]:
+                win.close(1)
 
     def testEnterKey(self):
-        launcher.openLauncher()
+        launcher.searchApp(self.appName)
         launcher.launcherObj.child(self.appName).point()
         pyautogui.press('enter')
         win = getWindowName()

@@ -79,7 +79,7 @@ from dde_launcher import testPunctuationSearch
 from dde_launcher import testSpaceSearch
 from dde_launcher import testSortApp
 from dde_launcher import testUninstall
-from dde_launcher import testShotcuts
+#from dde_launcher import testShotcuts
 from dde_launcher import testEnterKey
 from dde_launcher import testEscKey
 from dde_launcher import testHideByClickDock
@@ -87,6 +87,13 @@ from dde_launcher import testClickBlank
 from dde_launcher import testBluePoint
 from dde_launcher import testAppDelete1
 from dde_launcher import testAppDelete2
+from dde_launcher import testSortWithSearch
+from dde_launcher import test_ctrl_c
+from dde_launcher import test_ctrl_x
+from dde_launcher import testStartupLauncher
+from dde_launcher import testUninstallFailed
+from dde_launcher import testUpdate_uninstall
+from dde_launcher import testRebootLauncher
 
 # system command
 from systemcommand import test_useradd
@@ -385,6 +392,27 @@ def main():
 
     if testAppDelete2.caseid in idlist:
         allclasses.append(testAppDelete2.AppDelete2)
+
+    if testSortWithSearch.caseid in idlist:
+        allclasses.append(testSortWithSearch.LauncherSortWithSearch)
+
+    if test_ctrl_c.caseid in idlist:
+        allclasses.append(test_ctrl_c.LauncherShotcuts_ctrl_c)
+
+    if test_ctrl_x.caseid in idlist:
+        allclasses.append(test_ctrl_x.LauncherShotcuts_ctrl_x)
+
+    if testStartupLauncher.caseid in idlist:
+        allclasses.append(testStartupLauncher.LauncherStartup)
+
+    if testUninstallFailed.caseid in idlist:
+        allclasses.append(testUninstallFailed.LauncherUninstall)
+
+    if testUpdate_uninstall.caseid in idlist:
+        allclasses.append(testUpdate_uninstall.LauncherUpdateUninstall)
+
+    if testRebootLauncher.caseid in idlist:
+        allclasses.append(testRebootLauncher.LauncherReboot)
 
     # add system command classes
     if test_useradd.caseid in idlist:
