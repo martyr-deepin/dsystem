@@ -45,7 +45,9 @@ def keySingle(key):
         sleep(1.5)
 
 def keyTypeString(str):
-    k.type_string(str)
+    for char in str:
+        keySingle(char)
+    # k.type_string(str)
     sleep(2)
 
 def mouseDrag(fromXY, toXY, duration=2, press=True, release=True):
