@@ -369,8 +369,8 @@ def main():
     if testUninstall.caseid in idlist:
         allclasses.append(testUninstall.LauncherUninstall)
 
-    if testShotcuts.caseid in idlist:
-        allclasses.append(testShotcuts.LauncherShotcuts)
+    #if testShotcuts.caseid in idlist:
+    #    allclasses.append(testShotcuts.LauncherShotcuts)
 
     if testEnterKey.caseid in idlist:
         allclasses.append(testEnterKey.LauncherEnterKey)
