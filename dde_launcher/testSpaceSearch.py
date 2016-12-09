@@ -2,6 +2,7 @@
 # -*- coding: utf-8 -*-
 
 import unittest
+from lib import executeTestCase
 import time
 from lib import runner,utils
 from lib.launcher import *
@@ -14,7 +15,6 @@ casename = "all-2270:输入空格符搜索测试"
 class LauncherSpaceSearch(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
-        cls.startTime = time.time()
         cls.text1 = ' '
         cls.text2 = 'deepin   '
         cls.text3 = 'deepin music'
@@ -25,10 +25,7 @@ class LauncherSpaceSearch(unittest.TestCase):
 
     @classmethod
     def tearDownClass(cls):
-        seconds = "%.3f" % (time.time() - cls.startTime)
-        minutes = utils.convertToMinutes(float(seconds))
-        global result
-        utils.commitresult(caseid, result, minutes)
+        pass
 
     def testSpaceSearch1(self):
         launcher.searchApp(self.text1)
@@ -75,16 +72,6 @@ class LauncherSpaceSearch(unittest.TestCase):
         suite.addTest(LauncherSpaceSearch('testSpaceSearch4'))
         return suite
 
-    class MyTestResult(runner.MyTextTestResult):
-        def addError(self, test, err):
-            super(LauncherSpaceSearch.MyTestResult, self).addError(test, err)
-            global result
-            result = result and False
-
-        def addFailure(self, test, err):
-            super(LauncherSpaceSearch.MyTestResult, self).addFailure(test, err)
-            global result
-            result = result and False
 
 if __name__ == "__main__":
-    unittest.TextTestRunner(resultclass=LauncherSpaceSearch.MyTestResult).run(LauncherSpaceSearch.suite())
+    runTest(LauncherSpaceSearch.suite())

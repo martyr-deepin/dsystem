@@ -2,6 +2,7 @@
 # -*- coding: utf-8 -*-
 
 import unittest
+from lib import executeTestCase
 import time
 from lib import runner,utils
 from lib.launcher import *
@@ -15,7 +16,6 @@ casename = "all-3297:应用发送至任务栏/桌面后命令行删除测试"
 class AppDelete2(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
-        cls.startTime = time.time()
         cls.app = 'lovewallpaper'
         cls.launchername = '爱壁纸HD'
         cls.desktopfile = 'love-wallpaper.desktop'
@@ -28,10 +28,7 @@ class AppDelete2(unittest.TestCase):
 
     @classmethod
     def tearDownClass(cls):
-        seconds = "%.3f" % (time.time() - cls.startTime)
-        minutes = utils.convertToMinutes(float(seconds))
-        global result
-        utils.commitresult(caseid, result, minutes)
+        pass
 
     def testSendToDesktopAndDock(self):
         subprocess.check_call(self.install, shell=True)
@@ -56,16 +53,6 @@ class AppDelete2(unittest.TestCase):
         suite.addTest(AppDelete2('testRemoveResult'))
         return suite
 
-    class MyTestResult(runner.MyTextTestResult):
-        def addError(self, test, err):
-            super(AppDelete2.MyTestResult, self).addError(test, err)
-            global result
-            result = result and False
-
-        def addFailure(self, test, err):
-            super(AppDelete2.MyTestResult, self).addFailure(test, err)
-            global result
-            result = result and False
 
 if __name__ == "__main__":
-    unittest.TextTestRunner(resultclass=AppDelete2.MyTestResult).run(AppDelete2.suite())
+    runTest(AppDelete2.suite())

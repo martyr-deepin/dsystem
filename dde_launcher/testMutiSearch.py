@@ -2,6 +2,7 @@
 # -*- coding: utf-8 -*-
 
 import unittest
+from lib import executeTestCase
 import time
 from lib import runner,utils
 from lib.launcher import *
@@ -14,16 +15,12 @@ casename = "all-2136:中文和英文搜索"
 class LauncherMutiSearch(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
-        cls.startTime = time.time()
         cls.text = 'wps表格'
         cls.appName = 'WPS 表格'
 
     @classmethod
     def tearDownClass(cls):
-        seconds = "%.3f" % (time.time() - cls.startTime)
-        minutes = utils.convertToMinutes(float(seconds))
-        global result
-        utils.commitresult(caseid, result, minutes)
+        pass
 
     def testMutiSearch(self):
         launcher.searchApp(self.text)
@@ -39,16 +36,6 @@ class LauncherMutiSearch(unittest.TestCase):
         suite.addTest(LauncherMutiSearch('testMutiSearch'))
         return suite
 
-    class MyTestResult(runner.MyTextTestResult):
-        def addError(self, test, err):
-            super(LauncherMutiSearch.MyTestResult, self).addError(test, err)
-            global result
-            result = result and False
-
-        def addFailure(self, test, err):
-            super(LauncherMutiSearch.MyTestResult, self).addFailure(test, err)
-            global result
-            result = result and False
 
 if __name__ == "__main__":
-    unittest.TextTestRunner(resultclass=LauncherMutiSearch.MyTestResult).run(LauncherMutiSearch.suite())
+    runTest(LauncherMutiSearch.suite())

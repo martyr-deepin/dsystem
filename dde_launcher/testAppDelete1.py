@@ -2,6 +2,7 @@
 # -*- coding: utf-8 -*-
 
 import unittest
+from lib import executeTestCase
 import time
 from lib import runner,utils
 from lib.launcher import *
@@ -14,7 +15,6 @@ casename = "all-3296:应用发送至任务栏/桌面后右键删除测试"
 class AppDelete1(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
-        cls.startTime = time.time()
         cls.app = 'deepin-feedback'
         cls.desktopfile = 'deepin-feedback.desktop'
         cls.launchername = '深度用户反馈'
@@ -22,10 +22,6 @@ class AppDelete1(unittest.TestCase):
 
     @classmethod
     def tearDownClass(cls):
-        seconds = "%.3f" % (time.time() - cls.startTime)
-        minutes = utils.convertToMinutes(float(seconds))
-        global result
-        utils.commitresult(caseid, result, minutes)
         if cls.launchername not in launcher.getLauncherAllApps():
             subprocess.check_call('sudo apt-get install -y deepin-feedback', shell=True)
 
@@ -57,16 +53,6 @@ class AppDelete1(unittest.TestCase):
         suite.addTest(AppDelete1('testDeleteFromDock'))
         return suite
 
-    class MyTestResult(runner.MyTextTestResult):
-        def addError(self, test, err):
-            super(AppDelete1.MyTestResult, self).addError(test, err)
-            global result
-            result = result and False
-
-        def addFailure(self, test, err):
-            super(AppDelete1.MyTestResult, self).addFailure(test, err)
-            global result
-            result = result and False
 
 if __name__ == "__main__":
-    unittest.TextTestRunner(resultclass=AppDelete1.MyTestResult).run(AppDelete1.suite())
+    runTest(AppDelete1.suite())

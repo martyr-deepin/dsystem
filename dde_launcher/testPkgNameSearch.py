@@ -2,6 +2,7 @@
 # -*- coding: utf-8 -*-
 
 import unittest
+from lib import executeTestCase
 import time
 from lib import runner,utils
 from lib.launcher import *
@@ -14,17 +15,13 @@ casename = "all-509:中文字符串搜索"
 class LauncherPkgNameSearch(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
-        cls.startTime = time.time()
         cls.text = 'deepin-appstore'
         cls.appName = '深度商店'
 
 
     @classmethod
     def tearDownClass(cls):
-        seconds = "%.3f" % (time.time() - cls.startTime)
-        minutes = utils.convertToMinutes(float(seconds))
-        global result
-        utils.commitresult(caseid, result, minutes)
+        pass
 
     def testPkgNameSearch1(self):
         launcher.searchApp(self.text1)
@@ -50,16 +47,6 @@ class LauncherPkgNameSearch(unittest.TestCase):
         suite.addTest(LauncherPkgNameSearch('testPkgNameSearch2'))
         return suite
 
-    class MyTestResult(runner.MyTextTestResult):
-        def addError(self, test, err):
-            super(LauncherPkgNameSearch.MyTestResult, self).addError(test, err)
-            global result
-            result = result and False
-
-        def addFailure(self, test, err):
-            super(LauncherPkgNameSearch.MyTestResult, self).addFailure(test, err)
-            global result
-            result = result and False
 
 if __name__ == "__main__":
-    unittest.TextTestRunner(resultclass=LauncherPkgNameSearch.MyTestResult).run(LauncherPkgNameSearch.suite())
+    runTest(LauncherPkgNameSearch.suite())

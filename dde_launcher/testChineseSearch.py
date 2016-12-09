@@ -2,6 +2,7 @@
 # -*- coding: utf-8 -*-
 
 import unittest
+from lib import executeTestCase
 import time
 from lib import runner,utils
 from lib.launcher import *
@@ -14,16 +15,12 @@ casename = "all-509:中文字符串搜索"
 class LauncherChineseSearch(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
-        cls.startTime = time.time()
         cls.text1 = '深度音乐'
 
 
     @classmethod
     def tearDownClass(cls):
-        seconds = "%.3f" % (time.time() - cls.startTime)
-        minutes = utils.convertToMinutes(float(seconds))
-        global result
-        utils.commitresult(caseid, result, minutes)
+        pass
 
     def testChineseSearch1(self):
         launcher.searchApp(self.text1)
@@ -50,16 +47,6 @@ class LauncherChineseSearch(unittest.TestCase):
         #suite.addTest(LauncherChineseSearch('testChineseSearch2'))
         return suite
 
-    class MyTestResult(runner.MyTextTestResult):
-        def addError(self, test, err):
-            super(LauncherChineseSearch.MyTestResult, self).addError(test, err)
-            global result
-            result = result and False
-
-        def addFailure(self, test, err):
-            super(LauncherChineseSearch.MyTestResult, self).addFailure(test, err)
-            global result
-            result = result and False
 
 if __name__ == "__main__":
-    unittest.TextTestRunner(resultclass=LauncherChineseSearch.MyTestResult).run(LauncherChineseSearch.suite())
+    runTest(LauncherChineseSearch.suite())

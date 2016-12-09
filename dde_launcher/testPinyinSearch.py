@@ -2,6 +2,7 @@
 # -*- coding: utf-8 -*-
 
 import unittest
+from lib import executeTestCase
 import time
 from lib import runner,utils
 from lib.launcher import *
@@ -14,7 +15,6 @@ casename = "all-2140:拼音字符串搜索"
 class LauncherPinyinSearch(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
-        cls.startTime = time.time()
         cls.appName = '深度截图'
         cls.text1 = 'shendujietu'
         cls.text2 = 'sdjt'
@@ -23,10 +23,7 @@ class LauncherPinyinSearch(unittest.TestCase):
 
     @classmethod
     def tearDownClass(cls):
-        seconds = "%.3f" % (time.time() - cls.startTime)
-        minutes = utils.convertToMinutes(float(seconds))
-        global result
-        utils.commitresult(caseid, result, minutes)
+        pass
 
     def testPinyinSearch1(self):
         launcher.searchApp(self.text1)
@@ -75,16 +72,6 @@ class LauncherPinyinSearch(unittest.TestCase):
         suite.addTest(LauncherPinyinSearch('testPinyinSearch4'))
         return suite
 
-    class MyTestResult(runner.MyTextTestResult):
-        def addError(self, test, err):
-            super(LauncherPinyinSearch.MyTestResult, self).addError(test, err)
-            global result
-            result = result and False
-
-        def addFailure(self, test, err):
-            super(LauncherPinyinSearch.MyTestResult, self).addFailure(test, err)
-            global result
-        result = result and False
 
 if __name__ == "__main__":
-    unittest.TextTestRunner(resultclass=LauncherPinyinSearch.MyTestResult).run(LauncherPinyinSearch.suite())
+    runTest(LauncherPinyinSearch.suite())
