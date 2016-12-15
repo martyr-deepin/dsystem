@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 
 import unittest
-import time
+from lib import executeTestCase
 from lib import utils
 from lib import runner
 from dogtail import rawinput
@@ -15,7 +15,6 @@ casename = "all-2473:方向设置菜单"
 class DockMenu(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
-        cls.startTime = time.time()
         cls.ddedockobject = utils.getDdeDockObject()
         cls.defaultdisplaymode = utils.getDdeDockDisplayMode()
         cls.defaultposition = utils.getDdeDockPosition()
@@ -34,11 +33,6 @@ class DockMenu(unittest.TestCase):
 
     @classmethod
     def tearDownClass(cls):
-        seconds = "%.3f" % (time.time() - cls.startTime)
-        minutes = utils.convertToMinutes(float(seconds))
-        global result
-        utils.commitresult(caseid, result, minutes)
-
         if utils.getDdeDockDisplayMode() != utils.dock.displaymode_fashion:
             utils.setDdeDockDisplayMode(utils.dock.displaymode_fashion)
 
@@ -129,16 +123,5 @@ class DockMenu(unittest.TestCase):
 
         return suite
 
-    class MyTestResult(runner.MyTextTestResult):
-        def addError(self, test, err):
-            super(DockMenu.MyTestResult, self).addError(test, err)
-            global result
-            result = result and False
-
-        def addFailure(self, test, err):
-            super(DockMenu.MyTestResult, self).addFailure(test, err)
-            global result
-            result = result and False
-
 if __name__ == "__main__":
-    unittest.TextTestRunner(resultclass=DockMenu.MyTestResult).run(DockMenu.suite())
+    runTest(DockMenu.suite())

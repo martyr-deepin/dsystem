@@ -4,7 +4,7 @@
 import os
 import glob
 import unittest
-import time
+from lib import executeTestCase
 from lib import utils
 from lib import runner
 from lib.launcher import launcher
@@ -18,7 +18,6 @@ casename = "all-440:深度截图"
 class DeepinScreenshot(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
-        cls.startTime = time.time()
         cls.screenshoticonname = "深度截图"
         cls.ddedockobject = utils.getDdeDockObject()
 
@@ -30,11 +29,6 @@ class DeepinScreenshot(unittest.TestCase):
 
     @classmethod
     def tearDownClass(cls):
-        seconds = "%.3f" % (time.time() - cls.startTime)
-        minutes = utils.convertToMinutes(float(seconds))
-        global result
-        utils.commitresult(caseid, result, minutes)
-
         if utils.dock.displaymode_fashion != utils.getDdeDockDisplayMode():
             utils.setDdeDockDisplayMode(utils.dock.displaymode_fashion)
 
@@ -236,16 +230,5 @@ class DeepinScreenshot(unittest.TestCase):
 
         return suite
 
-    class MyTestResult(runner.MyTextTestResult):
-        def addError(self, test, err):
-            super(DeepinScreenshot.MyTestResult, self).addError(test, err)
-            global result
-            result = result and False
-
-        def addFailure(self, test, err):
-            super(DeepinScreenshot.MyTestResult, self).addFailure(test, err)
-            global result
-            result = result and False
-
 if __name__ == "__main__":
-    unittest.TextTestRunner(resultclass=DeepinScreenshot.MyTestResult).run(DeepinScreenshot.suite())
+    runTest(DeepinScreenshot.suite())

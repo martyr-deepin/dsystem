@@ -3,7 +3,7 @@
 
 import os
 import unittest
-import time
+from lib import executeTestCase
 from subprocess import getstatusoutput as rt
 from subprocess import getoutput
 from lib import utils
@@ -16,17 +16,11 @@ casename = 'all-1445:文件/文件夹操作命令--验证对rm命令的支持'
 class Rm(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
-        cls.startTime = time.time()
         cls.homedir = os.path.expanduser('~')
         cls.filename = "/".join((cls.homedir, 'testfile'))
 
     @classmethod
     def tearDownClass(cls):
-        seconds = "%.3f" % (time.time() - cls.startTime)
-        minutes = utils.convertToMinutes(float(seconds))
-        global result
-        utils.commitresult(caseid, result, minutes)
-
         if os.path.exists(cls.filename):
             os.system('rm %s' % cls.filename)
 
@@ -53,16 +47,5 @@ class Rm(unittest.TestCase):
         suite.addTest(Rm('test2RmFile'))
         return suite
 
-    class MyTestResult(runner.MyTextTestResult):
-        def addError(self, test, err):
-            super(Rm.MyTestResult, self).addError(test, err)
-            global result
-            result = result and False
-
-        def addFailure(self, test, err):
-            super(Rm.MyTestResult, self).addError(test, err)
-            global result
-            result = result and False
-
 if __name__ == "__main__":
-    unittest.TextTestRunner(resultclass=Rm.MyTestResult).run(Rm.suite())
+    runTest(Rm.suite())

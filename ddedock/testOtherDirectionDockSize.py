@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 
 import unittest
-import time
+from lib import executeTestCase
 from lib import utils
 from lib import runner
 
@@ -13,7 +13,6 @@ casename = "all-2496:大图标在四个方向上显示"
 class OtherDirectionDockSize(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
-        cls.startTime = time.time()
         cls.ddedockobject = utils.getDdeDockObject()
         cls.defaultdisplaymode = utils.getDdeDockDisplayMode()
         cls.defaultposition = utils.getDdeDockPosition()
@@ -21,11 +20,6 @@ class OtherDirectionDockSize(unittest.TestCase):
 
     @classmethod
     def tearDownClass(cls):
-        seconds = "%.3f" % (time.time() - cls.startTime)
-        minutes = utils.convertToMinutes(float(seconds))
-        global result
-        utils.commitresult(caseid, result, minutes)
-
         if utils.getDdeDockDisplayMode() != cls.defaultdisplaymode:
             utils.setDdeDockDisplayMode(cls.defaultdisplaymode)
 
@@ -160,16 +154,5 @@ class OtherDirectionDockSize(unittest.TestCase):
         suite.addTest(OtherDirectionDockSize('testCheckDockSizeLeft'))
         return suite
 
-    class MyTestResult(runner.MyTextTestResult):
-        def addError(self, test, err):
-            super(OtherDirectionDockSize.MyTestResult, self).addError(test, err)
-            global result
-            result = result and False
-
-        def addFailure(self, test, err):
-            super(OtherDirectionDockSize.MyTestResult, self).addFailure(test, err)
-            global result
-            result = result and False
-
 if __name__ == "__main__":
-    unittest.TextTestRunner(resultclass=OtherDirectionDockSize.MyTestResult).run(OtherDirectionDockSize.suite())
+    runTest(OtherDirectionDockSize.suite())

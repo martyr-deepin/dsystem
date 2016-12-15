@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 
 import unittest
-import time
+from lib import executeTestCase
 from lib import runner,utils
 from subprocess import getoutput
 from lib.filesystemutils import getDevInfo
@@ -15,7 +15,6 @@ casename = "all-3149:codename测试"
 class CodeName(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
-        cls.startTime = time.time()
         cls.codename = getDevInfo('codename','code')
         cls.lsbcode = 'DISTRIB_CODENAME=' + cls.codename
         cls.lsb = "cat /etc/lsb-release |grep DISTRIB_CODENAME"
@@ -24,12 +23,7 @@ class CodeName(unittest.TestCase):
 
     @classmethod
     def tearDownClass(cls):
-        seconds = "%.3f" % (time.time() - cls.startTime)
-        minutes = utils.convertToMinutes(float(seconds))
-        global result
-        utils.commitresult(caseid, result, minutes)
-
-
+        pass
     def testlsb(self):
         lsb = getoutput(self.lsb)
         self.assertEqual(lsb, self.lsbcode)
@@ -49,16 +43,5 @@ class CodeName(unittest.TestCase):
         suite.addTest(CodeName('testdist'))
         return suite
 
-    class MyTestResult(runner.MyTextTestResult):
-        def addError(self, test, err):
-            super(CodeName.MyTestResult, self).addError(test, err)
-            global result
-            result = result and False
-
-        def addFailure(self, test, err):
-            super(CodeName.MyTestResult, self).addFailure(test, err)
-            global result
-            result = result and False
-
 if __name__ == "__main__":
-    unittest.TextTestRunner(resultclass=CodeName.MyTestResult).run(CodeName.suite())
+    runTest(CodeName.suite())

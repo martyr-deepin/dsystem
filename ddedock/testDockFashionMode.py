@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 
 import unittest
-import time
+from lib import executeTestCase
 from lib import utils
 from lib import runner
 from dogtail import rawinput
@@ -15,7 +15,6 @@ casename = "all-2474:时尚模式上方显示测试"
 class DockFashionMode(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
-        cls.startTime = time.time()
         cls.caseid_2 = '68168'
         cls.casename_2 = "all-2475:时尚模式下方显示测试"
         cls.caseid_3 = '68458'
@@ -40,11 +39,6 @@ class DockFashionMode(unittest.TestCase):
 
     @classmethod
     def tearDownClass(cls):
-        seconds = "%.3f" % (time.time() - cls.startTime)
-        minutes = utils.convertToMinutes(float(seconds))
-        global result
-        utils.commitresult(caseid, result, minutes)
-        utils.commitresult(cls.caseid_2, result, minutes)
         utils.commitresult(cls.caseid_3, result, minutes)
         utils.commitresult(cls.caseid_4, result, minutes)
 
@@ -228,16 +222,5 @@ class DockFashionMode(unittest.TestCase):
 
         return suite
 
-    class MyTestResult(runner.MyTextTestResult):
-        def addError(self, test, err):
-            super(DockFashionMode.MyTestResult, self).addError(test, err)
-            global result
-            result = result and False
-
-        def addFailure(self, test, err):
-            super(DockFashionMode.MyTestResult, self).addFailure(test, err)
-            global result
-            result = result and False
-
 if __name__ == "__main__":
-    unittest.TextTestRunner(resultclass=DockFashionMode.MyTestResult).run(DockFashionMode.suite())
+    runTest(DockFashionMode.suite())

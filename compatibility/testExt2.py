@@ -11,18 +11,12 @@ result = True
 class FilesystemExt2(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
-        cls.startTime = time.time()
         cls.caseid = '42888'
         cls.casename = 'all-1993:读写ext2格式的文件'
         mkextx('ext2')
 
     @classmethod
     def tearDownClass(cls):
-        seconds = "%.3f" % (time.time() - cls.startTime)
-        minutes = utils.convertToMinutes(float(seconds))
-        global result
-        utils.commitresult(caseid, result, minutes)
-        chroot('rm -rf /mnt/*','umount /mnt')
 
     def testTxt(self):
         mntFiles = glob('/mnt/*')
@@ -68,16 +62,5 @@ class FilesystemExt2(unittest.TestCase):
         suite.addTest(FilesystemExt2('testTxts'))
         return suite
 
-    class MyTestResult(runner.MyTextTestResult):
-        def addError(self, test, err):
-            super(FilesystemExt2.MyTestResult, self).addError(test, err)
-            global result
-            result = result and False
-
-        def addFailure(self, test, err):
-            super(FilesystemExt2.MyTestResult, self).addFailure(test, err)
-            global result
-            result = result and False
-
 if __name__ == "__main__":
-    unittest.TextTestRunner(resultclass=FilesystemExt2.MyTestResult).run(FilesystemExt2.suite())
+    runTest(FilesystemExt2.suite())

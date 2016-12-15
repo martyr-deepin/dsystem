@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 
 import unittest
-import time
+from lib import executeTestCase
 from lib import utils
 from lib import runner
 
@@ -13,7 +13,6 @@ casename = "all-2494:高效模式中图标显示"
 class EfficientDockSizeMedium(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
-        cls.startTime = time.time()
         cls.ddedockobject = utils.getDdeDockObject()
 
         if utils.getDdeDockDisplayMode() != utils.dock.displaymode_efficient:
@@ -27,11 +26,6 @@ class EfficientDockSizeMedium(unittest.TestCase):
 
     @classmethod
     def tearDownClass(cls):
-        seconds = "%.3f" % (time.time() - cls.startTime)
-        minutes = utils.convertToMinutes(float(seconds))
-        global result
-        utils.commitresult(caseid, result, minutes)
-
         if utils.getDdeDockDisplayMode() != utils.dock.displaymode_fashion:
             utils.setDdeDockDisplayMode(utils.dock.displaymode_fashion)
 
@@ -129,16 +123,5 @@ class EfficientDockSizeMedium(unittest.TestCase):
         suite.addTest(EfficientDockSizeMedium('testIconSizeMedium'))
         return suite
 
-    class MyTestResult(runner.MyTextTestResult):
-        def addError(self, test, err):
-            super(EfficientDockSizeMedium.MyTestResult, self).addError(test, err)
-            global result
-            result = result and False
-
-        def addFailure(self, test, err):
-            super(EfficientDockSizeMedium.MyTestResult, self).addFailure(test, err)
-            global result
-            result = result and False
-
 if __name__ == "__main__":
-    unittest.TextTestRunner(resultclass=EfficientDockSizeMedium.MyTestResult).run(EfficientDockSizeMedium.suite())
+    runTest(EfficientDockSizeMedium.suite())

@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 
 import unittest
-import time
+from lib import executeTestCase
 import pyautogui
 from lib import runner
 from lib import utils
@@ -15,17 +15,11 @@ newlayout = 'ara;azerty'
 class  KbLayout(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
-        cls.startTime = time.time()
         pass
 
     @classmethod
     def tearDownClass(cls):
-        seconds = "%.3f" % (time.time() - cls.startTime)
-        minutes = utils.convertToMinutes(float(seconds))
-        global result,newlayout
-        utils.commitresult(caseid, result, minutes)
-        utils.delKeyboard(newlayout)
-
+        pass
     def setUp(self):
     	pass
 
@@ -57,16 +51,5 @@ class  KbLayout(unittest.TestCase):
         suite.addTest(KbLayout('test_changelayout'))
         return suite
 
-    class MyTestResult(runner.MyTextTestResult):
-        def addError(self, test, err):
-            super(KbLayout.MyTestResult, self).addError(test, err)
-            global result
-            result = result and False
-
-        def addFailure(self, test, err):
-            super(KbLayout.MyTestResult, self).addError(test, err)
-            global result
-            result = result and False
-
 if __name__ == "__main__":
-    unittest.TextTestRunner(resultclass=KbLayout.MyTestResult).run(KbLayout.suite())
+    runTest(KbLayout.suite())

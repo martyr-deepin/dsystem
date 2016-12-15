@@ -3,13 +3,12 @@
 
 from time import sleep
 import unittest
-import time
+from lib import executeTestCase
 from lib import utils
 
 class DeepinAppstore(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
-        cls.startTime = time.time()
         cls.icon_deepinappstore = "深度商店"
         cls.window_name = "深度商店 — Deepin Store"
         cls.ddedockobject = utils.getDdeDockObject()
@@ -20,12 +19,7 @@ class DeepinAppstore(unittest.TestCase):
 
     @classmethod
     def tearDownClass(cls):
-        seconds = "%.3f" % (time.time() - cls.startTime)
-        minutes = utils.convertToMinutes(float(seconds))
-        utils.commitresult(caseid, result, minutes)
-        utils.setDdeDockDisplayMode(cls.defaultdisplaymode)
-        utils.setDdeDockPosition(cls.defaultposition)
-
+        pass
     def setUp(self):
         pass
 
@@ -152,4 +146,4 @@ def suite():
     return suite
 
 if __name__ == "__main__":
-    unittest.TextTestRunner(verbosity=1).run(suite())
+    runTest(suite())

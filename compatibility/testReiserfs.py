@@ -11,18 +11,12 @@ result = True
 class FilesystemReiserfs(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
-        cls.startTime = time.time()
         cls.caseid = '71129'
         cls.casename = 'all-2693:读写reiserfs格式的文件'
         mkextx('reiserfs')
 
     @classmethod
     def tearDownClass(cls):
-        seconds = "%.3f" % (time.time() - cls.startTime)
-        minutes = utils.convertToMinutes(float(seconds))
-        global result
-        utils.commitresult(caseid, result, minutes)
-        chroot('rm -rf /mnt/*','umount /mnt')
 
     def testTxt(self):
         mntFiles = glob('/mnt/*')
@@ -68,16 +62,5 @@ class FilesystemReiserfs(unittest.TestCase):
         suite.addTest(FilesystemReiserfs('testTxts'))
         return suite
 
-    class MyTestResult(runner.MyTextTestResult):
-        def addError(self, test, err):
-            super(FilesystemReiserfs.MyTestResult, self).addError(test, err)
-            global result
-            result = result and False
-
-        def addFailure(self, test, err):
-            super(FilesystemReiserfs.MyTestResult, self).addFailure(test, err)
-            global result
-            result = result and False
-
 if __name__ == "__main__":
-    unittest.TextTestRunner(resultclass=FilesystemReiserfs.MyTestResult).run(FilesystemReiserfs.suite())
+    runTest(FilesystemReiserfs.suite())

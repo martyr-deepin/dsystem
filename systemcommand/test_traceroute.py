@@ -2,7 +2,7 @@
 # _*_ coding: utf-8 _*_
 
 import unittest
-import time
+from lib import executeTestCase
 from subprocess import getstatusoutput,check_call
 from time import sleep
 from lib import runner
@@ -15,16 +15,11 @@ casename = 'all-2587:使用命令traceroute网络节点间的通讯'
 class Traceroute(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
-        cls.startTime = time.time()
         pass
 
     @classmethod
     def tearDownClass(cls):
-        seconds = "%.3f" % (time.time() - cls.startTime)
-        minutes = utils.convertToMinutes(float(seconds))
-        global result
-        utils.commitresult(caseid, result, minutes)
-
+        pass
     def setUp(self):
         pass
 
@@ -52,16 +47,5 @@ class Traceroute(unittest.TestCase):
         suite.addTest(Traceroute('test_run_traceroute'))
         return suite
 
-    class MyTestResult(runner.MyTextTestResult):
-        def addError(self, test, err):
-            super(Traceroute.MyTestResult, self).addError(test, err)
-            global result
-            result = result and False
-
-        def addFailure(self, test, err):
-            super(Traceroute.MyTestResult, self).addError(test, err)
-            global result
-            result = result and False
-
 if __name__ == "__main__":
-    unittest.TextTestRunner(resultclass=Traceroute.MyTestResult).run(Traceroute.suite())
+    runTest(Traceroute.suite())

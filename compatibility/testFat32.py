@@ -11,18 +11,12 @@ result = True
 class FilesystemFat32(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
-        cls.startTime = time.time()
         cls.caseid = '42911'
         cls.casename = 'all-1996:读写fat32格式的文件'
         mkextx('vfat')
 
     @classmethod
     def tearDownClass(cls):
-        seconds = "%.3f" % (time.time() - cls.startTime)
-        minutes = utils.convertToMinutes(float(seconds))
-        global result
-        utils.commitresult(caseid, result, minutes)
-        chroot('sudo rm -rf /mnt/*','sudo umount /mnt')
 
     def testTxt(self):
         mntFiles = glob('/mnt/*')
@@ -68,16 +62,5 @@ class FilesystemFat32(unittest.TestCase):
         suite.addTest(FilesystemFat32('testTxts'))
         return suite
 
-    class MyTestResult(runner.MyTextTestResult):
-        def addError(self, test, err):
-            super(FilesystemFat32.MyTestResult, self).addError(test, err)
-            global result
-            result = result and False
-
-        def addFailure(self, test, err):
-            super(FilesystemFat32.MyTestResult, self).addFailure(test, err)
-            global result
-            result = result and False
-
 if __name__ == "__main__":
-    unittest.TextTestRunner(resultclass=FilesystemFat32.MyTestResult).run(FilesystemFat32.suite())
+    runTest(FilesystemFat32.suite())

@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 
 import unittest
-import time
+from lib import executeTestCase
 from lib import runner,utils
 from lib.launcher import *
 from lib.window import findWindow
@@ -14,7 +14,6 @@ casename = "all-2977:有道词典测试"
 class Youdao(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
-        cls.startTime = time.time()
         cls.app = 'youdaocidian'
         cls.appName = '有道词典'
         cls.oldWindows = getAllWindows()
@@ -22,11 +21,6 @@ class Youdao(unittest.TestCase):
 
     @classmethod
     def tearDownClass(cls):
-        seconds = "%.3f" % (time.time() - cls.startTime)
-        minutes = utils.convertToMinutes(float(seconds))
-        global result
-        utils.commitresult(caseid, result, minutes)
-        cls.newWindows = getAllWindows()
         if len(cls.newWindows) - len(cls.oldWindows) == 1:
             cls.newWindows[-1].close(1)
 
@@ -47,16 +41,5 @@ class Youdao(unittest.TestCase):
         suite.addTest(Youdao('testYoudao'))
         return suite
 
-    class MyTestResult(runner.MyTextTestResult):
-        def addError(self, test, err):
-            super(Youdao.MyTestResult, self).addError(test, err)
-            global result
-            result = result and False
-
-        def addFailure(self, test, err):
-            super(Youdao.MyTestResult, self).addFailure(test, err)
-            global result
-            result = result and False
-
 if __name__ == "__main__":
-    unittest.TextTestRunner(resultclass=Youdao.MyTestResult).run(Youdao.suite())
+    runTest(Youdao.suite())

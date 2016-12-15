@@ -3,7 +3,7 @@
 
 import os
 import unittest
-import time
+from lib import executeTestCase
 from subprocess import getstatusoutput as rt
 from subprocess import getoutput
 from lib import runner
@@ -16,7 +16,6 @@ casename = 'all-1443:文件/文件夹操作命令--验证对cp命令的支持'
 class Cp(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
-        cls.startTime = time.time()
         cls.tmptestdir = "/tmp/testdir"
         cls.copytmptestdir = "/tmp/testdir1"
         cls.filepath   = "/tmp/testdir/testfile"
@@ -26,11 +25,6 @@ class Cp(unittest.TestCase):
 
     @classmethod
     def tearDownClass(cls):
-        seconds = "%.3f" % (time.time() - cls.startTime)
-        minutes = utils.convertToMinutes(float(seconds))
-        global result
-        utils.commitresult(caseid, result, minutes)
-
         os.system("rm -rf %s %s %s" % (cls.tmptestdir, cls.copytmptestdir, cls.tmpfile))
 
     def setUp(self):
@@ -65,16 +59,5 @@ class Cp(unittest.TestCase):
         suite.addTest(Cp('test3CpDir'))
         return suite
 
-    class MyTestResult(runner.MyTextTestResult):
-        def addError(self, test, err):
-            super(Cp.MyTestResult, self).addError(test, err)
-            global result
-            result = result and False
-
-        def addFailure(self, test, err):
-            super(Cp.MyTestResult, self).addError(test, err)
-            global result
-            result = result and False
-
 if __name__ == "__main__":
-    unittest.TextTestRunner(resultclass=Cp.MyTestResult).run(Cp.suite())
+    runTest(Cp.suite())

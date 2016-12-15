@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 
 import unittest
-import time
+from lib import executeTestCase
 from lib import runner,utils
 from subprocess import getoutput
 
@@ -13,7 +13,6 @@ casename = "all-2967:hplipj集成测试"
 class HPIntergration(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
-        cls.startTime = time.time()
         cls.installed = 'ii'
         cls.pkg1 = "dpkg -l |grep hpijs-ppds |awk END'{print $1}'"
         cls.pkg2 = "dpkg -l |grep hplip |awk END'{print $1}'"
@@ -27,12 +26,7 @@ class HPIntergration(unittest.TestCase):
 
     @classmethod
     def tearDownClass(cls):
-        seconds = "%.3f" % (time.time() - cls.startTime)
-        minutes = utils.convertToMinutes(float(seconds))
-        global result
-        utils.commitresult(caseid, result, minutes)
-
-
+        pass
     def testhpijs(self):
         pkg1 = getoutput(self.pkg1)
         self.assertEqual(pkg1, self.installed)
@@ -71,16 +65,5 @@ class HPIntergration(unittest.TestCase):
         suite.addTest(HPIntergration('testdriver_hpijs'))
         return suite
 
-    class MyTestResult(runner.MyTextTestResult):
-        def addError(self, test, err):
-            super(HPIntergration.MyTestResult, self).addError(test, err)
-            global result
-            result = result and False
-
-        def addFailure(self, test, err):
-            super(HPIntergration.MyTestResult, self).addFailure(test, err)
-            global result
-            result = result and False
-
 if __name__ == "__main__":
-    unittest.TextTestRunner(resultclass=HPIntergration.MyTestResult).run(HPIntergration.suite())
+    runTest(HPIntergration.suite())

@@ -3,7 +3,7 @@
 
 
 import unittest
-import time
+from lib import executeTestCase
 from lib import runner,utils
 from lib.launcher import *
 
@@ -15,7 +15,6 @@ casename = 'all-3344:运行深度音乐'
 class DeepinMusic(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
-        cls.startTime = time.time()
         cls.appName = 'deepin-music-player'
         cls.winName = '深度音乐'
         cls.oldWindows = getAllWindows()
@@ -23,11 +22,7 @@ class DeepinMusic(unittest.TestCase):
 
     @classmethod
     def tearDownClass(cls):
-        seconds = "%.3f" % (time.time() - cls.startTime)
-        minutes = utils.convertToMinutes(float(seconds))
-        global result
-        utils.commitresult(caseid, result, minutes)
-
+        pas
     def setUp(self):
         pass
 
@@ -52,16 +47,5 @@ class DeepinMusic(unittest.TestCase):
         suite.addTest(DeepinMusic('testDeepinMusic2'))
         return suite
 
-    class MyTestResult(runner.MyTextTestResult):
-        def addError(self, test, err):
-            super(DeepinMusic.MyTestResult, self).addError(test, err)
-            global result
-            result = result and False
-
-        def addFailure(self, test, err):
-            super(DeepinMusic.MyTestResult, self).addFailure(test, err)
-            global result
-            result = result and False
-
 if __name__ == "__main__":
-    unittest.TextTestRunner(resultclass=DeepinMusic.MyTestResult).run(DeepinMusic.suite())
+    runTest(DeepinMusic.suite())

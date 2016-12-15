@@ -3,7 +3,7 @@
 
 
 import unittest
-import time
+from lib import executeTestCase
 from lib import runner,utils
 from lib.launcher import *
 from lib.dde_dock import *
@@ -15,7 +15,6 @@ casename = 'all-3356:有道词典开启与关闭'
 class YoudaoDict(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
-        cls.startTime = time.time()
         cls.appName = 'youdao-dict'
         cls.winName = '有道词典'
         cls.oldWindows = getAllWindows()
@@ -23,12 +22,7 @@ class YoudaoDict(unittest.TestCase):
 
     @classmethod
     def tearDownClass(cls):
-        seconds = "%.3f" % (time.time() - cls.startTime)
-        minutes = utils.convertToMinutes(float(seconds))
-        global result
-        utils.commitresult(caseid, result, minutes)
-
-
+        pass
     def setUp(self):
         pass
 
@@ -56,16 +50,5 @@ class YoudaoDict(unittest.TestCase):
         suite.addTest(YoudaoDict('testYoudao2'))
         return suite
 
-    class MyTestResult(runner.MyTextTestResult):
-        def addError(self, test, err):
-            super(YoudaoDict.MyTestResult, self).addError(test, err)
-            global result
-            result = result and False
-
-        def addFailure(self, test, err):
-            super(YoudaoDict.MyTestResult, self).addFailure(test, err)
-            global result
-            result = result and False
-
 if __name__ == "__main__":
-    unittest.TextTestRunner(resultclass=YoudaoDict.MyTestResult).run(YoudaoDict.suite())
+    runTest(YoudaoDict.suite())

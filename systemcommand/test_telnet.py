@@ -2,7 +2,7 @@
 # _*_ coding: utf-8 _*_
 
 import unittest
-import time
+from lib import executeTestCase
 from subprocess import getstatusoutput,check_call
 from time import sleep
 from lib import runner
@@ -15,16 +15,11 @@ casename = 'all-2586:使用telnet命令连接到远程主机'
 class Telnet(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
-        cls.startTime = time.time()
         pass
 
     @classmethod
     def tearDownClass(cls):
-        seconds = "%.3f" % (time.time() - cls.startTime)
-        minutes = utils.convertToMinutes(float(seconds))
-        global result
-        utils.commitresult(caseid, result, minutes)
-
+        pass
     def setUp(self):
         pass
 
@@ -54,16 +49,5 @@ class Telnet(unittest.TestCase):
         suite.addTest(Telnet('test_run_telnet'))
         return suite
 
-    class MyTestResult(runner.MyTextTestResult):
-        def addError(self, test, err):
-            super(Telnet.MyTestResult, self).addError(test, err)
-            global result
-            result = result and False
-
-        def addFailure(self, test, err):
-            super(Telnet.MyTestResult, self).addError(test, err)
-            global result
-            result = result and False
-
 if __name__ == "__main__":
-    unittest.TextTestRunner(resultclass=Telnet.MyTestResult).run(Telnet.suite())
+    runTest(Telnet.suite())

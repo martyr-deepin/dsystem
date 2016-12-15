@@ -2,13 +2,12 @@
 # -*- coding: utf-8 -*-
 
 import unittest
-import time
+from lib import executeTestCase
 from lib import utils
 
 class EfficientDefaultIcons(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
-        cls.startTime = time.time()
         cls.defaultefficienticonlist = ["Launcher",
                                         "显示桌面",
                                         "多任务视图",
@@ -32,11 +31,6 @@ class EfficientDefaultIcons(unittest.TestCase):
 
     @classmethod
     def tearDownClass(cls):
-        seconds = "%.3f" % (time.time() - cls.startTime)
-        minutes = utils.convertToMinutes(float(seconds))
-        utils.commitresult(caseid, result, minutes)
-        utils.setDdeDockDisplayMode(cls.defaultdisplaymode)
-        utils.setDdeDockPosition(cls.defaultposition)
 
     def testExists(self):
         for name in self.defaultefficienticonlist:
@@ -139,4 +133,4 @@ def suite():
     return suite
 
 if __name__ == "__main__":
-    unittest.TextTestRunner(verbosity=1).run(suite())
+    runTest(suite())

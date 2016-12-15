@@ -3,16 +3,15 @@
 
 from time import sleep
 import unittest
-import time
+from lib import executeTestCase
 from lib import utils
 from lib import runner
 
 result = True
-
+caseid = '91228'
 class DockSoundHover(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
-        cls.startTime = time.time()
         cls.caseid = '91228'
         cls.casename = 'all-3547:hover 声音插件'
         cls.icon_sound = "sound-"
@@ -27,11 +26,6 @@ class DockSoundHover(unittest.TestCase):
 
     @classmethod
     def tearDownClass(cls):
-        seconds = "%.3f" % (time.time() - cls.startTime)
-        minutes = utils.convertToMinutes(float(seconds))
-        global result
-        utils.commitresult(caseid, result, minutes)
-
         if utils.getDdeDockPosition != utils.dock.position_bottom:
             utils.setDdeDockPosition(utils.dock.position_bottom)
 
@@ -66,16 +60,5 @@ class DockSoundHover(unittest.TestCase):
 
         return suite
 
-    class MyTestResult(runner.MyTextTestResult):
-        def addError(self, test, err):
-            super(DockSoundHover.MyTestResult, self).addError(test, err)
-            global result
-            result = result and False
-
-        def addFailure(self, test, err):
-            super(DockSoundHover.MyTestResult, self).addFailure(test, err)
-            global result
-            result = result and False
-
 if __name__ == "__main__":
-    unittest.TextTestRunner(resultclass=DockSoundHover.MyTestResult).run(DockSoundHover.suite())
+    runTest(DockSoundHover.suite())

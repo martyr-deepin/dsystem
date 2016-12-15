@@ -3,7 +3,7 @@
 
 import os
 import unittest
-import time
+from lib import executeTestCase
 from subprocess import getstatusoutput as rt
 from subprocess import getoutput
 from lib import runner
@@ -16,7 +16,6 @@ casename = 'all-1454:备份、压缩和解压缩操作命令--验证对tar命令
 class Tar(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
-        cls.startTime = time.time()
         cls.file1    = "testsys1"
         cls.file2    = "testsys2"
         cls.alltar    = "all.tar"
@@ -25,11 +24,6 @@ class Tar(unittest.TestCase):
 
     @classmethod
     def tearDownClass(cls):
-        seconds = "%.3f" % (time.time() - cls.startTime)
-        minutes = utils.convertToMinutes(float(seconds))
-        global result
-        utils.commitresult(caseid, result, minutes)
-
         if os.path.exists(cls.file1):
             os.remove(cls.file1)
 
@@ -101,16 +95,5 @@ class Tar(unittest.TestCase):
         suite.addTest(Tar('testTarFour'))
         return suite
 
-    class MyTestResult(runner.MyTextTestResult):
-        def addError(self, test, err):
-            super(Tar.MyTestResult, self).addError(test, err)
-            global result
-            result = result and False
-
-        def addFailure(self, test, err):
-            super(Tar.MyTestResult, self).addError(test, err)
-            global result
-            result = result and False
-
 if __name__ == "__main__":
-    unittest.TextTestRunner(resultclass=Tar.MyTestResult).run(Tar.suite())
+    runTest(Tar.suite())

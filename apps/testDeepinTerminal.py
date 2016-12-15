@@ -3,7 +3,7 @@
 
 
 import unittest
-import time
+from lib import executeTestCase
 from lib import runner,utils
 from lib.launcher import *
 
@@ -15,7 +15,6 @@ casename = 'all-3358:运行深度终端'
 class DeepinTerminal(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
-        cls.startTime = time.time()
         cls.appName = 'deepin-terminal'
         status, cls.username = subprocess.getstatusoutput("whoami")
         cls.winName = cls.username + ' - 深度终端'
@@ -24,11 +23,6 @@ class DeepinTerminal(unittest.TestCase):
 
     @classmethod
     def tearDownClass(cls):
-        seconds = "%.3f" % (time.time() - cls.startTime)
-        minutes = utils.convertToMinutes(float(seconds))
-        global result
-        utils.commitresult(caseid, result, minutes)
-        newWindows = getAllWindows()
         if len(newWindows) > len(cls.oldWindows):
             for win in newWindows[len(cls.oldWindows):]:
                 win.close(1)
@@ -47,16 +41,5 @@ class DeepinTerminal(unittest.TestCase):
         suite.addTest(DeepinTerminal('testDeepinTerminal'))
         return suite
 
-    class MyTestResult(runner.MyTextTestResult):
-        def addError(self, test, err):
-            super(DeepinTerminal.MyTestResult, self).addError(test, err)
-            global result
-            result = result and False
-
-        def addFailure(self, test, err):
-            super(DeepinTerminal.MyTestResult, self).addFailure(test, err)
-            global result
-            result = result and False
-
 if __name__ == "__main__":
-    unittest.TextTestRunner(resultclass=DeepinTerminal.MyTestResult).run(DeepinTerminal.suite())
+    runTest(DeepinTerminal.suite())

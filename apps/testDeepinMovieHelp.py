@@ -3,7 +3,7 @@
 
 
 import unittest
-import time
+from lib import executeTestCase
 from lib import runner,utils
 from lib.launcher import *
 from lib.dde_dock import *
@@ -15,7 +15,6 @@ casename = 'up-371:打开帮助手册'
 class DeepinMovieHelp(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
-        cls.startTime = time.time()
         cls.appName = 'deepin-movie'
         cls.winName = '深度影院'
         cls.helpWinName = '深度影院 - 深度帮助手册'
@@ -25,11 +24,6 @@ class DeepinMovieHelp(unittest.TestCase):
 
     @classmethod
     def tearDownClass(cls):
-        seconds = "%.3f" % (time.time() - cls.startTime)
-        minutes = utils.convertToMinutes(float(seconds))
-        global result
-        utils.commitresult(caseid, result, minutes)
-        cls.newWindows = getAllWindows()
         if len(cls.newWindows) > len(cls.oldWindows):
             newWindow = cls.newWindows[-1]
             newWindow.close(1)
@@ -63,16 +57,5 @@ class DeepinMovieHelp(unittest.TestCase):
         suite.addTest(DeepinMovieHelp('testDeepinMovieHelp2'))
         return suite
 
-    class MyTestResult(runner.MyTextTestResult):
-        def addError(self, test, err):
-            super(DeepinMovieHelp.MyTestResult, self).addError(test, err)
-            global result
-            result = result and False
-
-        def addFailure(self, test, err):
-            super(DeepinMovieHelp.MyTestResult, self).addFailure(test, err)
-            global result
-            result = result and False
-
 if __name__ == "__main__":
-    unittest.TextTestRunner(resultclass=DeepinMovieHelp.MyTestResult).run(DeepinMovieHelp.suite())
+    runTest(DeepinMovieHelp.suite())

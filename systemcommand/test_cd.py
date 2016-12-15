@@ -3,7 +3,7 @@
 
 import os
 import unittest
-import time
+from lib import executeTestCase
 from subprocess import getstatusoutput as rt
 from subprocess import getoutput
 from lib import utils
@@ -16,16 +16,11 @@ casename = 'all-1440:文件/文件夹操作命令--验证对cd命令的支持'
 class Cd(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
-        cls.startTime = time.time()
         pass
 
     @classmethod
     def tearDownClass(cls):
-        seconds = "%.3f" % (time.time() - cls.startTime)
-        minutes = utils.convertToMinutes(float(seconds))
-        global result
-        utils.commitresult(caseid, result, minutes)
-
+        pass
     def setUp(self):
         self.loginuser = getoutput("whoami")
 
@@ -66,16 +61,5 @@ class Cd(unittest.TestCase):
         suite.addTest(Cd('testNothing'))
         return suite
 
-    class MyTestResult(runner.MyTextTestResult):
-        def addError(self, test, err):
-            super(Cd.MyTestResult, self).addError(test, err)
-            global result
-            result = result and False
-
-        def addFailure(self, test, err):
-            super(Cd.MyTestResult, self).addError(test, err)
-            global result
-            result = result and False
-
 if __name__ == "__main__":
-    unittest.TextTestRunner(resultclass=Cd.MyTestResult).run(Cd.suite())
+    runTest(Cd.suite())

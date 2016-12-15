@@ -2,7 +2,7 @@
 # _*_ coding: utf-8 _*_
 
 import unittest
-import time
+from lib import executeTestCase
 from subprocess import getstatusoutput
 from lib import runner
 from lib import utils
@@ -14,16 +14,11 @@ casename = 'all-1453:使用ping命令对域名的ping操作'
 class Ping(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
-        cls.startTime = time.time()
         pass
 
     @classmethod
     def tearDownClass(cls):
-        seconds = "%.3f" % (time.time() - cls.startTime)
-        minutes = utils.convertToMinutes(float(seconds))
-        global result
-        utils.commitresult(caseid, result, minutes)
-
+        pass
     def setUp(self):
         pass
 
@@ -44,16 +39,5 @@ class Ping(unittest.TestCase):
         suite.addTest(Ping('test_ping'))
         return suite
 
-    class MyTestResult(runner.MyTextTestResult):
-        def addError(self, test, err):
-            super(Ping.MyTestResult, self).addError(test, err)
-            global result
-            result = result and False
-
-        def addFailure(self, test, err):
-            super(Ping.MyTestResult, self).addError(test, err)
-            global result
-            result = result and False
-
 if __name__ == "__main__":
-    unittest.TextTestRunner(resultclass=Ping.MyTestResult).run(Ping.suite())
+    runTest(Ping.suite())

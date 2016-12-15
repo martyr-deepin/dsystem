@@ -14,11 +14,11 @@ class HandleTestResult(TextTestResult):
         self.test = test
 
     def stopTestRun(self):
-        re = len(self.failures) == 0 and len(self.errors) == 0 
-        caseid = type(self.test).caseid     
+        re = len(self.failures) == 0 and len(self.errors) == 0
+        caseid = type(self.test).caseid
         seconds = "%.3f" % (time.time() - self.startTime)
         minutes = utils.convertToMinutes(float(seconds))
         utils.commitresult(caseid, re, minutes)
-        
+
 def runTest(testcase):
-    TextTestRunner(resultclass=HandleTestResult).run(testcase)
+    TextTestRunner(resultclass=HandleTestResult).run(testcase.suite())

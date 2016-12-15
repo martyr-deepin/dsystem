@@ -3,7 +3,7 @@
 
 import os
 import unittest
-import time
+from lib import executeTestCase
 from subprocess import getstatusoutput as rt
 from subprocess import getoutput
 from lib import utils
@@ -16,18 +16,13 @@ casename = 'all-1442:文件/文件夹操作命令--验证对rmdir命令的支持
 class Rmdir(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
-        cls.startTime = time.time()
         cls.loginuser = getoutput("whoami")
         cls.curdir = getoutput("pwd")
         cls.testdir = "testdir"
 
     @classmethod
     def tearDownClass(cls):
-        seconds = "%.3f" % (time.time() - cls.startTime)
-        minutes = utils.convertToMinutes(float(seconds))
-        global result
-        utils.commitresult(caseid, result, minutes)
-
+        pass
     def setUp(self):
         pass
 
@@ -55,16 +50,5 @@ class Rmdir(unittest.TestCase):
         suite.addTest(Rmdir('test2RmoveDir'))
         return suite
 
-    class MyTestResult(runner.MyTextTestResult):
-        def addError(self, test, err):
-            super(Rmdir.MyTestResult, self).addError(test, err)
-            global result
-            result = result and False
-
-        def addFailure(self, test, err):
-            super(Rmdir.MyTestResult, self).addError(test, err)
-            global result
-            result = result and False
-
 if __name__ == "__main__":
-    unittest.TextTestRunner(resultclass=Rmdir.MyTestResult).run(Rmdir.suite())
+    runTest(Rmdir.suite())

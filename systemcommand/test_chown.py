@@ -4,7 +4,7 @@
 import os
 import getpass
 import unittest
-import time
+from lib import executeTestCase
 from subprocess import getstatusoutput as rt
 from lib import utils
 from lib import runner
@@ -16,7 +16,6 @@ casename = 'all-1449:文件/文件夹操作命令--验证对chown命令的支持
 class Chown(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
-        cls.startTime = time.time()
         cls.loginuser = getpass.getuser()
 
         if not os.path.exists('/home/user'):
@@ -30,11 +29,6 @@ class Chown(unittest.TestCase):
 
     @classmethod
     def tearDownClass(cls):
-        seconds = "%.3f" % (time.time() - cls.startTime)
-        minutes = utils.convertToMinutes(float(seconds))
-        global result
-        utils.commitresult(caseid, result, minutes)
-
         if os.path.exists('/tmp/testdir'):
             (status, output) = rt('sudo rm -rf /tmp/testdir')
 
@@ -105,16 +99,5 @@ class Chown(unittest.TestCase):
         suite.addTest(Chown('testChownDir'))
         return suite
 
-    class MyTestResult(runner.MyTextTestResult):
-        def addError(self, test, err):
-            super(Chown.MyTestResult, self).addError(test, err)
-            global result
-            result = result and False
-
-        def addFailure(self, test, err):
-            super(Chown.MyTestResult, self).addError(test, err)
-            global result
-            result = result and False
-
 if __name__ == "__main__":
-    unittest.TextTestRunner(resultclass=Chown.MyTestResult).run(Chown.suite())
+    runTest(Chown.suite())

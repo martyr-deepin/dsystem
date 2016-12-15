@@ -3,7 +3,7 @@
 
 import os
 import unittest
-import time
+from lib import executeTestCase
 from subprocess import getstatusoutput as rt
 from subprocess import getoutput
 from lib import utils
@@ -17,17 +17,11 @@ casename = 'all-1438:用户管理命令--验证对passwd命令的支持'
 class Passwd(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
-        cls.startTime = time.time()
         if os.path.exists('/home/test'):
             (status, output) = rt('sudo deluser --remove-home test')
 
     @classmethod
     def tearDownClass(cls):
-        seconds = "%.3f" % (time.time() - cls.startTime)
-        minutes = utils.convertToMinutes(float(seconds))
-        global result
-        utils.commitresult(caseid, result, minutes)
-
         if os.path.exists('/home/test'):
             (status, output) = rt('sudo deluser --remove-home test')
 
@@ -77,16 +71,5 @@ class Passwd(unittest.TestCase):
         suite.addTest(Passwd('delUser'))
         return suite
 
-    class MyTestResult(runner.MyTextTestResult):
-        def addError(self, test, err):
-            super(Passwd.MyTestResult, self).addError(test, err)
-            global result
-            result = result and False
-
-        def addFailure(self, test, err):
-            super(Passwd.MyTestResult, self).addError(test, err)
-            global result
-            result = result and False
-
 if __name__ == "__main__":
-    unittest.TextTestRunner(resultclass=Passwd.MyTestResult).run(Passwd.suite())
+    runTest(Passwd.suite())

@@ -3,7 +3,7 @@
 
 import os
 import unittest
-import time
+from lib import executeTestCase
 from subprocess import getstatusoutput as rt
 from subprocess import getoutput
 from lib import utils
@@ -16,7 +16,6 @@ casename = 'all-1441:文件/文件夹操作命令--验证对mkdir命令的支持
 class Mkdir(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
-        cls.startTime = time.time()
         cls.loginuser = getoutput("whoami")
         cls.homedir = "/home/%s" % cls.loginuser
         cls.curdir = getoutput("pwd")
@@ -27,11 +26,6 @@ class Mkdir(unittest.TestCase):
 
     @classmethod
     def tearDownClass(cls):
-        seconds = "%.3f" % (time.time() - cls.startTime)
-        minutes = utils.convertToMinutes(float(seconds))
-        global result
-        utils.commitresult(caseid, result, minutes)
-
         os.system("rm -rf %s*" % cls.testdir)
 
     def setUp(self):
@@ -74,16 +68,5 @@ class Mkdir(unittest.TestCase):
         suite.addTest(Mkdir('test4MutiCreateDir'))
         return suite
 
-    class MyTestResult(runner.MyTextTestResult):
-        def addError(self, test, err):
-            super(Mkdir.MyTestResult, self).addError(test, err)
-            global result
-            result = result and False
-
-        def addFailure(self, test, err):
-            super(Mkdir.MyTestResult, self).addError(test, err)
-            global result
-            result = result and False
-
 if __name__ == "__main__":
-    unittest.TextTestRunner(resultclass=Mkdir.MyTestResult).run(Mkdir.suite())
+    runTest(Mkdir.suite())

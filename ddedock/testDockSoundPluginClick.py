@@ -3,7 +3,7 @@
 
 from time import sleep
 import unittest
-import time
+from lib import executeTestCase
 from lib import utils
 from lib import runner
 
@@ -14,7 +14,6 @@ casename = 'all-3546:声音插件对单击的响应'
 class DockSoundPluginClick(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
-        cls.startTime = time.time()
         cls.icon_sound = "sound-"
         cls.popup_name = "设备"
         cls.ddedockobject = utils.getDdeDockObject()
@@ -27,11 +26,6 @@ class DockSoundPluginClick(unittest.TestCase):
 
     @classmethod
     def tearDownClass(cls):
-        seconds = "%.3f" % (time.time() - cls.startTime)
-        minutes = utils.convertToMinutes(float(seconds))
-        global result
-        utils.commitresult(caseid, result, minutes)
-
         if utils.getDdeDockPosition != utils.dock.position_bottom:
             utils.setDdeDockPosition(utils.dock.position_bottom)
 
@@ -75,16 +69,5 @@ class DockSoundPluginClick(unittest.TestCase):
 
         return suite
 
-    class MyTestResult(runner.MyTextTestResult):
-        def addError(self, test, err):
-            super(DockSoundPluginClick.MyTestResult, self).addError(test, err)
-            global result
-            result = result and False
-
-        def addFailure(self, test, err):
-            super(DockSoundPluginClick.MyTestResult, self).addFailure(test, err)
-            global result
-            result = result and False
-
 if __name__ == "__main__":
-    unittest.TextTestRunner(resultclass=DockSoundPluginClick.MyTestResult).run(DockSoundPluginClick.suite())
+    runTest(DockSoundPluginClick.suite())

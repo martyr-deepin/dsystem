@@ -11,18 +11,12 @@ result = True
 class FilesystemBtrfs(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
-        cls.startTime = time.time()
         cls.caseid = '71122'
         cls.casename = 'all-2692:读写btrfs格式的文件'
         mkextx('bfs')
 
     @classmethod
     def tearDownClass(cls):
-        seconds = "%.3f" % (time.time() - cls.startTime)
-        minutes = utils.convertToMinutes(float(seconds))
-        global result
-        utils.commitresult(caseid, result, minutes)
-        chroot('sudo rm -rf /mnt/*', 'sudo umount /mnt')
 
     def testTxt(self):
         mntFiles = glob('/mnt/*')
@@ -68,16 +62,5 @@ class FilesystemBtrfs(unittest.TestCase):
         suite.addTest(FilesystemBtrfs('testTxts'))
         return suite
 
-    class MyTestResult(runner.MyTextTestResult):
-        def addError(self, test, err):
-            super(FilesystemBtrfs.MyTestResult, self).addError(test, err)
-            global result
-            result = result and False
-
-        def addFailure(self, test, err):
-            super(FilesystemBtrfs.MyTestResult, self).addFailure(test, err)
-            global result
-            result = result and False
-
 if __name__ == "__main__":
-    unittest.TextTestRunner(resultclass=FilesystemBtrfs.MyTestResult).run(FilesystemBtrfs.suite())
+    runTest(FilesystemBtrfs.suite())
