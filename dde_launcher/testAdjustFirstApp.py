@@ -2,6 +2,7 @@
 # -*- coding: utf-8 -*-
 
 import unittest
+from lib import executeTestCase
 import time
 from lib import runner,utils
 from lib.launcher import *
@@ -13,16 +14,11 @@ casename = 'all-2149:调整首个程序位置'
 class LauncherAdjustFirstApp(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
-        cls.startTime = time.time()
         launcher.freeMode()
 
 
     @classmethod
     def tearDownClass(cls):
-        seconds = "%.3f" % (time.time() - cls.startTime)
-        minutes = utils.convertToMinutes(float(seconds))
-        global result
-        utils.commitresult(caseid, result, minutes)
         launcher.freeMode()
 
 
@@ -71,16 +67,6 @@ class LauncherAdjustFirstApp(unittest.TestCase):
         #suite.addTest(LauncherAdjustFirstApp('testDragToEnd'))
         return suite
 
-    class MyTestResult(runner.MyTextTestResult):
-        def addError(self, test, err):
-            super(LauncherAdjustFirstApp.MyTestResult, self).addError(test, err)
-            global result
-            result = result and False
-
-        def addFailure(self, test, err):
-            super(LauncherAdjustFirstApp.MyTestResult, self).addFailure(test, err)
-            global result
-            result = result and False
 
 if __name__ == "__main__":
-    unittest.TextTestRunner(resultclass=LauncherAdjustFirstApp.MyTestResult).run(LauncherAdjustFirstApp.suite())
+    runTest(LauncherAdjustFirstApp.suite())

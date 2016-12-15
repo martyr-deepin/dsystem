@@ -3,6 +3,7 @@
 
 
 import unittest
+from lib import executeTestCase
 import time
 from lib import runner,utils
 from lib.launcher import *
@@ -15,17 +16,12 @@ casename = 'all-532:应用安装之后左侧分类更新测试'
 class LauncherSortApp(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
-        cls.startTime = time.time()
         cls.menuObj = root.application(appName='deepin-menu', description='/usr/lib/deepin-menu')
         cls.installAppName = 'robomongo'
 
 
     @classmethod
     def tearDownClass(cls):
-        seconds = "%.3f" % (time.time() - cls.startTime)
-        minutes = utils.convertToMinutes(float(seconds))
-        global result
-        utils.commitresult(caseid, result, minutes)
         kids = launcher.getKidsCategory('development')
         if 'Robomongo' in kids:
             launcher.removeApp(cls.installAppName)
@@ -47,16 +43,6 @@ class LauncherSortApp(unittest.TestCase):
         suite.addTest(LauncherSortApp('testSortApp'))
         return suite
 
-    class MyTestResult(runner.MyTextTestResult):
-        def addError(self, test, err):
-            super(LauncherSortApp.MyTestResult, self).addError(test, err)
-            global result
-            result = result and False
-
-        def addFailure(self, test, err):
-            super(LauncherSortApp.MyTestResult, self).addFailure(test, err)
-            global result
-            result = result and False
 
 if __name__ == "__main__":
-    unittest.TextTestRunner(resultclass=LauncherSortApp.MyTestResult).run(LauncherSortApp.suite())
+    runTest(LauncherSortApp.suite())

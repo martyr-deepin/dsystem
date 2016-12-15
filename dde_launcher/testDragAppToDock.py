@@ -2,6 +2,7 @@
 # -*- coding: utf-8 -*-
 
 import unittest
+from lib import executeTestCase
 import time
 from lib import runner,utils
 from dogtail import rawinput
@@ -15,16 +16,11 @@ casename = "all-514:拖动到任务栏驻留"
 class LauncherDragAppToDock(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
-        cls.startTime = time.time()
         cls.qqName = 'QQ'
         cls.dockname = 'apps.com.qq.im'
 
     @classmethod
     def tearDownClass(cls):
-        seconds = "%.3f" % (time.time() - cls.startTime)
-        minutes = utils.convertToMinutes(float(seconds))
-        global result
-        utils.commitresult(caseid, result, minutes)
         launcher.freeMode()
         if cls.dockname in Dock().getAllDockApps():
             launcher.menuUnDock(cls.qqName)
@@ -56,16 +52,6 @@ class LauncherDragAppToDock(unittest.TestCase):
         return suite
 
 
-    class MyTestResult(runner.MyTextTestResult):
-        def addError(self, test, err):
-            super(LauncherDragAppToDock.MyTestResult, self).addError(test, err)
-            global result
-            result = result and False
-
-        def addFailure(self, test, err):
-            super(LauncherDragAppToDock.MyTestResult, self).addFailure(test, err)
-            global result
-            result = result and False
 
 if __name__ == "__main__":
-    unittest.TextTestRunner(resultclass=LauncherDragAppToDock.MyTestResult).run(LauncherDragAppToDock.suite())
+    runTest(LauncherDragAppToDock.suite())

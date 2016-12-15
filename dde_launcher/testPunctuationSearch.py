@@ -2,6 +2,7 @@
 # -*- coding: utf-8 -*-
 
 import unittest
+from lib import executeTestCase
 import time
 from lib import runner,utils
 from lib.launcher import *
@@ -14,17 +15,13 @@ casename = "all-2269:输入标点符号测试"
 class LauncherPunctuationSearch(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
-        cls.startTime = time.time()
         cls.text1 = '! '
         cls.text2 = '*'
         cls.text3 = 'deepin*'
 
     @classmethod
     def tearDownClass(cls):
-        seconds = "%.3f" % (time.time() - cls.startTime)
-        minutes = utils.convertToMinutes(float(seconds))
-        global result
-        utils.commitresult(caseid, result, minutes)
+        pass
 
     def testPunctuationSearch1(self):
         launcher.searchApp(self.text1)
@@ -61,16 +58,6 @@ class LauncherPunctuationSearch(unittest.TestCase):
         suite.addTest(LauncherPunctuationSearch('testPunctuationSearch3'))
         return suite
 
-    class MyTestResult(runner.MyTextTestResult):
-        def addError(self, test, err):
-            super(LauncherPunctuationSearch.MyTestResult, self).addError(test, err)
-            global result
-            result = result and False
-
-        def addFailure(self, test, err):
-            super(LauncherPunctuationSearch.MyTestResult, self).addFailure(test, err)
-            global result
-            result = result and False
 
 if __name__ == "__main__":
-    unittest.TextTestRunner(resultclass=LauncherPunctuationSearch.MyTestResult).run(LauncherPunctuationSearch.suite())
+    runTest(LauncherPunctuationSearch.suite())

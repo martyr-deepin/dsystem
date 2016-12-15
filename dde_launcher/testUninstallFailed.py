@@ -2,6 +2,7 @@
 # -*- coding: utf-8 -*-
 
 import unittest
+from lib import executeTestCase
 import time
 from lib import runner,utils
 from lib.launcher import *
@@ -14,7 +15,6 @@ casename = "all-2292:鼠标右键卸载失败"
 class LauncherUninstall(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
-        cls.startTime = time.time()
         cls.menuObj = root.application(appName='deepin-menu', description='/usr/lib/deepin-menu')
         apps = launcher.getLauncherAllApps()
         cls.launchername = '有道词典'
@@ -30,10 +30,6 @@ class LauncherUninstall(unittest.TestCase):
 
     @classmethod
     def tearDownClass(cls):
-        seconds = "%.3f" % (time.time() - cls.startTime)
-        minutes = utils.convertToMinutes(float(seconds))
-        global result
-        utils.commitresult(caseid, result, minutes)
         if len(cls.newWindows) > len(cls.oldWindows):
             for win in cls.newWindows[len(cls.oldWindows):]:
                 win.close(1)
@@ -98,16 +94,6 @@ class LauncherUninstall(unittest.TestCase):
         suite.addTest(LauncherUninstall('testUninstallSuccessfully'))
         return suite
 
-    class MyTestResult(runner.MyTextTestResult):
-        def addError(self, test, err):
-            super(LauncherUninstall.MyTestResult, self).addError(test, err)
-            global result
-            result = result and False
-
-        def addFailure(self, test, err):
-            super(LauncherUninstall.MyTestResult, self).addFailure(test, err)
-            global result
-            result = result and False
 
 if __name__ == "__main__":
-    unittest.TextTestRunner(resultclass=LauncherUninstall.MyTestResult).run(LauncherUninstall.suite())
+    runTest(LauncherUninstall.suite())

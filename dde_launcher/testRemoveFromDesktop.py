@@ -3,6 +3,7 @@
 
 
 import unittest
+from lib import executeTestCase
 import time
 from lib import runner,utils
 from lib.launcher import *
@@ -15,16 +16,11 @@ casename = 'all-519:从桌面上移除'
 class LauncherRemoveFromDesktop(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
-        cls.startTime = time.time()
         cls.menuObj = root.application(appName='deepin-menu', description='/usr/lib/deepin-menu')
         cls.QQName = 'QQ'
 
     @classmethod
     def tearDownClass(cls):
-        seconds = "%.3f" % (time.time() - cls.startTime)
-        minutes = utils.convertToMinutes(float(seconds))
-        global result
-        utils.commitresult(caseid, result, minutes)
         launcher.exitLauncher()
 
     def testMenuRemoveFromDesktop(self):
@@ -39,16 +35,6 @@ class LauncherRemoveFromDesktop(unittest.TestCase):
         suite.addTest(LauncherRemoveFromDesktop('testMenuRemoveFromDesktop'))
         return suite
 
-    class MyTestResult(runner.MyTextTestResult):
-        def addError(self, test, err):
-            super(LauncherRemoveFromDesktop.MyTestResult, self).addError(test, err)
-            global result
-            result = result and False
-
-        def addFailure(self, test, err):
-            super(LauncherRemoveFromDesktop.MyTestResult, self).addFailure(test, err)
-            global result
-            result = result and False
 
 if __name__ == "__main__":
-    unittest.TextTestRunner(resultclass=LauncherRemoveFromDesktop.MyTestResult).run(LauncherRemoveFromDesktop.suite())
+    runTest(LauncherRemoveFromDesktop.suite())

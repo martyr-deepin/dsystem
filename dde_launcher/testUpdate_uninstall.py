@@ -3,6 +3,7 @@
 
 
 import unittest
+from lib import executeTestCase
 import time
 from lib import runner,utils
 from lib.launcher import *
@@ -15,7 +16,6 @@ casename = 'all-531:应用卸载之后左侧分类更新测试'
 class LauncherUpdateUninstall(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
-        cls.startTime = time.time()
         cls.appdict = {'deepin-feedback':'深度用户反馈', 
                         'crossover-15':'CrossOver', 
                         'deepin-music':'深度音乐', 
@@ -25,10 +25,6 @@ class LauncherUpdateUninstall(unittest.TestCase):
 
     @classmethod
     def tearDownClass(cls):
-        seconds = "%.3f" % (time.time() - cls.startTime)
-        minutes = utils.convertToMinutes(float(seconds))
-        global result
-        utils.commitresult(caseid, result, minutes)
         for app in list(cls.appdict.keys()):
             if app not in launcher.getLauncherAllApps():
                 subprocess.check_call('sudo apt-get install -y ' + app, shell=True)
@@ -61,16 +57,6 @@ class LauncherUpdateUninstall(unittest.TestCase):
         suite.addTest(LauncherUpdateUninstall('testVideo'))
         return suite
 
-    class MyTestResult(runner.MyTextTestResult):
-        def addError(self, test, err):
-            super(LauncherUpdateUninstall.MyTestResult, self).addError(test, err)
-            global result
-            result = result and False
-
-        def addFailure(self, test, err):
-            super(LauncherUpdateUninstall.MyTestResult, self).addFailure(test, err)
-            global result
-            result = result and False
 
 if __name__ == "__main__":
-    unittest.TextTestRunner(resultclass=LauncherUpdateUninstall.MyTestResult).run(LauncherUpdateUninstall.suite())
+    runTest(LauncherUpdateUninstall.suite())

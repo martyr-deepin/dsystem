@@ -2,7 +2,6 @@
 # -*- coding: utf-8 -*-
 
 import unittest
-from lib import executeTestCase
 import time
 from lib import runner,utils
 from lib.launcher import *
@@ -15,6 +14,7 @@ casename = "all-523:右键菜单快捷键测试"
 class LauncherShotcuts(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
+        cls.startTime = time.time()
         cls.menuObj = root.application(appName='deepin-menu', description='/usr/lib/deepin-menu')
         launcher.categoryMode()
         cls.appObj = launcher.launcherObj.child('internet',roleName='list').children[0]
@@ -27,6 +27,10 @@ class LauncherShotcuts(unittest.TestCase):
 
     @classmethod
     def tearDownClass(cls):
+        seconds = "%.3f" % (time.time() - cls.startTime)
+        minutes = utils.convertToMinutes(float(seconds))
+        global result
+        utils.commitresult(caseid, result, minutes)
         #remove from desktop
         desktopFiles = getDesktopFiles()
         if cls.appDesktopName in desktopFiles:
@@ -140,6 +144,16 @@ class LauncherShotcuts(unittest.TestCase):
         suite.addTest(LauncherShotcuts('testCancleBoot'))
         return suite
 
+    class MyTestResult(runner.MyTextTestResult):
+        def addError(self, test, err):
+            super(LauncherShotcuts.MyTestResult, self).addError(test, err)
+            global result
+            result = result and False
+
+        def addFailure(self, test, err):
+            super(LauncherShotcuts.MyTestResult, self).addFailure(test, err)
+            global result
+            result = result and False
 
 if __name__ == "__main__":
-    runTest(LauncherShotcuts.suite())
+    unittest.TextTestRunner(resultclass=LauncherShotcuts.MyTestResult).run(LauncherShotcuts.suite())

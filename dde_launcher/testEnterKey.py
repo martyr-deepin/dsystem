@@ -2,6 +2,7 @@
 # -*- coding: utf-8 -*-
 
 import unittest
+from lib import executeTestCase
 import time
 from lib import runner,utils
 from lib.launcher import *
@@ -13,17 +14,12 @@ casename = "all-533:launcher打开时对enter键的响应"
 class LauncherEnterKey(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
-        cls.startTime = time.time()
         cls.appName = 'Google Chrome'
         cls.googleTitleName = '新标签页 - Google Chrome'
         cls.oldWindows = getAllWindows()
 
     @classmethod
     def tearDownClass(cls):
-        seconds = "%.3f" % (time.time() - cls.startTime)
-        minutes = utils.convertToMinutes(float(seconds))
-        global result
-        utils.commitresult(caseid, result, minutes)
         cls.newWindows = getAllWindows()
         if len(cls.newWindows) > len(cls.oldWindows):
             for win in cls.newWindows[len(cls.oldWindows):]:
@@ -42,16 +38,6 @@ class LauncherEnterKey(unittest.TestCase):
         suite.addTest(LauncherEnterKey('testEnterKey'))
         return suite
 
-    class MyTestResult(runner.MyTextTestResult):
-        def addError(self, test, err):
-            super(LauncherEnterKey.MyTestResult, self).addError(test, err)
-            global result
-            result = result and False
-
-        def addFailure(self, test, err):
-            super(LauncherEnterKey.MyTestResult, self).addFailure(test, err)
-            global result
-            result = result and False
 
 if __name__ == "__main__":
-    unittest.TextTestRunner(resultclass=LauncherEnterKey.MyTestResult).run(LauncherEnterKey.suite())
+    runTest(LauncherEnterKey.suite())

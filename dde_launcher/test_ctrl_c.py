@@ -2,6 +2,7 @@
 # -*- coding: utf-8 -*-
 
 import unittest
+from lib import executeTestCase
 import time
 from lib import runner,utils
 from lib.launcher import *
@@ -14,16 +15,12 @@ casename = "all-2103:搜索框快捷键测试-ctrl+c"
 class LauncherShotcuts_ctrl_c(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
-        cls.startTime = time.time()
         cls.text = '深度商店'
 
 
     @classmethod
     def tearDownClass(cls):
-        seconds = "%.3f" % (time.time() - cls.startTime)
-        minutes = utils.convertToMinutes(float(seconds))
-        global result
-        utils.commitresult(caseid, result, minutes)
+        pass
 
     def test_ctrl_c(self):
         launcher.openLauncher()
@@ -44,16 +41,6 @@ class LauncherShotcuts_ctrl_c(unittest.TestCase):
         suite.addTest(LauncherShotcuts_ctrl_c('test_ctrl_c'))
         return suite
 
-    class MyTestResult(runner.MyTextTestResult):
-        def addError(self, test, err):
-            super(LauncherShotcuts_ctrl_c.MyTestResult, self).addError(test, err)
-            global result
-            result = result and False
-
-        def addFailure(self, test, err):
-            super(LauncherShotcuts_ctrl_c.MyTestResult, self).addFailure(test, err)
-            global result
-            result = result and False
 
 if __name__ == "__main__":
-    unittest.TextTestRunner(resultclass=LauncherShotcuts_ctrl_c.MyTestResult).run(LauncherShotcuts_ctrl_c.suite())
+    runTest(LauncherShotcuts_ctrl_c.suite())

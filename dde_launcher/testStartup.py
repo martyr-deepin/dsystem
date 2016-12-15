@@ -2,6 +2,7 @@
 # -*- coding: utf-8 -*-
 
 import unittest
+from lib import executeTestCase
 import time
 from lib import runner,utils
 from lib.launcher import *
@@ -13,7 +14,6 @@ casename = "all-516:启动"
 class LauncherStartupApp(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
-        cls.startTime = time.time()
         cls.menuObj = root.application(appName='deepin-menu', description='/usr/lib/deepin-menu')
         cls.googleName = '新标签页 - Google Chrome'
         cls.terminalName = 'deepin - 深度终端'
@@ -23,10 +23,6 @@ class LauncherStartupApp(unittest.TestCase):
 
     @classmethod
     def tearDownClass(cls):
-        seconds = "%.3f" % (time.time() - cls.startTime)
-        minutes = utils.convertToMinutes(float(seconds))
-        global result
-        utils.commitresult(caseid, result, minutes)
 
         cls.newWindows = getAllWindows()
         if len(cls.newWindows) > len(cls.oldWindows):
@@ -75,16 +71,6 @@ class LauncherStartupApp(unittest.TestCase):
         suite.addTest(LauncherStartupApp('testStartupByLeftKey'))
         return suite
 
-    class MyTestResult(runner.MyTextTestResult):
-        def addError(self, test, err):
-            super(LauncherStartupApp.MyTestResult, self).addError(test, err)
-            global result
-            result = result and False
-
-        def addFailure(self, test, err):
-            super(LauncherStartupApp.MyTestResult, self).addFailure(test, err)
-            global result
-            result = result and False
 
 if __name__ == "__main__":
-    unittest.TextTestRunner(resultclass=LauncherStartupApp.MyTestResult).run(LauncherStartupApp.suite())
+    runTest(LauncherStartupApp.suite())

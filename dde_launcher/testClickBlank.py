@@ -2,6 +2,7 @@
 # -*- coding: utf-8 -*-
 
 import unittest
+from lib import executeTestCase
 import time
 from lib import runner,utils
 from lib.launcher import *
@@ -13,17 +14,12 @@ casename = "all-540:单击空白处退出"
 class ClickBlank(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
-        cls.startTime = time.time()
         cls.text1 = 'deepin'
         cls.text2 = 'testtest'
         launcher.freeMode()
 
     @classmethod
     def tearDownClass(cls):
-        seconds = "%.3f" % (time.time() - cls.startTime)
-        minutes = utils.convertToMinutes(float(seconds))
-        global result
-        utils.commitresult(caseid, result, minutes)
         launcher.freeMode()
         launcher.exitLauncher()
 
@@ -161,16 +157,6 @@ class ClickBlank(unittest.TestCase):
         suite.addTest(ClickBlank('testSearch2'))
         return suite
 
-    class MyTestResult(runner.MyTextTestResult):
-        def addError(self, test, err):
-            super(ClickBlank.MyTestResult, self).addError(test, err)
-            global result
-            result = result and False
-
-        def addFailure(self, test, err):
-            super(ClickBlank.MyTestResult, self).addFailure(test, err)
-            global result
-            result = result and False
 
 if __name__ == "__main__":
-    unittest.TextTestRunner(resultclass=ClickBlank.MyTestResult).run(ClickBlank.suite())
+    runTest(ClickBlank.suite())
