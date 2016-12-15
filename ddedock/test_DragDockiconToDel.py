@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 
+import os
 import unittest
 import time
 from subprocess import getstatusoutput
@@ -39,8 +40,13 @@ class DragDockiconToDel(unittest.TestCase):
         self.assertFalse(iconobj_dfm_later.showing)
 
     def test_dragtodel_dmusic(self):
-        # (status,output)  = getstatusoutput('google-chrome')
-        # self.assertEqual(0,status)
+        pid = os.fork()
+        if 0 == pid:
+            (status,output)  = getstatusoutput('google-chrome')
+            os._exit(0)
+
+        #(status,output)  = getstatusoutput('google-chrome &')
+        #self.assertEqual(0,status)
         dockobject_dmusic = utils.getDdeDockObject()
         iconobj_dmusic = dockobject_dmusic.child(self.icon_dmusic)
         self.assertTrue(iconobj_dmusic.showing)
