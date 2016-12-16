@@ -8,10 +8,10 @@ from lib import runner,utils
 from lib.launcher import *
 
 result = True
-caseid = '33941'
 casename = "all-540:单击空白处退出"
 
 class ClickBlank(unittest.TestCase):
+    caseid = '33941'
     @classmethod
     def setUpClass(cls):
         cls.text1 = 'deepin'
@@ -159,4 +159,4 @@ class ClickBlank(unittest.TestCase):
 
 
 if __name__ == "__main__":
-    runTest(ClickBlank.suite())
+    executeTestCase.runTest(ClickBlank)

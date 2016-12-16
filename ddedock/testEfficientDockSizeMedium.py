@@ -7,10 +7,10 @@ from lib import utils
 from lib import runner
 
 result = True
-caseid = '68493'
 casename = "all-2494:高效模式中图标显示"
 
 class EfficientDockSizeMedium(unittest.TestCase):
+    caseid = '68493'
     @classmethod
     def setUpClass(cls):
         cls.ddedockobject = utils.getDdeDockObject()
@@ -124,4 +124,4 @@ class EfficientDockSizeMedium(unittest.TestCase):
         return suite
 
 if __name__ == "__main__":
-    runTest(EfficientDockSizeMedium.suite())
+    executeTestCase.runTest(EfficientDockSizeMedium)

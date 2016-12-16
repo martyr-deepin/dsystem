@@ -9,10 +9,10 @@ from lib.launcher import *
 from glob import glob
 
 result = True
-caseid = '53249'
 casename = "all-2292:鼠标右键卸载失败"
 
 class LauncherUninstall(unittest.TestCase):
+    caseid = '53249'
     @classmethod
     def setUpClass(cls):
         cls.menuObj = root.application(appName='deepin-menu', description='/usr/lib/deepin-menu')
@@ -96,4 +96,4 @@ class LauncherUninstall(unittest.TestCase):
 
 
 if __name__ == "__main__":
-    runTest(LauncherUninstall.suite())
+    executeTestCase.runTest(LauncherUninstall)

@@ -8,10 +8,10 @@ from lib import utils
 from lib import runner
 
 result = True
-caseid = '91223'
 casename = 'all-3546:声音插件对单击的响应'
 
 class DockSoundPluginClick(unittest.TestCase):
+    caseid = '91223'
     @classmethod
     def setUpClass(cls):
         cls.icon_sound = "sound-"
@@ -70,4 +70,4 @@ class DockSoundPluginClick(unittest.TestCase):
         return suite
 
 if __name__ == "__main__":
-    runTest(DockSoundPluginClick.suite())
+    executeTestCase.runTest(DockSoundPluginClick)

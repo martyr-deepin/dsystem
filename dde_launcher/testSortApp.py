@@ -10,10 +10,10 @@ from lib.launcher import *
 from lib.dde_dock import *
 
 result = True
-caseid = '33902'
 casename = 'all-532:应用安装之后左侧分类更新测试'
 
 class LauncherSortApp(unittest.TestCase):
+    caseid = '33902'
     @classmethod
     def setUpClass(cls):
         cls.menuObj = root.application(appName='deepin-menu', description='/usr/lib/deepin-menu')
@@ -45,4 +45,4 @@ class LauncherSortApp(unittest.TestCase):
 
 
 if __name__ == "__main__":
-    runTest(LauncherSortApp.suite())
+    executeTestCase.runTest(LauncherSortApp)

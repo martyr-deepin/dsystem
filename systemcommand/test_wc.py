@@ -10,10 +10,10 @@ from lib import utils
 from lib import runner
 
 result = True
-caseid = '39014'
 casename = 'all-1451:文件/文件夹操作命令--验证对wc命令的支持'
 
 class Wc(unittest.TestCase):
+    caseid = '39014'
     @classmethod
     def setUpClass(cls):
         if os.path.exists('/tmp/testfile'):
@@ -65,4 +65,4 @@ class Wc(unittest.TestCase):
         return suite
 
 if __name__ == "__main__":
-    runTest(Wc.suite())
+    executeTestCase.runTest(Wc)

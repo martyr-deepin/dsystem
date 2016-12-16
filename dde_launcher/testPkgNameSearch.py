@@ -9,10 +9,10 @@ from lib.launcher import *
 from time import sleep
 
 result = True
-caseid = '33795'
 casename = "all-509:中文字符串搜索"
 
 class LauncherPkgNameSearch(unittest.TestCase):
+    caseid = '33795'
     @classmethod
     def setUpClass(cls):
         cls.text = 'deepin-appstore'
@@ -49,4 +49,4 @@ class LauncherPkgNameSearch(unittest.TestCase):
 
 
 if __name__ == "__main__":
-    runTest(LauncherPkgNameSearch.suite())
+    executeTestCase.runTest(LauncherPkgNameSearch)

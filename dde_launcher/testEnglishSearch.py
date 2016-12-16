@@ -9,10 +9,10 @@ from lib.launcher import *
 from time import sleep
 
 result = True
-caseid = '33803'
 casename = "all-510:英文字符串搜索"
 
 class LauncherEnglishSearch(unittest.TestCase):
+    caseid = '33803'
     @classmethod
     def setUpClass(cls):
         cls.appName1 = '深度音乐'
@@ -60,4 +60,4 @@ class LauncherEnglishSearch(unittest.TestCase):
 
 
 if __name__ == "__main__":
-    runTest(LauncherEnglishSearch.suite())
+    executeTestCase.runTest(LauncherEnglishSearch)

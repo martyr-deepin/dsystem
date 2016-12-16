@@ -9,9 +9,9 @@ from glob import glob
 result = True
 
 class FilesystemExt2(unittest.TestCase):
+
     @classmethod
     def setUpClass(cls):
-        cls.caseid = '42888'
         cls.casename = 'all-1993:读写ext2格式的文件'
         mkextx('ext2')
 
@@ -63,4 +63,4 @@ class FilesystemExt2(unittest.TestCase):
         return suite
 
 if __name__ == "__main__":
-    runTest(FilesystemExt2.suite())
+    executeTestCase.runTest(FilesystemExt2)

@@ -7,10 +7,10 @@ from lib import utils
 from lib import runner
 
 result = True
-caseid = '68153'
 casename = "all-2472:高效模式功能测试"
 
 class EfficientFunction(unittest.TestCase):
+    caseid = '68153'
     @classmethod
     def setUpClass(cls):
         cls.ddedockobject = utils.getDdeDockObject()
@@ -121,4 +121,4 @@ class EfficientFunction(unittest.TestCase):
         return suite
 
 if __name__ == "__main__":
-    runTest(EfficientFunction.suite())
+    executeTestCase.runTest(EfficientFunction)

@@ -9,9 +9,9 @@ from glob import glob
 result = True
 
 class FilesystemBtrfs(unittest.TestCase):
+
     @classmethod
     def setUpClass(cls):
-        cls.caseid = '71122'
         cls.casename = 'all-2692:读写btrfs格式的文件'
         mkextx('bfs')
 
@@ -63,4 +63,4 @@ class FilesystemBtrfs(unittest.TestCase):
         return suite
 
 if __name__ == "__main__":
-    runTest(FilesystemBtrfs.suite())
+    executeTestCase.runTest(FilesystemBtrfs)

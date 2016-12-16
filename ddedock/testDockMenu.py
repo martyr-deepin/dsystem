@@ -9,10 +9,10 @@ from dogtail import rawinput
 from dogtail.tree import *
 
 result = True
-caseid = '68161'
 casename = "all-2473:方向设置菜单"
 
 class DockMenu(unittest.TestCase):
+    caseid = '68161'
     @classmethod
     def setUpClass(cls):
         cls.ddedockobject = utils.getDdeDockObject()
@@ -124,4 +124,4 @@ class DockMenu(unittest.TestCase):
         return suite
 
 if __name__ == "__main__":
-    runTest(DockMenu.suite())
+    executeTestCase.runTest(DockMenu)

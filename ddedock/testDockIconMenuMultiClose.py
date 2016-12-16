@@ -9,10 +9,10 @@ from dogtail.tree import root
 from dogtail import rawinput
 
 result = True
-caseid = '33451'
 casename = "all-443:关闭所有"
 
 class DockIconMenuMultiClose(unittest.TestCase):
+    caseid = '33451'
     @classmethod
     def setUpClass(cls):
         cls.filemanagericonname = "深度文件管理器"
@@ -150,4 +150,4 @@ class DockIconMenuMultiClose(unittest.TestCase):
         return suite
 
 if __name__ == "__main__":
-    runTest(DockIconMenuMultiClose.suite())
+    executeTestCase.runTest(DockIconMenuMultiClose)

@@ -11,10 +11,10 @@ from lib import utils
 from lib import runner
 
 result = True
-caseid = '39107'
 casename = 'all-1467:其他命令--验证对date命令的支持'
 
 class Date(unittest.TestCase):
+    caseid = '39107'
     @classmethod
     def setUpClass(cls):
         pass
@@ -57,4 +57,4 @@ class Date(unittest.TestCase):
         return suite
 
 if __name__ == "__main__":
-    runTest(Date.suite())
+    executeTestCase.runTest(Date)

@@ -9,17 +9,14 @@ from dogtail import rawinput
 from dogtail.tree import *
 
 result = True
-caseid = '68464'
 casename = "all-2485:高效模式上方显示测试"
 
 class DockEfficientMode(unittest.TestCase):
+    caseid = '68464'
     @classmethod
     def setUpClass(cls):
-        cls.caseid_2 = '68467'
         cls.casename_2 = "all-2486:高效模式下方显示测试"
-        cls.caseid_3 = '68470'
         cls.casename_3 = "all-2487:高效模式左方显示测试"
-        cls.caseid_4 = '68473'
         cls.casename_4 = "all-2484:高效模式右方显示测试"
         cls.ddedockobject = utils.getDdeDockObject()
         cls.defaultdisplaymode = utils.getDdeDockDisplayMode()
@@ -215,4 +212,4 @@ class DockEfficientMode(unittest.TestCase):
         return suite
 
 if __name__ == "__main__":
-    runTest(DockEfficientMode.suite())
+    executeTestCase.runTest(DockEfficientMode)

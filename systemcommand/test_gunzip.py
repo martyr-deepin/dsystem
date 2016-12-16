@@ -10,10 +10,10 @@ from lib import runner
 from lib import utils
 
 result = True
-caseid = '39052'
 casename = 'all-1456:备份、压缩和解压缩操作命令--验证对gunzip命令的支持'
 
 class Gunzip(unittest.TestCase):
+    caseid = '39052'
     @classmethod
     def setUpClass(cls):
         cls.testfile    = "testfile"
@@ -53,4 +53,4 @@ class Gunzip(unittest.TestCase):
         return suite
 
 if __name__ == "__main__":
-    runTest(Gunzip.suite())
+    executeTestCase.runTest(Gunzip)

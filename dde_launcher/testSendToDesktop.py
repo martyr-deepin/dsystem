@@ -10,10 +10,10 @@ from lib.launcher import *
 from lib.dde_dock import *
 
 result = True
-caseid = '33846'
 casename = 'all-520:发送到桌面'
 
 class LauncherSendToDesktop(unittest.TestCase):
+    caseid = '33846'
     @classmethod
     def setUpClass(cls):
         cls.menuObj = root.application(appName='deepin-menu', description='/usr/lib/deepin-menu')
@@ -36,4 +36,4 @@ class LauncherSendToDesktop(unittest.TestCase):
 
 
 if __name__ == "__main__":
-    runTest(LauncherSendToDesktop.suite())
+    executeTestCase.runTest(LauncherSendToDesktop)

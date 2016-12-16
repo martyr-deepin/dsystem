@@ -10,10 +10,10 @@ from lib import utils
 from lib import runner
 
 result = True
-caseid = '38957'
 casename = 'all-1442:文件/文件夹操作命令--验证对rmdir命令的支持'
 
 class Rmdir(unittest.TestCase):
+    caseid = '38957'
     @classmethod
     def setUpClass(cls):
         cls.loginuser = getoutput("whoami")
@@ -51,4 +51,4 @@ class Rmdir(unittest.TestCase):
         return suite
 
 if __name__ == "__main__":
-    runTest(Rmdir.suite())
+    executeTestCase.runTest(Rmdir)

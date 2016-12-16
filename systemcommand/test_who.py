@@ -11,10 +11,10 @@ from lib import utils
 from lib import runner
 
 result = True
-caseid = '39096'
 casename = 'all-1464:其他命令--验证对who命令的支持'
 
 class Who(unittest.TestCase):
+    caseid = '39096'
     @classmethod
     def setUpClass(cls):
         cls.loginuser = getpass.getuser()
@@ -44,4 +44,4 @@ class Who(unittest.TestCase):
         return suite
 
 if __name__ == "__main__":
-    runTest(Who.suite())
+    executeTestCase.runTest(Who)

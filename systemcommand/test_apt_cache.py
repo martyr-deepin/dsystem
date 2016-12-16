@@ -10,10 +10,10 @@ from lib import utils
 from lib import runner
 
 result = True
-caseid = '69087'
 casename = 'all-2614:apt-cache命令'
 
 class Apt_cache(unittest.TestCase):
+    caseid = '69087'
     @classmethod
     def setUpClass(cls):
         pass
@@ -37,4 +37,4 @@ class Apt_cache(unittest.TestCase):
         return suite
 
 if __name__ == "__main__":
-    runTest(Apt_cache.suite())
+    executeTestCase.runTest(Apt_cache)

@@ -8,10 +8,10 @@ from lib import runner,utils
 from lib.launcher import *
 
 result = True
-caseid = '52149'
 casename = "all-2234:分类模式禁用拖动排序"
 
 class LauncherDisable(unittest.TestCase):
+    caseid = '52149'
     @classmethod
     def setUpClass(cls):
         pass
@@ -35,4 +35,4 @@ class LauncherDisable(unittest.TestCase):
 
 
 if __name__ == "__main__":
-    runTest(LauncherDisable.suite())
+    executeTestCase.runTest(LauncherDisable)

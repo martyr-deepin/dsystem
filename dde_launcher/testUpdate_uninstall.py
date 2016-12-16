@@ -10,10 +10,10 @@ from lib.launcher import *
 from lib.dde_dock import *
 
 result = True
-caseid = '33898'
 casename = 'all-531:应用卸载之后左侧分类更新测试'
 
 class LauncherUpdateUninstall(unittest.TestCase):
+    caseid = '33898'
     @classmethod
     def setUpClass(cls):
         cls.appdict = {'deepin-feedback':'深度用户反馈', 
@@ -59,4 +59,4 @@ class LauncherUpdateUninstall(unittest.TestCase):
 
 
 if __name__ == "__main__":
-    runTest(LauncherUpdateUninstall.suite())
+    executeTestCase.runTest(LauncherUpdateUninstall)

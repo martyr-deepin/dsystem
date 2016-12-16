@@ -8,10 +8,10 @@ from lib.launcher import *
 from lib.dde_dock import *
 
 result = True
-caseid = '80163'
 casename = "all-2837:dock-显示桌面按钮测试"
 
 class ShowDesktopBtn(unittest.TestCase):
+    caseid = '80163'
     @classmethod
     def setUpClass(cls):
         cls.btn = '显示桌面'
@@ -48,4 +48,4 @@ class ShowDesktopBtn(unittest.TestCase):
         return suite
 
 if __name__ == "__main__":
-    runTest(ShowDesktopBtn.suite())
+    executeTestCase.runTest(ShowDesktopBtn)

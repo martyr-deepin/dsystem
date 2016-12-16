@@ -10,10 +10,10 @@ from lib.launcher import *
 from lib.dde_dock import *
 
 result = True
-caseid = '33823'
 casename = "all-514:拖动到任务栏驻留"
 
 class LauncherDragAppToDock(unittest.TestCase):
+    caseid = '33823'
     @classmethod
     def setUpClass(cls):
         cls.qqName = 'QQ'
@@ -54,4 +54,4 @@ class LauncherDragAppToDock(unittest.TestCase):
 
 
 if __name__ == "__main__":
-    runTest(LauncherDragAppToDock.suite())
+    executeTestCase.runTest(LauncherDragAppToDock)

@@ -10,10 +10,10 @@ from lib.launcher import *
 from lib.dde_dock import *
 
 result = True
-caseid = '33855'
 casename = 'all-522:添加至开机启动项'
 
 class LauncherAddToBoot(unittest.TestCase):
+    caseid = '33855'
     @classmethod
     def setUpClass(cls):
         cls.menuObj = root.application(appName='deepin-menu', description='/usr/lib/deepin-menu')
@@ -57,4 +57,4 @@ class LauncherAddToBoot(unittest.TestCase):
         return suite
 
 if __name__ == "__main__":
-    runTest(LauncherAddToBoot.suite())
+    executeTestCase.runTest(LauncherAddToBoot)

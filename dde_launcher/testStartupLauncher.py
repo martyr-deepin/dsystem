@@ -10,10 +10,10 @@ from lib.launcher import *
 from lib.dde_dock import *
 
 result = True
-caseid = '33898'
 casename = 'all-2275:第一次点击super是否显示启动器'
 
 class LauncherStartup(unittest.TestCase):
+    caseid = '33898'
     @classmethod
     def setUpClass(cls):
         cls.cmd = 'killall dde-launcher &'
@@ -44,4 +44,4 @@ class LauncherStartup(unittest.TestCase):
 
 
 if __name__ == "__main__":
-    runTest(LauncherStartup.suite())
+    executeTestCase.runTest(LauncherStartup)

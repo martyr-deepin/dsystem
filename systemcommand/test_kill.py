@@ -9,11 +9,11 @@ from lib import utils
 from time import sleep
 
 result = True
-caseid = '39066'
 casename = 'all-1458:进程管理工具--验证对kill命令的支持'
 listlastssh = ''
 
 class  Kill(unittest.TestCase):
+    caseid = '39066'
     @classmethod
     def setUpClass(cls):
         pass
@@ -56,4 +56,4 @@ class  Kill(unittest.TestCase):
         return suite
 
 if __name__ == "__main__":
-    runTest(Kill.suite())
+    executeTestCase.runTest(Kill)

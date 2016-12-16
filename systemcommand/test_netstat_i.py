@@ -8,10 +8,10 @@ from lib import runner
 from lib import utils
 
 result = True
-caseid = '69014'
 casename = 'all-2584:使用netstat命令显示网络分组传送信息'
 
 class Netstat_i(unittest.TestCase):
+    caseid = '69014'
     @classmethod
     def setUpClass(cls):
         pass
@@ -37,4 +37,4 @@ class Netstat_i(unittest.TestCase):
         return suite
 
 if __name__ == "__main__":
-    runTest(Netstat_i.suite())
+    executeTestCase.runTest(Netstat_i)

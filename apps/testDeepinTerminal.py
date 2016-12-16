@@ -9,10 +9,10 @@ from lib.launcher import *
 
 
 result = True
-caseid = '83378'
 casename = 'all-3358:运行深度终端'
 
 class DeepinTerminal(unittest.TestCase):
+    caseid = '83378'
     @classmethod
     def setUpClass(cls):
         cls.appName = 'deepin-terminal'
@@ -42,4 +42,4 @@ class DeepinTerminal(unittest.TestCase):
         return suite
 
 if __name__ == "__main__":
-    runTest(DeepinTerminal.suite())
+    executeTestCase.runTest(DeepinTerminal)

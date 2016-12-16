@@ -10,10 +10,10 @@ from lib.launcher import *
 from lib.dde_dock import *
 
 result = True
-caseid = '33840'
 casename = 'all-518:添加到任务栏'
 
 class LauncherAddToDock(unittest.TestCase):
+    caseid = '33840'
     @classmethod
     def setUpClass(cls):
         cls.menuObj = root.application(appName='deepin-menu', description='/usr/lib/deepin-menu')
@@ -45,4 +45,4 @@ class LauncherAddToDock(unittest.TestCase):
 
 
 if __name__ == "__main__":
-    runTest(LauncherAddToDock.suite())
+    executeTestCase.runTest(LauncherAddToDock)

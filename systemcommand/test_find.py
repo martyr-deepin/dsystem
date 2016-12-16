@@ -10,10 +10,10 @@ from lib import utils
 from lib import runner
 
 result = True
-caseid = '38983'
 casename = 'all-1447:文件/文件夹操作命令--验证对find命令的支持'
 
 class Find(unittest.TestCase):
+    caseid = '38983'
     @classmethod
     def setUpClass(cls):
         pass
@@ -41,4 +41,4 @@ class Find(unittest.TestCase):
         return suite
 
 if __name__ == "__main__":
-    runTest(Find.suite())
+    executeTestCase.runTest(Find)

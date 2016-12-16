@@ -9,10 +9,10 @@ from lib.launcher import *
 from lib.dde_dock import *
 
 result = True
-caseid = '80062'
 casename = "all-3296:应用发送至任务栏/桌面后右键删除测试"
 
 class AppDelete1(unittest.TestCase):
+    caseid = '80062'
     @classmethod
     def setUpClass(cls):
         cls.app = 'deepin-feedback'
@@ -55,4 +55,4 @@ class AppDelete1(unittest.TestCase):
 
 
 if __name__ == "__main__":
-    runTest(AppDelete1.suite())
+    executeTestCase.runTest(AppDelete1)

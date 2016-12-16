@@ -9,10 +9,10 @@ from lib.launcher import *
 from lib.dde_dock import *
 
 result = True
-caseid = '83265'
 casename = 'up-371:打开帮助手册'
 
 class DeepinMovieHelp(unittest.TestCase):
+    caseid = '83265'
     @classmethod
     def setUpClass(cls):
         cls.appName = 'deepin-movie'
@@ -58,4 +58,4 @@ class DeepinMovieHelp(unittest.TestCase):
         return suite
 
 if __name__ == "__main__":
-    runTest(DeepinMovieHelp.suite())
+    executeTestCase.runTest(DeepinMovieHelp)

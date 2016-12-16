@@ -9,10 +9,10 @@ from lib.launcher import *
 
 
 result = True
-caseid = '83287'
 casename = 'all-3339:打开深度商店'
 
 class DeepinStore(unittest.TestCase):
+    caseid = '83287'
     @classmethod
     def setUpClass(cls):
         cls.appName = 'deepin-appstore'
@@ -52,4 +52,4 @@ class DeepinStore(unittest.TestCase):
         return suite
 
 if __name__ == "__main__":
-    runTest(DeepinStore.suite())
+    executeTestCase.runTest(DeepinStore)

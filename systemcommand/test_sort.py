@@ -10,10 +10,10 @@ from lib import utils
 from lib import runner
 
 result = True
-caseid = '39010'
 casename = 'all-1450:文件/文件夹操作命令--验证对sort命令的支持'
 
 class Sort(unittest.TestCase):
+    caseid = '39010'
     @classmethod
     def setUpClass(cls):
         cls.homedir = os.path.expanduser('~')
@@ -55,4 +55,4 @@ class Sort(unittest.TestCase):
         return suite
 
 if __name__ == "__main__":
-    runTest(Sort.suite())
+    executeTestCase.runTest(Sort)

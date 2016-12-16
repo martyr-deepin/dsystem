@@ -10,10 +10,10 @@ from lib import runner
 from lib import utils
 
 result = True
-caseid = '39034'
 casename = 'all-1454:备份、压缩和解压缩操作命令--验证对tar命令的支持'
 
 class Tar(unittest.TestCase):
+    caseid = '39034'
     @classmethod
     def setUpClass(cls):
         cls.file1    = "testsys1"
@@ -96,4 +96,4 @@ class Tar(unittest.TestCase):
         return suite
 
 if __name__ == "__main__":
-    runTest(Tar.suite())
+    executeTestCase.runTest(Tar)

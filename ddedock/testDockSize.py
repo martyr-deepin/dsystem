@@ -7,11 +7,10 @@ from lib import utils
 from lib import runner
 
 result = True
-caseid = '68486'
 class DockSize(unittest.TestCase):
+    caseid = '68486'
     @classmethod
     def setUpClass(cls):
-        cls.caseid = '68486'
         cls.casename = "all-2492:图标大小设置菜单"
         cls.ddedockobject = utils.getDdeDockObject()
         cls.defaultdisplaymode = utils.getDdeDockDisplayMode()
@@ -100,4 +99,4 @@ def suite():
     return suite
 
 if __name__ == "__main__":
-    runTest(suite())
+    executeTestCase.runTest)

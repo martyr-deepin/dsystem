@@ -9,10 +9,10 @@ from lib.filesystemutils import getDevInfo
 import platform
 
 result = True
-caseid = '80301'
 casename = "all-3149:codename测试"
 
 class CodeName(unittest.TestCase):
+    caseid = '80301'
     @classmethod
     def setUpClass(cls):
         cls.codename = getDevInfo('codename','code')
@@ -44,4 +44,4 @@ class CodeName(unittest.TestCase):
         return suite
 
 if __name__ == "__main__":
-    runTest(CodeName.suite())
+    executeTestCase.runTest(CodeName)

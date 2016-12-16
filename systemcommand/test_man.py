@@ -10,10 +10,10 @@ from lib import utils
 from lib import runner
 
 result = True
-caseid = '39079'
 casename = 'all-1460:其他命令-验证对man命令的支持'
 
 class Man(unittest.TestCase):
+    caseid = '39079'
     @classmethod
     def setUpClass(cls):
         cls.homedir = os.path.expanduser('~')
@@ -72,4 +72,4 @@ class Man(unittest.TestCase):
         return suite
 
 if __name__ == "__main__":
-    runTest(Man.suite())
+    executeTestCase.runTest(Man)

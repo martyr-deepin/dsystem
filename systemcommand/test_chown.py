@@ -10,10 +10,10 @@ from lib import utils
 from lib import runner
 
 result = True
-caseid = '38998'
 casename = 'all-1449:文件/文件夹操作命令--验证对chown命令的支持'
 
 class Chown(unittest.TestCase):
+    caseid = '38998'
     @classmethod
     def setUpClass(cls):
         cls.loginuser = getpass.getuser()
@@ -100,4 +100,4 @@ class Chown(unittest.TestCase):
         return suite
 
 if __name__ == "__main__":
-    runTest(Chown.suite())
+    executeTestCase.runTest(Chown)

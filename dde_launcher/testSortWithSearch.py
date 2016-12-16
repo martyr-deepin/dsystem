@@ -9,10 +9,10 @@ from lib.launcher import *
 from time import sleep
 
 result = True
-caseid = '52146'
 casename = "all-2233:搜索框有字符串时，排序开关功能测试"
 
 class LauncherSortWithSearch(unittest.TestCase):
+    caseid = '52146'
     @classmethod
     def setUpClass(cls):
         cls.text = '深度音乐'
@@ -48,4 +48,4 @@ class LauncherSortWithSearch(unittest.TestCase):
 
 
 if __name__ == "__main__":
-    runTest(LauncherSortWithSearch.suite())
+    executeTestCase.runTest(LauncherSortWithSearch)

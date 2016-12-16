@@ -9,9 +9,9 @@ from glob import glob
 result = True
 
 class FilesystemReiserfs(unittest.TestCase):
+
     @classmethod
     def setUpClass(cls):
-        cls.caseid = '71129'
         cls.casename = 'all-2693:读写reiserfs格式的文件'
         mkextx('reiserfs')
 
@@ -63,4 +63,4 @@ class FilesystemReiserfs(unittest.TestCase):
         return suite
 
 if __name__ == "__main__":
-    runTest(FilesystemReiserfs.suite())
+    executeTestCase.runTest(FilesystemReiserfs)

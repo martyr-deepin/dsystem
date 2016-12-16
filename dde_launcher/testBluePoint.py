@@ -8,10 +8,10 @@ from lib import runner,utils
 from lib.launcher import *
 
 result = True
-caseid = '33866'
 casename = "all-524:预装应用蓝点标志测试"
 
 class BluePoint(unittest.TestCase):
+    caseid = '33866'
     
     @classmethod
     def setUpClass(cls):
@@ -34,4 +34,4 @@ class BluePoint(unittest.TestCase):
 
 
 if __name__ == "__main__":
-    runTest(BluePoint.suite())
+    executeTestCase.runTest(BluePoint)

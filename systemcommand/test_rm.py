@@ -10,10 +10,10 @@ from lib import utils
 from lib import runner
 
 result = True
-caseid = '38975'
 casename = 'all-1445:文件/文件夹操作命令--验证对rm命令的支持'
 
 class Rm(unittest.TestCase):
+    caseid = '38975'
     @classmethod
     def setUpClass(cls):
         cls.homedir = os.path.expanduser('~')
@@ -48,4 +48,4 @@ class Rm(unittest.TestCase):
         return suite
 
 if __name__ == "__main__":
-    runTest(Rm.suite())
+    executeTestCase.runTest(Rm)

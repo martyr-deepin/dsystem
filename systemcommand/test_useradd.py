@@ -9,11 +9,11 @@ from lib import utils
 from lib import runner
 
 result = True
-caseid = '38924'
 casename = 'all-1436:用户管理命令--验证对useradd命令的支持'
 
 
 class Useradd(unittest.TestCase):
+    caseid = '38924'
     @classmethod
     def setUpClass(cls):
         if os.path.exists('/home/test'):
@@ -42,4 +42,4 @@ class Useradd(unittest.TestCase):
         return suite
 
 if __name__ == "__main__":
-    runTest(Useradd.suite())
+    executeTestCase.runTest(Useradd)

@@ -8,10 +8,10 @@ from lib import runner,utils
 from lib.launcher import *
 
 result = True
-caseid = '33827'
 casename = "all-515:左键拖动调整位置"
 
 class LauncherDragToCenter(unittest.TestCase):
+    caseid = '33827'
     @classmethod
     def setUpClass(cls):
         cls.menuObj = root.application(appName='deepin-menu', description='/usr/lib/deepin-menu')
@@ -51,4 +51,4 @@ class LauncherDragToCenter(unittest.TestCase):
 
 
 if __name__ == "__main__":
-    runTest(LauncherDragToCenter.suite())
+    executeTestCase.runTest(LauncherDragToCenter)

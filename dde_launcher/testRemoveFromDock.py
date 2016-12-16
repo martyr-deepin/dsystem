@@ -10,10 +10,10 @@ from lib.launcher import *
 from lib.dde_dock import *
 
 result = True
-caseid = '33837'
 casename = 'all-517:从任务栏移除'
 
 class LauncherRemoveFromDock(unittest.TestCase):
+    caseid = '33837'
     @classmethod
     def setUpClass(cls):
         cls.menuObj = root.application(appName='deepin-menu', description='/usr/lib/deepin-menu')
@@ -43,4 +43,4 @@ class LauncherRemoveFromDock(unittest.TestCase):
 
 
 if __name__ == "__main__":
-    runTest(LauncherRemoveFromDock.suite())
+    executeTestCase.runTest(LauncherRemoveFromDock)

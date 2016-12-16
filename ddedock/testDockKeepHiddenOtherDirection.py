@@ -8,10 +8,10 @@ from lib import runner
 from dogtail import rawinput
 
 result = True
-caseid = '68521'
 casename = "all-2500:四个位置的一直隐藏测试"
 
 class DockKeepHiddenOtherDirection(unittest.TestCase):
+    caseid = '68521'
     @classmethod
     def setUpClass(cls):
         cls.ddedockobject = utils.getDdeDockObject()
@@ -167,4 +167,4 @@ class DockKeepHiddenOtherDirection(unittest.TestCase):
         return suite
 
 if __name__ == "__main__":
-    runTest(DockKeepHiddenOtherDirection.suite())
+    executeTestCase.runTest(DockKeepHiddenOtherDirection)

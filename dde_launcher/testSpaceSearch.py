@@ -9,10 +9,10 @@ from lib.launcher import *
 from time import sleep
 
 result = True
-caseid = '52350'
 casename = "all-2270:输入空格符搜索测试"
 
 class LauncherSpaceSearch(unittest.TestCase):
+    caseid = '52350'
     @classmethod
     def setUpClass(cls):
         cls.text1 = ' '
@@ -74,4 +74,4 @@ class LauncherSpaceSearch(unittest.TestCase):
 
 
 if __name__ == "__main__":
-    runTest(LauncherSpaceSearch.suite())
+    executeTestCase.runTest(LauncherSpaceSearch)

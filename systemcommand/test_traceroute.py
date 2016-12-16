@@ -9,10 +9,10 @@ from lib import runner
 from lib import utils
 
 result = True
-caseid = '69024'
 casename = 'all-2587:使用命令traceroute网络节点间的通讯'
 
 class Traceroute(unittest.TestCase):
+    caseid = '69024'
     @classmethod
     def setUpClass(cls):
         pass
@@ -48,4 +48,4 @@ class Traceroute(unittest.TestCase):
         return suite
 
 if __name__ == "__main__":
-    runTest(Traceroute.suite())
+    executeTestCase.runTest(Traceroute)

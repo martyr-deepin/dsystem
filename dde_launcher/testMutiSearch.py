@@ -9,10 +9,10 @@ from lib.launcher import *
 from time import sleep
 
 result = True
-caseid = '45676'
 casename = "all-2136:中文和英文搜索"
 
 class LauncherMutiSearch(unittest.TestCase):
+    caseid = '45676'
     @classmethod
     def setUpClass(cls):
         cls.text = 'wps表格'
@@ -38,4 +38,4 @@ class LauncherMutiSearch(unittest.TestCase):
 
 
 if __name__ == "__main__":
-    runTest(LauncherMutiSearch.suite())
+    executeTestCase.runTest(LauncherMutiSearch)

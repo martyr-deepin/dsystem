@@ -9,10 +9,10 @@ from dogtail.tree import root
 from dogtail import rawinput
 
 result = True
-caseid = '33479'
 casename = "all-449:程序显示隐藏测试"
 
 class HideDisplayApp(unittest.TestCase):
+    caseid = '33479'
     @classmethod
     def setUpClass(cls):
         cls.chromeiconname = "Google Chrome"
@@ -112,4 +112,4 @@ class HideDisplayApp(unittest.TestCase):
         return suite
 
 if __name__ == "__main__":
-    runTest(HideDisplayApp.suite())
+    executeTestCase.runTest(HideDisplayApp)

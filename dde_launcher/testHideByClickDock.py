@@ -8,10 +8,10 @@ from lib import runner,utils
 from lib.launcher import *
 
 result = True
-caseid = '33952'
 casename = "all-542:点击任务栏程序隐藏启动器"
 
 class LauncherHideByClickDock(unittest.TestCase):
+    caseid = '33952'
     @classmethod
     def setUpClass(cls):
         cls.menuObj = root.application(appName='deepin-menu', description='/usr/lib/deepin-menu')
@@ -53,4 +53,4 @@ class LauncherHideByClickDock(unittest.TestCase):
 
 
 if __name__ == "__main__":
-    runTest(LauncherHideByClickDock.suite())
+    executeTestCase.runTest(LauncherHideByClickDock)

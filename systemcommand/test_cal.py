@@ -11,10 +11,10 @@ from lib import utils
 from lib import runner
 
 result = True
-caseid = '39104'
 casename = 'all-1466:其他命令--验证对cal命令的支持'
 
 class Cal(unittest.TestCase):
+    caseid = '39104'
     @classmethod
     def setUpClass(cls):
         pass
@@ -46,4 +46,4 @@ class Cal(unittest.TestCase):
         return suite
 
 if __name__ == "__main__":
-    runTest(Cal.suite())
+    executeTestCase.runTest(Cal)

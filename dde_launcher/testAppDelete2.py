@@ -10,10 +10,10 @@ from lib.dde_dock import *
 from glob import glob
 
 result = True
-caseid = '80064'
 casename = "all-3297:应用发送至任务栏/桌面后命令行删除测试"
 
 class AppDelete2(unittest.TestCase):
+    caseid = '80064'
     @classmethod
     def setUpClass(cls):
         cls.app = 'lovewallpaper'
@@ -55,4 +55,4 @@ class AppDelete2(unittest.TestCase):
 
 
 if __name__ == "__main__":
-    runTest(AppDelete2.suite())
+    executeTestCase.runTest(AppDelete2)

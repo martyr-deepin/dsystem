@@ -8,11 +8,11 @@ from lib import runner
 from lib import utils
 
 result = True
-caseid = '34731'
 casename = 'all-725:键盘布局'
 newlayout = 'ara;azerty'
 
 class  KbLayout(unittest.TestCase):
+    caseid = '34731'
     @classmethod
     def setUpClass(cls):
         pass
@@ -52,4 +52,4 @@ class  KbLayout(unittest.TestCase):
         return suite
 
 if __name__ == "__main__":
-    runTest(KbLayout.suite())
+    executeTestCase.runTest(KbLayout)

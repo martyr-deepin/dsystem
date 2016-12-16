@@ -9,10 +9,10 @@ from lib import runner
 from lib import utils
 
 result = True
-caseid = '69020'
 casename = 'all-2586:使用telnet命令连接到远程主机'
 
 class Telnet(unittest.TestCase):
+    caseid = '69020'
     @classmethod
     def setUpClass(cls):
         pass
@@ -50,4 +50,4 @@ class Telnet(unittest.TestCase):
         return suite
 
 if __name__ == "__main__":
-    runTest(Telnet.suite())
+    executeTestCase.runTest(Telnet)

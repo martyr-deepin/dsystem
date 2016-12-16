@@ -10,10 +10,10 @@ from lib.launcher import *
 from lib.dde_dock import *
 
 result = True
-caseid = '33974'
 casename = 'all-547:多次重启启动器'
 
 class LauncherReboot(unittest.TestCase):
+    caseid = '33974'
     @classmethod
     def setUpClass(cls):
         cls.cmd = 'killall dde-launcher; dde-launcher -s &'
@@ -37,4 +37,4 @@ class LauncherReboot(unittest.TestCase):
 
 
 if __name__ == "__main__":
-    runTest(LauncherReboot.suite())
+    executeTestCase.runTest(LauncherReboot)

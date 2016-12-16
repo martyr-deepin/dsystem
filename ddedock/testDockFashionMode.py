@@ -9,17 +9,14 @@ from dogtail import rawinput
 from dogtail.tree import *
 
 result = True
-caseid = '68165'
 casename = "all-2474:时尚模式上方显示测试"
 
 class DockFashionMode(unittest.TestCase):
+    caseid = '68165'
     @classmethod
     def setUpClass(cls):
-        cls.caseid_2 = '68168'
         cls.casename_2 = "all-2475:时尚模式下方显示测试"
-        cls.caseid_3 = '68458'
         cls.casename_3 = "all-2483:时尚模式左方显示测试"
-        cls.caseid_4 = '68461'
         cls.casename_4 = "all-2484:时尚模式右方显示测试"
         cls.ddedockobject = utils.getDdeDockObject()
         cls.defaultdisplaymode = utils.getDdeDockDisplayMode()
@@ -39,8 +36,6 @@ class DockFashionMode(unittest.TestCase):
 
     @classmethod
     def tearDownClass(cls):
-        utils.commitresult(cls.caseid_3, result, minutes)
-        utils.commitresult(cls.caseid_4, result, minutes)
 
         if utils.getDdeDockDisplayMode() != utils.dock.displaymode_fashion:
             utils.setDdeDockDisplayMode(utils.dock.displaymode_fashion)
@@ -223,4 +218,4 @@ class DockFashionMode(unittest.TestCase):
         return suite
 
 if __name__ == "__main__":
-    runTest(DockFashionMode.suite())
+    executeTestCase.runTest(DockFashionMode)

@@ -9,10 +9,10 @@ from lib import utils
 from lib import runner
 
 result = True
-caseid = '38929'
 casename = 'all-1437:用户管理命令--验证对userdel命令的支持'
 
 class Userdel(unittest.TestCase):
+    caseid = '38929'
     @classmethod
     def setUpClass(cls):
         if os.path.exists('/home/test'):
@@ -50,4 +50,4 @@ class Userdel(unittest.TestCase):
         return suite
 
 if __name__ == "__main__":
-    runTest(Userdel.suite())
+    executeTestCase.runTest(Userdel)

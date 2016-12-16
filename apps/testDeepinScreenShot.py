@@ -11,11 +11,11 @@ from fnmatch import fnmatch
 from glob import glob
 
 result = True
-caseid = '83352'
 casename = 'all-3353:启动与截图保存'
 homePath = os.path.expanduser('~')
 
 class DeepinScreenShot(unittest.TestCase):
+    caseid = '83352'
     @classmethod
     def setUpClass(cls):
         cls.appName = 'deepin-screenshot'
@@ -55,4 +55,4 @@ class DeepinScreenShot(unittest.TestCase):
         return suite
 
 if __name__ == "__main__":
-    runTest(DeepinScreenShot.suite())
+    executeTestCase.runTest(DeepinScreenShot)

@@ -10,10 +10,10 @@ from lib.launcher import *
 from lib.dde_dock import *
 
 result = True
-caseid = '33843'
 casename = 'all-519:从桌面上移除'
 
 class LauncherRemoveFromDesktop(unittest.TestCase):
+    caseid = '33843'
     @classmethod
     def setUpClass(cls):
         cls.menuObj = root.application(appName='deepin-menu', description='/usr/lib/deepin-menu')
@@ -37,4 +37,4 @@ class LauncherRemoveFromDesktop(unittest.TestCase):
 
 
 if __name__ == "__main__":
-    runTest(LauncherRemoveFromDesktop.suite())
+    executeTestCase.runTest(LauncherRemoveFromDesktop)

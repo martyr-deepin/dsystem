@@ -10,10 +10,10 @@ from dogtail.tree import root
 from dogtail import rawinput
 
 result = True
-caseid = '63333'
 casename = "all-2416:移除驻留"
 
 class DockMenuUnDock(unittest.TestCase):
+    caseid = '63333'
     @classmethod
     def setUpClass(cls):
         cls.filemanagericonname = "深度文件管理器"
@@ -150,4 +150,4 @@ class DockMenuUnDock(unittest.TestCase):
         return suite
 
 if __name__ == "__main__":
-    runTest(DockMenuUnDock.suite())
+    executeTestCase.runTest(DockMenuUnDock)

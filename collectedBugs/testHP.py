@@ -7,10 +7,10 @@ from lib import runner,utils
 from subprocess import getoutput
 
 result = True
-caseid = '80240'
 casename = "all-2967:hplipj集成测试"
 
 class HPIntergration(unittest.TestCase):
+    caseid = '80240'
     @classmethod
     def setUpClass(cls):
         cls.installed = 'ii'
@@ -66,4 +66,4 @@ class HPIntergration(unittest.TestCase):
         return suite
 
 if __name__ == "__main__":
-    runTest(HPIntergration.suite())
+    executeTestCase.runTest(HPIntergration)

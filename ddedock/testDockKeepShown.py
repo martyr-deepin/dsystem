@@ -7,10 +7,10 @@ from lib import utils
 from lib import runner
 
 result = True
-caseid = '33410'
 casename = "all-436:一直显示"
 
 class DockKeepShown(unittest.TestCase):
+    caseid = '33410'
     @classmethod
     def setUpClass(cls):
         cls.ddedockobject = utils.getDdeDockObject()
@@ -101,4 +101,4 @@ class DockKeepShown(unittest.TestCase):
         return suite
 
 if __name__ == "__main__":
-    runTest(DockKeepShown.suite())
+    executeTestCase.runTest(DockKeepShown)

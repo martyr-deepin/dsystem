@@ -9,10 +9,10 @@ from lib import utils
 from lib import runner
 
 result = True
-caseid = '38941'
 casename = 'all-1439:文件/文件夹操作命令--验证对pwd命令的支持'
 
 class Pwd(unittest.TestCase):
+    caseid = '38941'
     @classmethod
     def setUpClass(cls):
         pass
@@ -37,4 +37,4 @@ class Pwd(unittest.TestCase):
         return suite
 
 if __name__ == "__main__":
-    runTest(Pwd.suite())
+    executeTestCase.runTest(Pwd)

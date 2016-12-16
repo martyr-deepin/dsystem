@@ -11,10 +11,10 @@ from lib import runner
 import pexpect
 
 result = True
-caseid = '38933'
 casename = 'all-1438:用户管理命令--验证对passwd命令的支持'
 
 class Passwd(unittest.TestCase):
+    caseid = '38933'
     @classmethod
     def setUpClass(cls):
         if os.path.exists('/home/test'):
@@ -72,4 +72,4 @@ class Passwd(unittest.TestCase):
         return suite
 
 if __name__ == "__main__":
-    runTest(Passwd.suite())
+    executeTestCase.runTest(Passwd)

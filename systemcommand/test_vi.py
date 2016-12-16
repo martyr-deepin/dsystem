@@ -9,10 +9,10 @@ from lib import utils
 from lib import runner
 
 result = True
-caseid = '39072'
 casename = 'all-1459:文件编辑命令--验证对vi命令的支持'
 
 class Vi(unittest.TestCase):
+    caseid = '39072'
     @classmethod
     def setUpClass(cls):
         pass
@@ -37,4 +37,4 @@ class Vi(unittest.TestCase):
         return suite
 
 if __name__ == "__main__":
-    runTest(Vi.suite())
+    executeTestCase.runTest(Vi)

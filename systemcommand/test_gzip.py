@@ -10,10 +10,10 @@ from lib import runner
 from lib import utils
 
 result = True
-caseid = '39047'
 casename = 'all-1455:备份、压缩和解压缩操作命令--验证对gzip命令的支持'
 
 class Gzip(unittest.TestCase):
+    caseid = '39047'
     @classmethod
     def setUpClass(cls):
         cls.testfile    = "testfile"
@@ -53,4 +53,4 @@ class Gzip(unittest.TestCase):
         return suite
 
 if __name__ == "__main__":
-    runTest(Gzip.suite())
+    executeTestCase.runTest(Gzip)

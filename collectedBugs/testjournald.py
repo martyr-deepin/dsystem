@@ -7,10 +7,10 @@ from lib import runner,utils
 from subprocess import getoutput
 
 result = True
-caseid = '80272'
 casename = "all-2974:systemd-journalctl日志大小限制"
 
 class RestrictLog(unittest.TestCase):
+    caseid = '80272'
     @classmethod
     def setUpClass(cls):
         cls.log = 'SystemMaxUse=500M'
@@ -31,4 +31,4 @@ class RestrictLog(unittest.TestCase):
         return suite
 
 if __name__ == "__main__":
-    runTest(RestrictLog.suite())
+    executeTestCase.runTest(RestrictLog)

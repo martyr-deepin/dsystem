@@ -9,10 +9,10 @@ from lib.launcher import *
 from time import sleep
 
 result = True
-caseid = '45706'
 casename = "all-2140:拼音字符串搜索"
 
 class LauncherPinyinSearch(unittest.TestCase):
+    caseid = '45706'
     @classmethod
     def setUpClass(cls):
         cls.appName = '深度截图'
@@ -74,4 +74,4 @@ class LauncherPinyinSearch(unittest.TestCase):
 
 
 if __name__ == "__main__":
-    runTest(LauncherPinyinSearch.suite())
+    executeTestCase.runTest(LauncherPinyinSearch)

@@ -10,10 +10,10 @@ from lib import utils
 from lib import runner
 
 result = True
-caseid = '69085'
 casename = 'all-2613:apt-get命令'
 
 class Apt_get(unittest.TestCase):
+    caseid = '69085'
     @classmethod
     def setUpClass(cls):
         pass
@@ -37,4 +37,4 @@ class Apt_get(unittest.TestCase):
         return suite
 
 if __name__ == "__main__":
-    runTest(Apt_get.suite())
+    executeTestCase.runTest(Apt_get)

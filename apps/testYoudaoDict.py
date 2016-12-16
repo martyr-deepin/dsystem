@@ -9,10 +9,10 @@ from lib.launcher import *
 from lib.dde_dock import *
 
 result = True
-caseid = '83365'
 casename = 'all-3356:有道词典开启与关闭'
 
 class YoudaoDict(unittest.TestCase):
+    caseid = '83365'
     @classmethod
     def setUpClass(cls):
         cls.appName = 'youdao-dict'
@@ -51,4 +51,4 @@ class YoudaoDict(unittest.TestCase):
         return suite
 
 if __name__ == "__main__":
-    runTest(YoudaoDict.suite())
+    executeTestCase.runTest(YoudaoDict)

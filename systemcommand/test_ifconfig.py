@@ -8,10 +8,10 @@ from lib import runner
 from lib import utils
 
 result = True
-caseid = '39022'
 casename = 'all-1452:验证对ifconfig命令的支持'
 
 class Ifconfig(unittest.TestCase):
+    caseid = '39022'
     @classmethod
     def setUpClass(cls):
         pass
@@ -38,4 +38,4 @@ class Ifconfig(unittest.TestCase):
         return suite
 
 if __name__ == "__main__":
-    runTest(Ifconfig.suite())
+    executeTestCase.runTest(Ifconfig)

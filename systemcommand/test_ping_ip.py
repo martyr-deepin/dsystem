@@ -8,10 +8,10 @@ from lib import runner
 from lib import utils
 
 result = True
-caseid = '69008'
 casename = 'all-2582:使用ping命令对IP地址的ping操作'
 
 class Ping_ip(unittest.TestCase):
+    caseid = '69008'
     @classmethod
     def setUpClass(cls):
         pass
@@ -40,4 +40,4 @@ class Ping_ip(unittest.TestCase):
         return suite
 
 if __name__ == "__main__":
-    runTest(Ping_ip.suite())
+    executeTestCase.runTest(Ping_ip)

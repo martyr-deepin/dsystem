@@ -11,10 +11,10 @@ from lib import utils
 from lib import runner
 
 result = True
-caseid = '39099'
 casename = 'all-1465:其他命令--验证对whoami命令的支持'
 
 class Whoami(unittest.TestCase):
+    caseid = '39099'
     @classmethod
     def setUpClass(cls):
         cls.loginuser = getpass.getuser()
@@ -39,4 +39,4 @@ class Whoami(unittest.TestCase):
         return suite
 
 if __name__ == "__main__":
-    runTest(Whoami.suite())
+    executeTestCase.runTest(Whoami)

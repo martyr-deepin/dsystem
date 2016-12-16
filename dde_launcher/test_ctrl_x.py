@@ -9,11 +9,10 @@ from lib.launcher import *
 from time import sleep
 
 result = True
-#caseid = '45362'
-caseid = '33410'
 casename = "all-2108:搜索框快捷键测试-ctrl+x"
 
 class LauncherShotcuts_ctrl_x(unittest.TestCase):
+    caseid = '33410'
     @classmethod
     def setUpClass(cls):
         cls.text = '腾讯QQ'
@@ -44,4 +43,4 @@ class LauncherShotcuts_ctrl_x(unittest.TestCase):
 
 
 if __name__ == "__main__":
-    runTest(LauncherShotcuts_ctrl_x.suite())
+    executeTestCase.runTest(LauncherShotcuts_ctrl_x)

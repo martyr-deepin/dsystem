@@ -8,10 +8,10 @@ from lib.launcher import *
 from lib.window import findWindow
 
 result = True
-caseid = '80279'
 casename = "all-2977:有道词典测试"
 
 class Youdao(unittest.TestCase):
+    caseid = '80279'
     @classmethod
     def setUpClass(cls):
         cls.app = 'youdaocidian'
@@ -42,4 +42,4 @@ class Youdao(unittest.TestCase):
         return suite
 
 if __name__ == "__main__":
-    runTest(Youdao.suite())
+    executeTestCase.runTest(Youdao)

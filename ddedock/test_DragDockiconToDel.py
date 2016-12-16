@@ -8,12 +8,11 @@ from subprocess import getstatusoutput
 from lib import utils
 from lib import runner
 
-caseid = '33735'
 class DragDockiconToDel(unittest.TestCase):
+    caseid = '33735'
     result = True
     @classmethod
     def setUpClass(cls):
-        cls.caseid = '33735'
         cls.casename = "all-497:时尚模式拖动删除图标驻留"
         cls.icon_dfm = "深度文件管理器"
         cls.icon_dmusic = "深度音乐"

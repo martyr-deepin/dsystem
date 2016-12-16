@@ -9,9 +9,9 @@ from glob import glob
 result = True
 
 class FilesystemFat32(unittest.TestCase):
+
     @classmethod
     def setUpClass(cls):
-        cls.caseid = '42911'
         cls.casename = 'all-1996:读写fat32格式的文件'
         mkextx('vfat')
 
@@ -63,4 +63,4 @@ class FilesystemFat32(unittest.TestCase):
         return suite
 
 if __name__ == "__main__":
-    runTest(FilesystemFat32.suite())
+    executeTestCase.runTest(FilesystemFat32)

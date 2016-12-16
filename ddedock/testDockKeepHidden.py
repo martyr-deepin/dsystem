@@ -8,10 +8,10 @@ from lib import runner
 from dogtail import rawinput
 
 result = True
-caseid = '33414'
 casename = "all-437:一直隐藏"
 
 class DockKeepHidden(unittest.TestCase):
+    caseid = '33414'
     @classmethod
     def setUpClass(cls):
         cls.ddedockobject = utils.getDdeDockObject()
@@ -119,4 +119,4 @@ class DockKeepHidden(unittest.TestCase):
         return suite
 
 if __name__ == "__main__":
-    runTest(DockKeepHidden.suite())
+    executeTestCase.runTest(DockKeepHidden)

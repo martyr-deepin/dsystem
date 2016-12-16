@@ -7,10 +7,10 @@ from lib import utils
 from lib import runner
 
 result = True
-caseid = '33494'
 casename = 'all-451:文字提示'
 
 class EfficientIconsPopup(unittest.TestCase):
+    caseid = '33494'
     @classmethod
     def setUpClass(cls):
         cls.defaultefficienticonlist = ["Launcher",
@@ -136,5 +136,5 @@ class EfficientIconsPopup(unittest.TestCase):
         return suite
 
 if __name__ == "__main__":
-    runTest(EfficientIconsPopup.suite())
+    executeTestCase.runTest(EfficientIconsPopup)
 

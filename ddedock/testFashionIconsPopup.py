@@ -8,10 +8,10 @@ from lib import utils
 from lib import runner
 
 result = True
-caseid = '33494'
 casename = 'all-451:文字提示'
 
 class FashionIconsPopup(unittest.TestCase):
+    caseid = '33494'
     @classmethod
     def setUpClass(cls):
         cls.defaultfashioniconlist = ["Launcher",
@@ -160,4 +160,4 @@ class FashionIconsPopup(unittest.TestCase):
         return suite
 
 if __name__ == "__main__":
-    runTest(FashionIconsPopup.suite())
+    executeTestCase.runTest(FashionIconsPopup)

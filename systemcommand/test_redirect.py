@@ -10,10 +10,10 @@ from lib import runner
 from lib import utils
 
 result = True
-caseid = '39116'
 casename = 'all-1469:其他命令--验证对重定向的支持'
 
 class Redirect(unittest.TestCase):
+    caseid = '39116'
     @classmethod
     def setUpClass(cls):
         os.system('touch /tmp/testfile')
@@ -50,4 +50,4 @@ class Redirect(unittest.TestCase):
         return suite
 
 if __name__ == "__main__":
-    runTest(Redirect.suite())
+    executeTestCase.runTest(Redirect)

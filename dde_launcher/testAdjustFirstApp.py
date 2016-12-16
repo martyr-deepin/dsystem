@@ -8,10 +8,10 @@ from lib import runner,utils
 from lib.launcher import *
 
 result = True
-caseid = '45878'
 casename = 'all-2149:调整首个程序位置'
 
 class LauncherAdjustFirstApp(unittest.TestCase):
+    caseid = '45878'
     @classmethod
     def setUpClass(cls):
         launcher.freeMode()
@@ -69,4 +69,4 @@ class LauncherAdjustFirstApp(unittest.TestCase):
 
 
 if __name__ == "__main__":
-    runTest(LauncherAdjustFirstApp.suite())
+    executeTestCase.runTest(LauncherAdjustFirstApp)

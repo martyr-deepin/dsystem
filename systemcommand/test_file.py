@@ -10,10 +10,10 @@ from lib import utils
 from lib import runner
 
 result = True
-caseid = '38980'
 casename = 'all-1446:文件/文件夹操作命令--验证对file命令的支持'
 
 class File(unittest.TestCase):
+    caseid = '38980'
     @classmethod
     def setUpClass(cls):
         pass
@@ -47,4 +47,4 @@ class File(unittest.TestCase):
         return suite
 
 if __name__ == "__main__":
-    runTest(File.suite())
+    executeTestCase.runTest(File)

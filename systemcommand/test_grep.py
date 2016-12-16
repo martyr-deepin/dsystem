@@ -10,10 +10,10 @@ from lib import utils
 from lib import runner
 
 result = True
-caseid = '38987'
 casename = 'all-1448:文件/文件夹操作命令--验证对grep命令的支持'
 
 class Grep(unittest.TestCase):
+    caseid = '38987'
     @classmethod
     def setUpClass(cls):
         cls.homedir = os.path.expanduser('~')
@@ -75,4 +75,4 @@ class Grep(unittest.TestCase):
         return suite
 
 if __name__ == "__main__":
-    runTest(Grep.suite())
+    executeTestCase.runTest(Grep)

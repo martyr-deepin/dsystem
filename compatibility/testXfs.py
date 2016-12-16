@@ -9,9 +9,9 @@ from glob import glob
 result = True
 
 class FilesystemXfs(unittest.TestCase):
+
     @classmethod
     def setUpClass(cls):
-        cls.caseid = '71136'
         cls.casename = 'all-2694:读写xfs格式的文件'
         mkextx('xfs')
 
@@ -63,4 +63,4 @@ class FilesystemXfs(unittest.TestCase):
         return suite
 
 if __name__ == "__main__":
-    runTest(FilesystemXfs.suite())
+    executeTestCase.runTest(FilesystemXfs)

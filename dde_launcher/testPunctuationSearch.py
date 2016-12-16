@@ -9,10 +9,10 @@ from lib.launcher import *
 from time import sleep
 
 result = True
-caseid = '52345'
 casename = "all-2269:输入标点符号测试"
 
 class LauncherPunctuationSearch(unittest.TestCase):
+    caseid = '52345'
     @classmethod
     def setUpClass(cls):
         cls.text1 = '! '
@@ -60,4 +60,4 @@ class LauncherPunctuationSearch(unittest.TestCase):
 
 
 if __name__ == "__main__":
-    runTest(LauncherPunctuationSearch.suite())
+    executeTestCase.runTest(LauncherPunctuationSearch)

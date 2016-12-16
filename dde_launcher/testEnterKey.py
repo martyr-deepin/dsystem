@@ -8,10 +8,10 @@ from lib import runner,utils
 from lib.launcher import *
 
 result = True
-caseid = '33906'
 casename = "all-533:launcher打开时对enter键的响应"
 
 class LauncherEnterKey(unittest.TestCase):
+    caseid = '33906'
     @classmethod
     def setUpClass(cls):
         cls.appName = 'Google Chrome'
@@ -40,4 +40,4 @@ class LauncherEnterKey(unittest.TestCase):
 
 
 if __name__ == "__main__":
-    runTest(LauncherEnterKey.suite())
+    executeTestCase.runTest(LauncherEnterKey)

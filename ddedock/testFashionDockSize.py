@@ -7,10 +7,10 @@ from lib import utils
 from lib import runner
 
 result = True
-caseid = '68486'
 casename = "all-2492:图标大小设置菜单"
 
 class FashionDockSize(unittest.TestCase):
+    caseid = '68486'
     @classmethod
     def setUpClass(cls):
         cls.ddedockobject = utils.getDdeDockObject()
@@ -122,4 +122,4 @@ class FashionDockSize(unittest.TestCase):
         return suite
 
 if __name__ == "__main__":
-    runTest(FashionDockSize.suite())
+    executeTestCase.runTest(FashionDockSize)

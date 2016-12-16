@@ -7,10 +7,10 @@ from lib import utils
 from lib import runner
 
 result = True
-caseid = '68511'
 casename = "all-2498:小图标在四个方向上显示"
 
 class DockSizeSmallOtherDirection(unittest.TestCase):
+    caseid = '68511'
     @classmethod
     def setUpClass(cls):
         cls.ddedockobject = utils.getDdeDockObject()
@@ -160,4 +160,4 @@ class DockSizeSmallOtherDirection(unittest.TestCase):
         return suite
 
 if __name__ == "__main__":
-    runTest(DockSizeSmallOtherDirection.suite())
+    executeTestCase.runTest(DockSizeSmallOtherDirection)

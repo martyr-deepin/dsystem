@@ -9,10 +9,10 @@ from lib.launcher import *
 
 
 result = True
-caseid = '83309'
 casename = 'all-3344:运行深度音乐'
 
 class DeepinMusic(unittest.TestCase):
+    caseid = '83309'
     @classmethod
     def setUpClass(cls):
         cls.appName = 'deepin-music-player'
@@ -48,4 +48,4 @@ class DeepinMusic(unittest.TestCase):
         return suite
 
 if __name__ == "__main__":
-    runTest(DeepinMusic.suite())
+    executeTestCase.runTest(DeepinMusic)

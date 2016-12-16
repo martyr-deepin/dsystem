@@ -9,10 +9,10 @@ from lib import runner
 from lib import utils
 
 result = True
-caseid = '39058'
 casename = 'all-1458:进程管理命令--验证对ps命令的支持'
 
 class  Ps(unittest.TestCase):
+    caseid = '39058'
     @classmethod
     def setUpClass(cls):
         pass
@@ -110,4 +110,4 @@ class  Ps(unittest.TestCase):
         return suite
 
 if __name__ == "__main__":
-    runTest(Ps.suite())
+    executeTestCase.runTest(Ps)

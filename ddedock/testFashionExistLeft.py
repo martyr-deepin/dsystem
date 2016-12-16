@@ -7,10 +7,10 @@ from lib import utils
 from lib import runner
 
 result = True
-caseid = '68458'
 casename = "all-2483:时尚模式左方显示测试"
 
 class FashionExistLeft(unittest.TestCase):
+    caseid = '68458'
     @classmethod
     def setUpClass(cls):
         cls.ddedockobject = utils.getDdeDockObject()
@@ -73,4 +73,4 @@ class FashionExistLeft(unittest.TestCase):
         return suite
 
 if __name__ == "__main__":
-    runTest(FashionExistLeft.suite())
+    executeTestCase.runTest(FashionExistLeft)

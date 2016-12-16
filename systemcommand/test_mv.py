@@ -10,10 +10,10 @@ from lib import utils
 from lib import runner
 
 result = True
-caseid = '38967'
 casename = 'all-1444:文件/文件夹操作命令--验证对mv命令的支持'
 
 class Mv(unittest.TestCase):
+    caseid = '38967'
     @classmethod
     def setUpClass(cls):
         cls.loginuser = getoutput("whoami")
@@ -51,4 +51,4 @@ class Mv(unittest.TestCase):
         return suite
 
 if __name__ == "__main__":
-    runTest(Mv.suite())
+    executeTestCase.runTest(Mv)

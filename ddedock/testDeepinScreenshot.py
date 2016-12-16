@@ -12,10 +12,10 @@ from dogtail import rawinput
 from subprocess import getstatusoutput as rt
 
 result = True
-caseid = '33434'
 casename = "all-440:深度截图"
 
 class DeepinScreenshot(unittest.TestCase):
+    caseid = '33434'
     @classmethod
     def setUpClass(cls):
         cls.screenshoticonname = "深度截图"
@@ -231,4 +231,4 @@ class DeepinScreenshot(unittest.TestCase):
         return suite
 
 if __name__ == "__main__":
-    runTest(DeepinScreenshot.suite())
+    executeTestCase.runTest(DeepinScreenshot)

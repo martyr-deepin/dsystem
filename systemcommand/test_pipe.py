@@ -10,10 +10,10 @@ from lib import runner
 from lib import utils
 
 result = True
-caseid = '39121'
 casename = 'all-1470:其他命令--验证对管道的支持'
 
 class Pipe(unittest.TestCase):
+    caseid = '39121'
     @classmethod
     def setUpClass(cls):
         pass
@@ -37,4 +37,4 @@ class Pipe(unittest.TestCase):
         return suite
 
 if __name__ == "__main__":
-    runTest(Pipe.suite())
+    executeTestCase.runTest(Pipe)

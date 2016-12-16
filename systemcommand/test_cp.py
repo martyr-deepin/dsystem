@@ -10,10 +10,10 @@ from lib import runner
 from lib import utils
 
 result = True
-caseid = '38961'
 casename = 'all-1443:文件/文件夹操作命令--验证对cp命令的支持'
 
 class Cp(unittest.TestCase):
+    caseid = '38961'
     @classmethod
     def setUpClass(cls):
         cls.tmptestdir = "/tmp/testdir"
@@ -60,4 +60,4 @@ class Cp(unittest.TestCase):
         return suite
 
 if __name__ == "__main__":
-    runTest(Cp.suite())
+    executeTestCase.runTest(Cp)

@@ -8,10 +8,10 @@ from lib import runner
 from dogtail.tree import root
 
 result = True
-caseid = '33454'
 casename = "all-444:驻留"
 
 class DockIconMenu(unittest.TestCase):
+    caseid = '33454'
     @classmethod
     def setUpClass(cls):
         cls.terminaliconname = "深度终端"
@@ -125,4 +125,4 @@ class DockIconMenu(unittest.TestCase):
         return suite
 
 if __name__ == "__main__":
-    runTest(DockIconMenu.suite())
+    executeTestCase.runTest(DockIconMenu)

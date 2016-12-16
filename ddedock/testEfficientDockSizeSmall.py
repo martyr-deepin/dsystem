@@ -7,10 +7,10 @@ from lib import utils
 from lib import runner
 
 result = True
-caseid = '68496'
 casename = "all-2495:高效模式小图标显示"
 
 class EfficientDockSizeSmall(unittest.TestCase):
+    caseid = '68496'
     @classmethod
     def setUpClass(cls):
         cls.ddedockobject = utils.getDdeDockObject()
@@ -122,4 +122,4 @@ class EfficientDockSizeSmall(unittest.TestCase):
         return suite
 
 if __name__ == "__main__":
-    runTest(EfficientDockSizeSmall.suite())
+    executeTestCase.runTest(EfficientDockSizeSmall)

@@ -9,9 +9,9 @@ from glob import glob
 result = True
 
 class FilesystemNtfs(unittest.TestCase):
+
     @classmethod
     def setUpClass(cls):
-        cls.caseid = '42903'
         cls.casename = 'all-1995:读写ntfs格式的文件'
         mkextx('ntfs')
 
@@ -63,4 +63,4 @@ class FilesystemNtfs(unittest.TestCase):
         return suite
 
 if __name__ == "__main__":
-    runTest(FilesystemNtfs.suite())
+    executeTestCase.runTest(FilesystemNtfs)

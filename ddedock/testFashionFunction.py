@@ -6,11 +6,11 @@ from lib import executeTestCase
 from lib import utils
 from lib import runner
 
-caseid = '68136'
 casename = "all-2471:时尚模式功能测试"
 result = True
 
 class FashionFunction(unittest.TestCase):
+    caseid = '68136'
     @classmethod
     def setUpClass(cls):
         cls.ddedockobject = utils.getDdeDockObject()
@@ -102,4 +102,4 @@ class FashionFunction(unittest.TestCase):
         return suite
 
 if __name__ == "__main__":
-    runTest(FashionFunction.suite())
+    executeTestCase.runTest(FashionFunction)

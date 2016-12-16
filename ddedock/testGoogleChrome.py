@@ -9,10 +9,10 @@ from dogtail.tree import root
 from dogtail import rawinput
 
 result = True
-caseid = '33440'
 casename = "all-441:google chrome"
 
 class GoogleChrome(unittest.TestCase):
+    caseid = '33440'
     @classmethod
     def setUpClass(cls):
         cls.chromeiconname = "Google Chrome"
@@ -152,4 +152,4 @@ class GoogleChrome(unittest.TestCase):
         return suite
 
 if __name__ == "__main__":
-    runTest(GoogleChrome.suite())
+    executeTestCase.runTest(GoogleChrome)

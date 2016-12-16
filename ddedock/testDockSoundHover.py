@@ -8,11 +8,10 @@ from lib import utils
 from lib import runner
 
 result = True
-caseid = '91228'
 class DockSoundHover(unittest.TestCase):
+    caseid = '91228'
     @classmethod
     def setUpClass(cls):
-        cls.caseid = '91228'
         cls.casename = 'all-3547:hover 声音插件'
         cls.icon_sound = "sound-"
         cls.popup_percent = "70%"
@@ -61,4 +60,4 @@ class DockSoundHover(unittest.TestCase):
         return suite
 
 if __name__ == "__main__":
-    runTest(DockSoundHover.suite())
+    executeTestCase.runTest(DockSoundHover)

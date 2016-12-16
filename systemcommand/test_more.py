@@ -10,10 +10,10 @@ from lib import runner
 from lib import utils
 
 result = True
-caseid = '39112'
 casename = 'all-1468:其他命令--验证对more命令的支持'
 
 class More(unittest.TestCase):
+    caseid = '39112'
     @classmethod
     def setUpClass(cls):
         os.system('touch /tmp/testfile')
@@ -54,4 +54,4 @@ class More(unittest.TestCase):
         return suite
 
 if __name__ == "__main__":
-    runTest(More.suite())
+    executeTestCase.runTest(More)

@@ -8,10 +8,10 @@ from lib import runner,utils
 from lib.launcher import *
 
 result = True
-caseid = '33832'
 casename = "all-516:启动"
 
 class LauncherStartupApp(unittest.TestCase):
+    caseid = '33832'
     @classmethod
     def setUpClass(cls):
         cls.menuObj = root.application(appName='deepin-menu', description='/usr/lib/deepin-menu')
@@ -73,4 +73,4 @@ class LauncherStartupApp(unittest.TestCase):
 
 
 if __name__ == "__main__":
-    runTest(LauncherStartupApp.suite())
+    executeTestCase.runTest(LauncherStartupApp)

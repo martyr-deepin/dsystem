@@ -9,10 +9,10 @@ from lib.launcher import launcher
 from dogtail import rawinput
 
 result = True
-caseid = '33428'
 casename = "all-439:gedit"
 
 class Gedit(unittest.TestCase):
+    caseid = '33428'
     @classmethod
     def setUpClass(cls):
         cls.gediticonname = "文本编辑器"
@@ -131,4 +131,4 @@ class Gedit(unittest.TestCase):
         return suite
 
 if __name__ == "__main__":
-    runTest(Gedit.suite())
+    executeTestCase.runTest(Gedit)

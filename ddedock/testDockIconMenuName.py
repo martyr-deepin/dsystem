@@ -9,10 +9,10 @@ from dogtail.tree import root
 from dogtail import rawinput
 
 result = True
-caseid = '33447'
 casename = "all-442:第一项菜单"
 
 class DockIconMenuName(unittest.TestCase):
+    caseid = '33447'
     @classmethod
     def setUpClass(cls):
         cls.filemanagericonname = "深度文件管理器"
@@ -131,4 +131,4 @@ class DockIconMenuName(unittest.TestCase):
         return suite
 
 if __name__ == "__main__":
-    runTest(DockIconMenuName.suite())
+    executeTestCase.runTest(DockIconMenuName)

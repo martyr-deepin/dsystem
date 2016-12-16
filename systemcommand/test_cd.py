@@ -10,10 +10,10 @@ from lib import utils
 from lib import runner
 
 result = True
-caseid = '38944'
 casename = 'all-1440:文件/文件夹操作命令--验证对cd命令的支持'
 
 class Cd(unittest.TestCase):
+    caseid = '38944'
     @classmethod
     def setUpClass(cls):
         pass
@@ -62,4 +62,4 @@ class Cd(unittest.TestCase):
         return suite
 
 if __name__ == "__main__":
-    runTest(Cd.suite())
+    executeTestCase.runTest(Cd)

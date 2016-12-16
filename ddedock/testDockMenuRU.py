@@ -10,10 +10,10 @@ from dogtail.tree import root
 from dogtail import rawinput
 
 result = True
-caseid = '33485'
 casename = "all-450:右键菜单快捷键测试"
 
 class DockMenuRU(unittest.TestCase):
+    caseid = '33485'
     @classmethod
     def setUpClass(cls):
         cls.filemanagericonname = "深度文件管理器"
@@ -156,4 +156,4 @@ class DockMenuRU(unittest.TestCase):
         return suite
 
 if __name__ == "__main__":
-    runTest(DockMenuRU.suite())
+    executeTestCase.runTest(DockMenuRU)
