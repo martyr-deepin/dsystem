@@ -85,18 +85,18 @@ class DockSize(unittest.TestCase):
         dbus_iconsize = utils.getDdeDockIconSize()
         self.assertTrue(dbus_iconsize == utils.dock.iconsize_small)
 
-def suite():
-    suite = unittest.TestSuite()
-    suite.addTest(DockSize('testIconSize'))
-    suite.addTest(DockSize('testChangeIconSizeToLarge'))
-    suite.addTest(DockSize('testIconSize'))
-    suite.addTest(DockSize('testChangeIconSizeToMedium'))
-    suite.addTest(DockSize('testIconSize'))
-    suite.addTest(DockSize('testChangeIconSizeToSmall'))
-    suite.addTest(DockSize('testIconSize'))
-    suite.addTest(DockSize('testChangeIconSizeToMedium'))
-    suite.addTest(DockSize('testIconSize'))
-    return suite
+    def suite():
+        suite = unittest.TestSuite()
+        suite.addTest(DockSize('testIconSize'))
+        suite.addTest(DockSize('testChangeIconSizeToLarge'))
+        suite.addTest(DockSize('testIconSize'))
+        suite.addTest(DockSize('testChangeIconSizeToMedium'))
+        suite.addTest(DockSize('testIconSize'))
+        suite.addTest(DockSize('testChangeIconSizeToSmall'))
+        suite.addTest(DockSize('testIconSize'))
+        suite.addTest(DockSize('testChangeIconSizeToMedium'))
+        suite.addTest(DockSize('testIconSize'))
+        return suite
 
 if __name__ == "__main__":
-    executeTestCase.runTest)
+    executeTestCase.runTest(DockSize)
