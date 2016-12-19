@@ -41,7 +41,8 @@ def getClass(f):
 def getAllClass():
     allmodules = [d+"."+f[:-3] for d in casedirs for f in os.listdir(d) if  f.startswith("test")]
     classes = [getClass(import_module(f)) for f in allmodules]
-    return [c  for x in classes for c in x  if  c.caseid in getIdFile()]
+    idlist = getIdFile()
+    return [c  for x in classes for c in x  if  c.caseid in idlist]
 
 if __name__ == "__main__":
     for c in getAllClass():
