@@ -7,7 +7,6 @@ from lib import executeTestCase
 from lib import utils
 from lib import runner
 
-result = True
 casename = 'all-451:文字提示'
 
 class FashionIconsPopup(unittest.TestCase):

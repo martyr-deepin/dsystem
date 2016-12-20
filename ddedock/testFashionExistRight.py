@@ -6,7 +6,6 @@ from lib import executeTestCase
 from lib import utils
 from lib import runner
 
-result = True
 casename = "all-2484:时尚模式右方显示测试"
 
 class FashionExistRight(unittest.TestCase):

@@ -6,7 +6,6 @@ from lib import executeTestCase
 from lib import utils
 from lib import runner
 
-result = True
 casename = "all-2472:高效模式功能测试"
 
 class EfficientFunction(unittest.TestCase):

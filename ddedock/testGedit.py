@@ -2,13 +2,13 @@
 # -*- coding: utf-8 -*-
 
 import unittest
+import time
 from lib import executeTestCase
 from lib import utils
 from lib import runner
 from lib.launcher import launcher
 from dogtail import rawinput
 
-result = True
 casename = "all-439:gedit"
 
 class Gedit(unittest.TestCase):

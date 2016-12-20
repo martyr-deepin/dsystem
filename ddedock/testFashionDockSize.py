@@ -6,7 +6,6 @@ from lib import executeTestCase
 from lib import utils
 from lib import runner
 
-result = True
 casename = "all-2492:图标大小设置菜单"
 
 class FashionDockSize(unittest.TestCase):

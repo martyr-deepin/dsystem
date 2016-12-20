@@ -9,7 +9,6 @@ from lib.launcher import launcher
 from dogtail.tree import root
 from dogtail import rawinput
 
-result = True
 casename = "all-450:右键菜单快捷键测试"
 
 class DockMenuRU(unittest.TestCase):

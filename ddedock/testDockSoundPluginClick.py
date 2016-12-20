@@ -7,7 +7,6 @@ from lib import executeTestCase
 from lib import utils
 from lib import runner
 
-result = True
 casename = 'all-3546:声音插件对单击的响应'
 
 class DockSoundPluginClick(unittest.TestCase):

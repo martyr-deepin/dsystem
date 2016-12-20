@@ -9,7 +9,6 @@ from lib.launcher import launcher
 from dogtail.tree import root
 from dogtail import rawinput
 
-result = True
 casename = "all-2416:移除驻留"
 
 class DockMenuUnDock(unittest.TestCase):

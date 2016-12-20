@@ -2,13 +2,13 @@
 # -*- coding: utf-8 -*-
 
 import unittest
+import time
 from lib import executeTestCase
 from lib import utils
 from lib import runner
 from dogtail import rawinput
 from dogtail.tree import *
 
-result = True
 casename = "all-2474:时尚模式上方显示测试"
 
 class DockFashionMode(unittest.TestCase):

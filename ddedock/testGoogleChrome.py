@@ -2,13 +2,13 @@
 # -*- coding: utf-8 -*-
 
 import unittest
+import time
 from lib import executeTestCase
 from lib import utils
 from lib import runner
 from dogtail.tree import root
 from dogtail import rawinput
 
-result = True
 casename = "all-441:google chrome"
 
 class GoogleChrome(unittest.TestCase):

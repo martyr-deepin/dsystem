@@ -6,7 +6,6 @@ from lib import executeTestCase
 from lib import utils
 from lib import runner
 
-result = True
 casename = "all-2498:小图标在四个方向上显示"
 
 class DockSizeSmallOtherDirection(unittest.TestCase):

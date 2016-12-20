@@ -2,12 +2,12 @@
 # -*- coding: utf-8 -*-
 
 import unittest
+import time
 from lib import executeTestCase
 from lib import utils
 from lib import runner
 from dogtail import rawinput
 
-result = True
 casename = "all-437:一直隐藏"
 
 class DockKeepHidden(unittest.TestCase):

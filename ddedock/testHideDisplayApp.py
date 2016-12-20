@@ -8,7 +8,6 @@ from lib import runner
 from dogtail.tree import root
 from dogtail import rawinput
 
-result = True
 casename = "all-449:程序显示隐藏测试"
 
 class HideDisplayApp(unittest.TestCase):

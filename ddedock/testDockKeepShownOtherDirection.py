@@ -2,12 +2,12 @@
 # -*- coding: utf-8 -*-
 
 import unittest
+import time
 from lib import executeTestCase
 from lib import utils
 from lib import runner
 from dogtail import rawinput
 
-result = True
 casename = "all-2499:四个位置的一直显示测试"
 
 class DockKeepShownOtherDirection(unittest.TestCase):

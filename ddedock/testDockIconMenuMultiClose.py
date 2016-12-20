@@ -8,7 +8,6 @@ from lib import runner
 from dogtail.tree import root
 from dogtail import rawinput
 
-result = True
 casename = "all-443:关闭所有"
 
 class DockIconMenuMultiClose(unittest.TestCase):

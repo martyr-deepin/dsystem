@@ -6,7 +6,6 @@ from lib import executeTestCase
 from lib import utils
 from lib import runner
 
-result = True
 class DockSize(unittest.TestCase):
     caseid = '68486'
     @classmethod

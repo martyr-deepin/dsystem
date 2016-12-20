@@ -7,7 +7,6 @@ from lib import executeTestCase
 from lib import utils
 from lib import runner
 
-result = True
 class DockSoundHover(unittest.TestCase):
     caseid = '91228'
     @classmethod

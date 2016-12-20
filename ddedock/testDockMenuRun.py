@@ -2,6 +2,7 @@
 # -*- coding: utf-8 -*-
 
 import unittest
+import time
 from lib import executeTestCase
 from lib import utils
 from lib import runner
@@ -9,7 +10,6 @@ from lib.launcher import launcher
 from dogtail.tree import root
 from dogtail import rawinput
 
-result = True
 casename = "all-2415:运行"
 
 class DockMenuRun(unittest.TestCase):

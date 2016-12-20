@@ -2,11 +2,11 @@
 # -*- coding: utf-8 -*-
 
 import unittest
+import time
 from lib import executeTestCase
 from lib import utils
 from lib import runner
 
-result = True
 casename = "all-436:一直显示"
 
 class DockKeepShown(unittest.TestCase):

@@ -2,6 +2,7 @@
 # -*- coding: utf-8 -*-
 
 import os
+import time
 import glob
 import unittest
 from lib import executeTestCase
@@ -11,7 +12,6 @@ from lib.launcher import launcher
 from dogtail import rawinput
 from subprocess import getstatusoutput as rt
 
-result = True
 casename = "all-440:深度截图"
 
 class DeepinScreenshot(unittest.TestCase):

@@ -6,7 +6,6 @@ from lib import executeTestCase
 from lib import utils
 from lib import runner
 
-result = True
 casename = "all-2494:高效模式中图标显示"
 
 class EfficientDockSizeMedium(unittest.TestCase):

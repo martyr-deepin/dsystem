@@ -7,7 +7,6 @@ from lib import utils
 from lib import runner
 from dogtail.tree import root
 
-result = True
 casename = "all-444:驻留"
 
 class DockIconMenu(unittest.TestCase):

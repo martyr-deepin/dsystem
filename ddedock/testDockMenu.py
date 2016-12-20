@@ -2,13 +2,13 @@
 # -*- coding: utf-8 -*-
 
 import unittest
+import time
 from lib import executeTestCase
 from lib import utils
 from lib import runner
 from dogtail import rawinput
 from dogtail.tree import *
 
-result = True
 casename = "all-2473:方向设置菜单"
 
 class DockMenu(unittest.TestCase):

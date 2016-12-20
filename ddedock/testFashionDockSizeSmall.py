@@ -6,7 +6,6 @@ from lib import executeTestCase
 from lib import utils
 from lib import runner
 
-result = True
 casename = "all-2491:时尚模式小图标显示"
 
 class FashionDockSizeSmall(unittest.TestCase):
