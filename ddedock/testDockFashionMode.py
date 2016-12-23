@@ -9,15 +9,13 @@ from lib import runner
 from dogtail import rawinput
 from dogtail.tree import *
 
-casename = "all-2474:时尚模式上方显示测试"
 
-class DockFashionMode(unittest.TestCase):
+
+class DockFashionModeTop(unittest.TestCase):
     caseid = '68165'
+    casename = "all-2474:时尚模式上方显示测试"
     @classmethod
     def setUpClass(cls):
-        cls.casename_2 = "all-2475:时尚模式下方显示测试"
-        cls.casename_3 = "all-2483:时尚模式左方显示测试"
-        cls.casename_4 = "all-2484:时尚模式右方显示测试"
         cls.ddedockobject = utils.getDdeDockObject()
         cls.defaultdisplaymode = utils.getDdeDockDisplayMode()
         cls.defaultposition = utils.getDdeDockPosition()
@@ -45,20 +43,6 @@ class DockFashionMode(unittest.TestCase):
 
         if utils.getDdeDockHideMode() != utils.dock.hidemode_keepshowing:
             utils.setDdeDockHideMode(utils.dock.hidemode_keepshowing)
-
-    def testClickScreenCenter(self):
-        rawinput.click(int(utils.resolution.width/2), int(utils.resolution.height/2))
-        time.sleep(1)
-
-    def testDockMenuExist(self):
-        try:
-            dockmenuapp = root.application('deepin-menu', '/usr/lib/deepin-menu')
-            dockmenu = dockmenuapp.child(self.dockmenuname)
-        except:
-            self.assertTrue(False, "Can not find the dock menu")
-
-    def testRightClickOnDock(self, x, y):
-        rawinput.click(x, y, 3)
 
     def testChangePositionTop(self):
         try:
@@ -90,6 +74,59 @@ class DockFashionMode(unittest.TestCase):
         self.assertTrue(width > 1)
         self.assertTrue(height > 1)
         self.assertTrue(0 == yp)
+
+    def testClickScreenCenter(self):
+        rawinput.click(int(utils.resolution.width/2), int(utils.resolution.height/2))
+        time.sleep(1)
+
+    def testDockMenuExist(self):
+        try:
+            dockmenuapp = root.application('deepin-menu', '/usr/lib/deepin-menu')
+            dockmenu = dockmenuapp.child(self.dockmenuname)
+        except:
+            self.assertTrue(False, "Can not find the dock menu")
+
+    def testRightClickOnDock(self, x, y):
+        rawinput.click(x, y, 3)
+
+    def suite():
+        suite = unittest.TestSuite()
+        suite.addTest(DockFashionModeTop('testChangePositionTop'))
+        return suite
+
+class DockFashionModeRight(unittest.TestCase):
+    caseid = '68461'
+    casename = "all-2484:时尚模式右方显示测试"
+    @classmethod
+    def setUpClass(cls):
+        cls.ddedockobject = utils.getDdeDockObject()
+        cls.defaultdisplaymode = utils.getDdeDockDisplayMode()
+        cls.defaultposition = utils.getDdeDockPosition()
+        cls.defaulthidemode = utils.getDdeDockHideMode()
+        cls.dockmenuname = "DesktopMenu"
+
+        if utils.dock.displaymode_fashion != cls.defaultdisplaymode:
+            utils.setDdeDockDisplayMode(utils.dock.displaymode_fashion)
+
+        if utils.dock.position_bottom != cls.defaultposition:
+            utils.setDdeDockPosition(utils.dock.position_bottom)
+
+        if utils.dock.hidemode_keepshowing != cls.defaulthidemode:
+            utils.setDdeDockHideMode(utils.dock.hidemode_keepshowing)
+
+
+    @classmethod
+    def tearDownClass(cls):
+
+        if utils.getDdeDockDisplayMode() != utils.dock.displaymode_fashion:
+            utils.setDdeDockDisplayMode(utils.dock.displaymode_fashion)
+
+        if utils.getDdeDockPosition() != utils.dock.position_bottom:
+            utils.setDdeDockPosition(utils.dock.position_bottom)
+
+        if utils.getDdeDockHideMode() != utils.dock.hidemode_keepshowing:
+            utils.setDdeDockHideMode(utils.dock.hidemode_keepshowing)
+
 
     def testChangePositionRight(self):
         try:
@@ -125,6 +162,53 @@ class DockFashionMode(unittest.TestCase):
         self.assertTrue(height > 1)
         self.assertTrue(width == utils.resolution.width - xp)
 
+    def testDockMenuExist(self):
+        try:
+            dockmenuapp = root.application('deepin-menu', '/usr/lib/deepin-menu')
+            dockmenu = dockmenuapp.child(self.dockmenuname)
+        except:
+            self.assertTrue(False, "Can not find the dock menu")
+
+    def testRightClickOnDock(self, x, y):
+        rawinput.click(x, y, 3)
+    def suite():
+        suite = unittest.TestSuite()
+        suite.addTest(DockFashionModeRight('testChangePositionRight'))
+        return suite
+
+class DockFashionModeLeft(unittest.TestCase):
+    caseid = '68458'
+    casename = "all-2483:时尚模式左方显示测试"
+    @classmethod
+    def setUpClass(cls):
+        cls.ddedockobject = utils.getDdeDockObject()
+        cls.defaultdisplaymode = utils.getDdeDockDisplayMode()
+        cls.defaultposition = utils.getDdeDockPosition()
+        cls.defaulthidemode = utils.getDdeDockHideMode()
+        cls.dockmenuname = "DesktopMenu"
+
+        if utils.dock.displaymode_fashion != cls.defaultdisplaymode:
+            utils.setDdeDockDisplayMode(utils.dock.displaymode_fashion)
+
+        if utils.dock.position_bottom != cls.defaultposition:
+            utils.setDdeDockPosition(utils.dock.position_bottom)
+
+        if utils.dock.hidemode_keepshowing != cls.defaulthidemode:
+            utils.setDdeDockHideMode(utils.dock.hidemode_keepshowing)
+
+
+    @classmethod
+    def tearDownClass(cls):
+
+        if utils.getDdeDockDisplayMode() != utils.dock.displaymode_fashion:
+            utils.setDdeDockDisplayMode(utils.dock.displaymode_fashion)
+
+        if utils.getDdeDockPosition() != utils.dock.position_bottom:
+            utils.setDdeDockPosition(utils.dock.position_bottom)
+
+        if utils.getDdeDockHideMode() != utils.dock.hidemode_keepshowing:
+            utils.setDdeDockHideMode(utils.dock.hidemode_keepshowing)
+
     def testChangePositionLeft(self):
         try:
             dock = self.ddedockobject.child(utils.dock.mainwindowname)
@@ -158,6 +242,54 @@ class DockFashionMode(unittest.TestCase):
         self.assertTrue(height > 1)
         self.assertTrue(0 == xp)
 
+    def testDockMenuExist(self):
+        try:
+            dockmenuapp = root.application('deepin-menu', '/usr/lib/deepin-menu')
+            dockmenu = dockmenuapp.child(self.dockmenuname)
+        except:
+            self.assertTrue(False, "Can not find the dock menu")
+
+    def testRightClickOnDock(self, x, y):
+        rawinput.click(x, y, 3)
+
+    def suite():
+        suite = unittest.TestSuite()
+        suite.addTest(DockFashionModeLeft('testChangePositionLeft'))
+        return suite
+
+class DockFashionModeBottom(unittest.TestCase):
+    caseid = '68168'
+    casename = "all-2475:时尚模式下方显示测试"
+    @classmethod
+    def setUpClass(cls):
+        cls.ddedockobject = utils.getDdeDockObject()
+        cls.defaultdisplaymode = utils.getDdeDockDisplayMode()
+        cls.defaultposition = utils.getDdeDockPosition()
+        cls.defaulthidemode = utils.getDdeDockHideMode()
+        cls.dockmenuname = "DesktopMenu"
+
+        if utils.dock.displaymode_fashion != cls.defaultdisplaymode:
+            utils.setDdeDockDisplayMode(utils.dock.displaymode_fashion)
+
+        if utils.dock.position_bottom != cls.defaultposition:
+            utils.setDdeDockPosition(utils.dock.position_bottom)
+
+        if utils.dock.hidemode_keepshowing != cls.defaulthidemode:
+            utils.setDdeDockHideMode(utils.dock.hidemode_keepshowing)
+
+
+    @classmethod
+    def tearDownClass(cls):
+
+        if utils.getDdeDockDisplayMode() != utils.dock.displaymode_fashion:
+            utils.setDdeDockDisplayMode(utils.dock.displaymode_fashion)
+
+        if utils.getDdeDockPosition() != utils.dock.position_bottom:
+            utils.setDdeDockPosition(utils.dock.position_bottom)
+
+        if utils.getDdeDockHideMode() != utils.dock.hidemode_keepshowing:
+            utils.setDdeDockHideMode(utils.dock.hidemode_keepshowing)
+
     def testChangePositionBottom(self):
         try:
             dock = self.ddedockobject.child(utils.dock.mainwindowname)
@@ -190,6 +322,16 @@ class DockFashionMode(unittest.TestCase):
         self.assertTrue(height > 1)
         self.assertTrue(yp == utils.resolution.height - height)
 
+    def testDockMenuExist(self):
+        try:
+            dockmenuapp = root.application('deepin-menu', '/usr/lib/deepin-menu')
+            dockmenu = dockmenuapp.child(self.dockmenuname)
+        except:
+            self.assertTrue(False, "Can not find the dock menu")
+
+    def testRightClickOnDock(self, x, y):
+        rawinput.click(x, y, 3)
+
     def testChangePosition(self):
         if utils.getDdeDockPosition() == utils.dock.position_bottom:
             self.testChangePositionTop()
@@ -208,14 +350,11 @@ class DockFashionMode(unittest.TestCase):
 
     def suite():
         suite = unittest.TestSuite()
-
-        # fashtion
-        suite.addTest(DockFashionMode('testChangePositionTop'))
-        suite.addTest(DockFashionMode('testChangePositionRight'))
-        suite.addTest(DockFashionMode('testChangePositionLeft'))
-        suite.addTest(DockFashionMode('testChangePositionBottom'))
-
+        suite.addTest(DockFashionModeBottom('testChangePositionBottom'))
         return suite
 
 if __name__ == "__main__":
-    executeTestCase.runTest(DockFashionMode)
+    executeTestCase.runTest(DockFashionModeTop)
+    executeTestCase.runTest(DockFashionModeRight)
+    executeTestCase.runTest(DockFashionModeLeft)
+    executeTestCase.runTest(DockFashionModeBottom)

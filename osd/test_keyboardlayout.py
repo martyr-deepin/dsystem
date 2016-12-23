@@ -24,7 +24,7 @@ class  KbLayout(unittest.TestCase):
     	pass
 
     def tearDown(self):
-    	pass
+        utils.delKeyboard(newlayout)
 
     def test_addlayout(self):
         global newlayout
