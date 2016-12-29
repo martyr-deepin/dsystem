@@ -1,23 +1,22 @@
-#!/usr/bin/env python3
+# !/usr/bin/env python3
 # -*- coding: utf-8 -*-
-
 
 import unittest
 import json
 import subprocess
+import os
 from dogtail.tree import *
+from pykeyboard import PyKeyboard
 import time
-from pymouse import PyMouse
 from lib import executeTestCase,runner,utils,window
 from lib.launcher import *
-from lib.dde_dock import *
-
 
 casename = 'start all launcher apps once time'
 
 class StartAllAPP(unittest.TestCase):
     caseid = 'nocaseid'
-    def ParsingJsonCn():
+
+    def ParsingJsonCn(self):
         with open('../data/defaultapp_cn_window.json', 'r') as f:
             data = json.load(f)
         return data
@@ -31,36 +30,41 @@ class StartAllAPP(unittest.TestCase):
     def tearDownClass(cls):
         pass
 
-    def setUp(self):
-        pass
 
-    def run_terminate_deepinscreenshot(self,pname):
-        (status,output) = subprocess.getstatusoutput('ps -ef|grep %s|grep -v grep' % pname)
-        self.assertEqual(0, status)
-        time.sleep(1)
-        return_code = subprocess.check_call('killall %s' % pname, shell=True)
-        self.assertEqual(0, return_code)
+    def terminate_deepinscreenshot(self,pname):
+        p = PyKeyboard()
+        p.press_key('Return')
+        p.release_key('Return')
+        time_now = time.strftime('%Y%m%d%H%M%S', time.localtime())
+        print(time_now)
+        print(type(time_now))
+        picture_save_path = os.path.expandvars('$HOME') + '/Desktop/' + '深度截图' + time_now + '.png'
+        print(picture_save_path)
+        print(type(picture_save_path))
+        time.sleep(2)
+        save_bool = os.path.exists(picture_save_path)
+        self.assertTrue(save_bool)
 
     def testRunAPP(self):
-        appdict = StartAllAPP.ParsingJsonCn()
+        appdict = self.ParsingJsonCn()
         for (k,v) in appdict.items():
             print(k,v)
             if v == 'null':
                 continue
-            elif k ==  '深度截图':
-                StartAllAPP.run_terminate_deepinscreenshot(v)
+            launcher.searchApp(k)
+            time.sleep(1)
+            launcher.launcherObj.child(k).click()
+            time.sleep(5)
+            if k ==  '深度截图':
+                self.terminate_deepinscreenshot(k)
             else:
-                m = PyMouse()
-                launcher.searchApp(k)
-                time.sleep(1)
-                (x, y) = launcher.getAppCenterCoor(k)
-                print(x,y)
-                m.click(int(x), int(y))
-                time.sleep(3)
                 window_obj = window.findWindow(v)
                 print(window_obj)
-                self.assertIsNotNone(window_obj)
-                window.closeWindow(window_obj)
+                if k == '雷鸟邮件':
+                    thunderbird_obj = window.findWindow('欢迎使用 Thunderbird')
+                    window.closeWindow(thunderbird_obj)
+                closeresult = window.closeWindow(window_obj)
+                self.assertEqual(None, closeresult)
 
     def suite():
         suite = unittest.TestSuite()
