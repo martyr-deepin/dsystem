@@ -51,7 +51,7 @@ class StartAllAPP(unittest.TestCase):
                 continue
             launcher.searchApp(k)
             time.sleep(1)
-            launcher.launcherObj.child(k).click()   
+            launcher.launcherObj.child(k).click()
             time.sleep(10)
             if k ==  '深度截图':
                 self.terminate_deepinscreenshot()
