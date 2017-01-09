@@ -86,6 +86,12 @@ def getDockIconCenterPoint(dockobj):
     (width, height) = dockobj.size
     return (x + int(width/2), y + int(height/2))
 
+def getWidgetCenterPoint(dockobj):
+    (x, y) = dockobj.position
+    (width, height) = dockobj.size
+    return (x + int(width/2), y + int(height/2))
+
+
 def getDdeDockObject(name = appname, description = appdescription):
     return root.application(name, description)
 

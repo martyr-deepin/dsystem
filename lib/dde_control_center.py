@@ -2,8 +2,9 @@
 #  -*- coding: utf-8 -*-
 
 from dogtail.tree import *
+from lib import utils
+import time
 import dbus
-
 
 class Dde_control_center:
     def __init__(self):
@@ -12,6 +13,43 @@ class Dde_control_center:
         self.obj_path = '/com/deepin/dde/ControlCenter'
         self.interface = 'com.deepin.dde.ControlCenter'
 
+    def moveAllSettingsDown(self):
+        allsettings_string = 'All Settings'
+        allsettings = self.dccObj.child(allsettings_string)
+        if None == allsettings:
+            return False
+
+        x, y = utils.getWidgetCenterPoint(allsettings)
+        utils.m.move(x, y + 50)
+        time.sleep(2)
+        return True
+
+
+    def openGUI(self):
+        utils.m.move(utils.resolution.width - 1, utils.resolution.height - 1)
+        time.sleep(3)
+
+    def openModule(self, modulename = None):
+        if None == modulename:
+            return False
+
+        module = self.dccObj.child(modulename)
+        if None == module:
+            return False
+
+        if False == self.moveAllSettingsDown():
+            return False
+
+        while True:
+            module = self.dccObj.child(modulename)
+
+            if module.position[1] > 70 \
+                    and module.position[1] < utils.resolution.height/2:
+                return True
+            elif module.position[1] <= 70:
+                utils.m.scroll(vertical=1)
+            elif module.position[1] >= utils.resolution.height/2:
+                utils.m.scroll(vertical=-1)
 
 class Appearance:
     def __init__(self):
