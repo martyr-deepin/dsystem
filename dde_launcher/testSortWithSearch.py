@@ -3,6 +3,7 @@
 
 import unittest
 from lib import executeTestCase
+from lib import translation
 import time
 from lib import runner,utils
 from lib.launcher import *
@@ -15,7 +16,8 @@ class LauncherSortWithSearch(unittest.TestCase):
     caseid = '52146'
     @classmethod
     def setUpClass(cls):
-        cls.text = '深度音乐'
+        # cls.text = '深度音乐'
+        cls.text = translation.charTrans.getCharTrans('deepin-music')
         cls.defaultMode = launcher.getLauncherMode()
 
     @classmethod

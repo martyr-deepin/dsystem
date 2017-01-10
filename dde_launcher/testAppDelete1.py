@@ -3,6 +3,7 @@
 
 import unittest
 from lib import executeTestCase
+from lib import translation
 import time
 from lib import runner,utils
 from lib.launcher import *
@@ -17,8 +18,8 @@ class AppDelete1(unittest.TestCase):
     def setUpClass(cls):
         cls.app = 'deepin-feedback'
         cls.desktopfile = 'deepin-feedback.desktop'
-        cls.launchername = '深度用户反馈'
-
+        # cls.launchername = '深度用户反馈'
+        cls.launchername = translation.charTrans.getCharTrans('deepin-feedback')
 
     @classmethod
     def tearDownClass(cls):

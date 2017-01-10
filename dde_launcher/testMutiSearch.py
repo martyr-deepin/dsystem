@@ -3,6 +3,7 @@
 
 import unittest
 from lib import executeTestCase
+from lib import translation
 import time
 from lib import runner,utils
 from lib.launcher import *
@@ -15,15 +16,16 @@ class LauncherMutiSearch(unittest.TestCase):
     caseid = '45676'
     @classmethod
     def setUpClass(cls):
-        cls.text = 'wps表格'
-        cls.appName = 'WPS 表格'
+        # cls.text = 'wps表格'
+        # cls.appName = 'WPS 表格'
+        cls.appName = translation.charTrans.getCharTrans('wps')
 
     @classmethod
     def tearDownClass(cls):
         pass
 
     def testMutiSearch(self):
-        launcher.searchApp(self.text)
+        launcher.searchApp(self.appName)
         sleep(2)
         apps = launcher.getLauncherAllApps()
         apps = ''.join(apps)
