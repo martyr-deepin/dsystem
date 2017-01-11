@@ -3,8 +3,6 @@
 
 import unittest
 from lib import executeTestCase
-import time
-from lib import runner,utils
 from dogtail import rawinput
 from lib.launcher import *
 from lib.dde_dock import *

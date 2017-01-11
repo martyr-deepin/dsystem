@@ -4,8 +4,6 @@
 import unittest
 from lib import executeTestCase
 from lib import translation
-import time
-from lib import runner,utils
 from lib.launcher import *
 from time import sleep
 

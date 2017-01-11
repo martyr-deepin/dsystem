@@ -3,8 +3,6 @@
 
 import unittest
 from lib import executeTestCase
-import time
-from lib import runner,utils
 from lib.launcher import *
 from time import sleep
 

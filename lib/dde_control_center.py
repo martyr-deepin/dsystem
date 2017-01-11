@@ -13,6 +13,22 @@ class Dde_control_center:
         self.obj_path = '/com/deepin/dde/ControlCenter'
         self.interface = 'com.deepin.dde.ControlCenter'
 
+    def getDccIfc(self):
+        dcc_obj = dbus.SessionBus().get_object(Dde_control_center().dbus_name, Dde_control_center().obj_path)
+        return dbus.Interface(dcc_obj, dbus_interface=Dde_control_center().interface)
+
+    def showDcc(self):
+        dcc_ifc = self.getDccIfc()
+        dcc_ifc.Show()
+
+    def showModule(self, name):
+        dcc_ifc = self.getDccIfc()
+        dcc_ifc.ShowModule(name)
+
+    def hideDcc(self):
+        dcc_ifc = self.getDccIfc()
+        dcc_ifc.Hide()
+
     def moveAllSettingsDown(self):
         allsettings_string = 'All Settings'
         allsettings = self.dccObj.child(allsettings_string)
@@ -242,17 +258,37 @@ def getAppearanceProperty():
     appearance_obj = dbus.SessionBus().get_object(appearance.dbus_name,appearance.obj_path)
     return dbus.Interface(appearance_obj,dbus_interface=dbus.PROPERTIES_IFACE)
 
+def getAppearanceWindowTheme():
+    appearance_property = getAppearanceProperty()
+    return appearance_property.Get(appearance.interface,appearance.GtkTheme)
+
+def setAppearanceWindowTheme(windowtheme):
+    appearance_property = getAppearanceProperty()
+    return appearance_property.Set(appearance.interface, appearance.FontSize, windowtheme)
+
 def getAppearanceFontSize():
     appearance_property = getAppearanceProperty()
     return appearance_property.Get(appearance.interface,appearance.FontSize)
+
+def setAppearanceFontSize(fontsize):
+    appearance_property = getAppearanceProperty()
+    return appearance_property.Set(appearance.interface, appearance.FontSize, fontsize)
 
 def getAppearanceIconTheme():
     appearance_property = getAppearanceProperty()
     return appearance_property.Get(appearance.interface,appearance.IconTheme)
 
+def setAppearanceIconTheme(iconTheme):
+    appearance_property = getAppearanceProperty()
+    return appearance_property.Set(appearance.interface,appearance.IconTheme, iconTheme)
+
 def getAppearanceCursorTheme():
     appearance_property = getAppearanceProperty()
     return appearance_property.Get(appearance.interface,appearance.CursorTheme)
+
+def setAppearanceCursorTheme(cursorTheme):
+    appearance_property = getAppearanceProperty()
+    return appearance_property.Set(appearance.interface,appearance.CursorTheme, cursorTheme)
 
 def getNetworkVpnEnabled():
     network_session = dbus.SessionBus().get_object(network.dbus_name, network.obj_path)
