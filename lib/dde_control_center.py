@@ -15,7 +15,7 @@ class Dde_control_center:
 
     def getDccIfc(self):
         dcc_obj = dbus.SessionBus().get_object(Dde_control_center().dbus_name, Dde_control_center().obj_path)
-        return dbus.Interface(dcc_obj, dbus_interface=Dde_control_center().interface)
+        return dbus.Interface(dcc_obj, dbus_interface=self.interface)
 
     def showDcc(self):
         dcc_ifc = self.getDccIfc()
