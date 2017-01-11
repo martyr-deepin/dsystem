@@ -3,6 +3,7 @@
 
 import unittest
 from lib import executeTestCase
+from lib import translation
 import time
 from lib import runner,utils
 from lib.launcher import *
@@ -15,9 +16,13 @@ class LauncherStartupApp(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
         cls.menuObj = root.application(appName='deepin-menu', description='/usr/lib/deepin-menu')
-        cls.googleName = '新标签页 - Google Chrome'
-        cls.terminalName = 'deepin - 深度终端'
-        cls.geditName = '无标题文档 1 - gedit'
+        # cls.googleName = '新标签页 - Google Chrome'
+        # cls.terminalName = 'deepin - 深度终端'
+        # cls.geditName = '无标题文档 1 - gedit'
+        cls.terminal = translation.charTrans.getCharTrans('deepin-screenshot')
+        cls.googleName = translation.charTrans.getCharTrans('google-tiitle-name')
+        cls.terminalName = translation.charTrans.getCharTrans('terminal-tiitle-name')
+        cls.geditName = translation.charTrans.getCharTrans('gedit-tiitle-name')
         cls.oldWindows = getAllWindows()
         launcher.freeMode()
 
@@ -47,7 +52,7 @@ class LauncherStartupApp(unittest.TestCase):
     def testStartupByShortcuts(self):
         launcher.searchApp('deepin-terminal')
         sleep(2)
-        launcher.launcherObj.child('深度终端').click(3)
+        launcher.launcherObj.child(self.terminal).click(3)
         if self.menuObj.children[0].name == 'DesktopMenu':
             pyautogui.press('o')
         else:

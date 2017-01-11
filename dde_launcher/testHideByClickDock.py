@@ -3,6 +3,7 @@
 
 import unittest
 from lib import executeTestCase
+from lib import translation
 import time
 from lib import runner,utils
 from lib.launcher import *
@@ -17,8 +18,8 @@ class LauncherHideByClickDock(unittest.TestCase):
         cls.menuObj = root.application(appName='deepin-menu', description='/usr/lib/deepin-menu')
         cls.oldWindows = getAllWindows()
         #apps = Dock().getDockedApps()
-        cls.app = '深度商店'
-
+        # cls.app = '深度商店'
+        cls.app = translation.charTrans.getCharTrans('deepin-appstore')
     @classmethod
     def tearDownClass(cls):
         launcher.exitLauncher()

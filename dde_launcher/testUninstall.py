@@ -3,6 +3,7 @@
 
 import unittest
 from lib import executeTestCase
+from lib import translation
 import time
 from lib import runner,utils
 from lib.launcher import *
@@ -16,7 +17,8 @@ class LauncherUninstall(unittest.TestCase):
     def setUpClass(cls):
         cls.menuObj = root.application(appName='deepin-menu', description='/usr/lib/deepin-menu')
         apps = launcher.getLauncherAllApps()
-        cls.launchername = '深度音乐'
+        # cls.launchername = '深度音乐'
+        cls.launchername = translation.charTrans.getCharTrans('deepin-music')
         cls.appName = 'deepin-music'
 
 

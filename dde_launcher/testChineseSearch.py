@@ -3,6 +3,7 @@
 
 import unittest
 from lib import executeTestCase
+from lib import translation
 import time
 from lib import runner,utils
 from lib.launcher import *
@@ -15,8 +16,8 @@ class LauncherChineseSearch(unittest.TestCase):
     caseid = '33795'
     @classmethod
     def setUpClass(cls):
-        cls.text1 = '深度音乐'
-
+        # cls.text1 = '深度音乐'
+        cls.text1 = translation.charTrans.getCharTrans('deepin-music')
 
     @classmethod
     def tearDownClass(cls):

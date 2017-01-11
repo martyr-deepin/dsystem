@@ -3,6 +3,7 @@
 
 import unittest
 from lib import executeTestCase
+from lib import translation
 import time
 from lib import runner,utils
 from lib.launcher import *
@@ -15,7 +16,8 @@ class LauncherEnterKey(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
         cls.appName = 'Google Chrome'
-        cls.googleTitleName = '新标签页 - Google Chrome'
+        # cls.googleTitleName = '新标签页 - Google Chrome'
+        cls.googleTittleName = translation.charTrans.getCharTrans('google-tittle-name')
         cls.oldWindows = getAllWindows()
 
     @classmethod

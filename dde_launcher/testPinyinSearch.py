@@ -3,6 +3,7 @@
 
 import unittest
 from lib import executeTestCase
+from lib import translation
 import time
 from lib import runner,utils
 from lib.launcher import *
@@ -15,7 +16,8 @@ class LauncherPinyinSearch(unittest.TestCase):
     caseid = '45706'
     @classmethod
     def setUpClass(cls):
-        cls.appName = '深度截图'
+        # cls.appName = '深度截图'
+        cls.appName = translation.charTrans.getCharTrans('deepin-screenshot')
         cls.text1 = 'shendujietu'
         cls.text2 = 'sdjt'
         cls.text3 = 'SDJt'

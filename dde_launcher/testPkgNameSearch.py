@@ -3,6 +3,7 @@
 
 import unittest
 from lib import executeTestCase
+from lib import translation
 import time
 from lib import runner,utils
 from lib.launcher import *
@@ -12,12 +13,12 @@ result = True
 casename = "all-509:中文字符串搜索"
 
 class LauncherPkgNameSearch(unittest.TestCase):
-    caseid = '33795'
+    caseid = '33809'
     @classmethod
     def setUpClass(cls):
         cls.text = 'deepin-appstore'
-        cls.appName = '深度商店'
-
+        # cls.appName = '深度商店'
+        cls.appName = translation.charTrans.getCharTrans('deepin-appstore')
 
     @classmethod
     def tearDownClass(cls):
