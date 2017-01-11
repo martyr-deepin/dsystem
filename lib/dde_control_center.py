@@ -40,6 +40,13 @@ class Dde_control_center:
         time.sleep(2)
         return True
 
+    def clickBack(self):
+        backBtn = self.dccObj.child('Back')
+        backBtn.click()
+
+    def clickScreenCenter(self):
+        utils.m.move(int(utils.resolution.width/2),
+                int(utils.resolution.height/2))
 
     def openGUI(self):
         utils.m.move(utils.resolution.width - 1, utils.resolution.height - 1)
@@ -49,6 +56,9 @@ class Dde_control_center:
     def openModule(self, modulename = None):
         if None == modulename:
             return False
+
+        quickSwitchAllSettings = self.dccObj.child('QuickSwitchAllSettings')
+        quickSwitchAllSettings.click()
 
         module = self.dccObj.child(modulename)
         if None == module:
