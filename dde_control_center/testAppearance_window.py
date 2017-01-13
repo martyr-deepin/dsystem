@@ -2,6 +2,7 @@
 # -*- coding: utf-8 -*-
 
 import unittest
+from time import sleep
 from lib import executeTestCase
 from lib import dde_control_center
 
@@ -21,6 +22,7 @@ class AppearanceWindowTheme(unittest.TestCase):
 
     def testWindowTheme(self):
         dde_control_center.Dde_control_center().showModule('Personalization')
+        sleep(1)
         dde_control_center.Dde_control_center().dccObj.child('Theme').click()
         windowTheme = dde_control_center.getAppearanceWindowTheme()
         self.assertEqual(windowTheme, 'deepin')

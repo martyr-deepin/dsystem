@@ -8,7 +8,7 @@ from unittest import TestCase
 from lib.executeTestCase import runTest
 from importlib import import_module
 
-casedirs=["ddedock","dde_launcher","apps","systemcommand","osd","collectedBugs"]
+casedirs=["ddedock","dde_launcher","dde_control_center","apps","systemcommand","osd","collectedBugs"]
 idfile = "id.txt"
 
 def getIdFile():

@@ -5,6 +5,8 @@ from dogtail.tree import *
 from lib import utils
 import time
 import dbus
+from lib import dde_dock
+import pyautogui
 
 class Dde_control_center:
     def __init__(self):
@@ -18,6 +20,7 @@ class Dde_control_center:
         return dbus.Interface(dcc_obj, dbus_interface=self.interface)
 
     def showDcc(self):
+        time.sleep(3)
         dcc_ifc = self.getDccIfc()
         dcc_ifc.Show()
 
@@ -26,6 +29,7 @@ class Dde_control_center:
         dcc_ifc.ShowModule(name)
 
     def hideDcc(self):
+        time.sleep(3)
         dcc_ifc = self.getDccIfc()
         dcc_ifc.Hide()
 
@@ -204,6 +208,7 @@ class Appearance:
         self.obj_path   = "/com/deepin/daemon/Appearance"
         self.interface  = "com.deepin.daemon.Appearance"
 
+        self.GtkTheme = 'GtkTheme'
         self.FontSize   = "FontSize"
         self.IconTheme  = "IconTheme"
         self.CursorTheme = "CursorTheme"
