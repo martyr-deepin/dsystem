@@ -16,6 +16,43 @@ class Dde_control_center:
         self.obj_path = '/com/deepin/dde/ControlCenter'
         self.interface = 'com.deepin.dde.ControlCenter'
 
+        # 控制中心首页
+        self.string_PreBtn = _('PreBtn')
+        self.string_NextBtn = _('PreBtn')
+        self.string_SoundSlider = _('SoundSlider')
+        self.string_LightSlider = _('LightSlider')
+        self.string_QuickSwitchAllSettings = _('QuickSwitchAllSettings')
+
+        # 控制中心 All Settings
+        self.string_Back = _('Back')
+        self.string_All_Setting = _('All Settings')
+        self.string_Accounts = _('Accounts')
+        self.string_Display = _('Display')
+        self.string_Default_Applications = _('Default Applications')
+        self.string_Personalization = _('Personalization')
+        self.string_Network = _('Network')
+        self.string_Sound = _('Network')
+        self.string_Time_and_Date = _('Time and Date')
+        self.string_Power_Management = _('Power Management')
+        self.string_Mouse_and_Touchpad = _('Mouse and Touchpad')
+        self.string_Keyboard_and_Language = _('Keyboard and Language')
+        self.string_Update = _('Update')
+        self.string_System_Information = _('System Information')
+
+        # 默认程序
+        self.string_Browser = _('Browser')
+        self.string_Mail = _('Mail')
+        self.string_Text = _('Text')
+        self.string_Music = _('Music')
+        self.string_Video = _('Video')
+        self.string_Picture = _('Picture')
+        self.string_Terminal = _('Terminal')
+        self.string_CD_Audio = _('CD Audio')
+        self.string_DVD_Video = _('DVD Video')
+        self.string_Music_Player = _('Music Player')
+        self.string_Camera = _('Camera')
+        self.string_Software = _('Software')
+
     def getDccIfc(self):
         dcc_obj = dbus.SessionBus().get_object(Dde_control_center().dbus_name, Dde_control_center().obj_path)
         return dbus.Interface(dcc_obj, dbus_interface=self.interface)
