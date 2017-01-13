@@ -300,6 +300,14 @@ class Keyboard:
         self.RepeatDelay = 'RepeatDelay'
         self.RepeatInterval = 'RepeatInterval'
 
+class TouchPad:
+    def __init__(self):
+        self.dbus_name = 'com.deepin.daemon.InputDevices'
+        self.obj_path = "/com/deepin/daemon/InputDevice/TouchPad"
+        self.interface = "com.deepin.daemon.InputDevice.TouchPad"
+
+        self.DisableIfTyping = 'DisableIfTyping'
+
 #dcc = Dde_control_center()
 appearance = Appearance()
 network = Network()
@@ -400,3 +408,10 @@ def getKeyboardRepeatInterval():
     keyboard_property = getKeyboardProperty()
     return keyboard_property.Get(keyboard.interface, keyboard.RepeatInterval)
 
+def getTouchPadProperty():
+    touchpad_obj = dbus.SessionBus().get_object(touchpad.dbus_name,touchpad.obj_path)
+    return dbus.Interface(touchpad_obj,dbus_interface=dbus.PROPERTIES_IFACE)
+
+def getTouchPadDisableIfTyping():
+    touchpad_property = getTouchPadProperty()
+    return touchpad_property.Get(touchpad.interface, touchpad.DisableIfTyping)
