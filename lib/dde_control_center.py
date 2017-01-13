@@ -7,6 +7,7 @@ import time
 import dbus
 from lib import dde_dock
 import pyautogui
+import gettext
 
 class Dde_control_center:
     def __init__(self):
@@ -34,7 +35,7 @@ class Dde_control_center:
         dcc_ifc.Hide()
 
     def moveAllSettingsDown(self):
-        allsettings_string = 'All Settings'
+        allsettings_string = _('All Settings')
         allsettings = self.dccObj.child(allsettings_string)
         if None == allsettings:
             return False
