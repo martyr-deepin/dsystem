@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-01-13 16:38+0800\n"
+"POT-Creation-Date: 2017-01-16 15:59+0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,118 +17,126 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: lib/dde_control_center.py:20 lib/dde_control_center.py:21
-msgid "PreBtn"
+#: dde_control_center.py:20
+msgid "PrevBtn"
 msgstr ""
 
-#: lib/dde_control_center.py:22
+#: dde_control_center.py:21
+msgid "NextBtn"
+msgstr ""
+
+#: dde_control_center.py:22
 msgid "SoundSlider"
 msgstr ""
 
-#: lib/dde_control_center.py:23
+#: dde_control_center.py:23
 msgid "LightSlider"
 msgstr ""
 
-#: lib/dde_control_center.py:24
+#: dde_control_center.py:24
 msgid "QuickSwitchAllSettings"
 msgstr ""
 
-#: lib/dde_control_center.py:27
+#: dde_control_center.py:27
 msgid "Back"
 msgstr ""
 
-#: lib/dde_control_center.py:28 lib/dde_control_center.py:75
+#: dde_control_center.py:28 dde_control_center.py:75
 msgid "All Settings"
 msgstr "所有设置"
 
-#: lib/dde_control_center.py:29
+#: dde_control_center.py:29
 msgid "Accounts"
-msgstr ""
+msgstr "账户"
 
-#: lib/dde_control_center.py:30
+#: dde_control_center.py:30
 msgid "Display"
-msgstr ""
+msgstr "显示"
 
-#: lib/dde_control_center.py:31
+#: dde_control_center.py:31
 msgid "Default Applications"
 msgstr "默认程序"
 
-#: lib/dde_control_center.py:32
+#: dde_control_center.py:32
 msgid "Personalization"
 msgstr "个性化"
 
-#: lib/dde_control_center.py:33 lib/dde_control_center.py:34
+#: dde_control_center.py:33
 msgid "Network"
 msgstr "网络"
 
-#: lib/dde_control_center.py:35
+#: dde_control_center.py:34
+msgid "Sound"
+msgstr "声音"
+
+#: dde_control_center.py:35
 msgid "Time and Date"
 msgstr "时间日期"
 
-#: lib/dde_control_center.py:36
+#: dde_control_center.py:36
 msgid "Power Management"
 msgstr "电源管理"
 
-#: lib/dde_control_center.py:37
+#: dde_control_center.py:37
 msgid "Mouse and Touchpad"
 msgstr "鼠标和触摸板"
 
-#: lib/dde_control_center.py:38
+#: dde_control_center.py:38
 msgid "Keyboard and Language"
 msgstr "键盘和语言"
 
-#: lib/dde_control_center.py:39
+#: dde_control_center.py:39
 msgid "Update"
 msgstr "更新"
 
-#: lib/dde_control_center.py:40
+#: dde_control_center.py:40
 msgid "System Information"
 msgstr "系统信息"
 
-#: lib/dde_control_center.py:43
+#: dde_control_center.py:43
 msgid "Browser"
 msgstr "浏览器"
 
-#: lib/dde_control_center.py:44
+#: dde_control_center.py:44
 msgid "Mail"
 msgstr "邮件"
 
-#: lib/dde_control_center.py:45
+#: dde_control_center.py:45
 msgid "Text"
 msgstr "文本工具"
 
-#: lib/dde_control_center.py:46
+#: dde_control_center.py:46
 msgid "Music"
 msgstr "音乐欣赏"
 
-#: lib/dde_control_center.py:47
+#: dde_control_center.py:47
 msgid "Video"
 msgstr "视频播放"
 
-#: lib/dde_control_center.py:48
+#: dde_control_center.py:48
 msgid "Picture"
 msgstr "图片"
 
-#: lib/dde_control_center.py:49
+#: dde_control_center.py:49
 msgid "Terminal"
 msgstr "终端"
 
-#: lib/dde_control_center.py:50
+#: dde_control_center.py:50
 msgid "CD Audio"
 msgstr "CD音频"
 
-#: lib/dde_control_center.py:51
+#: dde_control_center.py:51
 msgid "DVD Video"
 msgstr "DVD视频"
 
-#: lib/dde_control_center.py:52
+#: dde_control_center.py:52
 msgid "Music Player"
 msgstr "音乐播放器"
 
-#: lib/dde_control_center.py:53
+#: dde_control_center.py:53
 msgid "Camera"
 msgstr "照相机"
 
-#: lib/dde_control_center.py:54
+#: dde_control_center.py:54
 msgid "Software"
 msgstr "软件"

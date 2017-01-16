@@ -17,8 +17,8 @@ class Dde_control_center:
         self.interface = 'com.deepin.dde.ControlCenter'
 
         # 控制中心首页
-        self.string_PreBtn = _('PreBtn')
-        self.string_NextBtn = _('PreBtn')
+        self.string_PrevBtn = _('PrevBtn')
+        self.string_NextBtn = _('NextBtn')
         self.string_SoundSlider = _('SoundSlider')
         self.string_LightSlider = _('LightSlider')
         self.string_QuickSwitchAllSettings = _('QuickSwitchAllSettings')
@@ -31,7 +31,7 @@ class Dde_control_center:
         self.string_Default_Applications = _('Default Applications')
         self.string_Personalization = _('Personalization')
         self.string_Network = _('Network')
-        self.string_Sound = _('Network')
+        self.string_Sound = _('Sound')
         self.string_Time_and_Date = _('Time and Date')
         self.string_Power_Management = _('Power Management')
         self.string_Mouse_and_Touchpad = _('Mouse and Touchpad')
