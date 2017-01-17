@@ -261,6 +261,29 @@ class DefaultApplications:
 
         }.get(category, None)
 
+class Accounts():
+    def __init__(self):
+        self.dbus_dest  = 'com.deepin.daemon.Accounts'
+        self.dbus_objpath = '/com/deepin/daemon/Accounts'
+        self.dbus_interface = 'com.deepin.daemon.Accounts'
+
+        self.system_bus = dbus.SystemBus()
+        self.system_obj = self.system_bus.get_object(self.dbus_dest,
+                                                     self.dbus_objpath)
+        self.interface_properties = dbus.Interface(self.system_obj,
+                                                   dbus_interface=dbus.PROPERTIES_IFACE)
+
+        self.dbus_properties_UserList = "UserList"
+        self.dbus_properties_GuestIcon = "GuestIcon"
+
+    def getPropertiesUserList(self):
+        return self.interface_properties.Get(self.dbus_interface,
+                                             self.dbus_properties_UserList)
+
+    def getPropertiesGuestIcon(self):
+        return self.interface_properties.Get(self.dbus_interface,
+                                             self.dbus_properties_GuestIcon)
+
 class Appearance:
     def __init__(self):
         self.dbus_name  = "com.deepin.daemon.Appearance"
