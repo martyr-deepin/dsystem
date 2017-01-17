@@ -16,6 +16,9 @@ class Dde_control_center:
         self.obj_path = '/com/deepin/dde/ControlCenter'
         self.interface = 'com.deepin.dde.ControlCenter'
 
+        # 标识控制中心点开模块的深度
+        self.page_deep = 0
+
         # 控制中心首页
         self.string_PrevBtn = _('PrevBtn')
         self.string_NextBtn = _('NextBtn')
@@ -26,7 +29,10 @@ class Dde_control_center:
         # 控制中心 All Settings
         self.string_Back = _('Back')
         self.string_All_Setting = _('All Settings')
+
         self.string_Accounts = _('Accounts')
+        self.string_Create_Account = _('Create Account')
+
         self.string_Display = _('Display')
         self.string_Default_Applications = _('Default Applications')
         self.string_Personalization = _('Personalization')
@@ -89,6 +95,10 @@ class Dde_control_center:
     def clickScreenCenter(self):
         utils.m.move(int(utils.resolution.width/2),
                 int(utils.resolution.height/2))
+        time.sleep(1)
+        utils.m.click(int(utils.resolution.width/2),
+                int(utils.resolution.height/2))
+        time.sleep(1)
 
     def openGUI(self):
         utils.m.move(utils.resolution.width - 1, utils.resolution.height - 1)
@@ -112,13 +122,24 @@ class Dde_control_center:
         while True:
             module = self.dccObj.child(modulename)
 
-            if module.position[1] > 70 \
+            if module.position[1] > 50 \
                     and module.position[1] < utils.resolution.height/2:
                 return True
-            elif module.position[1] <= 70:
+            elif module.position[1] <= 50:
                 utils.m.scroll(vertical=1)
             elif module.position[1] >= utils.resolution.height/2:
                 utils.m.scroll(vertical=-1)
+
+    def backToIndex(self):
+        for i in range(self.page_deep):
+            utils.m.move(utils.resolution.width - 340, 20)
+            time.sleep(1)
+            utils.m.click(utils.resolution.width - 340, 20)
+            time.sleep(2)
+
+    def exit(self):
+        self.clickScreenCenter()
+        time.sleep(2)
 
 class DefaultApplications:
     def __init__(self):
