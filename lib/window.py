@@ -101,8 +101,8 @@ class WindowState(object):
     def getWindow(self):
         win = findWindow(self.name, self.mode, self.comparetype)
 
-        if None == win:
-            raise WindowError("Can't find the window name: %s" % self.name)
+        #if None == win:
+        #    raise WindowError("Can't find the window name: %s" % self.name)
 
         return win
 
