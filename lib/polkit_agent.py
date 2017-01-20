@@ -11,7 +11,7 @@ def do_polkit_agent(pw = 'deepin'):
     win_polkit_agent = polkit_agent.getWindow()
 
     if None == win_polkit_agent:
-        print("Window: %s does not exist.")
+        print("Window: %s does not exist." % app_name)
     else:
         dogtail_agent = root.application('dde-polkit-agent',
                 '/usr/lib/polkit-1-dde/dde-polkit-agent')

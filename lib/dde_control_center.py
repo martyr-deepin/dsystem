@@ -6,6 +6,7 @@ from lib import utils
 import time
 import dbus
 from lib import dde_dock
+from lib import polkit_agent
 import pyautogui
 import gettext
 
@@ -44,6 +45,17 @@ class Dde_control_center:
         self.string_Keyboard_and_Language = _('Keyboard and Language')
         self.string_Update = _('Update')
         self.string_System_Information = _('System Information')
+
+        # 账户
+        self.string_Modify_Avatar = _('Modify Avatar')
+        self.string_Modify_Password = _('Modify Password')
+        self.string_Auto_login = _('Auto Login')
+        self.string_Delete_Account = _('Delete Account')
+        self.string_NewAccount_Username = _('Username')
+        self.string_NewAccount_Password = _('Password')
+        self.string_NewAccount_Repeat_password = _('Repeat password')
+        self.string_NewAccount_Cancel = _('Cancel')
+        self.string_NewAccount_Create = _('Create')
 
         # 默认程序
         self.string_Browser = _('Browser')
@@ -140,6 +152,29 @@ class Dde_control_center:
     def exit(self):
         self.clickScreenCenter()
         time.sleep(2)
+
+    def addUser(self, username, password, operation):
+        widget_username = self.dccObj.child(self.string_NewAccount_Username)
+        widget_password = self.dccObj.child(self.string_NewAccount_Password)
+        widget_repeat_password = self.dccObj.child(self.string_NewAccount_Repeat_password)
+
+        widget_username.click()
+        utils.keyTypeString(username)
+        widget_password.click()
+        utils.keyTypeString(password)
+        widget_repeat_password.click()
+        utils.keyTypeString(password)
+
+        if operation == self.string_NewAccount_Cancel:
+            widget_cancel = self.dccObj.child(self.string_NewAccount_Cancel, roleName='push button')
+            widget_cancel.click()
+            self.page_deep -= 1
+        elif operation == self.string_NewAccount_Create:
+            widget_create = self.dccObj.child(self.string_NewAccount_Create, roleName='push button')
+            widget_create.click()
+            polkit_agent.do_polkit_agent()
+            self.page_deep -= 1
+
 
 class DefaultApplications:
     def __init__(self):
