@@ -50,6 +50,13 @@ def keyTypeString(str):
     # k.type_string(str)
     sleep(2)
 
+def keyCtrlV():
+    k.press_key(k.control_l_key)
+    k.press_key('v')
+    k.release_key('v')
+    k.release_key(k.control_l_key)
+    sleep(0.5)
+
 def mouseDrag(fromXY, toXY, duration=2, press=True, release=True):
     steps = []
 

@@ -15,6 +15,8 @@ def do_polkit_agent(pw = 'deepin'):
     else:
         dogtail_agent = root.application('dde-polkit-agent',
                 '/usr/lib/polkit-1-dde/dde-polkit-agent')
+        PasswordInput = dogtail_agent.child('PasswordInput')
+        PasswordInput.click()
         utils.keyTypeString(pw)
         Comfirm = dogtail_agent.child('Confirm')
         Comfirm.click()

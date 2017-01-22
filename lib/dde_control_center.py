@@ -9,6 +9,7 @@ from lib import dde_dock
 from lib import polkit_agent
 import pyautogui
 import gettext
+import pyperclip
 
 class Dde_control_center:
     def __init__(self):
@@ -164,6 +165,31 @@ class Dde_control_center:
         utils.keyTypeString(password)
         widget_repeat_password.click()
         utils.keyTypeString(password)
+
+        if operation == self.string_NewAccount_Cancel:
+            widget_cancel = self.dccObj.child(self.string_NewAccount_Cancel, roleName='push button')
+            widget_cancel.click()
+            self.page_deep -= 1
+        elif operation == self.string_NewAccount_Create:
+            widget_create = self.dccObj.child(self.string_NewAccount_Create, roleName='push button')
+            widget_create.click()
+            polkit_agent.do_polkit_agent()
+            self.page_deep -= 1
+
+    def addUserClipboard(self, username, password, operation):
+        widget_username = self.dccObj.child(self.string_NewAccount_Username)
+        widget_password = self.dccObj.child(self.string_NewAccount_Password)
+        widget_repeat_password = self.dccObj.child(self.string_NewAccount_Repeat_password)
+
+        widget_username.click()
+        pyperclip.copy(username)
+        utils.keyCtrlV()
+        widget_password.click()
+        pyperclip.copy(password)
+        utils.keyCtrlV()
+        widget_repeat_password.click()
+        pyperclip.copy(password)
+        utils.keyCtrlV()
 
         if operation == self.string_NewAccount_Cancel:
             widget_cancel = self.dccObj.child(self.string_NewAccount_Cancel, roleName='push button')

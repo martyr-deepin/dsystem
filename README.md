@@ -4,7 +4,7 @@
 # prepare the enviroment
 ## install packages
 > sudo apt-get install python3-pyatspi python3-pip python3-setuptools libwnck-3-dev  python3-tk 
-> sudo pip3 install PyUserInput pyautogui pexpect configparser
+> sudo pip3 install PyUserInput pyautogui pexpect configparser pyperclip
 
 ## prepare /etc/sudoers file and partition 
 > sudo vi /etc/sudoers, add `yoursystemname  ALL=(ALL) NOPASSWD:ALL` at the end of file(if yoursystemname is deepin, then add `deepin  ALL=(ALL) NOPASSWD:ALL`), you do not need input your password if you use root any more
