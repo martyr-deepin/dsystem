@@ -2,29 +2,28 @@
 # -*- coding: utf-8 -*-
 
 import os
-import time
 import unittest
 import gettext
 from lib import executeTestCase
 from lib import dde_control_center
 
-casename = "all-3766:添加账户-确定"
+casename = "all-3767:添加账户-取消"
 
-class Accounts_AddUserConfirm(unittest.TestCase):
-    caseid ='103179'
+class Accounts_AddUserCancel(unittest.TestCase):
+    caseid ='103183'
     @classmethod
     def setUpClass(cls):
         cls.dcc = dde_control_center.Dde_control_center()
         cls.dbus_account = dde_control_center.Accounts()
-        cls.newusername = 'test123'
-        cls.newuserpw = 'test123'
+        cls.newusername = 'test1234'
+        cls.newuserpw = 'test1234'
 
     @classmethod
     def tearDownClass(cls):
         cls.dcc.backToIndex()
         cls.dcc.exit()
 
-    def testAccountsAddUserConfirm(self):
+    def testAccountsAddUserCancel(self):
         self.assertTrue(self.dcc.openGUI())
         self.assertTrue(self.dcc.openModule(self.dcc.string_Accounts))
         self.dcc.page_deep += 1
@@ -39,19 +38,18 @@ class Accounts_AddUserConfirm(unittest.TestCase):
         createaccount.click()
         self.dcc.page_deep += 1
         self.dcc.addUser(self.newusername, self.newuserpw,
-                         self.dcc.string_NewAccount_Create)
+                         self.dcc.string_NewAccount_Cancel)
 
-        time.sleep(4)
         newAllUserName = self.dbus_account.getDeepinAllUserName()
-        self.assertTrue(self.newusername in newAllUserName)
+        self.assertFalse(self.newusername in newAllUserName)
 
     def suite():
         suite = unittest.TestSuite()
-        suite.addTest(Accounts_AddUserConfirm('testAccountsAddUserConfirm'))
+        suite.addTest(Accounts_AddUserCancel('testAccountsAddUserCancel'))
 
         return suite
 
 if __name__ == "__main__":
     LOCALE_DIR = os.path.abspath("./lib/locale")
     gettext.install('dsystem', LOCALE_DIR)
-    executeTestCase.runTest(Accounts_AddUserConfirm)
+    executeTestCase.runTest(Accounts_AddUserCancel)
