@@ -371,6 +371,45 @@ class Accounts():
 
         return UserNameList
 
+class Display:
+    def __init__(self):
+        self.dbus_dest = 'com.deepin.daemon.Display'
+        self.dbus_objpath = '/com/deepin/daemon/Display'
+        self.dbus_interface = 'com.deepin.daemon.Display'
+
+        self.session_bus = dbus.SessionBus()
+        self.session_obj = self.session_bus.get_object(self.dbus_dest,
+                                                       self.dbus_objpath)
+        self.interface_method = dbus.Interface(self.session_obj,
+                                               dbus_interface=self.dbus_interface)
+        self.interface_properties = dbus.Interface(self.session_obj,
+                                                   dbus_interface=dbus.PROPERTIES_IFACE)
+
+        self.dbus_properties_primary = 'Primary'
+        self.dbus_properties_monitors = 'Monitors'
+        self.primary_ext = '/com/deepin/daemon/Display/Monitor'
+
+    def getPropertiesPrimary(self):
+        return self.interface_properties.Get(self.dbus_interface,
+                                             self.dbus_properties_primary)
+
+    def getPropertiesMonitors(self):
+        return self.interface_properties.Get(self.dbus_interface,
+                                             self.dbus_properties_monitors)
+
+    def ListOutputNames(self):
+        return self.interface_method.ListOutputNames()
+
+    def getPrimaryPath(self):
+        monitors = self.getPropertiesMonitors()
+        primary = self.getPropertiesPrimary()
+
+        for m in monitors:
+            if m.endswith(primary):
+                return m
+
+        return None
+
 class Appearance:
     def __init__(self):
         self.dbus_name  = "com.deepin.daemon.Appearance"
