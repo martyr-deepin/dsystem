@@ -36,6 +36,9 @@ class Dde_control_center:
         self.string_Create_Account = _('Create Account')
 
         self.string_Display = _('Display')
+        self.string_Resolution = _('Resolution')
+        self.string_Rotate = _('Rotate')
+
         self.string_Default_Applications = _('Default Applications')
         self.string_Personalization = _('Personalization')
         self.string_Network = _('Network')
