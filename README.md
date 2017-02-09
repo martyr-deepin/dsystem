@@ -35,3 +35,4 @@ And then, source the file
 Execute below command.
 The testcase will be run and the result will be uploaded to testlink.
 > python3 run.py
+
