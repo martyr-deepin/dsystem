@@ -18,6 +18,21 @@ class Dde_control_center:
         self.obj_path = '/com/deepin/dde/ControlCenter'
         self.interface = 'com.deepin.dde.ControlCenter'
 
+        self.session_bus = dbus.SessionBus()
+        self.session_obj = self.session_bus.get_object(self.dbus_name,
+                                                       self.obj_path)
+
+        self.interface_properties = dbus.Interface(self.session_obj,
+                                                   dbus_interface=dbus.PROPERTIES_IFACE)
+
+        self.interface_methods = dbus.Interface(self.session_obj,
+                                                dbus_interface=self.interface)
+
+        self.dbus_properties_ShowInRight = "ShowInRight"
+        self.dbus_properties_Rect = "Rect"
+
+        self.FRAME_WIDTH = 360
+
         # 标识控制中心点开模块的深度
         self.page_deep = 0
 
@@ -78,23 +93,24 @@ class Dde_control_center:
         self.string_Camera = _('Camera')
         self.string_Software = _('Software')
 
-    def getDccIfc(self):
-        dcc_obj = dbus.SessionBus().get_object(Dde_control_center().dbus_name, Dde_control_center().obj_path)
-        return dbus.Interface(dcc_obj, dbus_interface=self.interface)
-
     def showDcc(self):
         time.sleep(3)
-        dcc_ifc = self.getDccIfc()
-        dcc_ifc.Show()
+        self.interface_methods.Show()
 
     def showModule(self, name):
-        dcc_ifc = self.getDccIfc()
-        dcc_ifc.ShowModule(name)
+        self.interface_methods.ShowModule(name)
 
     def hideDcc(self):
         time.sleep(3)
-        dcc_ifc = self.getDccIfc()
-        dcc_ifc.Hide()
+        self.interface_methods.Hide()
+
+    def getPropertiesShowInRight(self):
+        return self.interface_properties.Get(self.interface, 
+                                      self.dbus_properties_ShowInRight)
+
+    def getPropertiesRect(self):
+        return self.interface_properties.Get(self.interface, 
+                                      self.dbus_properties_Rect)
 
     def moveAllSettingsDown(self):
         allsettings_string = _('All Settings')
