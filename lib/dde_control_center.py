@@ -107,6 +107,23 @@ class Dde_control_center:
         return False
 
     def showModule(self, name):
+        """Show dde-control-center module
+
+        modules name were listed bellow:
+        display
+        defapp
+        personalization
+        network
+        bluetooth
+        sound
+        datetime
+        power
+        mouse
+        keyboard
+        wacom
+        update
+        systeminfo
+        """
         self.interface_methods.ShowModule(name)
 
     def hideDcc(self):
