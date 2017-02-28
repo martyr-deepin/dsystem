@@ -20,6 +20,9 @@ class Accounts:
     def FindUserById(self, Id):
         return self.ifc_methods.FindUserById(Id)
 
+    def RandUserIcon(self):
+        return self.ifc_methods.RandUserIcon()
+
 
 class User:
     def __init__(self, UserObjPath):
@@ -37,6 +40,7 @@ class User:
 
         self.dbus_properties_IconFile = "IconFile"
         self.dbus_properties_Uid = "Uid"
+        self.dbus_properties_UserName = "UserName"
 
     def getIconFile(self):
         return self.ifc_properties.Get(self.interface,
@@ -45,3 +49,7 @@ class User:
     def getUid(self):
         return self.ifc_properties.Get(self.interface,
                 self.dbus_properties_Uid)
+
+    def getUserName(self):
+        return self.ifc_properties.Get(self.interface,
+                self.dbus_properties_UserName)

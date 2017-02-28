@@ -110,6 +110,7 @@ class Dde_control_center:
         """Show dde-control-center module
 
         modules name were listed bellow:
+        accounts
         display
         defapp
         personalization
@@ -125,6 +126,16 @@ class Dde_control_center:
         systeminfo
         """
         self.interface_methods.ShowModule(name)
+        waittime = 5
+
+        while waittime:
+            time.sleep(1)
+            waittime = waittime - 1
+            rect = self.getRect()
+            if self.FRAME_WIDTH == rect[2]:
+                return True
+
+        return False
 
     def hideDcc(self):
         waittime = 5
