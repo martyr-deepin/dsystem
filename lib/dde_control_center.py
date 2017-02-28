@@ -94,21 +94,39 @@ class Dde_control_center:
         self.string_Software = _('Software')
 
     def showDcc(self):
-        time.sleep(3)
+        waittime = 5
         self.interface_methods.Show()
+
+        while waittime:
+            time.sleep(1)
+            waittime = waittime - 1
+            rect = self.getRect()
+            if self.FRAME_WIDTH == rect[2]:
+                return True
+
+        return False
 
     def showModule(self, name):
         self.interface_methods.ShowModule(name)
 
     def hideDcc(self):
-        time.sleep(3)
+        waittime = 5
         self.interface_methods.Hide()
 
-    def getPropertiesShowInRight(self):
+        while waittime:
+            time.sleep(1)
+            waittime = waittime - 1
+            rect = self.getRect()
+            if 0 == rect[2]:
+                return True
+
+        return False
+
+    def getShowInRight(self):
         return self.interface_properties.Get(self.interface, 
                                       self.dbus_properties_ShowInRight)
 
-    def getPropertiesRect(self):
+    def getRect(self):
         return self.interface_properties.Get(self.interface, 
                                       self.dbus_properties_Rect)
 
