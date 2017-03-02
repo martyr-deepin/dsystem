@@ -23,8 +23,8 @@ class Accounts_Errortip(unittest.TestCase):
         cls.dcc.exit()
 
     def testAccountsErrortip(self):
-        self.assertTrue(self.dcc.openGUI())
-        self.assertTrue(self.dcc.openModule(self.dcc.string_Accounts))
+        ret = self.dcc.showModule("accounts")
+        self.assertTrue(ret)
         self.dcc.page_deep += 1
         deepinAllUserName = self.dbus_account.getDeepinAllUserName()
 
@@ -57,6 +57,7 @@ class Accounts_Errortip(unittest.TestCase):
         return suite
 
 if __name__ == "__main__":
+    unittest.installHandler()
     LOCALE_DIR = os.path.abspath("./lib/locale")
     gettext.install('dsystem', LOCALE_DIR)
     executeTestCase.runTest(Accounts_Errortip)

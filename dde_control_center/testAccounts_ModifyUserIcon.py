@@ -70,6 +70,7 @@ class Accounts_ModifyUserIcon(unittest.TestCase):
         return suite
 
 if __name__ == "__main__":
+    unittest.installHandler()
     LOCALE_DIR = os.path.abspath("./lib/locale")
     gettext.install('dsystem', LOCALE_DIR)
     executeTestCase.runTest(Accounts_ModifyUserIcon)
