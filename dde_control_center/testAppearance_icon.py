@@ -1,6 +1,8 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 
+import os
+import gettext
 import unittest
 from time import sleep
 from lib import executeTestCase
@@ -12,18 +14,20 @@ class AppearanceIconTheme(unittest.TestCase):
     caseid = '103610'
     @classmethod
     def setUpClass(cls):
+        cls.dcc = dde_control_center.Dde_control_center()
         cls.defaultIconTheme = dde_control_center.getAppearanceIconTheme()
 
     @classmethod
     def tearDownClass(cls):
         if dde_control_center.getAppearanceIconTheme() != cls.defaultIconTheme:
             dde_control_center.setAppearanceIconTheme('deepin')
-        dde_control_center.Dde_control_center().hideDcc()
+
+        cls.dcc.hideDcc()
 
     def testIconTheme(self):
-        dde_control_center.Dde_control_center().showModule('Personalization')
-        sleep(1)
-        dde_control_center.Dde_control_center().dccObj.child('Theme').click()
+        ret = self.dcc.showModule('Personalization')
+        self.assertTrue(ret)
+        self.dcc.dccObj.child('Theme').click()
         iconTheme = dde_control_center.getAppearanceIconTheme()
         self.assertEqual(iconTheme, 'deepin')
 
@@ -33,4 +37,7 @@ class AppearanceIconTheme(unittest.TestCase):
         return suite
 
 if __name__ == "__main__":
+    unittest.installHandler()
+    LOCALE_DIR = os.path.abspath("./lib/locale")
+    gettext.install('dsystem', LOCALE_DIR)
     executeTestCase.runTest(AppearanceIconTheme)

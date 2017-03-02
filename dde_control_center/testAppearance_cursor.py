@@ -1,6 +1,8 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 
+import os
+import gettext
 import unittest
 from time import sleep
 from lib import executeTestCase
@@ -12,6 +14,7 @@ class AppearanceCursorTheme(unittest.TestCase):
     caseid = '103587'
     @classmethod
     def setUpClass(cls):
+        cls.dcc = dde_control_center.Dde_control_center()
         cls.defaultCursorTheme = dde_control_center.getAppearanceCursorTheme()
 
     @classmethod
@@ -21,8 +24,8 @@ class AppearanceCursorTheme(unittest.TestCase):
         dde_control_center.Dde_control_center().hideDcc()
 
     def testCursorTheme(self):
-        dde_control_center.Dde_control_center().showModule('Personalization')
-        sleep(1)
+        ret = self.dcc.showModule('personalization')
+        self.assertTrue(ret)
         dde_control_center.Dde_control_center().dccObj.child('Theme').click()
         cursorTheme = dde_control_center.getAppearanceWindowTheme()
         self.assertEqual(cursorTheme, 'deepin')
@@ -33,4 +36,7 @@ class AppearanceCursorTheme(unittest.TestCase):
         return suite
 
 if __name__ == "__main__":
+    unittest.installHandler()
+    LOCALE_DIR = os.path.abspath("./lib/locale")
+    gettext.install('dsystem', LOCALE_DIR)
     executeTestCase.runTest(AppearanceCursorTheme)

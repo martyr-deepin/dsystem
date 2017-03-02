@@ -62,7 +62,11 @@ class Dde_control_center:
         self.string_Sound = _('Sound')
         self.string_Time_and_Date = _('Time and Date')
         self.string_Power_Management = _('Power Management')
+
         self.string_Mouse_and_Touchpad = _('Mouse and Touchpad')
+        self.string_Mouse_Left_Hand = _('Left Hand')
+        self.string_Mouse_Natural_Scrolling = _('Natural Scrolling')
+
         self.string_Keyboard_and_Language = _('Keyboard and Language')
         self.string_Update = _('Update')
         self.string_System_Information = _('System Information')

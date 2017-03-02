@@ -1,6 +1,8 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 
+import os
+import gettext
 import unittest
 from time import sleep
 from lib import executeTestCase
@@ -12,18 +14,19 @@ class AppearanceWindowTheme(unittest.TestCase):
     caseid = '103580'
     @classmethod
     def setUpClass(cls):
+        cls.dcc = dde_control_center.Dde_control_center()
         cls.defaultWindowTheme = dde_control_center.getAppearanceWindowTheme()
 
     @classmethod
     def tearDownClass(cls):
         if dde_control_center.getAppearanceWindowTheme() != cls.defaultWindowTheme:
             dde_control_center.setAppearanceWindowTheme('deepin')
-        dde_control_center.Dde_control_center().hideDcc()
+
+        cls.dcc.hideDcc()
 
     def testWindowTheme(self):
-        dde_control_center.Dde_control_center().showModule('Personalization')
-        sleep(1)
-        dde_control_center.Dde_control_center().dccObj.child('Theme').click()
+        ret = self.dcc.showModule('Personalization')
+        self.dcc.dccObj.child('Theme').click()
         windowTheme = dde_control_center.getAppearanceWindowTheme()
         self.assertEqual(windowTheme, 'deepin')
 
@@ -33,4 +36,7 @@ class AppearanceWindowTheme(unittest.TestCase):
         return suite
 
 if __name__ == "__main__":
+    unittest.installHandler()
+    LOCALE_DIR = os.path.abspath("./lib/locale")
+    gettext.install('dsystem', LOCALE_DIR)
     executeTestCase.runTest(AppearanceWindowTheme)
