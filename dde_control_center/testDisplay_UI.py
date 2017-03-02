@@ -22,8 +22,8 @@ class Display_UI(unittest.TestCase):
         cls.dcc.exit()
 
     def testDisplay_UI(self):
-        self.assertTrue(self.dcc.openGUI())
-        self.assertTrue(self.dcc.openModule(self.dcc.string_Display))
+        ret = self.dcc.showModule("display")
+        self.assertTrue(ret)
         self.dcc.page_deep += 1
 
         display_label = self.dcc.dccObj.child(self.dcc.string_Display)
@@ -40,6 +40,7 @@ class Display_UI(unittest.TestCase):
         return suite
 
 if __name__ == "__main__":
+    unittest.installHandler()
     LOCALE_DIR = os.path.abspath("./lib/locale")
     gettext.install('dsystem', LOCALE_DIR)
     executeTestCase.runTest(Display_UI)

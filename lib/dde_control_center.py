@@ -13,6 +13,8 @@ import pyperclip
 
 class Dde_control_center:
     def __init__(self):
+        self.defaultDelay = 5
+
         self.dccObj = root.application(appName='dde-control-center', description='/usr/bin/dde-control-center')
         self.dbus_name = 'com.deepin.dde.ControlCenter'
         self.obj_path = '/com/deepin/dde/ControlCenter'
@@ -126,7 +128,7 @@ class Dde_control_center:
         systeminfo
         """
         self.interface_methods.ShowModule(name)
-        waittime = 5
+        waittime = self.defaultDelay
 
         while waittime:
             time.sleep(1)
@@ -138,7 +140,7 @@ class Dde_control_center:
         return False
 
     def hideDcc(self):
-        waittime = 5
+        waittime = self.defaultDelay
         self.interface_methods.Hide()
 
         while waittime:
@@ -179,7 +181,17 @@ class Dde_control_center:
         time.sleep(1)
         utils.m.click(int(utils.resolution.width/2),
                 int(utils.resolution.height/2))
-        time.sleep(1)
+
+        waittime = self.defaultDelay
+
+        while waittime:
+            time.sleep(1)
+            waittime = waittime - 1
+            rect = self.getRect()
+            if 0 == rect[2]:
+                return True
+
+        return False
 
     def openGUI(self):
         utils.m.move(utils.resolution.width - 1, utils.resolution.height - 1)
