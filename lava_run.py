@@ -4,6 +4,7 @@
 import unittest
 import json
 import os
+import gettext
 from unittest import TestCase
 from lib.executeTestCase import runTest
 from importlib import import_module
@@ -45,5 +46,9 @@ def getAllClass():
     return [c  for x in classes for c in x  if  c.caseid in idlist]
 
 if __name__ == "__main__":
+    unittest.installHandler()
+    LOCALE_DIR = os.path.abspath("./lib/locale")
+    gettext.install('dsystem', LOCALE_DIR)
+
     for c in getAllClass():
         runTest(c)
