@@ -118,6 +118,9 @@ class Dde_control_center:
 
         return False
 
+    def showHome(self):
+        self.interface_methods.ShowHome()
+
     def showModule(self, name):
         """Show dde-control-center module
 
@@ -150,6 +153,8 @@ class Dde_control_center:
         return False
 
     def hideDcc(self):
+        self.showHome()
+
         waittime = self.defaultDelay
         self.interface_methods.Hide()
 
