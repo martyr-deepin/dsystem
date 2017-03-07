@@ -19,3 +19,6 @@ class Lock:
 
     def UnlockCheck(self, username, password):
         return self.ifc_methods.UnlockCheck(username, password)
+
+    def CurrentUser(self):
+        return self.ifc_methods.CurrentUser()

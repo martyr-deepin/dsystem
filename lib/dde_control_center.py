@@ -85,6 +85,12 @@ class Dde_control_center:
         self.string_NewAccount_errorTip_Password = _("Password can't be empty.")
         self.string_NewAccount_errorTip_Username = _("Username can not be empty.")
 
+        # 修改密码
+        self.string_New_Password = _('New Password')
+        self.string_Repeat_Password = _('Repeat Password')
+        self.string_Modify_Cancel = 'Modify_Cancel'
+        self.string_Modify_Accept = 'Modify_Accept'
+
         # 默认程序
         self.string_Browser = _('Browser')
         self.string_Mail = _('Mail')
