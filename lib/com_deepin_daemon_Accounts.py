@@ -1,6 +1,7 @@
 #!/usr/bin/evn python3
 # -*- coding: utf-8 -*-
 
+import os
 import dbus
 
 class Accounts:
@@ -53,3 +54,9 @@ class User:
     def getUserName(self):
         return self.ifc_properties.Get(self.interface,
                 self.dbus_properties_UserName)
+
+    def SetPassword(self, pw):
+        pid = os.fork()
+
+        if 0 == pid:
+            self.ifc_methods.SetPassword(pw)

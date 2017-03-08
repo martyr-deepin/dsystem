@@ -12,11 +12,12 @@ from lib.com_deepin_SessionManager import SessionManager
 from lib.com_deepin_daemon_Accounts import Accounts
 from lib.com_deepin_daemon_Accounts import User
 from lib.com_deepin_dde_lock import Lock
+from lib.polkit_agent import do_polkit_agent
 
-casename = "all-3840:修改密码-取消"
+casename = "all-3796:修改密码-保存"
 
-class Accounts_ModifyUserPasswordCancel(unittest.TestCase):
-    caseid ='103526'
+class Accounts_ModifyUserPasswordAccept(unittest.TestCase):
+    caseid ='103312'
     @classmethod
     def setUpClass(cls):
         cls.dcc = dde_control_center.Dde_control_center()
@@ -30,9 +31,15 @@ class Accounts_ModifyUserPasswordCancel(unittest.TestCase):
 
     @classmethod
     def tearDownClass(cls):
+        accounts = Accounts()
+        current_uid = cls.session_manager.getCurrentUid()
+        user_obj_path = accounts.FindUserById(current_uid)
+        loginuser = User(user_obj_path)
+        loginuser.SetPassword(cls.oldpw)
+        do_polkit_agent(cls.newpw)
         cls.dcc.hideDcc()
 
-    def testAccountsModifyUserPasswordCancel(self):
+    def testAccountsModifyUserPasswordAccept(self):
         accounts = Accounts()
         current_uid = self.session_manager.getCurrentUid()
         user_obj_path = accounts.FindUserById(current_uid)
@@ -64,18 +71,20 @@ class Accounts_ModifyUserPasswordCancel(unittest.TestCase):
         RepeatPasswordWidget.click()
         utils.keyTypeString(self.newpw)
 
-        ModifyCancelWidget = self.dcc.dccObj.child(self.dcc.string_Modify_Cancel)
-        self.assertTrue(ModifyCancelWidget != None)
-        ModifyCancelWidget.click()
+        ModifyAcceptWidget = self.dcc.dccObj.child(self.dcc.string_Modify_Accept)
+        self.assertTrue(ModifyAcceptWidget != None)
+        ModifyAcceptWidget.click()
+
+        do_polkit_agent()
 
         ret = self.dbus_lock.UnlockCheck(self.currentUserName, self.newpw)
-        self.assertFalse(ret)
-        ret = self.dbus_lock.UnlockCheck(self.currentUserName, self.oldpw)
         self.assertTrue(ret)
+        ret = self.dbus_lock.UnlockCheck(self.currentUserName, self.oldpw)
+        self.assertFalse(ret)
 
     def suite():
         suite = unittest.TestSuite()
-        suite.addTest(Accounts_ModifyUserPasswordCancel('testAccountsModifyUserPasswordCancel'))
+        suite.addTest(Accounts_ModifyUserPasswordAccept('testAccountsModifyUserPasswordAccept'))
 
         return suite
 
@@ -83,4 +92,4 @@ if __name__ == "__main__":
     unittest.installHandler()
     LOCALE_DIR = os.path.abspath("./lib/locale")
     gettext.install('dsystem', LOCALE_DIR)
-    executeTestCase.runTest(Accounts_ModifyUserPasswordCancel)
+    executeTestCase.runTest(Accounts_ModifyUserPasswordAccept)

@@ -7,7 +7,7 @@ from dogtail.tree import root
 
 def do_polkit_agent(pw = 'deepin'):
     app_name = 'Deepin Polkit Agent'
-    polkit_agent = window.WindowState(app_name, 'nowait')
+    polkit_agent = window.WindowState(app_name)
     win_polkit_agent = polkit_agent.getWindow()
 
     if None == win_polkit_agent:
