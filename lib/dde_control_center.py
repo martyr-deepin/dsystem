@@ -83,7 +83,7 @@ class Dde_control_center:
         self.string_NewAccount_Create = 'New_Account_Create'
         self.string_NewAccount_errorTip = 'New_Account_errorTip'
         self.string_NewAccount_errorTip_Password = _("Password can't be empty.")
-        self.string_NewAccount_errorTip_Username = _("Username can not be empty.")
+        self.string_NewAccount_errorTip_Username = _("Username can't be empty.")
 
         # 修改密码
         self.string_New_Password = _('New Password')
@@ -120,6 +120,7 @@ class Dde_control_center:
 
     def showHome(self):
         self.interface_methods.ShowHome()
+        self.interface_methods.showDcc()
 
     def showModule(self, name):
         """Show dde-control-center module
@@ -153,8 +154,6 @@ class Dde_control_center:
         return False
 
     def hideDcc(self):
-        self.showHome()
-
         waittime = self.defaultDelay
         self.interface_methods.Hide()
 
@@ -247,7 +246,6 @@ class Dde_control_center:
 
     def exit(self):
         self.clickScreenCenter()
-        time.sleep(2)
 
     def addUser(self, username, password, operation):
         widget_username = self.dccObj.child(self.string_NewAccount_Username)

@@ -22,7 +22,7 @@ class AppearanceIconTheme(unittest.TestCase):
         if dde_control_center.getAppearanceIconTheme() != cls.defaultIconTheme:
             dde_control_center.setAppearanceIconTheme('deepin')
 
-        cls.dcc.hideDcc()
+        dde_control_center.Dde_control_center().hideDcc()
 
     def testIconTheme(self):
         ret = self.dcc.showModule('Personalization')

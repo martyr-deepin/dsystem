@@ -22,7 +22,7 @@ class AppearanceWindowTheme(unittest.TestCase):
         if dde_control_center.getAppearanceWindowTheme() != cls.defaultWindowTheme:
             dde_control_center.setAppearanceWindowTheme('deepin')
 
-        cls.dcc.hideDcc()
+        dde_control_center.Dde_control_center().hideDcc()
 
     def testWindowTheme(self):
         ret = self.dcc.showModule('Personalization')
