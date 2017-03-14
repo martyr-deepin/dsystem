@@ -3,6 +3,8 @@
 
 import unittest
 import os
+import gettext
+from lib.executeTestCase import runTest
 
 # import ddedock.testFashionDefaultIcons
 # import ddedock.testEfficientDefaultIcons
@@ -10,8 +12,6 @@ import os
 # import ddedock.testEfficientIconsPopup
 from ddedock.testFashionFunction import FashionFunction
 from ddedock.testEfficientFunction import EfficientFunction
-from ddedock.testFashionExistLeft import FashionExistLeft
-from ddedock.testFashionExistRight import FashionExistRight
 from ddedock.testOtherDirectionDockSize import OtherDirectionDockSize
 from ddedock.testDockKeepShown import DockKeepShown
 from ddedock.testDockKeepHidden import DockKeepHidden
@@ -20,8 +20,8 @@ from ddedock.testDockKeepShownOtherDirection import DockKeepShownOtherDirection
 from ddedock.testDockKeepHiddenOtherDirection import DockKeepHiddenOtherDirection
 from ddedock.testDockSmartHideOtherDirection import DockSmartHideOtherDirection
 from ddedock.testDockMenu import DockMenu
-from ddedock.testDockFashionMode import DockFashionMode
-from ddedock.testDockEfficientMode import DockEfficientMode
+from ddedock.testDockFashionMode import DockFashionModeTop
+from ddedock.testDockEfficientMode import DockEfficientModeTop
 
 from ddedock.testFashionDockSize import FashionDockSize
 from ddedock.testEfficientDockSize import EfficientDockSize
@@ -66,8 +66,6 @@ def main():
     # dde-dock
     classes.append(FashionFunction)
     classes.append(EfficientFunction)
-    classes.append(FashionExistLeft)
-    classes.append(FashionExistRight)
     classes.append(OtherDirectionDockSize)
     classes.append(DockKeepShown)
     classes.append(DockKeepHidden)
@@ -76,8 +74,8 @@ def main():
     classes.append(DockKeepHiddenOtherDirection)
     classes.append(DockSmartHideOtherDirection)
     classes.append(DockMenu)
-    classes.append(DockFashionMode)
-    classes.append(DockEfficientMode)
+    classes.append(DockFashionModeTop)
+    classes.append(DockEfficientModeTop)
 
     classes.append(FashionDockSize)
     classes.append(EfficientDockSize)
@@ -113,8 +111,10 @@ def main():
     classes.append(DockSoundPluginClick)
 
     for c in classes:
-        suite = c.suite()
-        unittest.TextTestRunner(resultclass=c.MyTestResult).run(suite)
+        runTest(c)
 
 if __name__ == "__main__":
+    unittest.installHandler()
+    LOCALE_DIR = os.path.abspath("./lib/locale")
+    gettext.install('dsystem', LOCALE_DIR)
     main()
