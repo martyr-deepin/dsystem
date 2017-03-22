@@ -2,6 +2,7 @@
 # -*- coding: utf-8 -*-
 
 import os
+import gettext
 import time
 import glob
 import unittest
@@ -11,6 +12,7 @@ from lib import runner
 from lib.launcher import launcher
 from dogtail import rawinput
 from subprocess import getstatusoutput as rt
+from lib.dde_dock import Dock
 
 casename = "all-440:深度截图"
 
@@ -18,7 +20,8 @@ class DeepinScreenshot(unittest.TestCase):
     caseid = '33434'
     @classmethod
     def setUpClass(cls):
-        cls.screenshoticonname = "深度截图"
+        cls.dock = Dock()
+        cls.screenshoticonname = cls.dock.string_Deepin_Screenshot
         cls.ddedockobject = utils.getDdeDockObject()
 
         if utils.dock.displaymode_fashion != utils.getDdeDockDisplayMode():
@@ -88,7 +91,8 @@ class DeepinScreenshot(unittest.TestCase):
         home = os.path.expanduser("~")
         desktoppath = home + "/Desktop"
 
-        pngscreen = glob.glob(desktoppath + "/深度截图*.png")
+        pngscreen = glob.glob(desktoppath + "/" +
+                self.dock.string_Deepin_Screenshot_png)
 
         for png in pngscreen:
             os.remove(png)
@@ -104,7 +108,8 @@ class DeepinScreenshot(unittest.TestCase):
         while True:
             time.sleep(1)
             max_delay = max_delay - 1
-            png = glob.glob(desktoppath + "/深度截图*.png")
+            png = glob.glob(desktoppath + "/" +
+                    self.dock.string_Deepin_Screenshot_png)
 
             if len(png) > 0:
                 self.assertTrue(True)
@@ -125,7 +130,7 @@ class DeepinScreenshot(unittest.TestCase):
         home = os.path.expanduser("~")
         desktoppath = home + "/Desktop"
 
-        pngscreen = glob.glob(desktoppath + "/深度截图*.png")
+        pngscreen = glob.glob(desktoppath + "/" + self.dock.string_Deepin_Screenshot_png)
 
         for png in pngscreen:
             os.remove(png)
@@ -133,7 +138,7 @@ class DeepinScreenshot(unittest.TestCase):
         while True:
             time.sleep(1)
             max_delay = max_delay - 1
-            png = glob.glob(desktoppath + "/深度截图*.png")
+            png = glob.glob(desktoppath + "/" + self.dock.string_Deepin_Screenshot_png)
 
             if len(png) > 0:
                 self.assertTrue(True)
@@ -162,8 +167,7 @@ class DeepinScreenshot(unittest.TestCase):
         rawinput.click(int(utils.resolution.width/2), int(utils.resolution.height/2), 3)
         (status, output) = rt("ps -ef | grep /usr/bin/deepin-screenshot | grep -v grep | awk '{print $9}'")
         time.sleep(1)
-        self.assertTrue('' == output)
-
+        self.assertTrue('/usr/bin/deepin-screenshot' == output)
 
     def testTaskExist(self):
         max_delay = 10
@@ -231,4 +235,7 @@ class DeepinScreenshot(unittest.TestCase):
         return suite
 
 if __name__ == "__main__":
+    unittest.installHandler()
+    LOCALE_DIR = os.path.abspath("./lib/locale")
+    gettext.install('dsystem', LOCALE_DIR)
     executeTestCase.runTest(DeepinScreenshot)

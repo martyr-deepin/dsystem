@@ -1,12 +1,15 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 
+import os
+import gettext
 import unittest
 from lib import executeTestCase
 from lib import utils
 from lib import runner
 from dogtail.tree import root
 from dogtail import rawinput
+from lib.dde_dock import Dock
 
 casename = "all-443:关闭所有"
 
@@ -14,8 +17,9 @@ class DockIconMenuMultiClose(unittest.TestCase):
     caseid = '33451'
     @classmethod
     def setUpClass(cls):
-        cls.filemanagericonname = "深度文件管理器"
-        cls.filemanagerwindowname = "深度文件管理器"
+        cls.dock = Dock()
+        cls.filemanagericonname = cls.dock.string_Deepin_File_Manager
+        cls.filemanagerwindowname = cls.dock.string_Deepin_File_Manager
         cls.ddedockobject = utils.getDdeDockObject()
 
         if utils.dock.displaymode_fashion != utils.getDdeDockDisplayMode():
@@ -149,4 +153,7 @@ class DockIconMenuMultiClose(unittest.TestCase):
         return suite
 
 if __name__ == "__main__":
+    unittest.installHandler()
+    LOCALE_DIR = os.path.abspath("./lib/locale")
+    gettext.install('dsystem', LOCALE_DIR)
     executeTestCase.runTest(DockIconMenuMultiClose)

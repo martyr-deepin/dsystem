@@ -1,6 +1,8 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 
+import os
+import gettext
 import unittest
 from lib import executeTestCase
 from lib import utils
@@ -54,10 +56,9 @@ class OtherDirectionDockSize(unittest.TestCase):
         utils.m.click(int(utils.resolution.width/2), utils.resolution.height, 2)
         utils.dockmenu.findMainWindow()
         utils.keySingle(utils.k.down_key)
-        utils.keySingle(utils.k.left_key)
         utils.keySingle(utils.k.down_key)
-        utils.keySingle(utils.k.left_key)
         utils.keySingle(utils.k.down_key)
+        utils.keySingle(utils.k.right_key)
         utils.keySingle(utils.k.down_key)
         utils.keySingle(utils.k.down_key)
         utils.keySingle(utils.k.enter_key)
@@ -154,4 +155,7 @@ class OtherDirectionDockSize(unittest.TestCase):
         return suite
 
 if __name__ == "__main__":
+    unittest.installHandler()
+    LOCALE_DIR = os.path.abspath("./lib/locale")
+    gettext.install('dsystem', LOCALE_DIR)
     executeTestCase.runTest(OtherDirectionDockSize)

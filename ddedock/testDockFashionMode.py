@@ -1,6 +1,8 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 
+import os
+import gettext
 import unittest
 import time
 from lib import executeTestCase
@@ -59,8 +61,8 @@ class DockFashionModeTop(unittest.TestCase):
         self.testDockMenuExist()
 
         utils.keySingle(utils.k.down_key)
-        utils.keySingle(utils.k.left_key)
         utils.keySingle(utils.k.down_key)
+        utils.keySingle(utils.k.right_key)
         utils.keySingle(utils.k.enter_key)
 
         try:
@@ -143,8 +145,8 @@ class DockFashionModeRight(unittest.TestCase):
         self.testDockMenuExist()
 
         utils.keySingle(utils.k.down_key)
-        utils.keySingle(utils.k.left_key)
         utils.keySingle(utils.k.down_key)
+        utils.keySingle(utils.k.right_key)
         utils.keySingle(utils.k.down_key)
         utils.keySingle(utils.k.down_key)
         utils.keySingle(utils.k.down_key)
@@ -224,8 +226,8 @@ class DockFashionModeLeft(unittest.TestCase):
         self.testDockMenuExist()
 
         utils.keySingle(utils.k.down_key)
-        utils.keySingle(utils.k.left_key)
         utils.keySingle(utils.k.down_key)
+        utils.keySingle(utils.k.right_key)
         utils.keySingle(utils.k.down_key)
         utils.keySingle(utils.k.down_key)
         utils.keySingle(utils.k.enter_key)
@@ -305,8 +307,8 @@ class DockFashionModeBottom(unittest.TestCase):
         self.testDockMenuExist()
 
         utils.keySingle(utils.k.down_key)
-        utils.keySingle(utils.k.left_key)
         utils.keySingle(utils.k.down_key)
+        utils.keySingle(utils.k.right_key)
         utils.keySingle(utils.k.down_key)
         utils.keySingle(utils.k.enter_key)
 
@@ -354,6 +356,9 @@ class DockFashionModeBottom(unittest.TestCase):
         return suite
 
 if __name__ == "__main__":
+    unittest.installHandler()
+    LOCALE_DIR = os.path.abspath("./lib/locale")
+    gettext.install('dsystem', LOCALE_DIR)
     executeTestCase.runTest(DockFashionModeTop)
     executeTestCase.runTest(DockFashionModeRight)
     executeTestCase.runTest(DockFashionModeLeft)

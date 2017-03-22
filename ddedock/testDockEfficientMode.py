@@ -1,6 +1,8 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 
+import os
+import gettext
 import unittest
 import time
 from lib import executeTestCase
@@ -73,8 +75,8 @@ class DockEfficientModeTop(unittest.TestCase):
         self.testDockMenuExist()
 
         utils.keySingle(utils.k.down_key)
-        utils.keySingle(utils.k.left_key)
         utils.keySingle(utils.k.down_key)
+        utils.keySingle(utils.k.right_key)
         utils.keySingle(utils.k.enter_key)
 
         try:
@@ -151,8 +153,8 @@ class DockEfficientModeRight(unittest.TestCase):
         self.testDockMenuExist()
 
         utils.keySingle(utils.k.down_key)
-        utils.keySingle(utils.k.left_key)
         utils.keySingle(utils.k.down_key)
+        utils.keySingle(utils.k.right_key)
         utils.keySingle(utils.k.down_key)
         utils.keySingle(utils.k.down_key)
         utils.keySingle(utils.k.down_key)
@@ -232,8 +234,8 @@ class DockEfficientModeLeft(unittest.TestCase):
         self.testDockMenuExist()
 
         utils.keySingle(utils.k.down_key)
-        utils.keySingle(utils.k.left_key)
         utils.keySingle(utils.k.down_key)
+        utils.keySingle(utils.k.right_key)
         utils.keySingle(utils.k.down_key)
         utils.keySingle(utils.k.down_key)
         utils.keySingle(utils.k.enter_key)
@@ -312,8 +314,8 @@ class DockEfficientModeBottom(unittest.TestCase):
         self.testDockMenuExist()
 
         utils.keySingle(utils.k.down_key)
-        utils.keySingle(utils.k.left_key)
         utils.keySingle(utils.k.down_key)
+        utils.keySingle(utils.k.right_key)
         utils.keySingle(utils.k.down_key)
         utils.keySingle(utils.k.enter_key)
 
@@ -345,6 +347,9 @@ class DockEfficientModeBottom(unittest.TestCase):
         return suite
 
 if __name__ == "__main__":
+    unittest.installHandler()
+    LOCALE_DIR = os.path.abspath("./lib/locale")
+    gettext.install('dsystem', LOCALE_DIR)
     executeTestCase.runTest(DockEfficientModeTop)
     executeTestCase.runTest(DockEfficientModeRight)
     executeTestCase.runTest(DockEfficientModeLeft)
