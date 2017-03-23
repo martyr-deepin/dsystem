@@ -9,7 +9,16 @@ __all__ = ['Accounts_UI',
            'MouseTouchpad_UI',
            'KeyboardLanguage_UI',
            'Update_UI',
-           'SystemInformation_UI']
+           'SystemInformation_UI',
+           'Accounts_AddMultiUserOperation',
+           'Accounts_AddUserCancel',
+           'Accounts_AddUserConfirmClipboard',
+           'Accounts_AddUserConfirm',
+           'Accounts_DefaultIcon',
+           'Accounts_Errortip',
+           'Accounts_ModifyUserIcon',
+           'Accounts_ModifyUserPasswordAccept',
+           'Accounts_ModifyUserPasswordCancel']
 
 from .testAccounts_UI import Accounts_UI
 from .testDisplay_UI import Display_UI
@@ -23,3 +32,13 @@ from .testMouseTouchpad_UI import MouseTouchpad_UI
 from .testKeyboardLanguage_UI import KeyboardLanguage_UI
 from .testUpdate_UI import Update_UI
 from .testSystemInformation_UI import SystemInformation_UI
+
+from .testAccounts_AddMultiUserOperation import Accounts_AddMultiUserOperation
+from .testAccounts_AddUserCancel import Accounts_AddUserCancel
+from .testAccounts_AddUserConfirmClipboard import Accounts_AddUserConfirmClipboard
+from .testAccounts_AddUserConfirm import Accounts_AddUserConfirm
+from .testAccounts_DefaultIcon import Accounts_DefaultIcon
+from .testAccounts_Errortip import Accounts_Errortip
+from .testAccounts_ModifyUserIcon import Accounts_ModifyUserIcon
+from .testAccounts_ModifyUserPasswordAccept import Accounts_ModifyUserPasswordAccept
+from .testAccounts_ModifyUserPasswordCancel import Accounts_ModifyUserPasswordCancel

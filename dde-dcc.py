@@ -19,6 +19,16 @@ from dde_control_center import KeyboardLanguage_UI
 from dde_control_center import Update_UI
 from dde_control_center import SystemInformation_UI
 
+from dde_control_center import Accounts_AddMultiUserOperation
+from dde_control_center import Accounts_AddUserCancel
+from dde_control_center import Accounts_AddUserConfirmClipboard
+from dde_control_center import Accounts_AddUserConfirm
+from dde_control_center import Accounts_DefaultIcon
+from dde_control_center import Accounts_Errortip
+from dde_control_center import Accounts_ModifyUserIcon
+from dde_control_center import Accounts_ModifyUserPasswordAccept
+from dde_control_center import Accounts_ModifyUserPasswordCancel
+
 def main():
     classes = []
 
@@ -34,6 +44,16 @@ def main():
     classes.append(KeyboardLanguage_UI)
     classes.append(Update_UI)
     classes.append(SystemInformation_UI)
+
+    classes.append(Accounts_AddMultiUserOperation)
+    classes.append(Accounts_AddUserCancel)
+    classes.append(Accounts_AddUserConfirmClipboard)
+    classes.append(Accounts_AddUserConfirm)
+    classes.append(Accounts_DefaultIcon)
+    classes.append(Accounts_Errortip)
+    classes.append(Accounts_ModifyUserIcon)
+    classes.append(Accounts_ModifyUserPasswordAccept)
+    classes.append(Accounts_ModifyUserPasswordCancel)
 
     for c in classes:
         runTest(c)

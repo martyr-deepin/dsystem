@@ -7,10 +7,10 @@ import gettext
 from lib import executeTestCase
 from lib import dde_control_center
 
-casename = "all-4099:更新首页"
+casename = "all-3847:主题-窗口-默认"
 
 class Personalization_UI(unittest.TestCase):
-    caseid ='105072'
+    caseid ='103580'
     @classmethod
     def setUpClass(cls):
         cls.dcc = dde_control_center.Dde_control_center()

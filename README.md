@@ -2,7 +2,7 @@
 
 # prepare the enviroment
 ## install packages
-> sudo apt-get install python3-pyatspi python3-pip python3-setuptools libwnck-3-dev  python3-tk
+> sudo apt-get install python3-pyatspi python3-pip python3-setuptools libwnck-3-dev  python3-tk xsel
 >
 > sudo pip3 install PyUserInput pyautogui pexpect configparser pyperclip
 
