@@ -164,10 +164,15 @@ class DeepinScreenshot(unittest.TestCase):
 
     def testCloseDeepinScreenshot(self):
         time.sleep(1)
-        rawinput.click(int(utils.resolution.width/2), int(utils.resolution.height/2), 3)
-        (status, output) = rt("ps -ef | grep /usr/bin/deepin-screenshot | grep -v grep | awk '{print $9}'")
+        rawinput.click(int(utils.resolution.width/2),
+                int(utils.resolution.height/2), 3)
         time.sleep(1)
-        self.assertTrue('/usr/bin/deepin-screenshot' == output)
+        rawinput.click(int(utils.resolution.width/4),
+                int(utils.resolution.height/4))
+        time.sleep(1)
+        (status, output) = rt("ps -ef | grep /usr/bin/deepin-screenshot | grep -v grep | awk '{print $9}'")
+        time.sleep(4)
+        self.assertTrue('' == output, "output is %s" % output)
 
     def testTaskExist(self):
         max_delay = 10

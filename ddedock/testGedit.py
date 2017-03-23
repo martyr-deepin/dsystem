@@ -1,6 +1,8 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 
+import os
+import gettext
 import unittest
 import time
 from lib import executeTestCase
@@ -8,6 +10,7 @@ from lib import utils
 from lib import runner
 from lib.launcher import launcher
 from dogtail import rawinput
+from lib.dde_dock import Dock
 
 casename = "all-439:gedit"
 
@@ -15,7 +18,8 @@ class Gedit(unittest.TestCase):
     caseid = '33428'
     @classmethod
     def setUpClass(cls):
-        cls.gediticonname = "文本编辑器"
+        cls.dock = Dock()
+        cls.gediticonname = cls.dock.string_Text_Editor
         cls.ddedockobject = utils.getDdeDockObject()
 
         if utils.dock.displaymode_fashion != utils.getDdeDockDisplayMode():
@@ -42,7 +46,7 @@ class Gedit(unittest.TestCase):
         utils.keyTypeString("gedit")
 
         try:
-            launcher_icon = self.ddedockobject.child("Launcher")
+            launcher_icon = self.ddedockobject.child(self.dock.string_dock_Launcher)
         except:
             self.assertTrue(False, "Can't find launcher icon")
 
@@ -58,6 +62,7 @@ class Gedit(unittest.TestCase):
 
     def testDragDockIconToDesktop(self):
         icongedit_icon = self.ddedockobject.child(self.gediticonname)
+        self.assertTrue(icongedit_icon != None)
         fromXY = utils.getDockIconCenterPoint(icongedit_icon)
         utils.mouseDrag(fromXY, (fromXY[0], fromXY[1] - 100))
 
@@ -69,20 +74,23 @@ class Gedit(unittest.TestCase):
     def testOpenGedit(self):
         icongedit = self.ddedockobject.child(self.gediticonname)
         icongedit.click()
-        geditwin1 = utils.findWindow("无标题文档 1 - gedit")
+        geditwin1 = utils.findWindow(self.dock.string_Text_Editor_Window1,
+                comparetype="notequal")
         self.assertTrue(geditwin1 != None)
 
         icongedit.click(3)
         utils.keySingle(utils.k.down_key)
         utils.keySingle(utils.k.enter_key)
-        geditwin2 = utils.findWindow("无标题文档 2 - gedit")
+        geditwin2 = utils.findWindow(self.dock.string_Text_Editor_Window2,
+                comparetype="notequal")
         self.assertTrue(geditwin2 != None)
 
         icongedit.click(3)
         utils.keySingle(utils.k.down_key)
         utils.keySingle(utils.k.down_key)
         utils.keySingle(utils.k.enter_key)
-        geditwin3 = utils.findWindow("无标题文档 3 - gedit")
+        geditwin3 = utils.findWindow(self.dock.string_Text_Editor_Window3,
+                comparetype="notequal")
         self.assertTrue(geditwin3 != None)
 
         icongedit.click(3)
@@ -90,7 +98,8 @@ class Gedit(unittest.TestCase):
         utils.keySingle(utils.k.down_key)
         utils.keySingle(utils.k.down_key)
         utils.keySingle(utils.k.enter_key)
-        geditwin4 = utils.findWindow("无标题文档 4 - gedit")
+        geditwin4 = utils.findWindow(self.dock.string_Text_Editor_Window4,
+                comparetype="notequal")
         self.assertTrue(geditwin4 != None)
 
     def testCloseGedit(self):
@@ -101,10 +110,14 @@ class Gedit(unittest.TestCase):
         utils.keySingle(utils.k.down_key)
         utils.keySingle(utils.k.down_key)
         utils.keySingle(utils.k.enter_key)
-        geditwin1 = utils.findWindow("无标题文档 1 - gedit", mode="nowait")
-        geditwin2 = utils.findWindow("无标题文档 2 - gedit", mode="nowait")
-        geditwin3 = utils.findWindow("无标题文档 3 - gedit", mode="nowait")
-        geditwin4 = utils.findWindow("无标题文档 4 - gedit", mode="nowait")
+        geditwin1 = utils.findWindow(self.dock.string_Text_Editor_Window4,
+                mode="nowait", comparetype="notequal")
+        geditwin2 = utils.findWindow(self.dock.string_Text_Editor_Window4,
+                mode="nowait", comparetype="notequal")
+        geditwin3 = utils.findWindow(self.dock.string_Text_Editor_Window4,
+                mode="nowait", comparetype="notequal")
+        geditwin4 = utils.findWindow(self.dock.string_Text_Editor_Window4,
+                mode="nowait", comparetype="notequal")
         self.assertTrue(None == geditwin1)
         self.assertTrue(None == geditwin2)
         self.assertTrue(None == geditwin3)
@@ -131,4 +144,7 @@ class Gedit(unittest.TestCase):
         return suite
 
 if __name__ == "__main__":
+    unittest.installHandler()
+    LOCALE_DIR = os.path.abspath("./lib/locale")
+    gettext.install('dsystem', LOCALE_DIR)
     executeTestCase.runTest(Gedit)

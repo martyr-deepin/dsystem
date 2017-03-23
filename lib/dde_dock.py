@@ -15,9 +15,16 @@ class Dock:
         self.dockObj = root.application(appName='dde-dock', description='/usr/bin/dde-dock')
         #self.dockedapps = self.dockObj.child('dock-mainpanel').children
 
+        self.string_dock_Launcher = _("Launcher")
+
         self.string_Deepin_File_Manager = _("Deepin File Manager")
         self.string_Deepin_Screenshot = _("Deepin Screenshot")
         self.string_Deepin_Screenshot_png = _("DeepinScreenshot*.png")
+        self.string_Text_Editor = _("Text Editor")
+        self.string_Text_Editor_Window1 = _("Untitled Document 1")
+        self.string_Text_Editor_Window2 = _("Untitled Document 2")
+        self.string_Text_Editor_Window3 = _("Untitled Document 3")
+        self.string_Text_Editor_Window4 = _("Untitled Document 4")
 
     def getDockedApps(self):
         apps = []
