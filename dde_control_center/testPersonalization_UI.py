@@ -9,8 +9,8 @@ from lib import dde_control_center
 
 casename = "all-4099:更新首页"
 
-class TimeDate_UI(unittest.TestCase):
-    caseid ='999999'
+class Personalization_UI(unittest.TestCase):
+    caseid ='105072'
     @classmethod
     def setUpClass(cls):
         cls.dcc = dde_control_center.Dde_control_center()
@@ -21,17 +21,17 @@ class TimeDate_UI(unittest.TestCase):
         cls.dcc.backToIndex()
         cls.dcc.exit()
 
-    def testTimeDate_UI(self):
-        ret = self.dcc.showModule("datetime")
+    def testPersonalization_UI(self):
+        ret = self.dcc.showModule("personalization")
         self.assertTrue(ret)
         self.dcc.page_deep += 1
 
-        datetime_label = self.dcc.dccObj.child(self.dcc.string_Time_and_Date)
-        self.assertTrue(datetime_label)
+        personalization_label = self.dcc.dccObj.child(self.dcc.string_Personalization)
+        self.assertTrue(personalization_label)
 
     def suite():
         suite = unittest.TestSuite()
-        suite.addTest(TimeDate_UI('testTimeDate_UI'))
+        suite.addTest(Personalization_UI('testPersonalization_UI'))
 
         return suite
 
@@ -39,4 +39,4 @@ if __name__ == "__main__":
     unittest.installHandler()
     LOCALE_DIR = os.path.abspath("./lib/locale")
     gettext.install('dsystem', LOCALE_DIR)
-    executeTestCase.runTest(TimeDate_UI)
+    executeTestCase.runTest(Personalization_UI)
