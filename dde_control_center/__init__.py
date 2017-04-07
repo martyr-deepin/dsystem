@@ -1,4 +1,5 @@
 __all__ = ['User_Head',
+           'Click_UserHead',
            'Accounts_UI',
            'Display_UI',
            'DefaultApplications_UI',
@@ -22,6 +23,7 @@ __all__ = ['User_Head',
            'Accounts_ModifyUserPasswordCancel']
 
 from .testUserHead_Check import User_Head
+from .testClick_UserHead import Click_UserHead
 from .testAccounts_UI import Accounts_UI
 from .testDisplay_UI import Display_UI
 from .testDefaultApplications_UI import DefaultApplications_UI

@@ -7,6 +7,7 @@ import unittest
 from lib.executeTestCase import runTest
 
 from dde_control_center import User_Head
+from dde_control_center import Click_UserHead
 from dde_control_center import Accounts_UI
 from dde_control_center import Display_UI
 from dde_control_center import DefaultApplications_UI
@@ -33,6 +34,7 @@ from dde_control_center import Accounts_ModifyUserPasswordCancel
 def main():
     classes = []
     classes.append(User_Head)
+    classes.append(Click_UserHead)
     classes.append(Accounts_UI)
     classes.append(Display_UI)
     classes.append(DefaultApplications_UI)
