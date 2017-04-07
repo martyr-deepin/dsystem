@@ -1,4 +1,5 @@
-__all__ = ['Accounts_UI',
+__all__ = ['User_Head',
+           'Accounts_UI',
            'Display_UI',
            'DefaultApplications_UI',
            'Personalization_UI',
@@ -20,6 +21,7 @@ __all__ = ['Accounts_UI',
            'Accounts_ModifyUserPasswordAccept',
            'Accounts_ModifyUserPasswordCancel']
 
+from .testUserHead_Check import User_Head
 from .testAccounts_UI import Accounts_UI
 from .testDisplay_UI import Display_UI
 from .testDefaultApplications_UI import DefaultApplications_UI
