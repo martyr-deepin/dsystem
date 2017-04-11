@@ -1,5 +1,6 @@
 __all__ = ['User_Head',
            'Click_UserHead',
+           'Check_UserHead_Display',
            'Accounts_UI',
            'Display_UI',
            'DefaultApplications_UI',
@@ -24,6 +25,7 @@ __all__ = ['User_Head',
 
 from .testUserHead_Check import User_Head
 from .testClick_UserHead import Click_UserHead
+from .testUserHead_Display import Check_UserHead_Display
 from .testAccounts_UI import Accounts_UI
 from .testDisplay_UI import Display_UI
 from .testDefaultApplications_UI import DefaultApplications_UI
