@@ -21,7 +21,7 @@ class Check_UserHead_Display(unittest.TestCase):
 
     @classmethod
     def tearDownClass(cls):
-        cls.dcc.page_deep += 3
+        cls.dcc.page_deep += 2
         cls.dcc.backToIndex()
         cls.dcc.exit()
 

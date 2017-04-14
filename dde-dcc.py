@@ -9,6 +9,8 @@ from lib.executeTestCase import runTest
 from dde_control_center import User_Head
 from dde_control_center import Click_UserHead
 from dde_control_center import Check_UserHead_Display
+from dde_control_center import Set_UserHead_Builtin
+
 from dde_control_center import Accounts_UI
 from dde_control_center import Display_UI
 from dde_control_center import DefaultApplications_UI
@@ -37,6 +39,8 @@ def main():
     classes.append(User_Head)
     classes.append(Click_UserHead)
     classes.append(Check_UserHead_Display)
+    classes.append(Set_UserHead_Builtin)
+
     classes.append(Accounts_UI)
     classes.append(Display_UI)
     classes.append(DefaultApplications_UI)
