@@ -10,6 +10,7 @@ from dde_control_center import User_Head
 from dde_control_center import Click_UserHead
 from dde_control_center import Check_UserHead_Display
 from dde_control_center import Set_UserHead_Builtin
+from dde_control_center import Check_Topmain_Datetime
 
 from dde_control_center import Accounts_UI
 from dde_control_center import Display_UI
@@ -40,6 +41,7 @@ def main():
     classes.append(Click_UserHead)
     classes.append(Check_UserHead_Display)
     classes.append(Set_UserHead_Builtin)
+    classes.append(Check_Topmain_Datetime)
 
     classes.append(Accounts_UI)
     classes.append(Display_UI)
