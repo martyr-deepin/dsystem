@@ -4,6 +4,7 @@ __all__ = ['User_Head',
            'Set_UserHead_Builtin',
            'Check_Topmain_Datetime',
            'Change_Topmain_Datetime',
+           'Change_Topmain_Timezone',
            'Accounts_UI',
            'Display_UI',
            'DefaultApplications_UI',
@@ -32,6 +33,7 @@ from .testUserHead_Display import Check_UserHead_Display
 from .testTopmain_Set_Userhead import Set_UserHead_Builtin
 from .testTopmain_Check_Datetime import Check_Topmain_Datetime
 from .testTopmain_Change_Datetime import Change_Topmain_Datetime
+from .testTopmain_Change_Timezone import Change_Topmain_Timezone
 
 from .testAccounts_UI import Accounts_UI
 from .testDisplay_UI import Display_UI

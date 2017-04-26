@@ -31,6 +31,11 @@ class Timedate:
     def SetNTP(self, setbool):
         self.ifc_methods.SetNTP(setbool)
 
+    def GetZoneList(self):
+        return self.ifc_methods.GetZoneList()
+
+    def SetTimezone(self, zoneinfo):
+        self.ifc_methods.SetTimezone(zoneinfo)
 
     def getUserTimezones(self):
         return self.ifc_properties.Get(self.interface,
