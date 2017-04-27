@@ -19,3 +19,6 @@ class LangSelector:
 
     def GetLocaleList(self):
         return self.ifc_methods.GetLocaleList()
+
+    def SetLocale(self, langinfo):
+        self.ifc_methods.SetLocale(langinfo)

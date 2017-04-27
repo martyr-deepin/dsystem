@@ -42,3 +42,6 @@ class SessionManager:
     def getCurrentUid(self):
         return self.ifc_properties.Get(self.interface,
                 self.dbus_properties_CurrentUid)
+
+    def RequestLogout(self):
+        self.ifc_methods.RequestLogout()
