@@ -14,6 +14,8 @@ from dde_control_center import Check_Topmain_Datetime
 from dde_control_center import Change_Topmain_Datetime
 from dde_control_center import Change_Topmain_Timezone
 from dde_control_center import Change_Topmain_Languge
+from dde_control_center import Click_SoundSlider
+from dde_control_center import Click_LightSlider
 
 from dde_control_center import Accounts_UI
 from dde_control_center import Display_UI
@@ -48,6 +50,8 @@ def main():
     classes.append(Change_Topmain_Datetime)
     classes.append(Change_Topmain_Timezone)
     classes.append(Change_Topmain_Languge)
+    classes.append(Click_SoundSlider)
+    classes.append(Click_LightSlider)
 
     classes.append(Accounts_UI)
     classes.append(Display_UI)

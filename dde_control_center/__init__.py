@@ -6,6 +6,8 @@ __all__ = ['User_Head',
            'Change_Topmain_Datetime',
            'Change_Topmain_Timezone',
            'Change_Topmain_Languge',
+           'Click_SoundSlider',
+           'Click_LightSlider',
            'Accounts_UI',
            'Display_UI',
            'DefaultApplications_UI',
@@ -36,6 +38,8 @@ from .testTopmain_Check_Datetime import Check_Topmain_Datetime
 from .testTopmain_Change_Datetime import Change_Topmain_Datetime
 from .testTopmain_Change_Timezone import Change_Topmain_Timezone
 from .testTopmain_Change_Languge import Change_Topmain_Languge
+from .testTopmain_Click_Soundslider import Click_SoundSlider
+from .testTopmain_Click_Lightslider import Click_LightSlider
 
 from .testAccounts_UI import Accounts_UI
 from .testDisplay_UI import Display_UI
