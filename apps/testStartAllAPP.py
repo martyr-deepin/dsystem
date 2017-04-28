@@ -11,10 +11,10 @@ import time
 from lib import executeTestCase,runner,utils,window
 from lib.launcher import *
 
-casename = 'start all launcher apps once time'
+casename = 'all-5334:一次启动launcher所有应用'
 
 class StartAllAPP(unittest.TestCase):
-    caseid = 'nocaseid'
+    caseid = '191607'
 
     def ParsingJsonCn(self):
         with open('../data/defaultapp_cn_window.json', 'r') as f:
