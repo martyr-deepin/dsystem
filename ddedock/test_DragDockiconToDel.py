@@ -13,10 +13,10 @@ from pymouse import PyMouse
 from pykeyboard import PyKeyboard
 from dogtail.tree import *
 
-casename = "all-497:时尚模式拖动删除图标驻留"
+casename = "all-5352:将dock上的应用图标拖拽到桌面丢弃"
 
 class DragDockiconToDel(unittest.TestCase):
-    caseid = '33735'
+    caseid = '191645'
 
     def  AddApptoDock(appname):
         m = PyMouse()
