@@ -10,6 +10,8 @@ from lib import runTest
 
 from RRTestCase import Launcher_StartAllAPP
 
+from RRTestCase import Dock_DragDockiconToDel
+
 id_key = 'lava_id'
 idfilename = 'id.txt'
 
@@ -26,6 +28,9 @@ def main():
 
     if Launcher_StartAllAPP.caseid in allids:
         classes.append(Launcher_StartAllAPP)
+
+    if Dock_DragDockiconToDel.caseid in allids:
+        classes.append(Dock_DragDockiconToDel)
 
     if 0 == len(classes):
         print("classes length is 0.\nExit")

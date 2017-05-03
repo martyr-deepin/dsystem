@@ -26,6 +26,9 @@ class Dock:
         self.string_Text_Editor_Window3 = _("Untitled Document 3")
         self.string_Text_Editor_Window4 = _("Untitled Document 4")
 
+        self.string_Deepin_File_Manager = _("Deepin File Manager")
+        self.string_Deepin_Music = _("Deepin Music")
+
     def getDockedApps(self):
         apps = []
         for i in range(len(self.dockObj.child('dock-mainpanel').children)):
