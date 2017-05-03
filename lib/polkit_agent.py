@@ -5,7 +5,7 @@ from lib import window
 from lib import utils
 from dogtail.tree import root
 
-def do_polkit_agent(pw = 'deepin'):
+def do_polkit_agent(pw = 'deepin', action = 'Confirm'):
     app_name = 'Deepin Polkit Agent'
     polkit_agent = window.WindowState(app_name)
     win_polkit_agent = polkit_agent.getWindow()
@@ -18,6 +18,10 @@ def do_polkit_agent(pw = 'deepin'):
         PasswordInput = dogtail_agent.child('PasswordInput')
         PasswordInput.click()
         utils.keyTypeString(pw)
-        Comfirm = dogtail_agent.child('Confirm')
-        Comfirm.click()
 
+        if action == 'Confirm':
+            Comfirm = dogtail_agent.child('Confirm')
+            Comfirm.click()
+        else:
+            Cancel = dogtail_agent.child('Cancel')
+            Cancel.click()

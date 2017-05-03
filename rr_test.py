@@ -8,7 +8,7 @@ import gettext
 import unittest
 from lib import runTest
 
-from dde_control_center import User_Head
+from RRTestCase import Launcher_StartAllAPP
 
 id_key = 'lava_id'
 idfilename = 'id.txt'
@@ -24,8 +24,8 @@ def main():
 
     classes = []
 
-    if User_Head.caseid in allids:
-        classes.append(User_Head)
+    if Launcher_StartAllAPP.caseid in allids:
+        classes.append(Launcher_StartAllAPP)
 
     if 0 == len(classes):
         print("classes length is 0.\nExit")
