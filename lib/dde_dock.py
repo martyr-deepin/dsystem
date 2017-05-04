@@ -29,6 +29,8 @@ class Dock:
         self.string_Deepin_File_Manager = _("Deepin File Manager")
         self.string_Deepin_Music = _("Deepin Music")
 
+        self.string_Google_Chrome = _("Google Chrome")
+
         self.DesktopFile_Deepin_Music = "deepin-music.desktop"
 
     def getDockedApps(self):
@@ -58,10 +60,10 @@ class Dock:
         apps = apps.split(', ')
         return apps
 
-    def getAppCoor(self,app):
+    def getAppCoor(self, app):
         coor = []
         position = self.dockObj.child(app).position
-        size = self.dockObj.child(app).size
+        size = self.dockObj.child(app, roleName='filler').size
         coor.append(position[0]+size[0]/2)
         coor.append(position[1]+size[1]/2)
         return coor
