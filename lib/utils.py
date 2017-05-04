@@ -2,6 +2,7 @@
 # -*- coding: utf-8 -*-
 
 import os
+import subprocess
 from dogtail.tree import *
 from Xlib.display import Display
 from pykeyboard import PyKeyboard
@@ -25,6 +26,7 @@ MINIMUM_DURATION = 0.1
 MINIMUM_SLEEP = 0.05
 
 resolution = Display().screen().root.get_geometry()
+homepath = os.path.expanduser('~')
 
 def getPointOnLine(x1, y1, x2, y2, n):
     x = ((x2 - x1) * n) + x1
@@ -281,3 +283,9 @@ def delKeyboard(layout):
     session_bus = dbus.SessionBus().get_object(OSDkeyboard.dbus_dest,OSDkeyboard.dbus_objpath)
     interface = dbus.Interface(session_bus,dbus_interface=OSDkeyboard.dbus_interface)
     interface.DeleteUserLayout(layout)
+
+def getDesktopFiles():
+    desktopPath = homepath + '/Desktop'
+    desktopFile = subprocess.check_output(["ls " + desktopPath],shell=True).decode().split("\n")
+    files = [ n for n in desktopFile if len(n.strip()) > 0]
+    return files

@@ -29,6 +29,8 @@ class Dock:
         self.string_Deepin_File_Manager = _("Deepin File Manager")
         self.string_Deepin_Music = _("Deepin Music")
 
+        self.DesktopFile_Deepin_Music = "deepin-music.desktop"
+
     def getDockedApps(self):
         apps = []
         for i in range(len(self.dockObj.child('dock-mainpanel').children)):

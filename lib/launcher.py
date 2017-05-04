@@ -248,42 +248,34 @@ class Launcher:
     def menuDesktop(self,app):
         self.openLauncher()
         self.searchApp(app)
-        sleep(2)
+        sleep(3)
         self.launcherObj.child(app).click(3)
-        menuObj = root.application(appName='deepin-menu', description='/usr/lib/deepin-menu')
-        if menuObj.children[0].name == 'DesktopMenu':
-            pyautogui.press('down')
-            pyautogui.press('down')
-            pyautogui.press('enter')
-        else:
-            raise Exception('Launcher Menu did not opened!')
+
+        pyautogui.press('down')
+        pyautogui.press('down')
+        sleep(1)
+        pyautogui.press('enter')
 
     def menuDock(self,app):
         self.searchApp(app)
         sleep(2)
         self.launcherObj.child(app).click(3)
-        menuObj = root.application(appName='deepin-menu', description='/usr/lib/deepin-menu')
-        if menuObj.children[0].name == 'DesktopMenu':
-            pyautogui.press('down')
-            pyautogui.press('down')
-            pyautogui.press('down')
-            pyautogui.press('enter')
-        else:
-            raise Exception('Launcher Menu did not opened!')
+
+        pyautogui.press('down')
+        pyautogui.press('down')
+        pyautogui.press('down')
+        pyautogui.press('enter')
 
     def menuUnDock(self,app):
         self.searchApp(app)
         sleep(2)
         self.launcherObj.child(app).click(3)
         sleep(2)
-        menuObj = root.application(appName='deepin-menu', description='/usr/lib/deepin-menu')
-        if menuObj.children[0].name == 'DesktopMenu':
-            pyautogui.press('down')
-            pyautogui.press('down')
-            pyautogui.press('down')
-            pyautogui.press('enter')
-        else:
-            raise Exception('Launcher Menu did not opened!')
+
+        pyautogui.press('down')
+        pyautogui.press('down')
+        pyautogui.press('down')
+        pyautogui.press('enter')
 
     def menuBoot(self,*args):
         for app in args: 
@@ -374,10 +366,6 @@ class Launcher:
         self.launcherObj.child('search-edit').click()
         sleep(1)
         pyautogui.hotkey('ctrl','v')
-
-
-
-    
 
 launcher = Launcher()
 

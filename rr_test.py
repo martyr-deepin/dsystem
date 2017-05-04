@@ -9,6 +9,7 @@ import unittest
 from lib import runTest
 
 from RRTestCase import Launcher_StartAllAPP
+from RRTestCase import Launcher_SendToDesktop
 
 from RRTestCase import Dock_DragDockiconToDel
 
@@ -28,6 +29,9 @@ def main():
 
     if Launcher_StartAllAPP.caseid in allids:
         classes.append(Launcher_StartAllAPP)
+
+    if Launcher_SendToDesktop.caseid in allids:
+        classes.append(Launcher_SendToDesktop)
 
     if Dock_DragDockiconToDel.caseid in allids:
         classes.append(Dock_DragDockiconToDel)
