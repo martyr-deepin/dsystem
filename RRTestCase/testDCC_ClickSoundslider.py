@@ -7,10 +7,10 @@ import gettext
 from lib import executeTestCase
 from lib import dde_control_center
 
-casename = "all-5357:首页亮度调节"
+casename = "all-5356:首页声音调节"
 
-class Click_LightSlider(unittest.TestCase):
-    caseid ='191667'
+class DCC_Click_SoundSlider(unittest.TestCase):
+    caseid ='191665'
     @classmethod
     def setUpClass(cls):
         cls.dcc = dde_control_center.Dde_control_center()
@@ -20,19 +20,19 @@ class Click_LightSlider(unittest.TestCase):
         cls.dcc.backToIndex()
         cls.dcc.exit()
 
-    def testClickLightSlider(self):
-        lightslider = 'LightSlider'
+    def testClickSoundSlider(self):
+        soundslider = 'SoundSlider'
         show_check = self.dcc.showDcc()
         self.assertTrue(show_check)
-        self.dcc.dccObj.child(lightslider, roleName='slider').click()
+        self.dcc.dccObj.child(soundslider, roleName='slider').click()
 
     def suite():
         suite = unittest.TestSuite()
-        suite.addTest(Click_LightSlider('testClickLightSlider'))
+        suite.addTest(Click_SoundSlider('testClickSoundSlider'))
         return suite
 
 if __name__ == "__main__":
     unittest.installHandler()
     LOCALE_DIR = os.path.abspath("./lib/locale")
     gettext.install('dsystem', LOCALE_DIR)
-    executeTestCase.runTest(Click_LightSlider)
+    executeTestCase.runTest(Click_SoundSlider)

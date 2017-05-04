@@ -6,8 +6,6 @@ import unittest
 import gettext
 from lib import executeTestCase
 from lib import dde_control_center
-from lib.com_deepin_daemon_Accounts import Accounts, User
-from lib.com_deepin_SessionManager import SessionManager
 
 casename = "all-5356:首页声音调节"
 

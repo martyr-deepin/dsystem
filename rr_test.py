@@ -11,8 +11,12 @@ from lib import runTest
 from RRTestCase import Launcher_StartAllAPP
 from RRTestCase import Launcher_SendToDesktop
 from RRTestCase import Launcher_AddToDock
+from RRTestCase import Launcher_AutoStart
 
 from RRTestCase import Dock_DragDockiconToDel
+
+from RRTestCase import DCC_Click_SoundSlider
+from RRTestCase import DCC_Click_LightSlider
 
 id_key = 'lava_id'
 idfilename = 'id.txt'
@@ -37,8 +41,17 @@ def main():
     if Launcher_AddToDock.caseid in allids:
         classes.append(Launcher_AddToDock)
 
+    if Launcher_AutoStart.caseid in allids:
+        classes.append(Launcher_AutoStart)
+
     if Dock_DragDockiconToDel.caseid in allids:
         classes.append(Dock_DragDockiconToDel)
+
+    if Click_SoundSlider.caseid in allids:
+        classes.append(DCC_Click_SoundSlider)
+
+    if Click_LightSlider.caseid in allids:
+        classes.append(DCC_Click_LightSlider)
 
     if 0 == len(classes):
         print("classes length is 0.\nExit")

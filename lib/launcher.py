@@ -277,39 +277,31 @@ class Launcher:
         pyautogui.press('down')
         pyautogui.press('enter')
 
-    def menuBoot(self,*args):
+    def menuBoot(self, *args):
         for app in args: 
             self.searchApp(app)
             sleep(2)
             self.launcherObj.child(app).click(3)
-            menuObj = root.application(appName='deepin-menu', description='/usr/lib/deepin-menu')
-            if menuObj.children[0].name == 'DesktopMenu':
-                pyautogui.press('down')
-                pyautogui.press('down')
-                pyautogui.press('down')
-                pyautogui.press('down')
-                pyautogui.press('enter')
-                self.exitLauncher()
-            else:
-                raise Exception('Launcher Menu did not opened!')
+            pyautogui.press('down')
+            pyautogui.press('down')
+            pyautogui.press('down')
+            pyautogui.press('down')
+            pyautogui.press('enter')
+            self.exitLauncher()
 
     def menuUninstall(self,*args):
         for app in args: 
             self.searchApp(app)
             sleep(2)
             self.launcherObj.child(app).click(3)
-            menuObj = root.application(appName='deepin-menu', description='/usr/lib/deepin-menu')
-            if menuObj.children[0].name == 'DesktopMenu':
-                pyautogui.press('down')
-                pyautogui.press('down')
-                pyautogui.press('down')
-                pyautogui.press('down')
-                pyautogui.press('down')
-                pyautogui.press('enter')
-                launcher.launcherObj.child('确定').click()
-                self.exitLauncher()
-            else:
-                raise Exception('Launcher Menu did not opened!')
+            pyautogui.press('down')
+            pyautogui.press('down')
+            pyautogui.press('down')
+            pyautogui.press('down')
+            pyautogui.press('down')
+            pyautogui.press('enter')
+            launcher.launcherObj.child('确定').click()
+            self.exitLauncher()
 
     def installApp(self,app):
         #pyautogui.press('winleft')
@@ -366,6 +358,13 @@ class Launcher:
         self.launcherObj.child('search-edit').click()
         sleep(1)
         pyautogui.hotkey('ctrl','v')
+
+    def getBootFeild(self, fileName):
+        filePath = homePath + '/.config/autostart/' + fileName
+        bootFeild = subprocess.check_output(["cat " + filePath + " |grep Hidden"],shell=True).decode().split("\n")
+        feild = [ n for n in bootFeild if len(n.strip()) > 0]
+        feild = ''.join(feild)
+        return feild
 
 launcher = Launcher()
 

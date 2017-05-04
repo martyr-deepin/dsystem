@@ -30,8 +30,11 @@ class Dock:
         self.string_Deepin_Music = _("Deepin Music")
 
         self.string_Google_Chrome = _("Google Chrome")
+        self.string_QQ = _("QQ")
 
         self.DesktopFile_Deepin_Music = "deepin-music.desktop"
+        self.DesktopFile_Google_Chrome = "google-chrome.desktop"
+        self.DesktopFile_QQ = "deepin.com.qq.im.desktop"
 
     def getDockedApps(self):
         apps = []
