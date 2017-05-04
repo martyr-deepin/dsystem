@@ -9,7 +9,7 @@ from lib import dde_control_center
 
 casename = "all-5357:首页亮度调节"
 
-class Click_LightSlider(unittest.TestCase):
+class DCC_Click_LightSlider(unittest.TestCase):
     caseid ='191667'
     @classmethod
     def setUpClass(cls):

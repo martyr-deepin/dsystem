@@ -14,6 +14,9 @@ from RRTestCase import Launcher_AddToDock
 
 from RRTestCase import Dock_DragDockiconToDel
 
+from RRTestCase import DCC_Click_SoundSlider
+from RRTestCase import DCC_Click_LightSlider
+
 id_key = 'lava_id'
 idfilename = 'id.txt'
 
@@ -39,6 +42,12 @@ def main():
 
     if Dock_DragDockiconToDel.caseid in allids:
         classes.append(Dock_DragDockiconToDel)
+
+    if Click_SoundSlider.caseid in allids:
+        classes.append(DCC_Click_SoundSlider)
+
+    if Click_LightSlider.caseid in allids:
+        classes.append(DCC_Click_LightSlider)
 
     if 0 == len(classes):
         print("classes length is 0.\nExit")
