@@ -12,6 +12,7 @@ from RRTestCase import Launcher_StartAllAPP
 from RRTestCase import Launcher_SendToDesktop
 from RRTestCase import Launcher_AddToDock
 from RRTestCase import Launcher_AutoStart
+from RRTestCase import Launcher_Uninstall
 
 from RRTestCase import Dock_DragDockiconToDel
 
@@ -44,6 +45,9 @@ def main():
 
     if Launcher_AutoStart.caseid in allids:
         classes.append(Launcher_AutoStart)
+
+    if Launcher_Uninstall.caseid in allids:
+        classes.append(Launcher_Uninstall)
 
     if Dock_DragDockiconToDel.caseid in allids:
         classes.append(Dock_DragDockiconToDel)

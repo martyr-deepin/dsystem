@@ -15,7 +15,7 @@ from lib import NotificationsDB
 casename = "all-5347:卸载应用"
 
 class Launcher_Uninstall(unittest.TestCase):
-    caseid = '33849'
+    caseid = '191635'
     @classmethod
     def setUpClass(cls):
         cls.homepath = os.path.expanduser('~')
