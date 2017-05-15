@@ -18,5 +18,5 @@ from .testLauncher_Uninstall import Launcher_Uninstall
 from .testDock_DragDockiconToDel import Dock_DragDockiconToDel
 
 from .testDCC_ClickLightslider  import DCC_Click_LightSlider
-from .testDCC_ClickLightslider  import DCC_Click_SoundSlider
+from .testDCC_ClickSoundslider  import DCC_Click_SoundSlider
 from .testDCC_ShowAllModules  import DCC_ShowModules

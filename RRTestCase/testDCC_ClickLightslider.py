@@ -28,11 +28,11 @@ class DCC_Click_LightSlider(unittest.TestCase):
 
     def suite():
         suite = unittest.TestSuite()
-        suite.addTest(Click_LightSlider('testClickLightSlider'))
+        suite.addTest(DCC_Click_LightSlider('testClickLightSlider'))
         return suite
 
 if __name__ == "__main__":
     unittest.installHandler()
     LOCALE_DIR = os.path.abspath("./lib/locale")
     gettext.install('dsystem', LOCALE_DIR)
-    executeTestCase.runTest(Click_LightSlider)
+    executeTestCase.runTest(DCC_Click_LightSlider)
