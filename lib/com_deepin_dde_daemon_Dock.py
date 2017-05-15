@@ -20,3 +20,7 @@ class DaemonDock:
     def getDockedApps(self):
         return self.ifc_properties.Get(self.interface,
                 "DockedApps")
+
+    def getFrontendWindowRect(self):
+        return self.ifc_properties.Get(self.interface,
+                "FrontendWindowRect")
