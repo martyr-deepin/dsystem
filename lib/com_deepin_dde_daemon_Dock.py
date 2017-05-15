@@ -24,3 +24,23 @@ class DaemonDock:
     def getFrontendWindowRect(self):
         return self.ifc_properties.Get(self.interface,
                 "FrontendWindowRect")
+
+    def getDisplayMode(self):
+        return self.ifc_properties.Get(self.interface,
+                "DisplayMode")
+
+    def getPosition(self):
+        return self.ifc_properties.Get(self.interface,
+                "Position")
+
+    def getIconSize(self):
+        return self.ifc_properties.Get(self.interface,
+                "IconSize")
+
+    def getHideMode(self):
+        return self.ifc_properties.Get(self.interface,
+                "HideMode")
+
+    def getHideState(self):
+        return self.ifc_properties.Get(self.interface,
+                "HideState")

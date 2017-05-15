@@ -4,6 +4,7 @@ __ALL__ = ['Launcher_StartAllAPP',
            'Launcher_AutoStart',
            'Launcher_Uninstall',
            'Dock_Exist',
+           'Dock_DefaultSetting',
            'Dock_DragDockiconToDel',
            'DCC_Click_LightSlider',
            'DCC_Click_SoundSlider',
@@ -17,6 +18,7 @@ from .testLauncher_AutoStart import Launcher_AutoStart
 from .testLauncher_Uninstall import Launcher_Uninstall
 
 from .testDock_Exist import Dock_Exist
+from .testDock_DefaultSetting import Dock_DefaultSetting
 from .testDock_DragDockiconToDel import Dock_DragDockiconToDel
 
 from .testDCC_ClickLightslider  import DCC_Click_LightSlider

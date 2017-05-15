@@ -15,6 +15,7 @@ from RRTestCase import Launcher_AutoStart
 from RRTestCase import Launcher_Uninstall
 
 from RRTestCase import Dock_Exist
+from RRTestCase import Dock_DefaultSetting
 from RRTestCase import Dock_DragDockiconToDel
 
 from RRTestCase import DCC_Click_SoundSlider
@@ -52,11 +53,14 @@ def main():
         classes.append(Launcher_Uninstall)
 
     # Dock
-    if Dock_DragDockiconToDel.caseid in allids:
-        classes.append(Dock_DragDockiconToDel)
-
     if Dock_Exist.caseid in allids:
         classes.append(Dock_Exist)
+
+    if Dock_DefaultSetting.caseid in allids:
+        classes.append(Dock_DefaultSetting)
+
+    if Dock_DragDockiconToDel.caseid in allids:
+        classes.append(Dock_DragDockiconToDel)
 
     # Dde control center
     if DCC_Click_SoundSlider.caseid in allids:
