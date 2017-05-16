@@ -8,6 +8,7 @@ __ALL__ = ['Launcher_StartAllAPP',
            'Dock_ChangeDisplay',
            'Dock_ChangePosition',
            'Dock_ChangeIconSize',
+           'Dock_ChangeHide',
            'Dock_DragDockiconToDel',
            'DCC_Click_LightSlider',
            'DCC_Click_SoundSlider',
@@ -25,6 +26,7 @@ from .testDock_DefaultSetting import Dock_DefaultSetting
 from .testDock_ChangeDisplay import Dock_ChangeDisplay
 from .testDock_ChangePosition import Dock_ChangePosition
 from .testDock_ChangeIconSize import Dock_ChangeIconSize
+from .testDock_ChangeHide import Dock_ChangeHide
 from .testDock_DragDockiconToDel import Dock_DragDockiconToDel
 
 from .testDCC_ClickLightslider  import DCC_Click_LightSlider

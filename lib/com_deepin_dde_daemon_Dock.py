@@ -61,3 +61,8 @@ class DaemonDock:
                 "IconSize", direction)
         sleep(2)
 
+    def setHideMode(self, direction):
+        self.ifc_properties.Set(self.interface,
+                "HideMode", direction)
+        sleep(2)
+
