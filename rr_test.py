@@ -17,6 +17,7 @@ from RRTestCase import Launcher_Uninstall
 from RRTestCase import Dock_Exist
 from RRTestCase import Dock_DefaultSetting
 from RRTestCase import Dock_ChangeDisplay
+from RRTestCase import Dock_ChangePosition
 from RRTestCase import Dock_DragDockiconToDel
 
 from RRTestCase import DCC_Click_SoundSlider
@@ -62,6 +63,9 @@ def main():
 
     if Dock_ChangeDisplay.caseid in allids:
         classes.append(Dock_ChangeDisplay)
+
+    if Dock_ChangePosition.caseid in allids:
+        classes.append(Dock_ChangePosition)
 
     if Dock_DragDockiconToDel.caseid in allids:
         classes.append(Dock_DragDockiconToDel)

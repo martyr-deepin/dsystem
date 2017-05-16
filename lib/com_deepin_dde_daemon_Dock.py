@@ -51,3 +51,8 @@ class DaemonDock:
                 "DisplayMode", mode)
         sleep(2)
 
+    def setPosition(self, direction):
+        self.ifc_properties.Set(self.interface,
+                "Position", direction)
+        sleep(2)
+
