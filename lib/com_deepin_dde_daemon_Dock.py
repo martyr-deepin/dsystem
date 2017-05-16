@@ -56,3 +56,8 @@ class DaemonDock:
                 "Position", direction)
         sleep(2)
 
+    def setIconSize(self, direction):
+        self.ifc_properties.Set(self.interface,
+                "IconSize", direction)
+        sleep(2)
+
