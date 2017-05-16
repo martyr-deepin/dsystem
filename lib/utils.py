@@ -289,3 +289,15 @@ def getDesktopFiles():
     desktopFile = subprocess.check_output(["ls " + desktopPath],shell=True).decode().split("\n")
     files = [ n for n in desktopFile if len(n.strip()) > 0]
     return files
+
+def getScreenMiddle(direction):
+    if 'top' == direction:
+        return (int(resolution.width/2), 0)
+    elif 'bottom' == direction:
+        return (int(resolution.width/2), int(resolution.height))
+    elif 'left' == direction:
+        return (0, int(resolution.height/2))
+    elif 'right' == direction:
+        return (int(resolution.width, int(resolution.height/2)))
+
+    return None

@@ -2,6 +2,7 @@
 # -*- coding: utf-8 -*-
 
 import dbus
+from time import sleep
 
 class DaemonDock:
     def __init__(self):
@@ -44,3 +45,9 @@ class DaemonDock:
     def getHideState(self):
         return self.ifc_properties.Get(self.interface,
                 "HideState")
+
+    def setDisplayMode(self, mode):
+        self.ifc_properties.Set(self.interface,
+                "DisplayMode", mode)
+        sleep(2)
+
