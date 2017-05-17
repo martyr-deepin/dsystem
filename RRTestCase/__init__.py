@@ -12,7 +12,10 @@ __ALL__ = ['Launcher_StartAllAPP',
            'Dock_DragDockiconToDel',
            'DCC_Click_LightSlider',
            'DCC_Click_SoundSlider',
-           'DCC_ShowModules'
+           'DCC_ShowModules',
+           'Command_useradd',
+           'Command_userdel',
+           'Command_passwd'
            ]
 
 from .testLauncher_StartAllAPP import Launcher_StartAllAPP
@@ -32,3 +35,7 @@ from .testDock_DragDockiconToDel import Dock_DragDockiconToDel
 from .testDCC_ClickLightslider  import DCC_Click_LightSlider
 from .testDCC_ClickSoundslider  import DCC_Click_SoundSlider
 from .testDCC_ShowAllModules  import DCC_ShowModules
+
+from .testCommand_useradd import Command_useradd
+from .testCommand_userdel import Command_userdel
+from .testCommand_passwd import Command_passwd

@@ -26,6 +26,10 @@ from RRTestCase import DCC_Click_SoundSlider
 from RRTestCase import DCC_Click_LightSlider
 from RRTestCase import DCC_ShowModules
 
+from RRTestCase import Command_useradd
+from RRTestCase import Command_userdel
+from RRTestCase import Command_passwd
+
 id_key = 'lava_id'
 idfilename = 'id.txt'
 
@@ -87,6 +91,16 @@ def main():
 
     if DCC_ShowModules.caseid in allids:
         classes.append(DCC_ShowModules)
+
+    # Command
+    if Command_useradd.caseid in allids:
+        classes.append(Command_useradd)
+
+    if Command_userdel.caseid in allids:
+        classes.append(Command_userdel)
+
+    if Command_passwd.caseid in allids:
+        classes.append(Command_passwd)
 
     if 0 == len(classes):
         print("classes length is 0.\nExit")
