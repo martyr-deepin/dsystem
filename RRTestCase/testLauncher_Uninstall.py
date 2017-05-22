@@ -34,6 +34,17 @@ class Launcher_Uninstall(unittest.TestCase):
 
         cls.launcher.exitLauncher()
 
+        cls.launcher.searchApp(cls.launchername)
+        sleep(2)
+        cls.launcher.launcherObj.child(cls.launchername).click(3)
+        sleep(1)
+        for i in range(3):
+            pyautogui.press('down')
+            sleep(0.2)
+
+        pyautogui.press('enter')
+        cls.launcher.exitLauncher()
+
     def testNotUninstall(self):
         self.assertTrue(0 == self.conn.rowcount())
         self.launcher.searchApp(self.launchername)

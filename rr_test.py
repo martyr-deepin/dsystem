@@ -14,11 +14,21 @@ from RRTestCase import Launcher_AddToDock
 from RRTestCase import Launcher_AutoStart
 from RRTestCase import Launcher_Uninstall
 
+from RRTestCase import Dock_Exist
+from RRTestCase import Dock_DefaultSetting
+from RRTestCase import Dock_ChangeDisplay
+from RRTestCase import Dock_ChangePosition
+from RRTestCase import Dock_ChangeIconSize
+from RRTestCase import Dock_ChangeHide
 from RRTestCase import Dock_DragDockiconToDel
 
 from RRTestCase import DCC_Click_SoundSlider
 from RRTestCase import DCC_Click_LightSlider
 from RRTestCase import DCC_ShowModules
+
+from RRTestCase import Command_useradd
+from RRTestCase import Command_userdel
+from RRTestCase import Command_passwd
 
 id_key = 'lava_id'
 idfilename = 'id.txt'
@@ -34,6 +44,7 @@ def main():
 
     classes = []
 
+    # Launcher
     if Launcher_StartAllAPP.caseid in allids:
         classes.append(Launcher_StartAllAPP)
 
@@ -49,9 +60,29 @@ def main():
     if Launcher_Uninstall.caseid in allids:
         classes.append(Launcher_Uninstall)
 
+    # Dock
+    if Dock_Exist.caseid in allids:
+        classes.append(Dock_Exist)
+
+    if Dock_DefaultSetting.caseid in allids:
+        classes.append(Dock_DefaultSetting)
+
+    if Dock_ChangeDisplay.caseid in allids:
+        classes.append(Dock_ChangeDisplay)
+
+    if Dock_ChangePosition.caseid in allids:
+        classes.append(Dock_ChangePosition)
+
+    if Dock_ChangeIconSize.caseid in allids:
+        classes.append(Dock_ChangeIconSize)
+
+    if Dock_ChangeHide.caseid in allids:
+        classes.append(Dock_ChangeHide)
+
     if Dock_DragDockiconToDel.caseid in allids:
         classes.append(Dock_DragDockiconToDel)
 
+    # Dde control center
     if DCC_Click_SoundSlider.caseid in allids:
         classes.append(DCC_Click_SoundSlider)
 
@@ -60,6 +91,16 @@ def main():
 
     if DCC_ShowModules.caseid in allids:
         classes.append(DCC_ShowModules)
+
+    # Command
+    if Command_useradd.caseid in allids:
+        classes.append(Command_useradd)
+
+    if Command_userdel.caseid in allids:
+        classes.append(Command_userdel)
+
+    if Command_passwd.caseid in allids:
+        classes.append(Command_passwd)
 
     if 0 == len(classes):
         print("classes length is 0.\nExit")

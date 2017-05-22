@@ -28,11 +28,11 @@ class DCC_Click_SoundSlider(unittest.TestCase):
 
     def suite():
         suite = unittest.TestSuite()
-        suite.addTest(Click_SoundSlider('testClickSoundSlider'))
+        suite.addTest(DCC_Click_SoundSlider('testClickSoundSlider'))
         return suite
 
 if __name__ == "__main__":
     unittest.installHandler()
     LOCALE_DIR = os.path.abspath("./lib/locale")
     gettext.install('dsystem', LOCALE_DIR)
-    executeTestCase.runTest(Click_SoundSlider)
+    executeTestCase.runTest(DCC_Click_SoundSlider)
