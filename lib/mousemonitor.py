@@ -1,13 +1,14 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 
+import time
 from Xlib.display import Display
 from Xlib import X
 from Xlib.ext.xtest import fake_input
 from Xlib.ext import record
 from Xlib.protocol import rq
 
-from base import PyMouseMeta, PyMouseEventMeta
+from lib.base import PyMouseMeta, PyMouseEventMeta
 
 class PyMouseEvent(PyMouseEventMeta):
     def __init__(self, display=None):
@@ -54,7 +55,7 @@ class PyMouseEvent(PyMouseEventMeta):
                 print("Press...............")
             elif event.type == X.ButtonRelease:
                 #self.click(event.root_x, event.root_y, (None, 1, 3, 2, 3, 3, 3)[event.detail], False)
-                print("Release.............")
+                print("Release............." + str(time.time()))
             else:
                 #self.move(event.root_x, event.root_y)
                 pass
