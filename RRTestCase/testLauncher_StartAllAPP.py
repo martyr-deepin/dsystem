@@ -9,6 +9,7 @@ import glob
 import gettext
 from dogtail.tree import *
 from pykeyboard import PyKeyboard
+from pymouse import PyMouse
 import time
 from lib import runTest,runner,utils,window
 from lib import Launcher
@@ -54,9 +55,9 @@ class Launcher_StartAllAPP(unittest.TestCase):
         os.system("rm ~/Desktop/*.png")
 
     def terminate_deepinscreenshot(self):
-        p = PyKeyboard()
-        p.press_key('Return')
-        p.release_key('Return')
+        m = PyMouse()
+        m.click(100, 100)
+        m.click(100, 100)
         time_now = time.strftime('%Y%m%d%H', time.localtime())
         picture_save_path = os.path.expandvars('$HOME') + '/Desktop/' + self.string_DeepinScreenshot + time_now + '*.png'
         print(picture_save_path)
