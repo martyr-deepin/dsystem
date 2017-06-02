@@ -34,6 +34,7 @@ class Launcher_StartAllAPP(unittest.TestCase):
     def setUpClass(cls):
         cls.launcher = Launcher()
         cls.lang = os.getenv("LANG")
+        cls.time_now = ''
 
         if "en_US.UTF-8" == cls.lang:
             cls.name_Deepin_Screenshot = "Deepin Screenshot"
@@ -52,13 +53,17 @@ class Launcher_StartAllAPP(unittest.TestCase):
 
     @classmethod
     def tearDownClass(cls):
-        os.system("rm ~/Desktop/*.png")
+        picture_save_path = os.path.expandvars('$HOME') + '/Desktop/' + cls.string_DeepinScreenshot + cls.time_now + '*.png'
+
+        if glob.glob(picture_save_path):
+            os.system("rm ~/Desktop/*.png")
 
     def terminate_deepinscreenshot(self):
         m = PyMouse()
         m.click(100, 100)
         m.click(100, 100)
         time_now = time.strftime('%Y%m%d%H', time.localtime())
+        self.time_now = time_now
         picture_save_path = os.path.expandvars('$HOME') + '/Desktop/' + self.string_DeepinScreenshot + time_now + '*.png'
         print(picture_save_path)
         time.sleep(2)
@@ -79,14 +84,19 @@ class Launcher_StartAllAPP(unittest.TestCase):
             if k ==  self.name_Deepin_Screenshot:
                 self.terminate_deepinscreenshot()
             else:
-                window_obj = window.findWindow(v)
-                print(window_obj)
                 if k == self.name_Thunderbird :
                     thunderbird_obj = window.findWindow(self.string_Thunderbird_Welcome)
                     window.closeWindow(thunderbird_obj)
+                    window_obj = window.findWindow(v, comparetype='notequal')
+                    print(window_obj)
+                    closeresult = window.closeWindow(window_obj)
+                    self.assertEqual(None, closeresult)
+                    continue
                 elif k == self.name_Deepin_User_Feedback:
                     do_polkit_agent(action="Cancel")
 
+                window_obj = window.findWindow(v)
+                print(window_obj)
                 closeresult = window.closeWindow(window_obj)
                 self.assertEqual(None, closeresult)
 
