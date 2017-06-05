@@ -29,6 +29,19 @@ from RRTestCase import DCC_ShowModules
 from RRTestCase import Command_useradd
 from RRTestCase import Command_userdel
 from RRTestCase import Command_passwd
+from RRTestCase import Command_pwd
+from RRTestCase import Command_cd
+from RRTestCase import Command_mkdir
+from RRTestCase import Command_rmdir
+from RRTestCase import Command_cp
+from RRTestCase import Command_mv
+from RRTestCase import Command_rm
+from RRTestCase import Command_file
+from RRTestCase import Command_find
+from RRTestCase import Command_grep
+from RRTestCase import Command_chown
+from RRTestCase import Command_sort
+from RRTestCase import Command_wc
 
 id_key = 'lava_id'
 idfilename = 'id.txt'
@@ -101,6 +114,45 @@ def main():
 
     if Command_passwd.caseid in allids:
         classes.append(Command_passwd)
+
+    if Command_pwd.caseid in allids:
+        classes.append(Command_pwd)
+
+    if Command_cd.caseid in allids:
+        classes.append(Command_cd)
+
+    if Command_mkdir.caseid in allids:
+        classes.append(Command_mkdir)
+
+    if Command_rmdir.caseid in allids:
+        classes.append(Command_rmdir)
+
+    if Command_cp.caseid in allids:
+        classes.append(Command_cp)
+
+    if Command_mv.caseid in allids:
+        classes.append(Command_mv)
+
+    if Command_rm.caseid in allids:
+        classes.append(Command_rm)
+
+    if Command_file.caseid in allids:
+        classes.append(Command_file)
+
+    if Command_find.caseid in allids:
+        classes.append(Command_find)
+
+    if Command_grep.caseid in allids:
+        classes.append(Command_grep)
+
+    if Command_chown.caseid in allids:
+        classes.append(Command_chown)
+
+    if Command_sort.caseid in allids:
+        classes.append(Command_sort)
+
+    if Command_wc.caseid in allids:
+        classes.append(Command_wc)
 
     if 0 == len(classes):
         print("classes length is 0.\nExit")

@@ -15,7 +15,20 @@ __ALL__ = ['Launcher_StartAllAPP',
            'DCC_ShowModules',
            'Command_useradd',
            'Command_userdel',
-           'Command_passwd'
+           'Command_passwd',
+           'Command_pwd',
+           'Command_cd',
+           'Command_mkdir',
+           'Command_rmdir',
+           'Command_cp',
+           'Command_mv',
+           'Command_rm',
+           'Command_file',
+           'Command_find',
+           'Command_grep',
+           'Command_chown',
+           'Command_sort',
+           'Command_wc',
            ]
 
 from .testLauncher_StartAllAPP import Launcher_StartAllAPP
@@ -39,3 +52,16 @@ from .testDCC_ShowAllModules  import DCC_ShowModules
 from .testCommand_useradd import Command_useradd
 from .testCommand_userdel import Command_userdel
 from .testCommand_passwd import Command_passwd
+from .testCommand_pwd import Command_pwd
+from .testCommand_cd import Command_cd
+from .testCommand_mkdir import Command_mkdir
+from .testCommand_rmdir import Command_rmdir
+from .testCommand_cp import Command_cp
+from .testCommand_mv import Command_mv
+from .testCommand_rm import Command_rm
+from .testCommand_file import Command_file
+from .testCommand_find import Command_find
+from .testCommand_grep import Command_grep
+from .testCommand_chown import Command_chown
+from .testCommand_sort import Command_sort
+from .testCommand_wc import Command_wc
