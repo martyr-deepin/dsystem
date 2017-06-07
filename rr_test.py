@@ -42,6 +42,14 @@ from RRTestCase import Command_grep
 from RRTestCase import Command_chown
 from RRTestCase import Command_sort
 from RRTestCase import Command_wc
+from RRTestCase import Command_ifconfig
+from RRTestCase import Command_ping
+from RRTestCase import Command_ping_ip
+from RRTestCase import Command_ping_local_ip
+from RRTestCase import Command_netstat_i
+from RRTestCase import Command_netstat_r
+from RRTestCase import Command_telnet
+from RRTestCase import Command_traceroute
 
 id_key = 'lava_id'
 idfilename = 'id.txt'
@@ -153,6 +161,30 @@ def main():
 
     if Command_wc.caseid in allids:
         classes.append(Command_wc)
+
+    if Command_ifconfig.caseid in allids:
+        classes.append(Command_ifconfig)
+
+    if Command_ping.caseid in allids:
+        classes.append(Command_ping)
+
+    if Command_ping_ip.caseid in allids:
+        classes.append(Command_ping_ip)
+
+    if Command_ping_local_ip.caseid in allids:
+        classes.append(Command_ping_local_ip)
+
+    if Command_netstat_i.caseid in allids:
+        classes.append(Command_netstat_i)
+
+    if Command_netstat_r.caseid in allids:
+        classes.append(Command_netstat_r)
+
+    if Command_telnet.caseid in allids:
+        classes.append(Command_telnet)
+
+    if Command_traceroute.caseid in allids:
+        classes.append(Command_traceroute)
 
     if 0 == len(classes):
         print("classes length is 0.\nExit")

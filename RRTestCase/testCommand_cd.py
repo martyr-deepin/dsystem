@@ -9,7 +9,6 @@ from subprocess import getoutput
 from lib import utils
 from lib import runner
 
-result = True
 casename = 'all-5379:文件/文件夹操作命令--验证对cd命令的支持'
 
 class Command_cd(unittest.TestCase):

@@ -29,6 +29,14 @@ __ALL__ = ['Launcher_StartAllAPP',
            'Command_chown',
            'Command_sort',
            'Command_wc',
+           'Command_ifconfig',
+           'Command_ping',
+           'Command_ping_ip',
+           'Command_ping_local_ip',
+           'Command_netstat_i',
+           'Command_netstat_r',
+           'Command_telnet',
+           'Command_traceroute',
            ]
 
 from .testLauncher_StartAllAPP import Launcher_StartAllAPP
@@ -65,3 +73,11 @@ from .testCommand_grep import Command_grep
 from .testCommand_chown import Command_chown
 from .testCommand_sort import Command_sort
 from .testCommand_wc import Command_wc
+from .testCommand_ifconfig import Command_ifconfig
+from .testCommand_ping import Command_ping
+from .testCommand_ping_ip import Command_ping_ip
+from .testCommand_ping_local_ip import Command_ping_local_ip
+from .testCommand_netstat_i import Command_netstat_i
+from .testCommand_netstat_r import Command_netstat_r
+from .testCommand_telnet import Command_telnet
+from .testCommand_traceroute import Command_traceroute
