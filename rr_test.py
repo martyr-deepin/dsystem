@@ -50,6 +50,12 @@ from RRTestCase import Command_netstat_i
 from RRTestCase import Command_netstat_r
 from RRTestCase import Command_telnet
 from RRTestCase import Command_traceroute
+from RRTestCase import Command_tar
+from RRTestCase import Command_gzip
+from RRTestCase import Command_gunzip
+from RRTestCase import Command_kill
+from RRTestCase import Command_ps
+from RRTestCase import Command_vi
 
 id_key = 'lava_id'
 idfilename = 'id.txt'
@@ -185,6 +191,24 @@ def main():
 
     if Command_traceroute.caseid in allids:
         classes.append(Command_traceroute)
+
+    if Command_tar.caseid in allids:
+        classes.append(Command_tar)
+
+    if Command_gzip.caseid in allids:
+        classes.append(Command_gzip)
+
+    if Command_gunzip.caseid in allids:
+        classes.append(Command_gunzip)
+
+    if Command_kill.caseid in allids:
+        classes.append(Command_kill)
+
+    if Command_ps.caseid in allids:
+        classes.append(Command_ps)
+
+    if Command_vi.caseid in allids:
+        classes.append(Command_vi)
 
     if 0 == len(classes):
         print("classes length is 0.\nExit")

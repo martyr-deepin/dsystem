@@ -37,6 +37,12 @@ __ALL__ = ['Launcher_StartAllAPP',
            'Command_netstat_r',
            'Command_telnet',
            'Command_traceroute',
+           'Command_tar',
+           'Command_gzip',
+           'Command_gunzip',
+           'Command_kill',
+           'Command_ps',
+           'Command_vi',
            ]
 
 from .testLauncher_StartAllAPP import Launcher_StartAllAPP
@@ -81,3 +87,9 @@ from .testCommand_netstat_i import Command_netstat_i
 from .testCommand_netstat_r import Command_netstat_r
 from .testCommand_telnet import Command_telnet
 from .testCommand_traceroute import Command_traceroute
+from .testCommand_tar import Command_tar
+from .testCommand_gzip import Command_gzip
+from .testCommand_gunzip import Command_gunzip
+from .testCommand_kill import Command_kill
+from .testCommand_ps import Command_ps
+from .testCommand_vi import Command_vi
