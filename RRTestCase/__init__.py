@@ -93,3 +93,13 @@ from .testCommand_gunzip import Command_gunzip
 from .testCommand_kill import Command_kill
 from .testCommand_ps import Command_ps
 from .testCommand_vi import Command_vi
+from .testCommand_man import Command_man
+from .testCommand_who import Command_who
+from .testCommand_whoami import Command_whoami
+from .testCommand_cal import Command_cal
+from .testCommand_date import Command_date
+from .testCommand_more import Command_more
+from .testCommand_redirect import Command_redirect
+from .testCommand_pipe import Command_pipe
+from .testCommand_apt_get import Command_apt_get
+from .testCommand_apt_cache import Command_apt_cache

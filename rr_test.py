@@ -56,6 +56,16 @@ from RRTestCase import Command_gunzip
 from RRTestCase import Command_kill
 from RRTestCase import Command_ps
 from RRTestCase import Command_vi
+from RRTestCase import Command_man
+from RRTestCase import Command_who
+from RRTestCase import Command_whoami
+from RRTestCase import Command_cal
+from RRTestCase import Command_date
+from RRTestCase import Command_more
+from RRTestCase import Command_redirect
+from RRTestCase import Command_pipe
+from RRTestCase import Command_apt_get
+from RRTestCase import Command_apt_cache
 
 id_key = 'lava_id'
 idfilename = 'id.txt'
@@ -209,6 +219,36 @@ def main():
 
     if Command_vi.caseid in allids:
         classes.append(Command_vi)
+
+    if Command_man.caseid in allids:
+        classes.append(Command_man)
+
+    if Command_who.caseid in allids:
+        classes.append(Command_who)
+
+    if Command_whoami.caseid in allids:
+        classes.append(Command_whoami)
+
+    if Command_cal.caseid in allids:
+        classes.append(Command_cal)
+
+    if Command_date.caseid in allids:
+        classes.append(Command_date)
+
+    if Command_more.caseid in allids:
+        classes.append(Command_more)
+
+    if Command_redirect.caseid in allids:
+        classes.append(Command_redirect)
+
+    if Command_pipe.caseid in allids:
+        classes.append(Command_pipe)
+
+    if Command_apt_get.caseid in allids:
+        classes.append(Command_apt_get)
+
+    if Command_apt_cache.caseid in allids:
+        classes.append(Command_apt_cache)
 
     if 0 == len(classes):
         print("classes length is 0.\nExit")
