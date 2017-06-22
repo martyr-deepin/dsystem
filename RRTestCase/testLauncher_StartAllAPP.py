@@ -39,7 +39,7 @@ class Launcher_StartAllAPP(unittest.TestCase):
         if "en_US.UTF-8" == cls.lang:
             cls.name_Deepin_Screenshot = "Deepin Screenshot"
             cls.string_DeepinScreenshot = "DeepinScreenshot"
-            cls.name_Thunderbird = "Thunderbird Mail"
+            cls.name_Thunderbird = "Thunderbird"
             cls.string_Thunderbird_Welcome = "Welcome to Thunderbird"
             cls.name_Deepin_User_Feedback = "Deepin User Feedback"
             cls.string_Deepin_User_Feedback = "deepin-feedback - Google Chrome"
