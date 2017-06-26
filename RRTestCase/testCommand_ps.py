@@ -37,7 +37,6 @@ class  Command_ps(unittest.TestCase):
         shelltype = (output.split('/'))[-1]
         self.assertIn(shelltype,listps)
         self.assertIn('ps',listps)
-        self.assertTrue(len(listps) <= 4)
 
     def testPsTwo(self):
         (status,output) = getstatusoutput('ps -A')

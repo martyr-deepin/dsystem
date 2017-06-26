@@ -38,7 +38,7 @@ class Launcher_StartAllAPP(unittest.TestCase):
 
         if "en_US.UTF-8" == cls.lang:
             cls.name_Deepin_Screenshot = "Deepin Screenshot"
-            cls.string_DeepinScreenshot = "DeepinScreenshot"
+            cls.string_DeepinScreenshot = "DeepinScreenshot_"
             cls.name_Thunderbird = "Thunderbird"
             cls.string_Thunderbird_Welcome = "Welcome to Thunderbird"
             cls.name_Deepin_User_Feedback = "Deepin User Feedback"
@@ -60,13 +60,14 @@ class Launcher_StartAllAPP(unittest.TestCase):
 
     def terminate_deepinscreenshot(self):
         m = PyMouse()
+        time.sleep(5)
         m.click(100, 100)
         m.click(100, 100)
         time_now = time.strftime('%Y%m%d%H', time.localtime())
         self.time_now = time_now
         picture_save_path = os.path.expandvars('$HOME') + '/Desktop/' + self.string_DeepinScreenshot + time_now + '*.png'
         print(picture_save_path)
-        time.sleep(2)
+        time.sleep(10)
         save_bool = glob.glob(picture_save_path)
         print(save_bool)
         self.assertTrue(save_bool)
@@ -96,7 +97,10 @@ class Launcher_StartAllAPP(unittest.TestCase):
                     do_polkit_agent(action="Cancel")
 
                 window_obj = window.findWindow(v)
-                print(window_obj)
+                if None == window_obj:
+                    time.sleep(10)
+                    window_obj = window.findWindow(v)
+
                 closeresult = window.closeWindow(window_obj)
                 self.assertEqual(None, closeresult)
 
