@@ -57,7 +57,7 @@ class Dock_ChangeHide(unittest.TestCase):
 
             rect = self.ddedock.getgeometry()
             print(rect)
-            self.assertTrue((utils.resolution.height -1) == rect[1])
+            self.assertTrue((utils.resolution.height -1) <= rect[1])
 
     def suite():
         suite = unittest.TestSuite()

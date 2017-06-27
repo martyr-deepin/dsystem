@@ -17,6 +17,10 @@ class HandleTestResult(TextTestResult):
         re = len(self.failures) == 0 and len(self.errors) == 0
         caseid = type(self.test).caseid
         seconds = "%.3f" % (time.time() - self.startTime)
+
+        if float(seconds) < 0:
+            seconds = '1'
+
         minutes = utils.convertToMinutes(float(seconds))
         utils.commitresult(caseid, re, minutes)
 

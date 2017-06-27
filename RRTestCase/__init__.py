@@ -15,7 +15,34 @@ __ALL__ = ['Launcher_StartAllAPP',
            'DCC_ShowModules',
            'Command_useradd',
            'Command_userdel',
-           'Command_passwd'
+           'Command_passwd',
+           'Command_pwd',
+           'Command_cd',
+           'Command_mkdir',
+           'Command_rmdir',
+           'Command_cp',
+           'Command_mv',
+           'Command_rm',
+           'Command_file',
+           'Command_find',
+           'Command_grep',
+           'Command_chown',
+           'Command_sort',
+           'Command_wc',
+           'Command_ifconfig',
+           'Command_ping',
+           'Command_ping_ip',
+           'Command_ping_local_ip',
+           'Command_netstat_i',
+           'Command_netstat_r',
+           'Command_telnet',
+           'Command_traceroute',
+           'Command_tar',
+           'Command_gzip',
+           'Command_gunzip',
+           'Command_kill',
+           'Command_ps',
+           'Command_vi',
            ]
 
 from .testLauncher_StartAllAPP import Launcher_StartAllAPP
@@ -39,3 +66,40 @@ from .testDCC_ShowAllModules  import DCC_ShowModules
 from .testCommand_useradd import Command_useradd
 from .testCommand_userdel import Command_userdel
 from .testCommand_passwd import Command_passwd
+from .testCommand_pwd import Command_pwd
+from .testCommand_cd import Command_cd
+from .testCommand_mkdir import Command_mkdir
+from .testCommand_rmdir import Command_rmdir
+from .testCommand_cp import Command_cp
+from .testCommand_mv import Command_mv
+from .testCommand_rm import Command_rm
+from .testCommand_file import Command_file
+from .testCommand_find import Command_find
+from .testCommand_grep import Command_grep
+from .testCommand_chown import Command_chown
+from .testCommand_sort import Command_sort
+from .testCommand_wc import Command_wc
+from .testCommand_ifconfig import Command_ifconfig
+from .testCommand_ping import Command_ping
+from .testCommand_ping_ip import Command_ping_ip
+from .testCommand_ping_local_ip import Command_ping_local_ip
+from .testCommand_netstat_i import Command_netstat_i
+from .testCommand_netstat_r import Command_netstat_r
+from .testCommand_telnet import Command_telnet
+from .testCommand_traceroute import Command_traceroute
+from .testCommand_tar import Command_tar
+from .testCommand_gzip import Command_gzip
+from .testCommand_gunzip import Command_gunzip
+from .testCommand_kill import Command_kill
+from .testCommand_ps import Command_ps
+from .testCommand_vi import Command_vi
+from .testCommand_man import Command_man
+from .testCommand_who import Command_who
+from .testCommand_whoami import Command_whoami
+from .testCommand_cal import Command_cal
+from .testCommand_date import Command_date
+from .testCommand_more import Command_more
+from .testCommand_redirect import Command_redirect
+from .testCommand_pipe import Command_pipe
+from .testCommand_apt_get import Command_apt_get
+from .testCommand_apt_cache import Command_apt_cache

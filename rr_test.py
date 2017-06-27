@@ -29,6 +29,43 @@ from RRTestCase import DCC_ShowModules
 from RRTestCase import Command_useradd
 from RRTestCase import Command_userdel
 from RRTestCase import Command_passwd
+from RRTestCase import Command_pwd
+from RRTestCase import Command_cd
+from RRTestCase import Command_mkdir
+from RRTestCase import Command_rmdir
+from RRTestCase import Command_cp
+from RRTestCase import Command_mv
+from RRTestCase import Command_rm
+from RRTestCase import Command_file
+from RRTestCase import Command_find
+from RRTestCase import Command_grep
+from RRTestCase import Command_chown
+from RRTestCase import Command_sort
+from RRTestCase import Command_wc
+from RRTestCase import Command_ifconfig
+from RRTestCase import Command_ping
+from RRTestCase import Command_ping_ip
+from RRTestCase import Command_ping_local_ip
+from RRTestCase import Command_netstat_i
+from RRTestCase import Command_netstat_r
+from RRTestCase import Command_telnet
+from RRTestCase import Command_traceroute
+from RRTestCase import Command_tar
+from RRTestCase import Command_gzip
+from RRTestCase import Command_gunzip
+from RRTestCase import Command_kill
+from RRTestCase import Command_ps
+from RRTestCase import Command_vi
+from RRTestCase import Command_man
+from RRTestCase import Command_who
+from RRTestCase import Command_whoami
+from RRTestCase import Command_cal
+from RRTestCase import Command_date
+from RRTestCase import Command_more
+from RRTestCase import Command_redirect
+from RRTestCase import Command_pipe
+from RRTestCase import Command_apt_get
+from RRTestCase import Command_apt_cache
 
 id_key = 'lava_id'
 idfilename = 'id.txt'
@@ -101,6 +138,117 @@ def main():
 
     if Command_passwd.caseid in allids:
         classes.append(Command_passwd)
+
+    if Command_pwd.caseid in allids:
+        classes.append(Command_pwd)
+
+    if Command_cd.caseid in allids:
+        classes.append(Command_cd)
+
+    if Command_mkdir.caseid in allids:
+        classes.append(Command_mkdir)
+
+    if Command_rmdir.caseid in allids:
+        classes.append(Command_rmdir)
+
+    if Command_cp.caseid in allids:
+        classes.append(Command_cp)
+
+    if Command_mv.caseid in allids:
+        classes.append(Command_mv)
+
+    if Command_rm.caseid in allids:
+        classes.append(Command_rm)
+
+    if Command_file.caseid in allids:
+        classes.append(Command_file)
+
+    if Command_find.caseid in allids:
+        classes.append(Command_find)
+
+    if Command_grep.caseid in allids:
+        classes.append(Command_grep)
+
+    if Command_chown.caseid in allids:
+        classes.append(Command_chown)
+
+    if Command_sort.caseid in allids:
+        classes.append(Command_sort)
+
+    if Command_wc.caseid in allids:
+        classes.append(Command_wc)
+
+    if Command_ifconfig.caseid in allids:
+        classes.append(Command_ifconfig)
+
+    if Command_ping.caseid in allids:
+        classes.append(Command_ping)
+
+    if Command_ping_ip.caseid in allids:
+        classes.append(Command_ping_ip)
+
+    if Command_ping_local_ip.caseid in allids:
+        classes.append(Command_ping_local_ip)
+
+    if Command_netstat_i.caseid in allids:
+        classes.append(Command_netstat_i)
+
+    if Command_netstat_r.caseid in allids:
+        classes.append(Command_netstat_r)
+
+    if Command_telnet.caseid in allids:
+        classes.append(Command_telnet)
+
+    if Command_traceroute.caseid in allids:
+        classes.append(Command_traceroute)
+
+    if Command_tar.caseid in allids:
+        classes.append(Command_tar)
+
+    if Command_gzip.caseid in allids:
+        classes.append(Command_gzip)
+
+    if Command_gunzip.caseid in allids:
+        classes.append(Command_gunzip)
+
+    if Command_kill.caseid in allids:
+        classes.append(Command_kill)
+
+    if Command_ps.caseid in allids:
+        classes.append(Command_ps)
+
+    if Command_vi.caseid in allids:
+        classes.append(Command_vi)
+
+    if Command_man.caseid in allids:
+        classes.append(Command_man)
+
+    if Command_who.caseid in allids:
+        classes.append(Command_who)
+
+    if Command_whoami.caseid in allids:
+        classes.append(Command_whoami)
+
+    if Command_cal.caseid in allids:
+        classes.append(Command_cal)
+
+    if Command_date.caseid in allids:
+        classes.append(Command_date)
+
+    if Command_more.caseid in allids:
+        classes.append(Command_more)
+
+    if Command_redirect.caseid in allids:
+        classes.append(Command_redirect)
+
+    if Command_pipe.caseid in allids:
+        classes.append(Command_pipe)
+
+    if Command_apt_get.caseid in allids:
+        classes.append(Command_apt_get)
+
+    if Command_apt_cache.caseid in allids:
+        classes.append(Command_apt_cache)
 
     if 0 == len(classes):
         print("classes length is 0.\nExit")
