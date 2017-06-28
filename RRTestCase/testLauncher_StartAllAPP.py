@@ -38,7 +38,7 @@ class Launcher_StartAllAPP(unittest.TestCase):
 
         if "en_US.UTF-8" == cls.lang:
             cls.name_Deepin_Screenshot = "Deepin Screenshot"
-            cls.string_DeepinScreenshot = "DeepinScreenshot_"
+            cls.string_DeepinScreenshot = "DeepinScreenshot_Desktop_"
             cls.name_Thunderbird = "Thunderbird"
             cls.string_Thunderbird_Welcome = "Welcome to Thunderbird"
             cls.name_Deepin_User_Feedback = "Deepin User Feedback"
@@ -63,7 +63,7 @@ class Launcher_StartAllAPP(unittest.TestCase):
         time.sleep(5)
         m.click(100, 100)
         m.click(100, 100)
-        time_now = time.strftime('%Y%m%d%H', time.localtime())
+        time_now = time.strftime('%Y%m%d', time.localtime())
         self.time_now = time_now
         picture_save_path = os.path.expandvars('$HOME') + '/Desktop/' + self.string_DeepinScreenshot + time_now + '*.png'
         print(picture_save_path)
