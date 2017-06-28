@@ -21,7 +21,7 @@ class HandleTestResult(TextTestResult):
         if float(seconds) < 0:
             seconds = '1'
 
-        minutes = utils.convertToMinutes(float(seconds))
+        minutes = utils.convertToMinutes(float(seconds) + 1)
         utils.commitresult(caseid, re, minutes)
 
 def runTest(testcase):
