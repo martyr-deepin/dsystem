@@ -39,6 +39,7 @@ class Dde_control_center:
         self.page_deep = 0
 
         # 控制中心首页
+        self.string_Icon = _('iconMainWidget')
         self.string_PrevBtn = _('PrevBtn')
         self.string_NextBtn = _('NextBtn')
         self.string_SoundSlider = _('SoundSlider')

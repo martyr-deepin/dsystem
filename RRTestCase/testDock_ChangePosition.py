@@ -35,6 +35,7 @@ class Dock_ChangePosition(unittest.TestCase):
         if curposition == self.dockp.position_bottom:
             # to top
             menuxy = utils.getScreenMiddle('bottom')
+            utils.m.move(menuxy[0], menuxy[1])
             utils.m.click(menuxy[0], menuxy[1], 2)
             time.sleep(2)
             pyautogui.press('down')
@@ -51,6 +52,7 @@ class Dock_ChangePosition(unittest.TestCase):
 
             # to left
             menuxy = utils.getScreenMiddle('top')
+            utils.m.move(menuxy[0], menuxy[1])
             utils.m.click(menuxy[0], menuxy[1], 2)
             time.sleep(2)
             pyautogui.press('down')
@@ -69,6 +71,7 @@ class Dock_ChangePosition(unittest.TestCase):
 
             # to right 
             menuxy = utils.getScreenMiddle('left')
+            utils.m.move(menuxy[0], menuxy[1])
             utils.m.click(menuxy[0], menuxy[1], 2)
             time.sleep(2)
             pyautogui.press('down')

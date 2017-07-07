@@ -48,6 +48,9 @@ class Accounts_ModifyUserIcon(unittest.TestCase):
         ret = self.dcc.showModule("accounts")
         self.assertTrue(ret)
 
+        IndexAvatarWidget = self.dcc.dccObj.child(self.randUserIcon, roleName='label', description=self.dcc.string_Icon)
+        self.assertFalse(IndexAvatarWidget)
+
         curUserNameWidget = self.dcc.dccObj.child(self.currentUserName, roleName='label')
         self.assertTrue(curUserNameWidget != None)
         curUserNameWidget.click()
@@ -62,6 +65,10 @@ class Accounts_ModifyUserIcon(unittest.TestCase):
         time.sleep(1)
         self.assertTrue(loginuser.getIconFile() == self.randUserIcon)
         self.assertTrue(self.randUserIcon != self.currentIcon)
+
+        IndexAvatarWidget = self.dcc.dccObj.child(self.randUserIcon, roleName='label', description=self.dcc.string_Icon)
+        self.assertTrue(IndexAvatarWidget)
+
 
     def suite():
         suite = unittest.TestSuite()
