@@ -5,6 +5,7 @@ import os
 import time
 import unittest
 import gettext
+import configparser
 from lib import executeTestCase
 from lib import dde_control_center
 from lib.com_deepin_SessionManager import SessionManager
@@ -69,6 +70,11 @@ class Accounts_ModifyUserIcon(unittest.TestCase):
         IndexAvatarWidget = self.dcc.dccObj.child(self.randUserIcon, roleName='label', description=self.dcc.string_Icon)
         self.assertTrue(IndexAvatarWidget)
 
+        path = '/var/lib/AccountsService/users/' + self.currentUserName
+        user_cfg = configparser.ConfigParser()
+        user_cfg.read(path)
+        usericon = user_cfg.get('User', 'Icon')
+        self.assertTrue(usericon, self.randUserIcon)
 
     def suite():
         suite = unittest.TestSuite()
