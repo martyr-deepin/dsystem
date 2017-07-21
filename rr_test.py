@@ -67,10 +67,34 @@ from RRTestCase import Command_pipe
 from RRTestCase import Command_apt_get
 from RRTestCase import Command_apt_cache
 
+from RRTestCase import DFM_OpenFile
+from RRTestCase import DFM_OpenFileByApp
+from RRTestCase import DFM_CompressFiles
+from RRTestCase import DFM_DecompressFile
+from RRTestCase import DFM_DecompressFileHere
+
+from RRTestCase import DFM_RenameFile
+from RRTestCase import DFM_DeleteFiles
+from RRTestCase import DFM_MoveToTrash
+from RRTestCase import DFM_RestoreFromTrash
+from RRTestCase import DFM_PasteFile
+
+from RRTestCase import DFM_NewFolder
+from RRTestCase import DFM_NewFile
+from RRTestCase import DFM_OpenFileLocation
+from RRTestCase import DFM_CreateSymlink
+from RRTestCase import DFM_FileShare
+
+from RRTestCase import DFM_OpenInTerminal
+from RRTestCase import DFM_OpenNewWindow
+
 id_key = 'lava_id'
 idfilename = 'id.txt'
 
 def getIdList():
+    if not os.path.exists(idfilename):
+        return []
+
     f = open(idfilename)
     content = f.read()
     jsonstring = json.loads(content)
@@ -249,6 +273,57 @@ def main():
 
     if Command_apt_cache.caseid in allids:
         classes.append(Command_apt_cache)
+
+    if DFM_OpenFile.caseid in allids:
+        classes.append(DFM_OpenFile)
+
+    if DFM_OpenFileByApp.caseid in allids:
+        classes.append(DFM_OpenFileByApp)
+
+    if DFM_CompressFiles.caseid in allids:
+        classes.append(DFM_CompressFiles)
+
+    if DFM_DecompressFile.caseid in allids:
+        classes.append(DFM_DecompressFile)
+
+    if DFM_DecompressFileHere.caseid in allids:
+        classes.append(DFM_DecompressFileHere)
+
+    if DFM_RenameFile.caseid in allids:
+        classes.append(DFM_RenameFile)
+
+    if DFM_DeleteFiles.caseid in allids:
+        classes.append(DFM_DeleteFiles)
+
+    if DFM_MoveToTrash.caseid in allids:
+        classes.append(DFM_MoveToTrash)
+
+    if DFM_RestoreFromTrash.caseid in allids:
+        classes.append(DFM_RestoreFromTrash)
+
+    if DFM_PasteFile.caseid in allids:
+        classes.append(DFM_PasteFile)
+
+    if DFM_NewFolder.caseid in allids:
+        classes.append(DFM_NewFolder)
+
+    if DFM_NewFile.caseid in allids:
+        classes.append(DFM_NewFile)
+
+    if DFM_OpenFileLocation.caseid in allids:
+        classes.append(DFM_OpenFileLocation)
+
+    if DFM_CreateSymlink.caseid in allids:
+        classes.append(DFM_CreateSymlink)
+
+    if DFM_FileShare.caseid in allids:
+        classes.append(DFM_FileShare)
+
+    if DFM_OpenInTerminal.caseid in allids:
+        classes.append(DFM_OpenInTerminal)
+
+    if DFM_OpenNewWindow.caseid in allids:
+        classes.append(DFM_OpenNewWindow)
 
     if 0 == len(classes):
         print("classes length is 0.\nExit")

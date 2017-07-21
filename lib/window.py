@@ -85,6 +85,52 @@ def resizeWindow(win, x, y, width, height):
     win.set_geometry(Wnck.WindowGravity.CURRENT, Wnck.WindowMoveResizeMask.HEIGHT, 0, 0, 0, height)
     sleep(2)
 
+def findWindowByAppName(applicationName, mode="wait", comparetype="equal"):
+    if "wait" == mode:
+        delay = FINDWINDOWDELAY
+    else:
+        delay = CLOSEWINDOWDELAY
+
+    while True:
+        sleep(1)
+        delay = delay - 1
+
+        win = _findWindowByAppName(applicationName, comparetype)
+
+        if win != None and "wait" == mode:
+            return win
+
+        if None == win and "wait" != mode:
+            return win
+
+        if 0 == delay:
+            return win
+
+def _findWindowByAppName(applicationName, comparetype):
+    screen = Wnck.Screen.get_default()
+    screen.force_update()
+
+    for win in screen.get_windows():
+        #if "equal" == comparetype:
+            if applicationName == (win.get_application()).get_name():
+                print((win.get_application()).get_name())
+                print(len((win.get_application()).get_name()))
+                print(len(applicationName))
+                screen = None
+                Wnck.shutdown()
+                return win
+
+            if applicationName in (win.get_application()).get_name():
+                screen = None
+                Wnck.shutdown()
+                return win
+
+    screen = None
+    win = None
+    Wnck.shutdown()
+
+    return None
+
 class WindowError(Exception):
     def __init__(self, value):
         self.value = value

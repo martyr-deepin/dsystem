@@ -1,0 +1,68 @@
+{
+    "OpenFile": [
+        {
+            "fileName": "testOpenFile.txt",
+            "windowName_en": "testOpenFile.txt (~/source/dsystem/data) - gedit",
+            "windowName_zh": "testOpenFile.txt (~/source/dsystem/data) - gedit"
+        },
+        {
+            "fileName": "testOpenFile.doc",
+            "windowName_en": "testOpenFile.doc - Writer - Compatibility Mode",
+            "windowName_zh": "testOpenFile.doc - WPS 文字 - 兼容模式"
+        }, 
+        {
+            "fileName": "testOpenFile.xls",
+            "windowName_en": "testOpenFile.xls [Compatibility Mode] - Spreadsheets",
+            "windowName_zh": "testOpenFile.xls [兼容模式] - WPS 表格"
+        },
+        {
+            "fileName": "testOpenFile.ppt",
+            "windowName_en": "testOpenFile.ppt - Presentation",
+            "windowName_zh": "testOpenFile.ppt - WPS 演示"
+        },
+        {
+            "fileName": "testOpenFile.pdf",
+            "windowName_en": "testOpenFile.pdf - Foxit Reader",
+            "windowName_zh": "testOpenFile.pdf - 福昕阅读器"
+        },
+        {
+            "fileName": "simsun.ttf",
+            "windowName_en": "SimSun",
+            "windowName_zh": "SimSun"
+        },
+        {
+            "fileName": "pic-1.jpeg",
+            "windowName_en": "Deepin Image Viewer",
+            "windowName_zh": "深度看图"
+        },
+        {
+            "fileName": "pic-2.jpg",
+            "windowName_en": "Deepin Image Viewer",
+            "windowName_zh": "深度看图"
+        },
+        {
+            "fileName": "pic-3.png",
+            "windowName_en": "Deepin Image Viewer",
+            "windowName_zh": "深度看图"
+        },
+        {
+            "fileName": "夏洛特烦恼.mp3",
+            "windowName_en": "夏洛特烦恼 — All Music",
+            "windowName_zh": "夏洛特烦恼 — 所有音乐"
+        }
+    ], 
+    "OpenFileByApp": [
+        {
+            "fileName": "testOpenFile.doc",
+            "windowName_en": "testOpenFile.doc - Writer - Compatibility Mode",
+            "windowName_zh": "testOpenFile.doc - WPS 文字 - 兼容模式",
+            "appName": "/usr/share/applications/wps-office-wps.desktop"
+        }, 
+        {
+            "fileName": "testOpenFile.txt",
+            "windowName_en": "testOpenFile.txt (~/source/dsystem/data) - gedit", 
+            "windowName_zh": "testOpenFile.txt (~/source/dsystem/data) - gedit", 
+            "appName": "org.gnome.gedit.desktop"
+        }
+    ]
+}
