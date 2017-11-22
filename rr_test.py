@@ -7,6 +7,7 @@ import json
 import gettext
 import unittest
 from lib import runTest
+from optparse import OptionParser
 
 from RRTestCase import Launcher_StartAllAPP
 from RRTestCase import Launcher_SendToDesktop
@@ -100,229 +101,255 @@ def getIdList():
     jsonstring = json.loads(content)
     return jsonstring[id_key]
 
+def get_run_type():
+    try:
+        opt = OptionParser()
+        opt.add_option('--run_all',
+                        dest='run_type',
+                        default=False,
+                        help='the running type for the TestCases (bool: True or False) \
+                        python3 rr_test.py --run_all True')
+        (options, args) = opt.parse_args()
+        is_valid_paras = True
+        error_messages = []
+        run_type = options.run_type
+
+        opt.print_help()
+
+        if is_valid_paras:
+            user_paras = {"run_type": run_type}
+            return user_paras
+    except Exception as ex:
+        print("exception :{0".format(str(ex)))
+        return None
+
 def main():
     allids = getIdList()
 
     classes = []
 
+    runtype = get_run_type()
+    run_all = runtype['run_type']
+
+
     # Launcher
-    if Launcher_StartAllAPP.caseid in allids:
+    if run_all or Launcher_StartAllAPP.caseid in allids:
         classes.append(Launcher_StartAllAPP)
 
-    if Launcher_SendToDesktop.caseid in allids:
+    if run_all or Launcher_SendToDesktop.caseid in allids:
         classes.append(Launcher_SendToDesktop)
 
-    if Launcher_AddToDock.caseid in allids:
+    if run_all or Launcher_AddToDock.caseid in allids:
         classes.append(Launcher_AddToDock)
 
-    if Launcher_AutoStart.caseid in allids:
+    if run_all or Launcher_AutoStart.caseid in allids:
         classes.append(Launcher_AutoStart)
 
-    if Launcher_Uninstall.caseid in allids:
+    if run_all or Launcher_Uninstall.caseid in allids:
         classes.append(Launcher_Uninstall)
 
     # Dock
-    if Dock_Exist.caseid in allids:
+    if run_all or Dock_Exist.caseid in allids:
         classes.append(Dock_Exist)
 
-    if Dock_DefaultSetting.caseid in allids:
+    if run_all or Dock_DefaultSetting.caseid in allids:
         classes.append(Dock_DefaultSetting)
 
-    if Dock_ChangeDisplay.caseid in allids:
+    if run_all or Dock_ChangeDisplay.caseid in allids:
         classes.append(Dock_ChangeDisplay)
 
-    if Dock_ChangePosition.caseid in allids:
+    if run_all or Dock_ChangePosition.caseid in allids:
         classes.append(Dock_ChangePosition)
 
-    if Dock_ChangeIconSize.caseid in allids:
+    if run_all or Dock_ChangeIconSize.caseid in allids:
         classes.append(Dock_ChangeIconSize)
 
-    if Dock_ChangeHide.caseid in allids:
+    if run_all or Dock_ChangeHide.caseid in allids:
         classes.append(Dock_ChangeHide)
 
-    if Dock_DragDockiconToDel.caseid in allids:
+    if run_all or Dock_DragDockiconToDel.caseid in allids:
         classes.append(Dock_DragDockiconToDel)
 
     # Dde control center
-    if DCC_Click_SoundSlider.caseid in allids:
+    if run_all or DCC_Click_SoundSlider.caseid in allids:
         classes.append(DCC_Click_SoundSlider)
 
-    if DCC_Click_LightSlider.caseid in allids:
+    if run_all or DCC_Click_LightSlider.caseid in allids:
         classes.append(DCC_Click_LightSlider)
 
-    if DCC_ShowModules.caseid in allids:
+    if run_all or DCC_ShowModules.caseid in allids:
         classes.append(DCC_ShowModules)
 
     # Command
-    if Command_useradd.caseid in allids:
+    if run_all or Command_useradd.caseid in allids:
         classes.append(Command_useradd)
 
-    if Command_userdel.caseid in allids:
+    if run_all or Command_userdel.caseid in allids:
         classes.append(Command_userdel)
 
-    if Command_passwd.caseid in allids:
+    if run_all or Command_passwd.caseid in allids:
         classes.append(Command_passwd)
 
-    if Command_pwd.caseid in allids:
+    if run_all or Command_pwd.caseid in allids:
         classes.append(Command_pwd)
 
-    if Command_cd.caseid in allids:
+    if run_all or Command_cd.caseid in allids:
         classes.append(Command_cd)
 
-    if Command_mkdir.caseid in allids:
+    if run_all or Command_mkdir.caseid in allids:
         classes.append(Command_mkdir)
 
-    if Command_rmdir.caseid in allids:
+    if run_all or Command_rmdir.caseid in allids:
         classes.append(Command_rmdir)
 
-    if Command_cp.caseid in allids:
+    if run_all or Command_cp.caseid in allids:
         classes.append(Command_cp)
 
-    if Command_mv.caseid in allids:
+    if run_all or Command_mv.caseid in allids:
         classes.append(Command_mv)
 
-    if Command_rm.caseid in allids:
+    if run_all or Command_rm.caseid in allids:
         classes.append(Command_rm)
 
-    if Command_file.caseid in allids:
+    if run_all or Command_file.caseid in allids:
         classes.append(Command_file)
 
-    if Command_find.caseid in allids:
+    if run_all or Command_find.caseid in allids:
         classes.append(Command_find)
 
-    if Command_grep.caseid in allids:
+    if run_all or Command_grep.caseid in allids:
         classes.append(Command_grep)
 
-    if Command_chown.caseid in allids:
+    if run_all or Command_chown.caseid in allids:
         classes.append(Command_chown)
 
-    if Command_sort.caseid in allids:
+    if run_all or Command_sort.caseid in allids:
         classes.append(Command_sort)
 
-    if Command_wc.caseid in allids:
+    if run_all or Command_wc.caseid in allids:
         classes.append(Command_wc)
 
-    if Command_ifconfig.caseid in allids:
+    if run_all or Command_ifconfig.caseid in allids:
         classes.append(Command_ifconfig)
 
-    if Command_ping.caseid in allids:
+    if run_all or Command_ping.caseid in allids:
         classes.append(Command_ping)
 
-    if Command_ping_ip.caseid in allids:
+    if run_all or Command_ping_ip.caseid in allids:
         classes.append(Command_ping_ip)
 
-    if Command_ping_local_ip.caseid in allids:
+    if run_all or Command_ping_local_ip.caseid in allids:
         classes.append(Command_ping_local_ip)
 
-    if Command_netstat_i.caseid in allids:
+    if run_all or Command_netstat_i.caseid in allids:
         classes.append(Command_netstat_i)
 
-    if Command_netstat_r.caseid in allids:
+    if run_all or Command_netstat_r.caseid in allids:
         classes.append(Command_netstat_r)
 
-    if Command_telnet.caseid in allids:
+    if run_all or Command_telnet.caseid in allids:
         classes.append(Command_telnet)
 
-    if Command_traceroute.caseid in allids:
+    if run_all or Command_traceroute.caseid in allids:
         classes.append(Command_traceroute)
 
-    if Command_tar.caseid in allids:
+    if run_all or Command_tar.caseid in allids:
         classes.append(Command_tar)
 
-    if Command_gzip.caseid in allids:
+    if run_all or Command_gzip.caseid in allids:
         classes.append(Command_gzip)
 
-    if Command_gunzip.caseid in allids:
+    if run_all or Command_gunzip.caseid in allids:
         classes.append(Command_gunzip)
 
-    if Command_kill.caseid in allids:
+    if run_all or Command_kill.caseid in allids:
         classes.append(Command_kill)
 
-    if Command_ps.caseid in allids:
+    if run_all or Command_ps.caseid in allids:
         classes.append(Command_ps)
 
-    if Command_vi.caseid in allids:
+    if run_all or Command_vi.caseid in allids:
         classes.append(Command_vi)
 
-    if Command_man.caseid in allids:
+    if run_all or Command_man.caseid in allids:
         classes.append(Command_man)
 
-    if Command_who.caseid in allids:
+    if run_all or Command_who.caseid in allids:
         classes.append(Command_who)
 
-    if Command_whoami.caseid in allids:
+    if run_all or Command_whoami.caseid in allids:
         classes.append(Command_whoami)
 
-    if Command_cal.caseid in allids:
+    if run_all or Command_cal.caseid in allids:
         classes.append(Command_cal)
 
-    if Command_date.caseid in allids:
+    if run_all or Command_date.caseid in allids:
         classes.append(Command_date)
 
-    if Command_more.caseid in allids:
+    if run_all or Command_more.caseid in allids:
         classes.append(Command_more)
 
-    if Command_redirect.caseid in allids:
+    if run_all or Command_redirect.caseid in allids:
         classes.append(Command_redirect)
 
-    if Command_pipe.caseid in allids:
+    if run_all or Command_pipe.caseid in allids:
         classes.append(Command_pipe)
 
-    if Command_apt_get.caseid in allids:
+    if run_all or Command_apt_get.caseid in allids:
         classes.append(Command_apt_get)
 
-    if Command_apt_cache.caseid in allids:
+    if run_all or Command_apt_cache.caseid in allids:
         classes.append(Command_apt_cache)
 
-    if DFM_OpenFile.caseid in allids:
+    if run_all or DFM_OpenFile.caseid in allids:
         classes.append(DFM_OpenFile)
 
-    if DFM_OpenFileByApp.caseid in allids:
+    if run_all or DFM_OpenFileByApp.caseid in allids:
         classes.append(DFM_OpenFileByApp)
 
-    if DFM_CompressFiles.caseid in allids:
+    if run_all or DFM_CompressFiles.caseid in allids:
         classes.append(DFM_CompressFiles)
 
-    if DFM_DecompressFile.caseid in allids:
+    if run_all or DFM_DecompressFile.caseid in allids:
         classes.append(DFM_DecompressFile)
 
-    if DFM_DecompressFileHere.caseid in allids:
+    if run_all or DFM_DecompressFileHere.caseid in allids:
         classes.append(DFM_DecompressFileHere)
 
-    if DFM_RenameFile.caseid in allids:
+    if run_all or DFM_RenameFile.caseid in allids:
         classes.append(DFM_RenameFile)
 
-    if DFM_DeleteFiles.caseid in allids:
+    if run_all or DFM_DeleteFiles.caseid in allids:
         classes.append(DFM_DeleteFiles)
 
-    if DFM_MoveToTrash.caseid in allids:
+    if run_all or DFM_MoveToTrash.caseid in allids:
         classes.append(DFM_MoveToTrash)
 
-    if DFM_RestoreFromTrash.caseid in allids:
+    if run_all or DFM_RestoreFromTrash.caseid in allids:
         classes.append(DFM_RestoreFromTrash)
 
-    if DFM_PasteFile.caseid in allids:
+    if run_all or DFM_PasteFile.caseid in allids:
         classes.append(DFM_PasteFile)
 
-    if DFM_NewFolder.caseid in allids:
+    if run_all or DFM_NewFolder.caseid in allids:
         classes.append(DFM_NewFolder)
 
-    if DFM_NewFile.caseid in allids:
+    if run_all or DFM_NewFile.caseid in allids:
         classes.append(DFM_NewFile)
 
-    if DFM_OpenFileLocation.caseid in allids:
+    if run_all or DFM_OpenFileLocation.caseid in allids:
         classes.append(DFM_OpenFileLocation)
 
-    if DFM_CreateSymlink.caseid in allids:
+    if run_all or DFM_CreateSymlink.caseid in allids:
         classes.append(DFM_CreateSymlink)
 
-    if DFM_FileShare.caseid in allids:
+    if run_all or DFM_FileShare.caseid in allids:
         classes.append(DFM_FileShare)
 
-    if DFM_OpenInTerminal.caseid in allids:
+    if run_all or DFM_OpenInTerminal.caseid in allids:
         classes.append(DFM_OpenInTerminal)
 
-    if DFM_OpenNewWindow.caseid in allids:
+    if run_all or DFM_OpenNewWindow.caseid in allids:
         classes.append(DFM_OpenNewWindow)
 
     if 0 == len(classes):
