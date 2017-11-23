@@ -1,5 +1,5 @@
 {
-    "Google Chrome": "New Tab - Google Chrome",
+    "Google Chrome": "Google Chrome",
     "WPS Writer": "Document1 - Writer",
     "WPS Presentation": "Presentation1 - Presentation",
     "WPS Spreadsheets": "Book1 - Spreadsheets",
@@ -11,13 +11,10 @@
     "Steam": "Steam",
     "Deepin Screenshot": "deepin-screenshot",
     "Deepin Image Viewer": "Deepin Image Viewer",
-    "Document Viewer": "Recent Documents",
     "Text Editor": "Untitled Document 1 - gedit",
     "Thunderbird Mail": "Mozilla Thunderbird",
     "Youdao Dict": "有道词典",
-    "Deepin Terminal": "deepin - Deepin Terminal",
     "Deepin User Feedback": "deepin-feedback - Google Chrome",
-    "Remote Assistance": "Remote Assistance",
     "Deepin Cloud Print": "Deepin Cloud Print",
     "Deepin Cloud Scan": "Deepin Cloud Scan",
     "Simple Scan": "Simple Scan",
@@ -28,7 +25,6 @@
     "Control Center": "null",
     "Mutitasking View": "null",
     "Fcitx Configuration": "Input Method Configuration",
-    "System Monitor": "System Monitor",
     "Print Settings": "Print Settings - localhost",
     "Deepin Calendar": "Deepin Calendar",
     "Calculator": "gnome-calculator",
@@ -37,6 +33,5 @@
     "Driver Manager": "Driver Manager",
     "ChmSee": "ChmSee",
     "CrossOver": "CrossOver",
-    "GDebi Package Installer": "Package Installer",
     "GParted": "Deepin Polkit Agent"
 }

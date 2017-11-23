@@ -73,6 +73,7 @@ class Launcher_StartAllAPP(unittest.TestCase):
         self.assertTrue(save_bool)
 
     def testRunAPP(self):
+        compare_type = "equal"
         appdict = self.ParsingJson(self.lang)
         for (k,v) in appdict.items():
             print(k,v)
@@ -96,10 +97,13 @@ class Launcher_StartAllAPP(unittest.TestCase):
                 elif k == self.name_Deepin_User_Feedback:
                     do_polkit_agent(action="Cancel")
 
-                window_obj = window.findWindow(v)
+                if k == "Google Chrome":
+                    compare_type = "notequal"
+
+                window_obj = window.findWindow(v, comparetype=compare_type)
                 if None == window_obj:
                     time.sleep(10)
-                    window_obj = window.findWindow(v)
+                    window_obj = window.findWindow(v, comparetype=compare_type)
 
                 closeresult = window.closeWindow(window_obj)
                 self.assertEqual(None, closeresult)
