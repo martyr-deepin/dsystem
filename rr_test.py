@@ -109,15 +109,20 @@ def get_run_type():
                         default=False,
                         help='the running type for the TestCases (bool: True or False) \
                         python3 rr_test.py --run_all True')
+        opt.add_option('--run_dfm',
+                        dest='run_dfm',
+                        default=False,
+                        help='running the TestCases of dde-file-manager (bool: True or False) python3 rr_test.py --run_dfm True')
         (options, args) = opt.parse_args()
         is_valid_paras = True
         error_messages = []
         run_type = options.run_type
+        run_dfm = options.run_dfm
 
         opt.print_help()
 
         if is_valid_paras:
-            user_paras = {"run_type": run_type}
+            user_paras = {"run_type": run_type, "run_dfm": run_dfm}
             return user_paras
     except Exception as ex:
         print("exception :{0".format(str(ex)))
@@ -130,6 +135,9 @@ def main():
 
     runtype = get_run_type()
     run_all = runtype['run_type']
+    print('run_all =', run_all)
+    run_dfm = runtype['run_dfm']
+    print('run_dfm =', run_dfm)
 
 
     # Launcher
@@ -301,55 +309,57 @@ def main():
     if run_all or Command_apt_cache.caseid in allids:
         classes.append(Command_apt_cache)
 
-    if run_all or DFM_OpenFile.caseid in allids:
+    #dde-file-manager
+
+    if run_all or run_dfm or DFM_OpenFile.caseid in allids:
         classes.append(DFM_OpenFile)
 
-    if run_all or DFM_OpenFileByApp.caseid in allids:
+    if run_all or run_dfm or DFM_OpenFileByApp.caseid in allids:
         classes.append(DFM_OpenFileByApp)
 
-    if run_all or DFM_CompressFiles.caseid in allids:
+    if run_all or run_dfm or DFM_CompressFiles.caseid in allids:
         classes.append(DFM_CompressFiles)
 
-    if run_all or DFM_DecompressFile.caseid in allids:
+    if run_all or run_dfm or DFM_DecompressFile.caseid in allids:
         classes.append(DFM_DecompressFile)
 
-    if run_all or DFM_DecompressFileHere.caseid in allids:
+    if run_all or run_dfm or DFM_DecompressFileHere.caseid in allids:
         classes.append(DFM_DecompressFileHere)
 
-    if run_all or DFM_RenameFile.caseid in allids:
+    if run_all or run_dfm or DFM_RenameFile.caseid in allids:
         classes.append(DFM_RenameFile)
 
-    if run_all or DFM_DeleteFiles.caseid in allids:
+    if run_all or run_dfm or DFM_DeleteFiles.caseid in allids:
         classes.append(DFM_DeleteFiles)
 
-    if run_all or DFM_MoveToTrash.caseid in allids:
+    if run_all or run_dfm or DFM_MoveToTrash.caseid in allids:
         classes.append(DFM_MoveToTrash)
 
-    if run_all or DFM_RestoreFromTrash.caseid in allids:
+    if run_all or run_dfm or DFM_RestoreFromTrash.caseid in allids:
         classes.append(DFM_RestoreFromTrash)
 
-    if run_all or DFM_PasteFile.caseid in allids:
+    if run_all or run_dfm or DFM_PasteFile.caseid in allids:
         classes.append(DFM_PasteFile)
 
-    if run_all or DFM_NewFolder.caseid in allids:
+    if run_all or run_dfm or DFM_NewFolder.caseid in allids:
         classes.append(DFM_NewFolder)
 
-    if run_all or DFM_NewFile.caseid in allids:
+    if run_all or run_dfm or DFM_NewFile.caseid in allids:
         classes.append(DFM_NewFile)
 
-    if run_all or DFM_OpenFileLocation.caseid in allids:
+    if run_all or run_dfm or DFM_OpenFileLocation.caseid in allids:
         classes.append(DFM_OpenFileLocation)
 
-    if run_all or DFM_CreateSymlink.caseid in allids:
+    if run_all or run_dfm or DFM_CreateSymlink.caseid in allids:
         classes.append(DFM_CreateSymlink)
 
-    if run_all or DFM_FileShare.caseid in allids:
+    if run_all or run_dfm or DFM_FileShare.caseid in allids:
         classes.append(DFM_FileShare)
 
-    if run_all or DFM_OpenInTerminal.caseid in allids:
+    if run_all or run_dfm or DFM_OpenInTerminal.caseid in allids:
         classes.append(DFM_OpenInTerminal)
 
-    if run_all or DFM_OpenNewWindow.caseid in allids:
+    if run_all or run_dfm or DFM_OpenNewWindow.caseid in allids:
         classes.append(DFM_OpenNewWindow)
 
     if 0 == len(classes):
