@@ -82,6 +82,11 @@ class Launcher_StartAllAPP(unittest.TestCase):
             self.launcher.searchApp(k)
             time.sleep(1)
             self.launcher.launcherObj.child(k).click()
+
+            if k == 'Deepin Clone' or k == 'GParted':
+                time.sleep(5)
+                do_polkit_agent()
+
             time.sleep(10)
             if k ==  self.name_Deepin_Screenshot:
                 self.terminate_deepinscreenshot()
@@ -97,7 +102,7 @@ class Launcher_StartAllAPP(unittest.TestCase):
                 elif k == self.name_Deepin_User_Feedback:
                     do_polkit_agent(action="Cancel")
 
-                if k == "Google Chrome":
+                if k == "Google Chrome" k == 'GParted':
                     compare_type = "notequal"
 
                 window_obj = window.findWindow(v, comparetype=compare_type)

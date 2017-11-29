@@ -33,5 +33,12 @@
     "Driver Manager": "Driver Manager",
     "ChmSee": "ChmSee",
     "CrossOver": "CrossOver",
-    "GParted": "Deepin Polkit Agent"
+    "GParted": "GParted",
+    "Deepin Package Manager": "Deepin Package Manager",
+    "Deepin Clone": "Deepin Clone",
+    "Deepin System Monitor": "Deepin System Monitor",
+    "Deepin Voice Recorder": "Deepin Voice Recorder",
+    "Computer": "Deepin File Manager",
+    "Foxit Reader": "Start - Foxit Reader",
+    "NetEase Cloud Music": "Cloud Music"
 }
