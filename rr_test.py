@@ -89,6 +89,8 @@ from RRTestCase import DFM_FileShare
 from RRTestCase import DFM_OpenInTerminal
 from RRTestCase import DFM_OpenNewWindow
 
+from RRTestCase import DeepinMovie
+
 id_key = 'lava_id'
 idfilename = 'id.txt'
 
@@ -361,6 +363,9 @@ def main():
 
     if run_all or run_dfm or DFM_OpenNewWindow.caseid in allids:
         classes.append(DFM_OpenNewWindow)
+
+    if run_all or DeepinMovie.caseid in allids:
+        classes.append(DeepinMovie)
 
     if 0 == len(classes):
         print("classes length is 0.\nExit")

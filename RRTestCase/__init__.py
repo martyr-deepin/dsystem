@@ -59,7 +59,9 @@ __ALL__ = ['Launcher_StartAllAPP',
            'DFM_CreateSymlink',
            'DFM_FileShare',
            'DFM_OpenInTerminal',
-           'DFM_OpenNewWindow'
+           'DFM_OpenNewWindow',
+
+           'DeepinMovie'
            ]
 
 from .testLauncher_StartAllAPP import Launcher_StartAllAPP
@@ -142,3 +144,5 @@ from .testDFM_FileShare import DFM_FileShare
 
 from .testDFM_OpenInTerminal import DFM_OpenInTerminal
 from .testDFM_OpenNewWindow import DFM_OpenNewWindow
+
+from .testDeepinMovie import DeepinMovie
