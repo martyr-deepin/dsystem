@@ -102,7 +102,7 @@ class Launcher_StartAllAPP(unittest.TestCase):
                 elif k == self.name_Deepin_User_Feedback:
                     do_polkit_agent(action="Cancel")
 
-                if k == "Google Chrome" k == 'GParted':
+                if k == "Google Chrome" or k == 'GParted':
                     compare_type = "notequal"
 
                 window_obj = window.findWindow(v, comparetype=compare_type)

@@ -111,6 +111,14 @@ def get_run_type():
                         default=False,
                         help='the running type for the TestCases (bool: True or False) \
                         python3 rr_test.py --run_all True')
+        opt.add_option('--run_launcher',
+                        dest='run_launcher',
+                        default=False,
+                        help='')
+        opt.add_option('--run_dock',
+                        dest='run_dock',
+                        default=False,
+                        help='')
         opt.add_option('--run_dfm',
                         dest='run_dfm',
                         default=False,
@@ -119,12 +127,17 @@ def get_run_type():
         is_valid_paras = True
         error_messages = []
         run_type = options.run_type
+        run_launcher = options.run_launcher
+        run_dock = options.run_dock
         run_dfm = options.run_dfm
 
         opt.print_help()
 
         if is_valid_paras:
-            user_paras = {"run_type": run_type, "run_dfm": run_dfm}
+            user_paras = {"run_type": run_type,
+                          "run_launcher": run_launcher,
+                          "run_dock": run_dock,
+                          "run_dfm": run_dfm}
             return user_paras
     except Exception as ex:
         print("exception :{0".format(str(ex)))
@@ -137,47 +150,51 @@ def main():
 
     runtype = get_run_type()
     run_all = runtype['run_type']
-    print('run_all =', run_all)
+    print('run_all\t\t=', run_all)
+    run_launcher = runtype['run_launcher']
+    print('run_launcher\t=', run_launcher)
+    run_dock = runtype['run_dock']
+    print('run_dock\t=', run_dock)
     run_dfm = runtype['run_dfm']
-    print('run_dfm =', run_dfm)
+    print('run_dfm\t\t=', run_dfm)
 
 
     # Launcher
     if run_all or Launcher_StartAllAPP.caseid in allids:
         classes.append(Launcher_StartAllAPP)
 
-    if run_all or Launcher_SendToDesktop.caseid in allids:
+    if run_all or run_launcher or Launcher_SendToDesktop.caseid in allids:
         classes.append(Launcher_SendToDesktop)
 
-    if run_all or Launcher_AddToDock.caseid in allids:
+    if run_all or run_launcher or Launcher_AddToDock.caseid in allids:
         classes.append(Launcher_AddToDock)
 
-    if run_all or Launcher_AutoStart.caseid in allids:
+    if run_all or run_launcher or Launcher_AutoStart.caseid in allids:
         classes.append(Launcher_AutoStart)
 
-    if run_all or Launcher_Uninstall.caseid in allids:
+    if run_all or run_launcher or Launcher_Uninstall.caseid in allids:
         classes.append(Launcher_Uninstall)
 
     # Dock
-    if run_all or Dock_Exist.caseid in allids:
+    if run_all or run_dock or Dock_Exist.caseid in allids:
         classes.append(Dock_Exist)
 
-    if run_all or Dock_DefaultSetting.caseid in allids:
+    if run_all or run_dock or Dock_DefaultSetting.caseid in allids:
         classes.append(Dock_DefaultSetting)
 
-    if run_all or Dock_ChangeDisplay.caseid in allids:
+    if run_all or run_dock or Dock_ChangeDisplay.caseid in allids:
         classes.append(Dock_ChangeDisplay)
 
-    if run_all or Dock_ChangePosition.caseid in allids:
+    if run_all or run_dock or Dock_ChangePosition.caseid in allids:
         classes.append(Dock_ChangePosition)
 
-    if run_all or Dock_ChangeIconSize.caseid in allids:
+    if run_all or run_dock or Dock_ChangeIconSize.caseid in allids:
         classes.append(Dock_ChangeIconSize)
 
-    if run_all or Dock_ChangeHide.caseid in allids:
+    if run_all or run_dock or Dock_ChangeHide.caseid in allids:
         classes.append(Dock_ChangeHide)
 
-    if run_all or Dock_DragDockiconToDel.caseid in allids:
+    if run_all or run_dock or Dock_DragDockiconToDel.caseid in allids:
         classes.append(Dock_DragDockiconToDel)
 
     # Dde control center
