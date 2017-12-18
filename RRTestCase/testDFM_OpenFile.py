@@ -21,6 +21,7 @@ class DFM_OpenFile(unittest.TestCase):
                 data = json.load(json_file)
                 return data
 
+        os.system('killall deepin-music')
         ddata = load()
         cls.params = ddata['OpenFile']
 
