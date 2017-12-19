@@ -1,0 +1,317 @@
+checkdata|2017-12-19 13:3:25|"G_PATH=orpheus://orpheus/src/html/"
+checkdata|2017-12-19 13:3:25|"check data begin"
+checkdata|2017-12-19 13:3:25|"check data version"
+checkdata|2017-12-19 13:3:25|"ONCE_CHECK_SETTING null"
+checkdata|2017-12-19 13:3:25|"check need data update:true"
+checkdata|2017-12-19 13:3:25|"new user, create tabele"
+checkdata|2017-12-19 13:3:25|"cb create table err:0"
+checkdata|2017-12-19 13:3:25|"create table success and clear data0"
+[2017-12-19 13:3:25][warn], , app start, logger inited
+[2017-12-19 13:3:25][warn], , --------------- native startup and start page = app -------------------
+[2017-12-19 13:3:25][warn], , --------------- native startup end -------------------
+[2017-12-19 13:3:25][info], , _$autoLogin
+[2017-12-19 13:3:26][info], , __cbGetCookiesForClear
+[2017-12-19 13:3:26][info], , __setCookieField
+[2017-12-19 13:3:26][info], , __setCookieField
+[2017-12-19 13:3:26][info], , __setCookieField
+[2017-12-19 13:3:26][info], , __setCookieField
+[2017-12-19 13:3:26][info], , __checkLoginInfo
+[2017-12-19 13:3:26][info], , __createAnonimousAccount
+[2017-12-19 13:3:26][info], , __dispatchSwitchEvent
+[2017-12-19 13:3:26][warn], , _$checkAnonimous:true
+[2017-12-19 13:3:26][warn]api.js, _$registerNative, uid:0
+[2017-12-19 13:3:26][warn]api.js, _$postCookieToNative, 
+[2017-12-19 13:3:26][log]linux.updater.js, __reset, 
+[2017-12-19 13:3:26][info], , ==== BI LOG ====1513659806active{"source":"netease","seq":1}
+[2017-12-19 13:3:26][info]frame/farme/index.js, __checkUpdate, {"type":0,"cookieSetted":true,"pushConnected":false,"check":false}
+[2017-12-19 13:3:26][warn]__reset, module.2.js, {"onrefresh":{"top":"/?/frame/top/","side":"/?/frame/side/"},"onshow":{"player":"/?/frame/foot/player/","lyric":"/?/frame/foot/lyric/","brief":"/?/frame/brief/","fmp":"/?/frame/fm/"}}
+[2017-12-19 13:3:26][warn]__doModuleDispatch, group.js, dispatch module[/m] with onshow
+[2017-12-19 13:3:26][warn]__onUpdateHotKey, player/index.js, update hotkey play_pause title 播放（Ctrl + P）
+[2017-12-19 13:3:26][warn]__onUpdateHotKey, player/index.js, update hotkey prev title 上一首（Ctrl + Left）
+[2017-12-19 13:3:26][warn]__onUpdateHotKey, player/index.js, update hotkey next title 下一首（Ctrl + Right）
+[2017-12-19 13:3:26][warn]__onUpdateHotKey, player/index.js, update hotkey add_volume/cut_volume title 音量调节（Ctrl + Up / Ctrl + Down）
+[2017-12-19 13:3:26][info]_$setCover, player.js, set minplay cover, url=undefined
+[2017-12-19 13:3:26][warn], , ?sql,offline init,false
+[2017-12-19 13:3:26][warn], , ?sql,plorder init,false
+[2017-12-19 13:3:26][warn], , ?sql,track init,false
+[2017-12-19 13:3:26][log], , ?file read:: queue init
+[2017-12-19 13:3:26][log], , ?file read:: history init
+[2017-12-19 13:3:26][warn], , ?sql2,local init
+[2017-12-19 13:3:26][log], , ?file read:: 341b9bbed7823930135534b592e8f2ee
+[2017-12-19 13:3:26][warn]__reset, module.2.js, {}
+[2017-12-19 13:3:26][warn]__doModuleDispatch, group.js, dispatch module[/?/frame/foot/player/] with onshow
+[2017-12-19 13:3:26][warn]__reset, module.2.js, {}
+[2017-12-19 13:3:26][warn]__doModuleDispatch, group.js, dispatch module[/?/frame/foot/lyric/] with onshow
+[2017-12-19 13:3:26][warn]__reset, module.2.js, {}
+[2017-12-19 13:3:26][warn]__doModuleDispatch, group.js, dispatch module[/?/frame/brief/] with onshow
+[2017-12-19 13:3:26][warn]__reset, module.2.js, {}
+[2017-12-19 13:3:26][warn]__doModuleDispatch, group.js, dispatch module[/?/frame/fm/] with onshow
+[2017-12-19 13:3:26][warn]__reset, module.2.js, {}
+[2017-12-19 13:3:26][warn]__doModuleDispatch, group.js, dispatch module[/?/frame/top/] with onshow
+[2017-12-19 13:3:26][warn]search/index.js, __onLineStateChange, 网络状态变化，5s后刷新歌单列表
+[2017-12-19 13:3:26][warn]search/index.js, __onLineStateChange, 网络状态变化，30s后刷新歌单列表
+[2017-12-19 13:3:26][warn]__reset, module.2.js, {}
+[2017-12-19 13:3:26][warn]__doModuleDispatch, group.js, dispatch module[/?/frame/side/] with onshow
+[2017-12-19 13:3:26][warn]__reset, module.2.js, {}
+[2017-12-19 13:3:26][warn]__doModuleDispatch, group.js, dispatch module[/m/disc] with onshow
+[2017-12-19 13:3:26][info], , ==== BI LOG ====1513659806page{"type":"discovery","seq":2}
+[2017-12-19 13:3:26][log]os.checkNativeSupportFonts, setting.js, ["宋体"]
+[2017-12-19 13:3:26][log]os.checkNativeSupportFonts, setting.js, success
+[2017-12-19 13:3:26][warn]network.js, __onNetworkChange, {"type":"check","online":true,"apponline":true}
+[2017-12-19 13:3:26][warn]network.js, _$setOnline, {"type":"check","apponline":true}
+[2017-12-19 13:3:26][warn]search/index.js, __onLineStateChange, 网络状态变化，5s后刷新歌单列表
+[2017-12-19 13:3:26][warn]search/index.js, __onLineStateChange, 网络状态变化，30s后刷新歌单列表
+[2017-12-19 13:3:26][warn]network.js, __delayCheck, ckfun
+[2017-12-19 13:3:26][warn], , $exec sql offline init:104:0
+[2017-12-19 13:3:26][warn], , $exec sql plorder init:105:0
+[2017-12-19 13:3:26][warn], , $exec sql track init:105:0
+[2017-12-19 13:3:26][warn], , ?file io:: queue init::106::1
+[2017-12-19 13:3:26][warn], , ?file io:: history init::106::1
+[2017-12-19 13:3:26][warn], , $exec sql local init:107:0
+[2017-12-19 13:3:26][log]track.js, __cbUpdateLocalMap, err:0
+[2017-12-19 13:3:26][log]track.js, __cbUpdateLocalMap, len:0
+[2017-12-19 13:3:26][warn], , ?file io:: 341b9bbed7823930135534b592e8f2ee::104::1
+[2017-12-19 13:3:26][info]frame/farme/index.js, __checkUpdate, {"type":2,"cookieSetted":true,"pushConnected":false,"check":false}
+[2017-12-19 13:3:26][warn]track.js, _$scan, {"add":["<mymusic>","/home/deepin/Music/CloudMusic","<kugou>","<baidumusic>","<xiami>","<kuwo>","<duomi>"],"del":null}
+[2017-12-19 13:3:26][warn]track.js, _$scan, {"first":false,"state":0,"total":0,"ttmap":{},"tasks":[{"path":"<mymusic>","cmd":"add","total":0},{"path":"/home/deepin/Music/CloudMusic","cmd":"add","total":0},{"path":"<kugou>","cmd":"add","total":0},{"path":"<baidumusic>","cmd":"add","total":0},{"path":"<xiami>","cmd":"add","total":0},{"path":"<kuwo>","cmd":"add","total":0},{"path":"<duomi>","cmd":"add","total":0}],"currt":null,"freq":50}
+[2017-12-19 13:3:26][info], , _$refreshQueueAndHistory
+[2017-12-19 13:3:26][log]########### setting cache==, , /home/deepin/Music/CloudMusic/
+[2017-12-19 13:3:26][warn]frame/frame.js, __onRequestError, requesterror|playlist_favorite-list|{"key":"playlist_favorite-undefined","code":400,"json":{"msg":"参数错误","code":400},"message":"","ext_req_conf":{"url":"/api/user/playlist/","onerror":"onlisterror","key":"playlist_favorite-list","type":"GET"},"type":"requesterror"}
+[2017-12-19 13:3:26][info], , __checkAnonimousCreated, uid=313914291
+[2017-12-19 13:3:26][warn]__onOfflineProgressQuery, track.js, []
+[2017-12-19 13:3:26][warn]__onScanResult, track.js, {"path":{"dirs":[],"library":"<mymusic>","reason":"","result":0},"err":0,"reason":"","cmd":"add"}
+[2017-12-19 13:3:26][info], , __cbGetCookiesForSave, uid=313914291
+[2017-12-19 13:3:26][info], , __checkLoginInfo
+[2017-12-19 13:3:26][info], , __dispatchSwitchEvent
+[2017-12-19 13:3:26][info], , _$refreshQueueAndHistory
+[2017-12-19 13:3:26][warn], , _$checkAnonimous:true
+[2017-12-19 13:3:26][warn]api.js, _$registerNative, uid:313914291
+[2017-12-19 13:3:26][warn]api.js, _$postCookieToNative, 
+[2017-12-19 13:3:26][warn], , ?sql,getHostPids,false
+[2017-12-19 13:3:26][log], , ?file read:: 0e3df09def7c042b4588f0a900f26adf
+[2017-12-19 13:3:26][warn]__onScanResult, track.js, {"path":{"dirs":[],"library":"/home/deepin/Music/CloudMusic","reason":"","result":0},"err":0,"reason":"","cmd":"add"}
+[2017-12-19 13:3:26][warn]__doModuleDispatch, group.js, dispatch module[/m] with onrefresh
+[2017-12-19 13:3:26][warn]__doModuleDispatch, group.js, dispatch module[/?/frame/top/] with onrefresh
+[2017-12-19 13:3:26][warn]__doModuleDispatch, group.js, dispatch module[/?/frame/side/] with onrefresh
+[2017-12-19 13:3:26][warn]__doModuleDispatch, group.js, dispatch module[/m/disc] with onrefresh
+[2017-12-19 13:3:26][warn]__reset, module.2.js, {}
+[2017-12-19 13:3:26][warn]__doModuleDispatch, group.js, dispatch module[/m/disc/rec/] with onshow
+[2017-12-19 13:3:26][log], , ?file read:: auto-read-file-1513659806796-uqpnlM-callback
+[2017-12-19 13:3:26][warn]__onScanResult, track.js, {"path":{"dirs":[],"library":"<kugou>","reason":"","result":0},"err":1,"reason":"Folder not found","cmd":"add"}
+[2017-12-19 13:3:26][warn]__onScanResult, track.js, {"path":{"dirs":[],"library":"<baidumusic>","reason":"","result":0},"err":1,"reason":"Folder not found","cmd":"add"}
+[2017-12-19 13:3:26][warn]playlist.js, __doFormatPlayList, refresh host playlist: new size is 1, fav size is 0
+[2017-12-19 13:3:26][warn]__onScanResult, track.js, {"path":{"dirs":[],"library":"<xiami>","reason":"","result":0},"err":1,"reason":"Folder not found","cmd":"add"}
+[2017-12-19 13:3:26][warn]__onScanResult, track.js, {"path":{"dirs":[],"library":"<kuwo>","reason":"","result":0},"err":1,"reason":"Folder not found","cmd":"add"}
+[2017-12-19 13:3:26][warn]__onScanResult, track.js, {"path":{"dirs":[],"library":"<duomi>","reason":"","result":0},"err":1,"reason":"Folder not found","cmd":"add"}
+[2017-12-19 13:3:26][warn], , ?sql2,getLocalCount
+[2017-12-19 13:3:26][warn], , $exec sql getLocalCount:5:0
+[2017-12-19 13:3:26][log]track.js, getLocalCount, 0
+[2017-12-19 13:3:27][info]frame/farme/index.js, __checkUpdate, {"type":1,"cookieSetted":true,"pushConnected":true,"check":false}
+[2017-12-19 13:3:27][info]linux.updater.js, _$check, auto
+[2017-12-19 13:3:27][info]linux.updater.js, __cbGetVersion, {"build":"1232","version":"1.1.0"}
+[2017-12-19 13:3:27][warn], , {"trigger":"auto","core":"1.1.0.1232"}
+[2017-12-19 13:3:27][info]linux.updater.js, __cbCheckFromServer, {"privateCloudMusicShareAllowed":true,"cdn":["http://m1.music.126.net/","http://m2.music.126.net/"],"id3Limit":100,"privateCloudCdn":["http://m3.music.126.net/"],"baoyueMsg":"应合作方要求，该资源需付费使用\n登录云音乐官网music.163.com\n抢购音乐包即可无限畅听\n（订购完成后请重启软件使用）","allowTencentLogin":true,"customerServicePhone":"0571-89853546","edition":"normal","channel":"others","trigger":"auto","code":200}
+[2017-12-19 13:3:27][warn]__onOfflineQuery, track.js, []
+[2017-12-19 13:3:27][warn], , $exec sql getHostPids:549:0
+[2017-12-19 13:3:27][warn], , ?sql,getHostPlaylists,false
+[2017-12-19 13:3:27][warn], , ?file io:: 0e3df09def7c042b4588f0a900f26adf::545::1
+[2017-12-19 13:3:27][warn], , ?file io:: auto-read-file-1513659806796-uqpnlM-callback::496::1
+[2017-12-19 13:3:27][warn], , $exec sql getHostPlaylists:2:0
+[2017-12-19 13:3:27][warn], , ?sql,getCachePids,false
+[2017-12-19 13:3:27][warn], , $exec sql getCachePids:1:0
+[2017-12-19 13:3:27][info], , ==== BI LOG ====1513659807recommendimpress{"scene":"user-playlist","id":924680166,"alg":"featured","position":1,"type":"list","url":null,"seq":3}
+[2017-12-19 13:3:27][info], , ==== BI LOG ====1513659807recommendimpress{"scene":"user-playlist","id":976742966,"alg":"featured","position":2,"type":"list","url":null,"seq":4}
+[2017-12-19 13:3:27][info], , ==== BI LOG ====1513659807recommendimpress{"scene":"user-playlist","id":306397077,"alg":"cityLevel_unknow","position":3,"type":"list","url":null,"seq":5}
+[2017-12-19 13:3:27][info], , ==== BI LOG ====1513659807recommendimpress{"scene":"user-playlist","id":37432514,"alg":"cityLevel_unknow","position":4,"type":"list","url":null,"seq":6}
+[2017-12-19 13:3:27][info], , ==== BI LOG ====1513659807recommendimpress{"scene":"user-playlist","id":2015748262,"alg":"cityLevel_unknow","position":5,"type":"list","url":null,"seq":7}
+[2017-12-19 13:3:27][info], , ==== BI LOG ====1513659807recommendimpress{"scene":"user-playlist","id":310970433,"alg":"cityLevel_unknow","position":6,"type":"list","url":null,"seq":8}
+[2017-12-19 13:3:27][info], , ==== BI LOG ====1513659807recommendimpress{"scene":"user-playlist","id":2015397679,"alg":"cityLevel_unknow","position":7,"type":"list","url":null,"seq":9}
+[2017-12-19 13:3:27][info], , ==== BI LOG ====1513659807recommendimpress{"scene":"user-playlist","id":1988001377,"alg":"cityLevel_unknow","position":8,"type":"list","url":null,"seq":10}
+[2017-12-19 13:3:27][info], , ==== BI LOG ====1513659807recommendimpress{"scene":"user-playlist","id":368529707,"alg":"cityLevel_unknow","position":9,"type":"list","url":null,"seq":11}
+[2017-12-19 13:3:27][info], , ==== BI LOG ====1513659807recommendimpress{"scene":"user-unique","id":2445081,"alg":"featured","position":1,"type":"webview","url":"https://music.163.com/store/newalbum/detail?id=36952205","seq":12}
+[2017-12-19 13:3:27][info], , ==== BI LOG ====1513659807recommendimpress{"scene":"user-unique","id":18656244,"alg":"featured","position":2,"type":"topic","url":null,"seq":13}
+[2017-12-19 13:3:27][info], , ==== BI LOG ====1513659807recommendimpress{"scene":"user-unique","id":5778034,"alg":"featured","position":3,"type":"mv","url":null,"seq":14}
+[2017-12-19 13:3:27][info], , ==== BI LOG ====1513659807recommendimpress{"scene":"user-newmusic","id":524913198,"alg":"featured","position":1,"type":"song","url":null,"seq":15}
+[2017-12-19 13:3:27][info], , ==== BI LOG ====1513659807recommendimpress{"scene":"user-newmusic","id":524148328,"alg":"featured","position":2,"type":"song","url":null,"seq":16}
+[2017-12-19 13:3:27][info], , ==== BI LOG ====1513659807recommendimpress{"scene":"user-newmusic","id":524148329,"alg":"featured","position":3,"type":"song","url":null,"seq":17}
+[2017-12-19 13:3:27][info], , ==== BI LOG ====1513659807recommendimpress{"scene":"user-newmusic","id":524148361,"alg":"hot_server","position":4,"type":"song","url":null,"seq":18}
+[2017-12-19 13:3:27][info], , ==== BI LOG ====1513659807recommendimpress{"scene":"user-newmusic","id":524148421,"alg":"hot_server","position":5,"type":"song","url":null,"seq":19}
+[2017-12-19 13:3:27][info], , ==== BI LOG ====1513659807recommendimpress{"scene":"user-newmusic","id":524300632,"alg":"hot_server","position":6,"type":"song","url":null,"seq":20}
+[2017-12-19 13:3:27][info], , ==== BI LOG ====1513659807recommendimpress{"scene":"user-newmusic","id":524870743,"alg":"hot_server","position":7,"type":"song","url":null,"seq":21}
+[2017-12-19 13:3:27][info], , ==== BI LOG ====1513659807recommendimpress{"scene":"user-newmusic","id":524148451,"alg":"hot_server","position":8,"type":"song","url":null,"seq":22}
+[2017-12-19 13:3:27][info], , ==== BI LOG ====1513659807recommendimpress{"scene":"user-newmusic","id":524148362,"alg":"hot_server","position":9,"type":"song","url":null,"seq":23}
+[2017-12-19 13:3:27][info], , ==== BI LOG ====1513659807recommendimpress{"scene":"user-newmusic","id":524152457,"alg":"hot_server","position":10,"type":"song","url":null,"seq":24}
+[2017-12-19 13:3:27][info], , ==== BI LOG ====1513659807recommendimpress{"scene":"user-mv","id":5776068,"alg":"featured","position":1,"type":"mv","url":null,"seq":25}
+[2017-12-19 13:3:27][info], , ==== BI LOG ====1513659807recommendimpress{"scene":"user-mv","id":5776042,"alg":"featured","position":2,"type":"mv","url":null,"seq":26}
+[2017-12-19 13:3:27][info], , ==== BI LOG ====1513659807recommendimpress{"scene":"user-mv","id":5778040,"alg":"hot_server","position":3,"type":"mv","url":null,"seq":27}
+[2017-12-19 13:3:27][info], , ==== BI LOG ====1513659807recommendimpress{"scene":"user-mv","id":5776043,"alg":"hot_server","position":4,"type":"mv","url":null,"seq":28}
+[2017-12-19 13:3:27][info], , ==== BI LOG ====1513659807recommendimpress{"scene":"user-djradio","id":1367262881,"alg":"featured","position":1,"type":"dj","url":null,"seq":29}
+[2017-12-19 13:3:27][info], , ==== BI LOG ====1513659807recommendimpress{"scene":"user-djradio","id":1367234016,"alg":"featured","position":2,"type":"dj","url":null,"seq":30}
+[2017-12-19 13:3:27][info], , ==== BI LOG ====1513659807recommendimpress{"scene":"user-djradio","id":908528214,"alg":"ageLevel_unknow","position":3,"type":"dj","url":null,"seq":31}
+[2017-12-19 13:3:27][info], , ==== BI LOG ====1513659807recommendimpress{"scene":"user-djradio","id":910599464,"alg":"ageLevel_unknow","position":4,"type":"dj","url":null,"seq":32}
+[2017-12-19 13:3:27][info], , ==== BI LOG ====1513659807recommendimpress{"scene":"user-djradio","id":910490004,"alg":"ageLevel_unknow","position":5,"type":"dj","url":null,"seq":33}
+[2017-12-19 13:3:27][info], , ==== BI LOG ====1513659807recommendimpress{"scene":"user-djradio","id":789883417,"alg":"ageLevel_unknow","position":6,"type":"dj","url":null,"seq":34}
+[2017-12-19 13:3:27][info], , ==== BI LOG ====1513659807bannerimpress{"type":"1_独家","url":null,"id":"524150330","seq":35}
+[2017-12-19 13:3:27][log], , ?file write:: save disc_data
+[2017-12-19 13:3:27][warn], , ?file io:: save disc_data::56::0
+[2017-12-19 13:3:29][info], , _$clearAllSongCacheInfo
+[2017-12-19 13:3:29][warn], , ?sql,flushHostPlaylist|pids|313914291,true
+[2017-12-19 13:3:29][warn], , ?sql,flushHostPlaylist|playlists|313914291,true
+[2017-12-19 13:3:29][log]track.js, _$updateLocalMap, 
+[2017-12-19 13:3:29][warn], , ?sql2,getLocalMap
+[2017-12-19 13:3:29][warn], , $exec sql getLocalMap:1:0
+[2017-12-19 13:3:29][log]track.js, __cbUpdateLocalMap, err:0
+[2017-12-19 13:3:29][log]track.js, __cbUpdateLocalMap, len:0
+[2017-12-19 13:3:30][warn], , $exec sql flushHostPlaylist|pids|313914291:249:0
+[2017-12-19 13:3:30][warn], , $exec sql flushHostPlaylist|playlists|313914291:507:0
+[2017-12-19 13:3:31][info], , ==== BI LOG ====1513659811close{"seq":36}
+[2017-12-19 13:3:31][warn]network.js, __delayCheck, ckfun
+[2017-12-19 13:3:31][warn]playlist.js, __doFormatPlayList, refresh host playlist: new size is 1, fav size is 0
+[2017-12-19 13:3:31][info]frame/farme/index.js, __checkUpdate, {"type":1,"cookieSetted":true,"pushConnected":true,"check":true}
+[2017-12-19 13:3:31][warn]playlist.js, __doFormatPlayList, refresh host playlist: new size is 1, fav size is 0
+[2017-12-19 13:3:34][log], , ?file write:: fc616d75ad7eb3f9f00c5fe22cee5969
+[2017-12-19 13:3:34][warn], , ?file io:: fc616d75ad7eb3f9f00c5fe22cee5969::23::0
+[2017-12-19 13:3:34][warn], , ?sql,flushHostPlaylist|pids|313914291,true
+checkdata|2017-12-19 13:4:58|"G_PATH=orpheus://orpheus/src/html/"
+checkdata|2017-12-19 13:4:58|"check data begin"
+checkdata|2017-12-19 13:4:58|"check data version"
+checkdata|2017-12-19 13:4:58|"check need data update:false"
+checkdata|2017-12-19 13:4:58|"check table exists"
+checkdata|2017-12-19 13:4:58|"cb check table exists err:0"
+[2017-12-19 13:4:58][warn], , app start, logger inited
+[2017-12-19 13:4:58][warn], , --------------- native startup and start page = app -------------------
+[2017-12-19 13:4:58][warn], , --------------- native startup end -------------------
+[2017-12-19 13:4:58][info], , _$autoLogin
+[2017-12-19 13:4:59][info], , __cbGetCookiesForClear
+[2017-12-19 13:4:59][info], , __setCookieField
+[2017-12-19 13:4:59][info], , __setCookieField
+[2017-12-19 13:4:59][info], , __setCookieField
+[2017-12-19 13:4:59][info], , __setCookieField
+[2017-12-19 13:4:59][info], , __checkLoginInfo
+[2017-12-19 13:4:59][info], , __dispatchSwitchEvent
+[2017-12-19 13:4:59][warn], , _$checkAnonimous:true
+[2017-12-19 13:4:59][warn]api.js, _$registerNative, uid:313914291
+[2017-12-19 13:4:59][warn]api.js, _$postCookieToNative, 
+[2017-12-19 13:4:59][warn], , ?sql,getHostPids,false
+[2017-12-19 13:4:59][warn], , $exec sql getHostPids:51:0
+[2017-12-19 13:4:59][warn], , ?sql,getHostPlaylists,false
+[2017-12-19 13:4:59][warn], , $exec sql getHostPlaylists:32:0
+[2017-12-19 13:4:59][warn], , ?sql,getCachePids,false
+[2017-12-19 13:4:59][warn], , $exec sql getCachePids:51:0
+[2017-12-19 13:4:59][log]os.checkNativeSupportFonts, setting.js, ["宋体"]
+[2017-12-19 13:4:59][log]os.checkNativeSupportFonts, setting.js, success
+[2017-12-19 13:4:59][warn]network.js, __onNetworkChange, {"type":"check","online":true,"apponline":true}
+[2017-12-19 13:4:59][warn]network.js, _$setOnline, {"type":"check","apponline":true}
+[2017-12-19 13:4:59][warn]network.js, __delayCheck, ckfun
+[2017-12-19 13:4:59][log]########### setting cache==, , /home/deepin/Music/CloudMusic/
+[2017-12-19 13:4:59][log]linux.updater.js, __reset, 
+[2017-12-19 13:4:59][info], , ==== BI LOG ====1513659899active{"source":"netease","seq":1}
+[2017-12-19 13:4:59][info]frame/farme/index.js, __checkUpdate, {"type":0,"cookieSetted":true,"pushConnected":false,"check":false}
+[2017-12-19 13:4:59][warn]__reset, module.2.js, {"onrefresh":{"top":"/?/frame/top/","side":"/?/frame/side/"},"onshow":{"player":"/?/frame/foot/player/","lyric":"/?/frame/foot/lyric/","brief":"/?/frame/brief/","fmp":"/?/frame/fm/"}}
+[2017-12-19 13:4:59][warn]__doModuleDispatch, group.js, dispatch module[/m] with onshow
+[2017-12-19 13:4:59][warn]__onUpdateHotKey, player/index.js, update hotkey play_pause title 播放（Ctrl + P）
+[2017-12-19 13:4:59][warn]__onUpdateHotKey, player/index.js, update hotkey prev title 上一首（Ctrl + Left）
+[2017-12-19 13:4:59][warn]__onUpdateHotKey, player/index.js, update hotkey next title 下一首（Ctrl + Right）
+[2017-12-19 13:4:59][warn]__onUpdateHotKey, player/index.js, update hotkey add_volume/cut_volume title 音量调节（Ctrl + Up / Ctrl + Down）
+[2017-12-19 13:4:59][info]_$setCover, player.js, set minplay cover, url=undefined
+[2017-12-19 13:4:59][warn], , ?sql,offline init,false
+[2017-12-19 13:4:59][warn], , ?sql,plorder init,false
+[2017-12-19 13:4:59][warn], , ?sql,track init,false
+[2017-12-19 13:4:59][log], , ?file read:: queue init
+[2017-12-19 13:4:59][log], , ?file read:: history init
+[2017-12-19 13:4:59][warn], , ?sql2,local init
+[2017-12-19 13:4:59][log], , ?file read:: a7247c5ee3c436975bca376fa324ec64
+[2017-12-19 13:4:59][warn]__reset, module.2.js, {}
+[2017-12-19 13:4:59][warn]__doModuleDispatch, group.js, dispatch module[/?/frame/foot/player/] with onshow
+[2017-12-19 13:4:59][warn]__reset, module.2.js, {}
+[2017-12-19 13:4:59][warn]__doModuleDispatch, group.js, dispatch module[/?/frame/foot/lyric/] with onshow
+[2017-12-19 13:4:59][warn]__reset, module.2.js, {}
+[2017-12-19 13:4:59][warn]__doModuleDispatch, group.js, dispatch module[/?/frame/brief/] with onshow
+[2017-12-19 13:4:59][warn]__reset, module.2.js, {}
+[2017-12-19 13:4:59][warn]__doModuleDispatch, group.js, dispatch module[/?/frame/fm/] with onshow
+[2017-12-19 13:4:59][warn]__reset, module.2.js, {}
+[2017-12-19 13:4:59][warn]__doModuleDispatch, group.js, dispatch module[/?/frame/top/] with onshow
+[2017-12-19 13:4:59][warn]search/index.js, __onLineStateChange, 网络状态变化，5s后刷新歌单列表
+[2017-12-19 13:4:59][warn]search/index.js, __onLineStateChange, 网络状态变化，30s后刷新歌单列表
+[2017-12-19 13:4:59][warn]__reset, module.2.js, {}
+[2017-12-19 13:4:59][warn]__doModuleDispatch, group.js, dispatch module[/?/frame/side/] with onshow
+[2017-12-19 13:4:59][warn], , ?sql,getHostPids,false
+[2017-12-19 13:4:59][warn]__reset, module.2.js, {}
+[2017-12-19 13:4:59][warn]__doModuleDispatch, group.js, dispatch module[/m/disc] with onshow
+[2017-12-19 13:4:59][info], , ==== BI LOG ====1513659899page{"type":"discovery","seq":2}
+[2017-12-19 13:4:59][warn]__reset, module.2.js, {}
+[2017-12-19 13:4:59][warn]__doModuleDispatch, group.js, dispatch module[/m/disc/rec/] with onshow
+[2017-12-19 13:4:59][log], , ?file read:: auto-read-file-1513659899709-Ji9i70-callback
+[2017-12-19 13:4:59][warn], , $exec sql local init:106:0
+[2017-12-19 13:4:59][log]track.js, __cbUpdateLocalMap, err:0
+[2017-12-19 13:4:59][log]track.js, __cbUpdateLocalMap, len:0
+[2017-12-19 13:4:59][info]frame/farme/index.js, __checkUpdate, {"type":2,"cookieSetted":true,"pushConnected":false,"check":false}
+[2017-12-19 13:4:59][warn]playlist.js, __doFormatPlayList, refresh host playlist: new size is 1, fav size is 0
+[2017-12-19 13:4:59][info]frame/farme/index.js, __checkUpdate, {"type":1,"cookieSetted":true,"pushConnected":true,"check":false}
+[2017-12-19 13:4:59][info]linux.updater.js, _$check, auto
+[2017-12-19 13:4:59][info]linux.updater.js, __cbGetVersion, {"build":"1232","version":"1.1.0"}
+[2017-12-19 13:4:59][warn], , {"trigger":"auto","core":"1.1.0.1232"}
+[2017-12-19 13:4:59][info]linux.updater.js, __cbCheckFromServer, {"privateCloudMusicShareAllowed":true,"cdn":["http://m1.music.126.net/","http://m2.music.126.net/"],"id3Limit":100,"privateCloudCdn":["http://m3.music.126.net/"],"baoyueMsg":"应合作方要求，该资源需付费使用\n登录云音乐官网music.163.com\n抢购音乐包即可无限畅听\n（订购完成后请重启软件使用）","allowTencentLogin":true,"customerServicePhone":"0571-89853546","edition":"normal","channel":"others","trigger":"auto","code":200}
+[2017-12-19 13:5:0][warn], , $exec sql offline init:601:0
+[2017-12-19 13:5:0][warn], , $exec sql plorder init:602:0
+[2017-12-19 13:5:0][warn], , $exec sql track init:602:0
+[2017-12-19 13:5:0][warn], , ?file io:: queue init::602::1
+[2017-12-19 13:5:0][warn], , ?file io:: history init::604::1
+[2017-12-19 13:5:0][warn]track.js, _$scan, {"add":["<mymusic>","/home/deepin/Music/CloudMusic"],"del":null}
+[2017-12-19 13:5:0][warn]track.js, _$scan, {"first":false,"state":0,"total":0,"ttmap":{},"tasks":[{"path":"<mymusic>","cmd":"add","total":0},{"path":"/home/deepin/Music/CloudMusic","cmd":"add","total":0}],"currt":null,"freq":50}
+[2017-12-19 13:5:0][info], , _$refreshQueueAndHistory
+[2017-12-19 13:5:0][warn], , ?file io:: a7247c5ee3c436975bca376fa324ec64::606::0
+[2017-12-19 13:5:0][warn], , $exec sql getHostPids:546:0
+[2017-12-19 13:5:0][warn], , ?sql,getHostPlaylists,false
+[2017-12-19 13:5:0][warn], , ?file io:: auto-read-file-1513659899709-Ji9i70-callback::531::0
+[2017-12-19 13:5:0][info], , ==== BI LOG ====1513659900bannerimpress{"type":"1_独家","url":null,"id":"524150330","seq":3}
+[2017-12-19 13:5:0][warn]__onOfflineQuery, track.js, []
+[2017-12-19 13:5:0][warn]__onOfflineProgressQuery, track.js, []
+[2017-12-19 13:5:0][warn]__onScanResult, track.js, {"path":{"dirs":[],"library":"<mymusic>","reason":"","result":0},"err":0,"reason":"","cmd":"add"}
+[2017-12-19 13:5:0][warn], , $exec sql getHostPlaylists:54:0
+[2017-12-19 13:5:0][warn], , ?sql,getCachePids,false
+[2017-12-19 13:5:0][warn]__onScanResult, track.js, {"path":{"dirs":[],"library":"/home/deepin/Music/CloudMusic","reason":"","result":0},"err":0,"reason":"","cmd":"add"}
+[2017-12-19 13:5:0][warn], , ?sql2,getLocalCount
+[2017-12-19 13:5:0][warn], , $exec sql getCachePids:183:0
+[2017-12-19 13:5:0][info], , ==== BI LOG ====1513659900recommendimpress{"scene":"user-playlist","id":924680166,"alg":"featured","position":1,"type":"list","url":null,"seq":4}
+[2017-12-19 13:5:0][info], , ==== BI LOG ====1513659900recommendimpress{"scene":"user-playlist","id":976742966,"alg":"featured","position":2,"type":"list","url":null,"seq":5}
+[2017-12-19 13:5:0][info], , ==== BI LOG ====1513659900recommendimpress{"scene":"user-playlist","id":306397077,"alg":"cityLevel_unknow","position":3,"type":"list","url":null,"seq":6}
+[2017-12-19 13:5:0][info], , ==== BI LOG ====1513659900recommendimpress{"scene":"user-playlist","id":37432514,"alg":"cityLevel_unknow","position":4,"type":"list","url":null,"seq":7}
+[2017-12-19 13:5:0][info], , ==== BI LOG ====1513659900recommendimpress{"scene":"user-playlist","id":2015748262,"alg":"cityLevel_unknow","position":5,"type":"list","url":null,"seq":8}
+[2017-12-19 13:5:0][info], , ==== BI LOG ====1513659900recommendimpress{"scene":"user-playlist","id":310970433,"alg":"cityLevel_unknow","position":6,"type":"list","url":null,"seq":9}
+[2017-12-19 13:5:0][info], , ==== BI LOG ====1513659900recommendimpress{"scene":"user-playlist","id":2015397679,"alg":"cityLevel_unknow","position":7,"type":"list","url":null,"seq":10}
+[2017-12-19 13:5:0][info], , ==== BI LOG ====1513659900recommendimpress{"scene":"user-playlist","id":1988001377,"alg":"cityLevel_unknow","position":8,"type":"list","url":null,"seq":11}
+[2017-12-19 13:5:0][info], , ==== BI LOG ====1513659900recommendimpress{"scene":"user-playlist","id":368529707,"alg":"cityLevel_unknow","position":9,"type":"list","url":null,"seq":12}
+[2017-12-19 13:5:0][info], , ==== BI LOG ====1513659900recommendimpress{"scene":"user-unique","id":2445081,"alg":"featured","position":1,"type":"webview","url":"https://music.163.com/store/newalbum/detail?id=36952205","seq":13}
+[2017-12-19 13:5:0][info], , ==== BI LOG ====1513659900recommendimpress{"scene":"user-unique","id":18656244,"alg":"featured","position":2,"type":"topic","url":null,"seq":14}
+[2017-12-19 13:5:0][info], , ==== BI LOG ====1513659900recommendimpress{"scene":"user-unique","id":5778034,"alg":"featured","position":3,"type":"mv","url":null,"seq":15}
+[2017-12-19 13:5:0][info], , ==== BI LOG ====1513659900recommendimpress{"scene":"user-newmusic","id":524913198,"alg":"featured","position":1,"type":"song","url":null,"seq":16}
+[2017-12-19 13:5:0][info], , ==== BI LOG ====1513659900recommendimpress{"scene":"user-newmusic","id":524148328,"alg":"featured","position":2,"type":"song","url":null,"seq":17}
+[2017-12-19 13:5:0][info], , ==== BI LOG ====1513659900recommendimpress{"scene":"user-newmusic","id":524148329,"alg":"featured","position":3,"type":"song","url":null,"seq":18}
+[2017-12-19 13:5:0][info], , ==== BI LOG ====1513659900recommendimpress{"scene":"user-newmusic","id":524148361,"alg":"hot_server","position":4,"type":"song","url":null,"seq":19}
+[2017-12-19 13:5:0][info], , ==== BI LOG ====1513659900recommendimpress{"scene":"user-newmusic","id":524148421,"alg":"hot_server","position":5,"type":"song","url":null,"seq":20}
+[2017-12-19 13:5:0][info], , ==== BI LOG ====1513659900recommendimpress{"scene":"user-newmusic","id":524300632,"alg":"hot_server","position":6,"type":"song","url":null,"seq":21}
+[2017-12-19 13:5:0][info], , ==== BI LOG ====1513659900recommendimpress{"scene":"user-newmusic","id":524870743,"alg":"hot_server","position":7,"type":"song","url":null,"seq":22}
+[2017-12-19 13:5:0][info], , ==== BI LOG ====1513659900recommendimpress{"scene":"user-newmusic","id":524148451,"alg":"hot_server","position":8,"type":"song","url":null,"seq":23}
+[2017-12-19 13:5:0][info], , ==== BI LOG ====1513659900recommendimpress{"scene":"user-newmusic","id":524148362,"alg":"hot_server","position":9,"type":"song","url":null,"seq":24}
+[2017-12-19 13:5:0][info], , ==== BI LOG ====1513659900recommendimpress{"scene":"user-newmusic","id":524152457,"alg":"hot_server","position":10,"type":"song","url":null,"seq":25}
+[2017-12-19 13:5:0][info], , ==== BI LOG ====1513659900recommendimpress{"scene":"user-mv","id":5776068,"alg":"featured","position":1,"type":"mv","url":null,"seq":26}
+[2017-12-19 13:5:0][info], , ==== BI LOG ====1513659900recommendimpress{"scene":"user-mv","id":5776042,"alg":"featured","position":2,"type":"mv","url":null,"seq":27}
+[2017-12-19 13:5:0][info], , ==== BI LOG ====1513659900recommendimpress{"scene":"user-mv","id":5778040,"alg":"hot_server","position":3,"type":"mv","url":null,"seq":28}
+[2017-12-19 13:5:0][info], , ==== BI LOG ====1513659900recommendimpress{"scene":"user-mv","id":5776043,"alg":"hot_server","position":4,"type":"mv","url":null,"seq":29}
+[2017-12-19 13:5:0][info], , ==== BI LOG ====1513659900recommendimpress{"scene":"user-djradio","id":1367262881,"alg":"featured","position":1,"type":"dj","url":null,"seq":30}
+[2017-12-19 13:5:0][info], , ==== BI LOG ====1513659900recommendimpress{"scene":"user-djradio","id":1367234016,"alg":"featured","position":2,"type":"dj","url":null,"seq":31}
+[2017-12-19 13:5:0][info], , ==== BI LOG ====1513659900recommendimpress{"scene":"user-djradio","id":908528214,"alg":"ageLevel_unknow","position":3,"type":"dj","url":null,"seq":32}
+[2017-12-19 13:5:0][info], , ==== BI LOG ====1513659900recommendimpress{"scene":"user-djradio","id":910599464,"alg":"ageLevel_unknow","position":4,"type":"dj","url":null,"seq":33}
+[2017-12-19 13:5:0][info], , ==== BI LOG ====1513659900recommendimpress{"scene":"user-djradio","id":910490004,"alg":"ageLevel_unknow","position":5,"type":"dj","url":null,"seq":34}
+[2017-12-19 13:5:0][info], , ==== BI LOG ====1513659900recommendimpress{"scene":"user-djradio","id":789883417,"alg":"ageLevel_unknow","position":6,"type":"dj","url":null,"seq":35}
+[2017-12-19 13:5:0][log], , ?file write:: save disc_data
+[2017-12-19 13:5:0][warn], , $exec sql getLocalCount:69:0
+[2017-12-19 13:5:0][log]track.js, getLocalCount, 0
+[2017-12-19 13:5:0][warn], , ?file io:: save disc_data::28::0
+[2017-12-19 13:5:2][info], , _$clearAllSongCacheInfo
+[2017-12-19 13:5:2][warn], , ?sql,flushHostPlaylist|pids|313914291,true
+[2017-12-19 13:5:2][info], , ==== BI LOG ====1513659902close{"seq":36}
+[2017-12-19 13:5:2][log], , ?file write:: 010f1aebfe77e08dc0f0625dba6a9449
+[2017-12-19 13:5:3][warn], , $exec sql flushHostPlaylist|pids|313914291:288:0
+[2017-12-19 13:5:3][warn], , ?file io:: 010f1aebfe77e08dc0f0625dba6a9449::238::0

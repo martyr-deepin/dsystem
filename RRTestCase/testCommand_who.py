@@ -32,7 +32,7 @@ class Command_who(unittest.TestCase):
         for line in output.split('\n'):
             linelist = line.split()
             self.assertTrue(self.loginuser == linelist[0])
-            self.assertTrue('tty7' == linelist[1])
+            self.assertTrue('tty1' == linelist[1])
             break
 
     def suite():

@@ -1,0 +1,24 @@
+2017-12-19, 10:55:55.062 [Warning] [dapplication.cpp     Dtk::Widget::DApplicationPrivate::loadTranslator 251] "dtkwidget2" can not find qm files
+2017-12-19, 10:55:55.062 [Warning] [dapplication.cpp     Dtk::Widget::DApplicationPrivate::loadTranslator 251] "deepin-music" can not find qm files
+2017-12-19, 10:55:55.068 [Debug  ] [qsettingbackend.cpp  Dtk::Core::QSettingBackend::QSettingBackend 44] create config "/home/deepin/.config/deepin/deepin-music/config.ini"
+2017-12-19, 10:55:55.135 [Debug  ] [main.cpp             main                                120] TRACE: set theme
+2017-12-19, 10:55:55.219 [Debug  ] [musicapp.cpp         MusicApp::init                      182] TRACE: create MainFrame
+2017-12-19, 10:55:55.219 [Debug  ] [musicapp.cpp         MusicApp::show                      161] restore state: 0 gometry: "\x01\xD9\xD0\xCB\x00\x02\x00\x00\x00\x00\x00p\x00\x00\x00\x87\x00\x00\x04\x9D\x00\x00\x03.\x00\x00\x00p\x00\x00\x00\x87\x00\x00\x04\x9D\x00\x00\x03.\x00\x00\x00\x00\x00\x00\x00\x00\x07\x80"
+2017-12-19, 10:55:55.251 [Debug  ] [musicapp.cpp         MusicApp::init                      186] TRACE: create Presenter
+2017-12-19, 10:55:55.251 [Debug  ] [musicapp.cpp         MusicApp::init                      196] TRACE: start prepare data
+2017-12-19, 10:55:55.263 [Debug  ] [presenter.cpp        PresenterPrivate::initBackend       73] TRACE: database init finished
+2017-12-19, 10:55:55.263 [Debug  ] [presenter.cpp        PresenterPrivate::initBackend       76] TRACE: player init finished
+2017-12-19, 10:55:55.266 [Debug  ] [presenter.cpp        PresenterPrivate::initBackend       83] TRACE: library init finished
+2017-12-19, 10:55:55.267 [Debug  ] [presenter.cpp        PresenterPrivate::initBackend       87] TRACE: playlistMgr init finished
+2017-12-19, 10:55:55.267 [Debug  ] [presenter.cpp        Presenter::prepareData              187] TRACE: initBackend finished
+2017-12-19, 10:55:55.281 [Debug  ] [musicapp.cpp         MusicAppPrivate::onDataPrepared     115] TRACE: data prepared
+2017-12-19, 10:55:55.342 [Debug  ] [pluginmanager.cpp    PluginManager::loadPlugins          61] load plugin from: "/usr/bin/../lib/deepin-music/plugins"
+2017-12-19, 10:55:55.342 [Debug  ] [footerwidget.cpp     Footer::onModeChange                664] change play mode to 0
+2017-12-19, 10:55:55.343 [Debug  ] [pluginmanager.cpp    PluginManager::loadPlugins          64] load plugin so file: "/usr/lib/deepin-music/plugins/libnetease-meta-search.so"
+2017-12-19, 10:55:55.386 [Debug  ] [pluginmanager.cpp    PluginManager::loadPlugins          69] load plugin instance: NeteaseMetaSearchEngine(0x7f2bc0003d50) 0x7f2bc0003d60
+2017-12-19, 10:55:55.386 [Debug  ] [presenter.cpp        PresenterPrivate::initBackend::lambda 101] load plugins "Netease-Meta-Search"
+2017-12-19, 10:55:55.386 [Debug  ] [presenter.cpp        PresenterPrivate::initBackend::lambda 103] TRACE: lyricService init finished
+2017-12-19, 10:55:55.386 [Debug  ] [metasearchservice.cpp MetaSearchService::init             89] load meta search plugins
+2017-12-19, 10:55:55.386 [Debug  ] [metasearchservice.cpp MetaSearchService::init             93] load meta search engine NeteaseMetaSearchEngine(0x7f2bc0003d50)
+2017-12-19, 10:56:01.671 [Debug  ] [mainframe.cpp        MainFrame::onQuit                   980] sync config start
+2017-12-19, 10:56:02.732 [Debug  ] [mainframe.cpp        MainFrame::onQuit                   985] sync config finish, app exit
