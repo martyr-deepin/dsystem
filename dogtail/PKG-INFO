@@ -1,0 +1,13 @@
+Metadata-Version: 1.0
+Name: dogtail
+Version: 0.9.9
+Summary: GUI test tool and automation framework that uses Accessibility (a11y) technologies to communicate with desktop applications.
+Home-page: http://dogtail.fedorahosted.org/
+Author: Zack Cerza <zcerza@redhat.com>,
+Ed Rousseau <rousseau@redhat.com>,
+David Malcolm <dmalcolm@redhat.com>,
+Vitezslav Humpa <vhumpa@redhat.com>
+Author-email: dogtail-list@gnome.org
+License: UNKNOWN
+Description: UNKNOWN
+Platform: UNKNOWN

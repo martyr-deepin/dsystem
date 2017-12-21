@@ -1,0 +1,4 @@
+dsystem /usr/share/dsystem/
+dogtail /usr/share/dsystem/
+debian/dsystem.desktop /usr/share/applications/
+debian/dsystem.png /usr/share/icons/hicolor/128x128/apps/

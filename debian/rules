@@ -1,0 +1,10 @@
+#!/usr/bin/make -f
+
+%:
+	dh $@
+
+override_dh_shlibdeps:
+
+override_dh_fixperms:
+	dh_fixperms --
+	chmod 4777 debian/dsystem/usr/share/dsystem/dsystem

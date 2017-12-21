@@ -1,0 +1,7 @@
+[Desktop Entry]
+Name=dsystem
+Exec=dsystem
+Icon=dsystem
+Type=Application
+Categories=System;
+Terminal=true

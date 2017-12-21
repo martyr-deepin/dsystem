@@ -1,0 +1,13 @@
+Source: dsystem
+Section: utils
+Priority: optional
+Maintainer: Deepin Packages Builder <packages@deepin.com>
+Build-Depends: debhelper (>= 9)
+Standards-Version: 3.9.8
+Homepage: http://www.deepin.org
+
+Package: dsystem
+Architecture: any
+Pre-Depends: python3-pip, python3-setuptools, git,
+Depends: ${shlibs:Depends}, ${misc:Depends}, python3-pyatspi, libwnck-3-dev,  python3-tk, xsel, ssh, 
+Description: deepin system test tool
