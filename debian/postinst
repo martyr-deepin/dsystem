@@ -12,11 +12,14 @@ gsettings set org.gnome.desktop.interface toolkit-accessibility true
 for I in /home/*; do
 	THISUSER=`echo $I | cut -d "/" -f 3 -`
 	USERID=`id -u $THISUSER 2>/dev/null || echo "_FALSE_"`
-	if [ $USERID = '_FALSE_' -o $USERID != "deepin" ] ; then
+	if [ $USERID = '_FALSE_' -o $THISUSER != "deepin" ] ; then
 		continue
 	fi
-	echo "$THISUSER  ALL=(ALL) NOPASSWD:ALL" >>/etc/sudoers
-EOF
+
+	result=`grep "$THISUSER  ALL=(ALL) NOPASSWD:ALL" /etc/sudoers`
+	if [ $? != 0 ] ; then
+		echo "$THISUSER  ALL=(ALL) NOPASSWD:ALL" >>/etc/sudoers
+	fi
 done
 
 cat >/usr/bin/dsystem<<EOF
