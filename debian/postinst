@@ -12,13 +12,10 @@ gsettings set org.gnome.desktop.interface toolkit-accessibility true
 for I in /home/*; do
 	THISUSER=`echo $I | cut -d "/" -f 3 -`
 	USERID=`id -u $THISUSER 2>/dev/null || echo "_FALSE_"`
-	if [ $USERID = '_FALSE_' ] ; then
+	if [ $USERID = '_FALSE_' -o $USERID != "deepin" ] ; then
 		continue
 	fi
 	echo "$THISUSER  ALL=(ALL) NOPASSWD:ALL" >>/etc/sudoers
-	cat >>/home/$THISUSER/.pam_environment<<EOF
-LANG=en_US.UTF-8
-LANGUAGE=en_US
 EOF
 done
 
