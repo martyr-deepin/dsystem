@@ -10,6 +10,7 @@ from lib import runTest
 from optparse import OptionParser
 
 from RRTestCase import Launcher_StartAllAPP
+from RRTestCase import Launcher_Start
 from RRTestCase import Launcher_SendToDesktop
 from RRTestCase import Launcher_AddToDock
 from RRTestCase import Launcher_AutoStart
@@ -163,6 +164,9 @@ def main():
     if run_all or Launcher_StartAllAPP.caseid in allids:
         classes.append(Launcher_StartAllAPP)
 
+    if run_all or run_launcher or Launcher_Start.caseid in allids:
+        classes.append(Launcher_Start)
+
     if run_all or run_launcher or Launcher_SendToDesktop.caseid in allids:
         classes.append(Launcher_SendToDesktop)
 
@@ -179,6 +183,12 @@ def main():
     if run_all or run_dock or Dock_Exist.caseid in allids:
         classes.append(Dock_Exist)
 
+    if run_all or run_launcher or Launcher_Start.caseid in allids:
+        classes.append(Launcher_Start)
+
+    if run_all or run_dock or Dock_DragDockiconToDel.caseid in allids:
+        classes.append(Dock_DragDockiconToDel)
+
     if run_all or run_dock or Dock_DefaultSetting.caseid in allids:
         classes.append(Dock_DefaultSetting)
 
@@ -193,9 +203,6 @@ def main():
 
     if run_all or run_dock or Dock_ChangeHide.caseid in allids:
         classes.append(Dock_ChangeHide)
-
-    if run_all or run_dock or Dock_DragDockiconToDel.caseid in allids:
-        classes.append(Dock_DragDockiconToDel)
 
     # Dde control center
     if run_all or DCC_Click_SoundSlider.caseid in allids:

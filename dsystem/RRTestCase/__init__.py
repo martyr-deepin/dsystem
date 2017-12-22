@@ -1,4 +1,5 @@
 __ALL__ = ['Launcher_StartAllAPP',
+           'Launcher_Start',
            'Launcher_SendToDesktop',
            'Launcher_AddToDock',
            'Launcher_AutoStart',
@@ -65,6 +66,7 @@ __ALL__ = ['Launcher_StartAllAPP',
            ]
 
 from .testLauncher_StartAllAPP import Launcher_StartAllAPP
+from .testLauncher_Start import Launcher_Start
 from .testLauncher_SendToDesktop import Launcher_SendToDesktop
 from .testLauncher_AddToDock import Launcher_AddToDock
 from .testLauncher_AutoStart import Launcher_AutoStart

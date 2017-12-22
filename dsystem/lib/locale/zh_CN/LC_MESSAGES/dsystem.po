@@ -211,11 +211,11 @@ msgstr "软件"
 
 #: dde_dock.py:18
 msgid "Launcher"
-msgstr "启动器"
+msgstr ""
 
 #: dde_dock.py:20 dde_dock.py:29
 msgid "Deepin File Manager"
-msgstr "深度文件管理"
+msgstr "深度文件管理器"
 
 #: dde_dock.py:21
 msgid "Deepin Screenshot"
@@ -263,4 +263,4 @@ msgstr "取 消"
 
 #: launcher.py:37
 msgid "Confirm"
-msgstr "确 认"
+msgstr "确 定"
