@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-01-16 15:59+0800\n"
+"POT-Creation-Date: 2017-12-22 11:19+0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,126 +17,250 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: dde_control_center.py:20
+#: dde_control_center.py:42
+msgid "iconMainWidget"
+msgstr ""
+
+#: dde_control_center.py:43
 msgid "PrevBtn"
 msgstr ""
 
-#: dde_control_center.py:21
+#: dde_control_center.py:44
 msgid "NextBtn"
 msgstr ""
 
-#: dde_control_center.py:22
+#: dde_control_center.py:45
 msgid "SoundSlider"
 msgstr ""
 
-#: dde_control_center.py:23
+#: dde_control_center.py:46
 msgid "LightSlider"
 msgstr ""
 
-#: dde_control_center.py:24
+#: dde_control_center.py:47
 msgid "QuickSwitchAllSettings"
 msgstr ""
 
-#: dde_control_center.py:27
+#: dde_control_center.py:50
 msgid "Back"
 msgstr ""
 
-#: dde_control_center.py:28 dde_control_center.py:75
+#: dde_control_center.py:51 dde_control_center.py:179
 msgid "All Settings"
 msgstr "所有设置"
 
-#: dde_control_center.py:29
+#: dde_control_center.py:53
 msgid "Accounts"
 msgstr "账户"
 
-#: dde_control_center.py:30
+#: dde_control_center.py:54
+msgid "Create Account"
+msgstr "创建账户"
+
+#: dde_control_center.py:56
 msgid "Display"
 msgstr "显示"
 
-#: dde_control_center.py:31
+#: dde_control_center.py:57
+msgid "Resolution"
+msgstr "分辨率"
+
+#: dde_control_center.py:58
+msgid "Rotate"
+msgstr "旋转"
+
+#: dde_control_center.py:60
 msgid "Default Applications"
 msgstr "默认程序"
 
-#: dde_control_center.py:32
+#: dde_control_center.py:61
 msgid "Personalization"
 msgstr "个性化"
 
-#: dde_control_center.py:33
+#: dde_control_center.py:62
 msgid "Network"
 msgstr "网络"
 
-#: dde_control_center.py:34
+#: dde_control_center.py:63
 msgid "Sound"
 msgstr "声音"
 
-#: dde_control_center.py:35
+#: dde_control_center.py:64
 msgid "Time and Date"
 msgstr "时间日期"
 
-#: dde_control_center.py:36
+#: dde_control_center.py:65
 msgid "Power Management"
 msgstr "电源管理"
 
-#: dde_control_center.py:37
+#: dde_control_center.py:67
 msgid "Mouse and Touchpad"
 msgstr "鼠标和触摸板"
 
-#: dde_control_center.py:38
+#: dde_control_center.py:68
+msgid "Left Hand"
+msgstr "左手"
+
+#: dde_control_center.py:69
+msgid "Natural Scrolling"
+msgstr "自然滚动"
+
+#: dde_control_center.py:71
 msgid "Keyboard and Language"
 msgstr "键盘和语言"
 
-#: dde_control_center.py:39
+#: dde_control_center.py:72
 msgid "Update"
 msgstr "更新"
 
-#: dde_control_center.py:40
+#: dde_control_center.py:73
 msgid "System Information"
 msgstr "系统信息"
 
-#: dde_control_center.py:43
+#: dde_control_center.py:76
+msgid "Modify Avatar"
+msgstr "修改头像"
+
+#: dde_control_center.py:77
+msgid "Modify Password"
+msgstr "修改密码"
+
+#: dde_control_center.py:78
+msgid "Auto Login"
+msgstr "自动登录"
+
+#: dde_control_center.py:79
+msgid "Delete Account"
+msgstr "删除账户"
+
+#: dde_control_center.py:80
+msgid "Username"
+msgstr "用户名"
+
+#: dde_control_center.py:81
+msgid "Password"
+msgstr "密码"
+
+#: dde_control_center.py:82
+msgid "Repeat password"
+msgstr "重复密码"
+
+#: dde_control_center.py:86
+msgid "Password can't be empty."
+msgstr "密码不能为空"
+
+#: dde_control_center.py:87
+msgid "Username can't be empty."
+msgstr "用户名不能为空"
+
+#: dde_control_center.py:90
+msgid "New Password"
+msgstr "新密码"
+
+#: dde_control_center.py:91
+msgid "Repeat Password"
+msgstr "重复密码"
+
+#: dde_control_center.py:96
 msgid "Browser"
 msgstr "浏览器"
 
-#: dde_control_center.py:44
+#: dde_control_center.py:97
 msgid "Mail"
 msgstr "邮件"
 
-#: dde_control_center.py:45
+#: dde_control_center.py:98
 msgid "Text"
 msgstr "文本工具"
 
-#: dde_control_center.py:46
+#: dde_control_center.py:99
 msgid "Music"
 msgstr "音乐欣赏"
 
-#: dde_control_center.py:47
+#: dde_control_center.py:100
 msgid "Video"
 msgstr "视频播放"
 
-#: dde_control_center.py:48
+#: dde_control_center.py:101
 msgid "Picture"
 msgstr "图片"
 
-#: dde_control_center.py:49
+#: dde_control_center.py:102
 msgid "Terminal"
 msgstr "终端"
 
-#: dde_control_center.py:50
+#: dde_control_center.py:103
 msgid "CD Audio"
 msgstr "CD音频"
 
-#: dde_control_center.py:51
+#: dde_control_center.py:104
 msgid "DVD Video"
 msgstr "DVD视频"
 
-#: dde_control_center.py:52
+#: dde_control_center.py:105
 msgid "Music Player"
 msgstr "音乐播放器"
 
-#: dde_control_center.py:53
+#: dde_control_center.py:106
 msgid "Camera"
 msgstr "照相机"
 
-#: dde_control_center.py:54
+#: dde_control_center.py:107
 msgid "Software"
 msgstr "软件"
+
+#: dde_dock.py:18
+msgid "Launcher"
+msgstr "启动器"
+
+#: dde_dock.py:20 dde_dock.py:29
+msgid "Deepin File Manager"
+msgstr "深度文件管理"
+
+#: dde_dock.py:21
+msgid "Deepin Screenshot"
+msgstr "深度截图"
+
+#: dde_dock.py:22
+msgid "DeepinScreenshot*.png"
+msgstr "深度截图*.png"
+
+#: dde_dock.py:23
+msgid "Text Editor"
+msgstr "文本编辑器"
+
+#: dde_dock.py:24
+msgid "Untitled Document 1"
+msgstr "无标题文档 1"
+
+#: dde_dock.py:25
+msgid "Untitled Document 2"
+msgstr "无标题文档 2"
+
+#: dde_dock.py:26
+msgid "Untitled Document 3"
+msgstr "无标题文档 3"
+
+#: dde_dock.py:27
+msgid "Untitled Document 4"
+msgstr "无标题文档 4"
+
+#: dde_dock.py:30
+msgid "Deepin Music"
+msgstr "深度音乐"
+
+#: dde_dock.py:32
+msgid "Google Chrome"
+msgstr ""
+
+#: dde_dock.py:33
+msgid "QQ"
+msgstr ""
+
+#: launcher.py:36
+msgid "Cancel"
+msgstr "取 消"
+
+#: launcher.py:37
+msgid "Confirm"
+msgstr "确 认"

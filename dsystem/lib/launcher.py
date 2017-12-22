@@ -15,6 +15,7 @@ import gi
 gi.require_version('Wnck', '3.0')
 from gi.repository import Wnck
 import dbus
+import gettext
 
 
 pyautogui.FAILSAFE = False
@@ -24,6 +25,8 @@ homePath = os.path.expanduser('~')
 
 class Launcher:
     def __init__(self):
+        LOCALE_DIR = os.path.abspath("./lib/locale")
+        gettext.install('dsystem', LOCALE_DIR)
         self.launcherObj = root.application(appName='dde-launcher', description='/usr/bin/dde-launcher')
         #self.launcherApps = self.launcherObj.child('all',roleName='list').children
         self.dbusDir = 'com.deepin.dde.daemon.Launcher'
@@ -32,6 +35,9 @@ class Launcher:
         self.session_bus = dbus.SessionBus()
         self.session_obj = self.session_bus.get_object(self.dbusDir, self.dbusObj)
         self.session_if = dbus.Interface(self.session_obj,dbus_interface=self.ifc)
+
+        self.string_Cancel = _("Cancel")
+        self.string_Confirm = _("Confirm")
 
     def getNewInstalledApps(self):
         dbus_newInstalledApps = self.session_if.GetAllNewInstalledApps()

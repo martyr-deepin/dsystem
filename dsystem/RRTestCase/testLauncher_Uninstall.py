@@ -56,7 +56,7 @@ class Launcher_Uninstall(unittest.TestCase):
 
         pyautogui.press('enter')
 
-        self.launcher.launcherObj.child('Cancel').click()
+        self.launcher.launcherObj.child(self.launcher.string_Cancel).click()
         apps = self.launcher.getLauncherAllApps()
         self.assertIn(self.launchername, apps)
 
@@ -68,7 +68,7 @@ class Launcher_Uninstall(unittest.TestCase):
             pyautogui.press('down')
             sleep(0.1)
         pyautogui.press('enter')
-        self.launcher.launcherObj.child('Confirm').click()
+        self.launcher.launcherObj.child(self.launcher.string_Confirm).click()
         sleep(2)
         apps = self.launcher.getLauncherAllApps()
         self.assertNotIn(self.launchername, apps)
