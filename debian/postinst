@@ -1,5 +1,4 @@
 #!/bin/bash
-set -e 
 
 echo "install depends..."
 pip3 install PyUserInput pyautogui pexpect configparser pyperclip
@@ -16,7 +15,7 @@ for I in /home/*; do
 		continue
 	fi
 
-	result=`grep "$THISUSER  ALL=(ALL) NOPASSWD:ALL" /etc/sudoers`
+	grep "$THISUSER  ALL=(ALL) NOPASSWD:ALL" /etc/sudoers
 	if [ $? != 0 ] ; then
 		echo "$THISUSER  ALL=(ALL) NOPASSWD:ALL" >>/etc/sudoers
 	fi
