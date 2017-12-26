@@ -7,7 +7,7 @@ from time import sleep
 gi.require_version('Wnck', '3.0')
 from gi.repository import Wnck
 
-FINDWINDOWDELAY = 5
+FINDWINDOWDELAY = 15
 CLOSEWINDOWDELAY = 2
 
 def findWindow(windowname, mode="wait", comparetype="equal"):
