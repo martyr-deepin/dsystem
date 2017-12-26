@@ -51,6 +51,13 @@ class Launcher_StartAllAPP(unittest.TestCase):
             cls.name_Deepin_User_Feedback = "深度用户反馈"
             cls.string_Deepin_User_Feedback = "deepin-用户反馈 - Google Chrome"
 
+        os.system("sudo killall gpartedbin")
+        os.system("sudo killall gparted")
+        os.system("cp -rf config/deepin ~/.config/")
+        os.system("cp -rf cache/deepin ~/.cache/")
+        os.system("cp -rf cache/netease-cloud-music ~/.cache/")
+
+
     @classmethod
     def tearDownClass(cls):
         picture_save_path = os.path.expandvars('$HOME') + '/Desktop/' + cls.string_DeepinScreenshot + cls.time_now + '*.png'
@@ -75,8 +82,9 @@ class Launcher_StartAllAPP(unittest.TestCase):
     def testRunAPP(self):
         compare_type = "equal"
         appdict = self.ParsingJson(self.lang)
+        errorlist = []
         for (k,v) in appdict.items():
-            print(k,v)
+            print(k," : ",v)
             if v == 'null':
                 continue
             self.launcher.searchApp(k)
@@ -84,10 +92,8 @@ class Launcher_StartAllAPP(unittest.TestCase):
             self.launcher.launcherObj.child(k).click()
 
             if k == 'Deepin Clone' or k == 'GParted':
-                time.sleep(5)
                 do_polkit_agent()
 
-            time.sleep(10)
             if k ==  self.name_Deepin_Screenshot:
                 self.terminate_deepinscreenshot()
             else:
@@ -97,21 +103,31 @@ class Launcher_StartAllAPP(unittest.TestCase):
                     window_obj = window.findWindow(v, comparetype='notequal')
                     print(window_obj)
                     closeresult = window.closeWindow(window_obj)
-                    self.assertEqual(None, closeresult)
+
+                    if None != closeresult:
+                        errorlist.append(k)
+
                     continue
                 elif k == self.name_Deepin_User_Feedback:
                     do_polkit_agent(action="Cancel")
 
-                if k == "Google Chrome" or k == 'GParted':
+                if k == "Google Chrome" or k == 'GParted' or k == 'NetEase Cloud Music':
                     compare_type = "notequal"
 
                 window_obj = window.findWindow(v, comparetype=compare_type)
                 if None == window_obj:
-                    time.sleep(10)
                     window_obj = window.findWindow(v, comparetype=compare_type)
 
-                closeresult = window.closeWindow(window_obj)
-                self.assertEqual(None, closeresult)
+                if None == window_obj:
+                    errorlist.append(k)
+                    continue
+
+                if k == 'NetEase Cloud Music' or k == 'Driver Manager':
+                    time.sleep(10)
+
+                window.closeWindow(window_obj)
+                
+        self.assertTrue(len(errorlist) == 0, "errorlist: %s" % str(errorlist))
 
     def suite():
         suite = unittest.TestSuite()

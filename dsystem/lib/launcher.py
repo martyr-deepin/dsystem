@@ -56,7 +56,7 @@ class Launcher:
         return shenduApps
 
     def openLauncher(self):
-        win = findWindow('dde-launcher')
+        win = findWindow('dde-launcher', mode='nowait')
         if win == None:
             pyautogui.press('winleft')
 

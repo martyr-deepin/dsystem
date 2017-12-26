@@ -2,8 +2,8 @@
     "OpenFile": [
         {
             "fileName": "testOpenFile.txt",
-            "windowName_en": "testOpenFile.txt (~/source/dsystem/data) - gedit",
-            "windowName_zh": "testOpenFile.txt (~/source/dsystem/data) - gedit"
+            "windowName_en": "testOpenFile.txt (/usr/share/dsystem/dsystem/data) - gedit",
+            "windowName_zh": "testOpenFile.txt (/usr/share/dsystem/dsystem/data) - gedit"
         },
         {
             "fileName": "testOpenFile.doc",
