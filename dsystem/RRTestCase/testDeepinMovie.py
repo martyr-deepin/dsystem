@@ -26,10 +26,10 @@ class DeepinMovie(unittest.TestCase):
         errorList = []
 
         for ifile in allTypeMovie:
-            child = pexpect.spawn("deepin-movie \
+            child = pexpect.spawn("deepin-movie -V\
                     '%s/%s'" % (self.filedir, ifile))
 
-            i = child.expect(["cplayer: Playing:", pexpect.EOF, pexpect.TIMEOUT], 5)
+            i = child.expect(["Playing: ", pexpect.EOF, pexpect.TIMEOUT], 5)
 
             if 0 == i:
                 print("Playing movie %s OK." % ifile)
