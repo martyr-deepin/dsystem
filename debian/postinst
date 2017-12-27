@@ -26,3 +26,8 @@ cat >/usr/bin/dsystem<<EOF
 cd /usr/share/dsystem/dsystem && python3 rr_test.py --run_launcher=True --run_dock=True
 EOF
 chmod +x /usr/bin/dsystem
+
+id deepin
+if [ $? -eq 0 ] ; then
+	chown deepin:deepin /usr/share/dsystem -R
+fi
