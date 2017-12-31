@@ -55,7 +55,7 @@ class Change_Topmain_Datetime(unittest.TestCase):
         print(new_hour, changed_hour)
         self.assertTrue(int(new_hour) == int(changed_hour))
 
-        self.dcc.pagse_deep += 2
+        self.dcc.page_deep += 2
         self.dcc.backToIndex()
 
     def test_changetime_backstage(self):
@@ -64,8 +64,8 @@ class Change_Topmain_Datetime(unittest.TestCase):
         #close auto-sync
         self.td.SetNTP(0)
         os.system(update_time)
-        time.sleep(2)
         self.dcc.showDcc()
+        time.sleep(3)
         time_check = self.dcc.dccObj.child('00:00', roleName='label').showing
         self.assertTrue(time_check)
 
@@ -80,4 +80,4 @@ if __name__ == "__main__":
     unittest.installHandler()
     LOCALE_DIR = os.path.abspath("./lib/locale")
     gettext.install('dsystem', LOCALE_DIR)
-    executeTestCase.runTest(Check_Topmain_Datetime)
+    executeTestCase.runTest(Change_Topmain_Datetime)
