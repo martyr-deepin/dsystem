@@ -33,6 +33,6 @@ if [ $? -eq 0 ] ; then
 fi
 
 grep "export NO_AT_BRIDGE=1" /etc/environment
-if [ $? -eq 0 ] ; then
+if [ $? != 0 ] ; then
 	echo "export NO_AT_BRIDGE=1" >> /etc/environment
 fi
