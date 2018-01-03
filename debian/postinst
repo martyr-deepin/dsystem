@@ -31,3 +31,8 @@ id deepin
 if [ $? -eq 0 ] ; then
 	chown deepin:deepin /usr/share/dsystem -R
 fi
+
+grep "export NO_AT_BRIDGE=1" /etc/environment
+if [ $? -eq 0 ] ; then
+	echo "export NO_AT_BRIDGE=1" >> /etc/environment
+fi
