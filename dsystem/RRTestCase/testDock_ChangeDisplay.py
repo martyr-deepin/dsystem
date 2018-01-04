@@ -48,7 +48,7 @@ class Dock_ChangeDisplay(unittest.TestCase):
             print(rect)
             self.assertTrue(0 == rect[0])
             self.assertTrue(utils.resolution.width == rect[2])
-            self.assertTrue(utils.resolution.height == (rect[1] + rect[3]))
+            self.assertTrue(utils.resolution.height + 5 == (rect[1] + rect[3]))
 
     def suite():
         suite = unittest.TestSuite()

@@ -48,7 +48,7 @@ class Dock_ChangePosition(unittest.TestCase):
 
             rect = self.daemondock.getFrontendWindowRect()
             print(rect)
-            self.assertTrue(0 == rect[1])
+            self.assertTrue(-5 == rect[1])
 
             # to left
             menuxy = utils.getScreenMiddle('top')
@@ -67,7 +67,7 @@ class Dock_ChangePosition(unittest.TestCase):
 
             rect = self.daemondock.getFrontendWindowRect()
             print(rect)
-            self.assertTrue(0 == rect[0])
+            self.assertTrue(-5 == rect[0])
 
             # to right 
             menuxy = utils.getScreenMiddle('left')
@@ -87,7 +87,7 @@ class Dock_ChangePosition(unittest.TestCase):
 
             rect = self.daemondock.getFrontendWindowRect()
             print(rect)
-            self.assertTrue(utils.resolution.width == int(rect[0] + rect[2]))
+            self.assertTrue(utils.resolution.width + 5 == int(rect[0] + rect[2]))
 
     def suite():
         suite = unittest.TestSuite()

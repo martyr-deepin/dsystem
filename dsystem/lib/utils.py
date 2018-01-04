@@ -66,14 +66,14 @@ def mouseDrag(fromXY, toXY, duration=2, press=True, release=True):
     sleep_amount = duration / num_steps
 
     steps = [
-        getPointOnLine(fromXY[0], fromXY[1], toXY[0], toXY[1], linear(n / num_steps))
+        getPointOnLine(int(fromXY[0]), int(fromXY[1]), int(toXY[0]), int(toXY[1]), linear(n / num_steps))
         for n in range(num_steps)
     ]
 
-    steps.append((toXY[0], toXY[1]))
+    steps.append((int(toXY[0]), int(toXY[1])))
 
     if True == press:
-        m.press(fromXY[0], fromXY[1])
+        m.press(int(fromXY[0]), int(fromXY[1]))
         sleep(1)
 
     for lineX, lineY in steps:
@@ -84,7 +84,7 @@ def mouseDrag(fromXY, toXY, duration=2, press=True, release=True):
         m.move(lineX, lineY)
 
     if True == release:
-        m.release(toXY[0], toXY[1])
+        m.release(int(toXY[0]), int(toXY[1]))
 
 def mouseDragIconToDock(fromXY, toXY):
     mouseDrag(fromXY, toXY, release=False)

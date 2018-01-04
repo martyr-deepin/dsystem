@@ -2,12 +2,14 @@
 # -*- coding: utf-8 -*-
 
 import os
+import time
 import gettext
 import unittest
 import pyautogui
 from lib import runTest
 from lib import Launcher
 from lib import Dock
+from lib import utils
 
 result = True
 casename = 'all-5345:发送应用到任务栏'
@@ -30,12 +32,13 @@ class Launcher_AddToDock(unittest.TestCase):
             appCoor = self.dock.getAppCoor(self.dock.string_Google_Chrome)
             screen = pyautogui.size()
             screen_center = (screen[0]/2,screen[1]/2)
-            pyautogui.mouseDown(appCoor)
-            pyautogui.dragTo(screen_center, duration=2)
+            #pyautogui.mouseDown(appCoor)
+            #pyautogui.dragTo(screen_center, duration=2)
+            utils.mouseDrag(appCoor, (appCoor[0], appCoor[1] - 100))
+            time.sleep(2)
 
         dockApps = self.dock.getAllDockApps()
         self.assertNotIn(self.dockname, dockApps)
-
         self.launcher.menuDock(self.dock.string_Google_Chrome)
         dockApps = self.dock.getAllDockApps()
         self.assertIn(self.dockname, dockApps)
