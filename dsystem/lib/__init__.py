@@ -7,7 +7,8 @@ __all__ = ['do_polkit_agent',
            'runTest',
            'NotificationsDB',
            'PyMouseEvent',
-           'DbusLauncher']
+           'DbusLauncher',
+           'DaemonNetwork']
 
 from .com_deepin_daemon_LangSelector import LangSelector
 from .com_deepin_dde_daemon_Dock import DaemonDock
@@ -22,3 +23,5 @@ from .notificationsdb import NotificationsDB
 from .mousemonitor import PyMouseEvent
 
 from .com_deepin_dde_Launcher import DbusLauncher
+
+from .com_deepin_daemon_Network import DaemonNetwork
