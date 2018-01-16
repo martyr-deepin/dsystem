@@ -5,6 +5,7 @@ import os
 import gettext
 import unittest
 import time
+from lib import DbusLauncher
 from lib import executeTestCase
 from lib import utils
 from lib import runner
@@ -12,12 +13,13 @@ from lib.launcher import launcher
 from dogtail import rawinput
 from lib.dde_dock import Dock
 
-casename = "all-439:gedit"
+casename = "all-6198:驻留图标"
 
-class Gedit(unittest.TestCase):
-    caseid = '33428'
+class Dock_IconDocked(unittest.TestCase):
+    caseid = '280076'
     @classmethod
     def setUpClass(cls):
+        cls.dbus_launcher = DbusLauncher()
         cls.dock = Dock()
         cls.gediticonname = cls.dock.string_Text_Editor
         cls.ddedockobject = utils.getDdeDockObject()
@@ -35,6 +37,8 @@ class Gedit(unittest.TestCase):
 
         if utils.dock.position_bottom != utils.getDdeDockPosition():
             utils.setDdeDockPosition(utils.dock.position_bottom)
+
+        cls.dbus_launcher.Hide()
 
     def testDragIconToDock(self):
         utils.keySingle(utils.k.windows_l_key)
@@ -132,13 +136,18 @@ class Gedit(unittest.TestCase):
         except:
             self.assertTrue(False, "Icon Gedit doesn't exist on Dock")
 
+    def testGeditNotExistOnDock(self):
+        try:
+            icongedit = self.ddedockobject.child(self.gediticonname)
+            self.assertTrue(None == icongedit)
+        except:
+            self.assertTrue(False, "Icon Gedit exist on Dock")
+
 
     def suite():
         suite = unittest.TestSuite()
-        suite.addTest(Gedit('testDragIconToDock'))
-        suite.addTest(Gedit('testOpenGedit'))
-        suite.addTest(Gedit('testCloseGedit'))
-        suite.addTest(Gedit('testDragDockIconToDesktop'))
+        suite.addTest(Dock_IconDocked('testDragIconToDock'))
+        suite.addTest(Dock_IconDocked('testDragDockIconToDesktop'))
 
         return suite
 
@@ -146,4 +155,4 @@ if __name__ == "__main__":
     unittest.installHandler()
     LOCALE_DIR = os.path.abspath("./lib/locale")
     gettext.install('dsystem', LOCALE_DIR)
-    executeTestCase.runTest(Gedit)
+    executeTestCase.runTest(Dock_IconDocked)
