@@ -23,7 +23,7 @@ done
 
 cat >/usr/bin/dsystem<<EOF
 #!/bin/bash
-cd /usr/share/dsystem/dsystem && python3 rr_test.py --run_launcher=True --run_dock=True
+cd /usr/share/dsystem/dsystem && python3 rr_test.py --run_dock=True
 EOF
 chmod +x /usr/bin/dsystem
 
