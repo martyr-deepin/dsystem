@@ -5,6 +5,8 @@ __ALL__ = ['Launcher_StartAllAPP',
            'Launcher_AutoStart',
            'Launcher_Uninstall',
            'Dock_Exist',
+           'Dock_FashionIconsPopup',
+           'Dock_EfficientIconsPopup',
            'Dock_DefaultSetting',
            'Dock_ChangeDisplay',
            'Dock_ChangePosition',
@@ -73,6 +75,8 @@ from .testLauncher_AutoStart import Launcher_AutoStart
 from .testLauncher_Uninstall import Launcher_Uninstall
 
 from .testDock_Exist import Dock_Exist
+from .testDock_FashionIconsPopup import Dock_FashionIconsPopup
+from .testDock_EfficientIconsPopup import Dock_EfficientIconsPopup
 from .testDock_DefaultSetting import Dock_DefaultSetting
 from .testDock_ChangeDisplay import Dock_ChangeDisplay
 from .testDock_ChangePosition import Dock_ChangePosition

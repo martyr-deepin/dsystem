@@ -14,13 +14,18 @@ from lib import runTest
 from pymouse import PyMouse
 from pykeyboard import PyKeyboard
 from dogtail.tree import *
+from lib import DbusLauncher
 
 casename = "all-5352:将dock上的应用图标拖拽到桌面丢弃"
+
+
+dbus_launcher = DbusLauncher()
 
 class Dock_DragDockiconToDel(unittest.TestCase):
     caseid = '191645'
 
     def  AddApptoDock(appname):
+        dbus_launcher.Show()
         m = PyMouse()
         p = PyKeyboard()
         launcher.searchApp(appname)
@@ -42,7 +47,7 @@ class Dock_DragDockiconToDel(unittest.TestCase):
         time.sleep(1)
         p.press_key('Return')
         p.release_key('Return')
-        launcher.exitLauncher()
+        dbus_launcher.Hide()
 
     @classmethod
     def setUpClass(cls):

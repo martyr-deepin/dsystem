@@ -17,6 +17,8 @@ from RRTestCase import Launcher_AutoStart
 from RRTestCase import Launcher_Uninstall
 
 from RRTestCase import Dock_Exist
+from RRTestCase import Dock_FashionIconsPopup
+from RRTestCase import Dock_EfficientIconsPopup
 from RRTestCase import Dock_DefaultSetting
 from RRTestCase import Dock_ChangeDisplay
 from RRTestCase import Dock_ChangePosition
@@ -182,6 +184,12 @@ def main():
     # Dock
     if run_all or run_dock or Dock_Exist.caseid in allids:
         classes.append(Dock_Exist)
+
+    if run_all or run_dock or Dock_FashionIconsPopup.caseid in allids:
+        classes.append(Dock_FashionIconsPopup)
+
+    if run_all or run_dock or Dock_EfficientIconsPopup.caseid in allids:
+        classes.append(Dock_EfficientIconsPopup)
 
     if run_all or run_launcher or Launcher_Start.caseid in allids:
         classes.append(Launcher_Start)
