@@ -32,6 +32,13 @@ class Dock:
         self.string_Google_Chrome = _("Google Chrome")
         self.string_QQ = _("QQ")
 
+        self.string_plugin_datetime = _("datetime-")
+        self.string_plugin_sound = _("sound-")
+        self.string_plugin_trash = _("trash-")
+        self.string_plugin_network = _("network-")
+        self.string_plugin_shutdown = _("shutdown-shutdown")
+        self.string_plugin_fashion_traymanager = _("system-tray-fashion-mode-item")
+
         self.DesktopFile_Deepin_Music = "deepin-music.desktop"
         self.DesktopFile_Google_Chrome = "google-chrome.desktop"
         self.DesktopFile_QQ = "deepin.com.qq.im.desktop"
