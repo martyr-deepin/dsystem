@@ -25,6 +25,9 @@ from RRTestCase import Dock_ChangePosition
 from RRTestCase import Dock_ChangeIconSize
 from RRTestCase import Dock_ChangeHide
 from RRTestCase import Dock_DragDockiconToDel
+from RRTestCase import Dock_AutoDisplay
+from RRTestCase import Dock_IconDocked
+from RRTestCase import Dock_Uninstall
 
 from RRTestCase import DCC_Click_SoundSlider
 from RRTestCase import DCC_Click_LightSlider
@@ -211,6 +214,15 @@ def main():
 
     if run_all or run_dock or Dock_ChangeHide.caseid in allids:
         classes.append(Dock_ChangeHide)
+
+    if run_all or run_dock or Dock_AutoDisplay.caseid in allids:
+        classes.append(Dock_AutoDisplay)
+
+    if run_all or run_dock or Dock_IconDocked.caseid in allids:
+        classes.append(Dock_IconDocked)
+
+    if run_all or run_dock or Dock_Uninstall.caseid in allids:
+        classes.append(Dock_Uninstall)
 
     # Dde control center
     if run_all or DCC_Click_SoundSlider.caseid in allids:
