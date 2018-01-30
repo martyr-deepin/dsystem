@@ -41,7 +41,7 @@ class Dock_IconDocked(unittest.TestCase):
         cls.dbus_launcher.Hide()
 
     def testDragIconToDock(self):
-        utils.keySingle(utils.k.windows_l_key)
+        self.dbus_launcher.Show()
         try:
             launcherwin = utils.findWindow("dde-launcher")
         except:
