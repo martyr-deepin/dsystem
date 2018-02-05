@@ -50,7 +50,7 @@ class Dock_IconDocked(unittest.TestCase):
         utils.keyTypeString("gedit")
 
         try:
-            launcher_icon = self.ddedockobject.child(self.dock.string_dock_Launcher)
+            launcher_icon = self.ddedockobject.child(self.dock.string_Show_Desktop)
         except:
             self.assertTrue(False, "Can't find launcher icon")
 

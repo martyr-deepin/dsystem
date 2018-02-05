@@ -16,6 +16,7 @@ class Dock:
         #self.dockedapps = self.dockObj.child('dock-mainpanel').children
 
         self.string_dock_Launcher = _("Launcher")
+        self.string_Show_Desktop = _("Show Desktop")
 
         self.string_Deepin_File_Manager = _("Deepin File Manager")
         self.string_Deepin_Screenshot = _("Deepin Screenshot")
