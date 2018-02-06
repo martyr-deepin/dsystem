@@ -15,7 +15,20 @@ __ALL__ = ['Launcher_StartAllAPP',
            'Dock_DragDockiconToDel',
            'Dock_AutoDisplay',
            'Dock_IconDocked',
+           'Dock_IconMenuDock',
            'Dock_Uninstall',
+           'Dock_IconMenuForceQuit',
+           'Dock_IconMenuMultiClose',
+           'Dock_PluginShutDownLeftClick',
+           'Dock_PluginNetworkLeftClick',
+           'Dock_PluginSoundLeftClick',
+           'Dock_PluginDatetimeLeftClick',
+           'Dock_PluginTrashLeftClick',
+           'Dock_PluginShutDownRightClick',
+           'Dock_PluginNetworkRightClick',
+           'Dock_PluginSoundRightClick',
+           'Dock_PluginDatetimeRightClick',
+           'Dock_PluginTrashRightClick',
            'DCC_Click_LightSlider',
            'DCC_Click_SoundSlider',
            'DCC_ShowModules',
@@ -88,7 +101,20 @@ from .testDock_ChangeHide import Dock_ChangeHide
 from .testDock_DragDockiconToDel import Dock_DragDockiconToDel
 from .testDock_AutoDisplay import Dock_AutoDisplay
 from .testDock_IconDocked import Dock_IconDocked
+from .testDock_IconMenuDock import Dock_IconMenuDock
 from .testDock_Uninstall import Dock_Uninstall
+from .testDock_PluginShutDownLeftClick import Dock_PluginShutDownLeftClick
+from .testDock_PluginNetworkLeftClick import Dock_PluginNetworkLeftClick
+from .testDock_PluginSoundLeftClick import Dock_PluginSoundLeftClick
+from .testDock_PluginDatetimeLeftClick import Dock_PluginDatetimeLeftClick
+from .testDock_PluginTrashLeftClick import Dock_PluginTrashLeftClick
+from .testDock_PluginShutDownRightClick import Dock_PluginShutDownRightClick
+from .testDock_PluginNetworkRightClick import Dock_PluginNetworkRightClick
+from .testDock_PluginSoundRightClick import Dock_PluginSoundRightClick
+from .testDock_PluginDatetimeRightClick import Dock_PluginDatetimeRightClick
+from .testDock_PluginTrashRightClick import Dock_PluginTrashRightClick
+from .testDock_IconMenuForceQuit import Dock_IconMenuForceQuit
+from .testDock_IconMenuMultiClose import Dock_IconMenuMultiClose
 
 from .testDCC_ClickLightslider  import DCC_Click_LightSlider
 from .testDCC_ClickSoundslider  import DCC_Click_SoundSlider

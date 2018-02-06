@@ -27,7 +27,20 @@ from RRTestCase import Dock_ChangeHide
 from RRTestCase import Dock_DragDockiconToDel
 from RRTestCase import Dock_AutoDisplay
 from RRTestCase import Dock_IconDocked
+from RRTestCase import Dock_IconMenuDock
 from RRTestCase import Dock_Uninstall
+from RRTestCase import Dock_IconMenuForceQuit
+from RRTestCase import Dock_IconMenuMultiClose
+from RRTestCase import Dock_PluginShutDownLeftClick
+from RRTestCase import Dock_PluginNetworkLeftClick
+from RRTestCase import Dock_PluginSoundLeftClick
+from RRTestCase import Dock_PluginDatetimeLeftClick
+from RRTestCase import Dock_PluginTrashLeftClick
+from RRTestCase import Dock_PluginShutDownRightClick
+from RRTestCase import Dock_PluginNetworkRightClick
+from RRTestCase import Dock_PluginSoundRightClick
+from RRTestCase import Dock_PluginDatetimeRightClick
+from RRTestCase import Dock_PluginTrashRightClick
 
 from RRTestCase import DCC_Click_SoundSlider
 from RRTestCase import DCC_Click_LightSlider
@@ -221,8 +234,47 @@ def main():
     if run_all or run_dock or Dock_IconDocked.caseid in allids:
         classes.append(Dock_IconDocked)
 
+    if run_all or run_dock or Dock_IconMenuDock.caseid in allids:
+        classes.append(Dock_IconMenuDock)
+
     if run_all or run_dock or Dock_Uninstall.caseid in allids:
         classes.append(Dock_Uninstall)
+
+    if run_all or run_dock or Dock_IconMenuForceQuit.caseid in allids:
+        classes.append(Dock_IconMenuForceQuit)
+
+    if run_all or run_dock or Dock_IconMenuMultiClose.caseid in allids:
+        classes.append(Dock_IconMenuMultiClose)
+
+    if run_all or run_dock or Dock_PluginShutDownLeftClick.caseid in allids:
+        classes.append(Dock_PluginShutDownLeftClick)
+
+    if run_all or run_dock or Dock_PluginNetworkLeftClick.caseid in allids:
+        classes.append(Dock_PluginNetworkLeftClick)
+
+    if run_all or run_dock or Dock_PluginSoundLeftClick.caseid in allids:
+        classes.append(Dock_PluginSoundLeftClick)
+
+    if run_all or run_dock or Dock_PluginDatetimeLeftClick.caseid in allids:
+        classes.append(Dock_PluginDatetimeLeftClick)
+
+    if run_all or run_dock or Dock_PluginTrashLeftClick.caseid in allids:
+        classes.append(Dock_PluginTrashLeftClick)
+
+    if run_all or run_dock or Dock_PluginShutDownRightClick.caseid in allids:
+        classes.append(Dock_PluginShutDownRightClick)
+
+    if run_all or run_dock or Dock_PluginNetworkRightClick.caseid in allids:
+        classes.append(Dock_PluginNetworkRightClick)
+
+    if run_all or run_dock or Dock_PluginSoundRightClick.caseid in allids:
+        classes.append(Dock_PluginSoundRightClick)
+
+    if run_all or run_dock or Dock_PluginDatetimeRightClick.caseid in allids:
+        classes.append(Dock_PluginDatetimeRightClick)
+
+    if run_all or run_dock or Dock_PluginTrashRightClick.caseid in allids:
+        classes.append(Dock_PluginTrashRightClick)
 
     # Dde control center
     if run_all or DCC_Click_SoundSlider.caseid in allids:

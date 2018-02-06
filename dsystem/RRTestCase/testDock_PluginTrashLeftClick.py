@@ -14,7 +14,7 @@ from lib import window
 
 casename = 'all-6241:回收站插件-左键'
 
-class Dock_PluginSoundLeftClick(unittest.TestCase):
+class Dock_PluginTrashLeftClick(unittest.TestCase):
     caseid = '283439'
     @classmethod
     def setUpClass(cls):
@@ -35,7 +35,7 @@ class Dock_PluginSoundLeftClick(unittest.TestCase):
         if utils.dock.position_bottom != utils.getDdeDockPosition():
             utils.setDdeDockPosition(utils.dock.position_bottom)
 
-    def testPluginSoundLeftClick(self):
+    def testPluginTrashLeftClick(self):
         icon = self.dock.dockObj.child(self.testiconname)
         self.assertTrue(icon)
         icon.click()
@@ -52,11 +52,11 @@ class Dock_PluginSoundLeftClick(unittest.TestCase):
 
     def suite():
         suite = unittest.TestSuite()
-        suite.addTest(Dock_PluginSoundLeftClick('testPluginSoundLeftClick'))
+        suite.addTest(Dock_PluginTrashLeftClick('testPluginTrashLeftClick'))
         return suite
 
 if __name__ == "__main__":
     unittest.installHandler()
     LOCALE_DIR = os.path.abspath("./lib/locale")
     gettext.install('dsystem', LOCALE_DIR)
-    executeTestCase.runTest(Dock_PluginSoundLeftClick)
+    executeTestCase.runTest(Dock_PluginTrashLeftClick)
