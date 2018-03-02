@@ -20,7 +20,7 @@ class Dock_Uninstall(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
         cls.homepath = os.path.expanduser('~')
-        cls.dbpath = cls.homepath + '/.local/share/deepin-notifications/data.db'
+        cls.dbpath = cls.homepath + '/.local/share/deepin/deepin-notifications/data.db'
         cls.conn = NotificationsDB(cls.dbpath)
         cls.conn.deleteAll()
         cls.launcher = Launcher()
